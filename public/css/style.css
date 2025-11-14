@@ -1,0 +1,11 @@
+:root {
+    --azul-crepusculo: #00167a;
+    --montserrat: "Montserrat", sans-serif;
+    --bebas: "Bebas Neue", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
