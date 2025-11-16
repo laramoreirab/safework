@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { mostrarDadosEmpresa } from './config/database.js';
 
 
 import authRotas from './routes/authRotas.js' //importando arquivo no qual estará 
@@ -30,19 +31,19 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(logMiddleware);
 
 // Rotas da API 
-app.use ('/api/auth', authRotas)
+app.use('/api/auth', authRotas)
 
 app.get('/', (req, res) => {
     res.json({
         sucesso: true,
         mensagem: 'API projeto Safework',
         versao: '1.0.0',
-        rotas:{
+        rotas: {
             autenticacao: '/api/auth'
         },
         documentacao: {
@@ -51,8 +52,17 @@ app.get('/', (req, res) => {
     })
 });
 
+app.get('/empresa', async (req, res) => { // comando para testar o banco de dados
+    try {
+        const empresa = await mostrarDadosEmpresa()
+        res.status(200).json(empresa)
+    } catch (err) {
+        res.status(404).send('Empresa não encontrada')
+    }
+})
+
 // Middleware para tratar rotas não encontradas
-app.use('*', (req,res)=>{
+app.use('*', (req, res) => {
     res.status(404).json({
         sucesso: false,
         erro: 'Rota não encontrada',
@@ -61,7 +71,7 @@ app.use('*', (req,res)=>{
 });
 
 //iniciando o Servidor
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
     console.log(`API projeto Safework`)
     console.log(`Ambiente: ${process.env.NODE_ENV || 'development'}`);
