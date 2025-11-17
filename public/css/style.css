@@ -116,11 +116,21 @@ header {
 }
 
 .linha-others {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75vw;
 }
 
 .linha {
+    flex: 1;
+    height: 1px;
     border: 1px solid var(--cinza-escuro);
+}
+
+.linha-others p {
+    margin-top: 1.5vh;
+    color: var(--cinza-escuro);
 }
 
 img {
