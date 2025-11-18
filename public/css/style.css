@@ -60,7 +60,6 @@ a {
         justify-content: center;
         align-items: center;
         align-content: center;
-        width: 70vh;
     }
 
     img {
@@ -96,15 +95,19 @@ a {
     filter: invert(1);
     border: none;
 }
-.nav_item{
+
+.nav_item {
     transition: 1s ease;
     border-radius: 10px;
-    a{
-       display: flex; 
+
+    a {
+        display: flex;
         padding-left: 1rem;
         align-items: center;
+        padding: 0.4rem 1rem 0.4rem 1rem;
     }
-    p{
+
+    p {
         margin-left: 1rem;
         text-transform: uppercase;
         font-weight: 700;
@@ -113,22 +116,24 @@ a {
         margin-bottom: 0;
     }
 }
+
 .submenu {
     display: none;
     flex-direction: column;
     margin-left: 3rem;
-    
+
     a {
+        border-radius: 10px;
         align-items: center;
-        padding: 2px;
+        padding: 0.4rem 1rem 0.4rem 1rem;
         color: var(--cinza);
         text-decoration: none;
         font-weight: 700;
         font-size: 1.1rem;
     }
 
-    i{
-        margin: 8px 0 0 0.1rem;
+    i {
+        margin: 6px 0 0 0.1rem;
         align-items: center;
         font-size: 1.3rem;
     }
@@ -138,9 +143,52 @@ a {
     display: flex;
 }
 
-.nav_item:hover{
-    transition: 1s ease;
+.menu_redirecionamento:hover {
+    transition: 0.8s ease;
     background-color: var(--branco);
     color: var(--preto);
     border-radius: 10px;
+}
+
+.submenu_redirecionamento:hover {
+    background-color: var(--branco);
+    color: #000000;
+    transition: 1s ease;
+}
+
+.nav_item.dropdown:has(.submenu.show):hover {
+    background-color: transparent !important;
+    color: var(--branco);
+}
+
+/* <!--------------------------------- Responsividade ----------------------------------!> */
+
+/* <!----------- Celulares --------------!> */
+@media (max-width: 480px) {
+    /* Header */
+    .button_openmenu{
+        img{
+            width: 2.5rem;
+        }
+    }
+    .logo_header{
+        img{
+            width: 5rem;
+        }
+    }
+}
+
+/* <!----------- Tablets/Laptops pequenos --------------!> */
+@media (max-width: 1024px) and (min-width: 481) {
+    /* Header */
+    .button_openmenu{
+        img{
+            width: 3rem;
+        }
+    }
+    .logo_header{
+        img{
+            width: 8rem;
+        }
+    }
 }
