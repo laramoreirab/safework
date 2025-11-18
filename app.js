@@ -10,13 +10,13 @@ import { mostrarDadosEmpresa } from './config/database.js';
 import authRotas from './routes/authRotas.js' //importando arquivo no qual estará 
 
 //Importando middlewares
-import { logMiddleware } from './middlewares/logMiddleware.js'
+// import { logMiddleware } from './middlewares/logMiddleware.js'
 
 dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filname);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
@@ -33,7 +33,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(logMiddleware);
+// app.use(logMiddleware);
+
+// Middleware para interpretar cookies
+app.use(cookieParser());
 
 // Rotas da API 
 app.use('/api/auth', authRotas)
@@ -49,7 +52,7 @@ app.get('/', (req, res) => {
         documentacao: {
             login: 'POST /api/auth/login'
         }
-    })
+    });
 });
 
 app.get('/empresa', async (req, res) => { // comando para testar o banco de dados
@@ -62,13 +65,13 @@ app.get('/empresa', async (req, res) => { // comando para testar o banco de dado
 })
 
 // Middleware para tratar rotas não encontradas
-app.use('*', (req, res) => {
-    res.status(404).json({
-        sucesso: false,
-        erro: 'Rota não encontrada',
-        mensagem: `A rota ${req.method} ${req.originalUrl} não foi encontrada`
-    });
-});
+// app.use('*', (req, res) => {
+//     res.status(404).json({
+//         sucesso: false,
+//         erro: 'Rota não encontrada',
+//         mensagem: `A rota ${req.method} ${req.originalUrl} não foi encontrada`
+//     });
+// });
 
 //iniciando o Servidor
 app.listen(PORT, () => {
