@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
     --azul-crepusculo: #00167a;
     --montserrat: "Montserrat", sans-serif;
@@ -10,20 +12,20 @@
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    font-family: var(--montserrat);
-    height: 100vh;
-    overflow: hidden;
+  font-family: var(--montserrat);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 /* <-------------------------------- Header -----------------------------------> */
 #header_usuario {
