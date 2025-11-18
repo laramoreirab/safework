@@ -1,4 +1,6 @@
 /* <------------------------ Configurações Gerais ----------------------------> */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --azul-crepusculo: #00167a;
     --montserrat: "Montserrat", sans-serif;
@@ -18,8 +20,8 @@
 
 body {
     font-family: var(--montserrat);
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -36,7 +38,9 @@ a {
     justify-content: space-between;
     border-bottom: 0.2px solid var(--cinza);
     background-color: var(--branco);
-    position: fixed;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .button_openmenu {
@@ -179,7 +183,7 @@ a {
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
-@media (max-width: 1024px) and (min-width: 481) {
+@media (max-width: 1024px) and (min-width: 481px) {
     /* Header */
     .button_openmenu{
         img{
