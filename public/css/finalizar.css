@@ -1,7 +1,6 @@
 .padding {
   display: flex;
   flex-direction: column;
-  gap: 5dvh;
   min-height: calc(100vh - 7.5vh);
   padding: 2.5% 10%;
   animation: fadeIn 0.6s ease-out;
@@ -91,7 +90,7 @@ nav {
 main {
   display: flex;
   flex-direction: column;
-  gap: 3dvh;
+  gap: 2dvh;
   width: 100%;
   flex: 1;
 }
@@ -117,7 +116,7 @@ main {
 form {
   display: flex;
   flex-direction: column;
-  gap: 3dvh;
+  gap: 2dvh;
 }
 
 .inteira-input {
