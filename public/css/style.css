@@ -179,7 +179,7 @@ a {
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
-@media (max-width: 1024px) and (min-width: 481) {
+@media (max-width: 1524px) and (min-width: 481px) {
     /* Header */
     .button_openmenu{
         img{
