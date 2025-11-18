@@ -1,12 +1,3 @@
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 header {
     height: 7.5vh;
     background-color: turquoise;

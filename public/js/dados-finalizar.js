@@ -38,3 +38,17 @@ function mascararCNPJ(valor) {
 inputCNPJ.addEventListener('input', function(e) {
     e.target.value = mascararCNPJ(e.target.value);
 });
+
+const inputs = document.querySelectorAll('input');
+
+inputs.forEach(input => {
+  input.addEventListener('blur', function() {
+    if (this.value && this.checkValidity()) {
+      this.classList.add('valid');
+      this.classList.remove('invalid');
+    } else if (this.value) {
+      this.classList.add('invalid');
+      this.classList.remove('valid');
+    }
+  });
+});
