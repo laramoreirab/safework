@@ -1,12 +1,9 @@
-/* <------------------------ Configurações Gerais ----------------------------> */
 :root {
     --azul-crepusculo: #00167a;
     --montserrat: "Montserrat", sans-serif;
     --bebas: "Bebas Neue", sans-serif;
     --cinza-escuro: #545454;
     --cinza: #a6a6a6;
-    --branco: #ffff;
-    --azul-escuro: #122f60;
 }
 
 * {
@@ -24,74 +21,4 @@ body {
 a {
     text-decoration: none;
     color: inherit;
-}
-
-/* <-------------------------------- Header -----------------------------------> */
-#header_usuario {
-    height: 7.5vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 0.2px solid var(--cinza);
-    background-color: var(--branco);
-    position: fixed;
-}
-
-.button_openmenu {
-    margin-left: 1.3rem;
-    background-color: transparent;
-    border: none;
-
-    img {
-        width: 90%;
-    }
-}
-
-.logo_header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-
-    a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        width: 70vh;
-    }
-
-    img {
-        width: 15%;
-        margin-left: 1rem;
-    }
-}
-
-.icons_header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 0.7rem;
-
-    a {
-        margin-top: 0.5rem;
-        padding: 0.6rem;
-    }
-}
-
-.menulateral_header {
-    width: 30%;
-}
-
-#offcanvasWithBothOptions {
-    background-color: var(--azul-escuro);
-    color: white;
-}
-
-#offcanvasWithBothOptions .btn-close {
-    width: 5vh;
-    height: 5vh;
-    filter: invert(1);
-    border: none;
 }
