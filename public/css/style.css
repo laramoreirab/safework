@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --azul-crepusculo: #00167a;
-  --montserrat: "Montserrat", sans-serif;
-  --bebas: "Bebas Neue", sans-serif;
-  --cinza-escuro: #545454;
-  --cinza: #d9d9d9;
+    --azul-crepusculo: #00167a;
+    --montserrat: "Montserrat", sans-serif;
+    --bebas: "Bebas Neue", sans-serif;
+    --cinza-escuro: #545454;
+    --cinza: #a6a6a6;
+    --branco: #ffff;
+    --azul-escuro: #122f60;
+    --preto: #000000;
 }
 
 * {
@@ -23,15 +26,4 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
