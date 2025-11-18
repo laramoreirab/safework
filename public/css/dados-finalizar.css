@@ -77,13 +77,13 @@ main {
 
     i {
         font-size: 2.5rem;
-        color: var(--cinza-escuro);
+        color: var(--azul-crepusculo);
     }
 
     h1 {
         font-family: var(--bebas);
         font-size: 3rem;
-        color: var(--cinza-escuro);
+        color: var(--azul-crepusculo);
     }
 }
 
@@ -100,6 +100,7 @@ form {
 
     label {
         font-size: 1.25rem;
+        pointer-events: none;
     }
 
     input {
@@ -128,6 +129,7 @@ form {
     width: 50%;
 
     label {
+        pointer-events: none;
         font-size: 1.25rem;
     }
 
