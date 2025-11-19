@@ -184,7 +184,7 @@
     transition: all 0.3s ease;
 
     i {
-        font-size: 3rem;
+        font-size: 2rem;
         color: var(--branco);
         justify-content: center;
         align-items: center;
