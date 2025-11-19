@@ -6,7 +6,7 @@
     --montserrat: "Montserrat", sans-serif;
     --bebas: "Bebas Neue", sans-serif;
     --cinza-escuro: #545454;
-    --cinza: #a6a6a6;
+    --cinza: #d9d9d9;
     --branco: #ffff;
     --azul-escuro: #122f60;
     --preto: #000000;
@@ -27,6 +27,12 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* <-------------------------------- Header -----------------------------------> */
