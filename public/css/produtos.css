@@ -1,0 +1,51 @@
+.padding {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 7.5vh);
+  padding: 2.5% 7.5%;
+  animation: fadeIn 0.6s ease-out;
+  gap: 3dvh;
+}
+
+.titulo-produto h1 {
+  text-align: center;
+  color: var(--azul-crepusculo);
+  font-family: var(--bebas);
+  font-size: 4rem;
+}
+
+.align-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  width: 100vh;
+  border: 2px solid transparent;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+
+  input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    padding-left: 0.5rem;
+  }
+
+  input::placeholder {
+    color: var(--cinza-escuro);
+  }
+
+  i {
+    position: relative;
+    top: 3px;
+    right: 3px;
+  }
+}

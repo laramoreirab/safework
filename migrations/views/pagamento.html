@@ -15,7 +15,7 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../public/css/produtos.css" />
+    <link rel="stylesheet" href="../public/css/finalizar.css" />
     <link
       rel="shortcut icon"
       href="../public/img/icon.svg"
@@ -244,53 +244,164 @@
       </div>
     </header>
 
-    <div class="padding">
-        <div class="titulo-produto">
-            <h1>Nossos Produtos</h1>
+    <div class="padding" style="gap: 5dvh">
+      <nav>
+        <div class="one-step">
+          <div class="circ-step">
+            <p>1</p>
+          </div>
+          <div class="escrita-step">
+            <p><strong>Dados</strong></p>
+          </div>
         </div>
 
-        <div class="align-search">
-            <div class="search-bar">
-                <input type="search" name="" id="" placeholder="Pesquise por um produto...">
-                <i class="fi fi-rs-search"></i>
-            </div>            
+        <hr />
+
+        <div class="one-step">
+          <div class="circ-step">
+            <p>2</p>
+          </div>
+          <div class="escrita-step">
+            <p><strong>Entrega</strong></p>
+          </div>
         </div>
 
+        <hr />
 
-        <div class="info-produtos">
-            <p>Exibindo <span id="quantidade-produtos">0</span> resultados.</p>
+        <div class="one-step">
+          <div class="circ-step circ-active">
+            <p>3</p>
+          </div>
+          <div class="escrita-step">
+            <p><strong class="escrita-active">Pagamento</strong></p>
+          </div>
+        </div>
+      </nav>
 
-            <div class="buttons-info">
-                <button class="one-button">
-                    <i class="fi fi-sr-sort-alt"></i>
-                    <p>Ordenar</p>
-                </button>
+      <main style="gap: 5dvh">
+        <div class="titulo-main">
+          <i class="fa-solid fa-credit-card"></i>
+          <h1>Opções de Pagamento</h1>
+        </div>
 
-                <button class="one-button">
-                    <i class="fi fi-rr-settings-sliders"></i>
-                    <p>Filtrar</p>
-                </button>
+        <div class="options-payment">
+          <div class="one-option">
+            <i class="fa-solid fa-credit-card"></i>
+            <h2><strong>Cartão de Crédito</strong></h2>
+          </div>
+
+          <div class="one-option">
+            <i class="fa-brands fa-pix"></i>
+            <h2><strong>PIX</strong></h2>
+          </div>
+
+          <div class="one-option">
+            <i class="fa-solid fa-file-lines"></i>
+            <h2><strong>Boleto</strong></h2>
+          </div>
+        </div>
+
+        <form action="">
+          <div class="inteira-input">
+            <label for="numero-cartao"
+              ><strong>Número do Cartão *</strong></label
+            >
+            <input
+              type="text"
+              name="numero-cartao"
+              id="numero-cartao"
+              placeholder="1111 1111 1111 1111"
+              required
+              maxlength="19"
+            />
+          </div>
+
+          <div class="inteira-input">
+            <label for="nome-titular"><strong>Nome do Titular *</strong></label>
+            <input
+              type="text"
+              name="nome-titular"
+              id="nome-titular"
+              placeholder="HENRIQUE DE CASTRO"
+              required
+            />
+          </div>
+
+          <div class="metade-input">
+            <div class="one-metade">
+              <label for="validade-card"><strong>Validade *</strong></label>
+              <input
+                type="tel"
+                name="validade-card"
+                id="validade-card"
+                placeholder="MM/AA"
+                required
+                maxlength="5"
+              />
             </div>
-        </div>
 
-        <main>
-            <div class="one-produto">
-                <img src="../public/img/abafador.svg" alt="">
-                <h5>Abafador Profissional</h5>
-                <p>CA: 00000 | 3M</p>
-                <div class="estrelas">
-                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                    <i class="fi fi-ss-star"></i>
-                    <i class="fi fi-ss-star"></i>
-                    <i class="fi fi-ss-star"></i>
-                    <i class="fi fi-ss-star"></i>
-                    <p>(55)</p>
-                </div>
-                <span>R$340,90</span>
+            <div class="one-metade">
+              <label for="CVV"><strong>CVV *</strong></label>
+              <input
+                type="tel"
+                name="CVV"
+                id="CVV"
+                placeholder="777"
+                required
+                maxlength="3"
+              />
             </div>
-        </main>
+          </div>
+
+          <div class="inteira-input">
+            <label for="cpf-titular"><strong>CPF do Titular *</strong></label>
+            <input
+              type="text"
+              name="cpf-titular"
+              id="CPF"
+              placeholder="111.111.111-11"
+              required
+            />
+          </div>
+        </form>
+
+        <div class="resumo-pedido">
+          <h1><strong>Resumo do Pedido</strong></h1>
+
+          <div class="detalhes-resumo">
+            <div class="row-resumo">
+              <p>Subtotal</p>
+              <p>
+                <strong><span id="subtotal-resumo">R$0,00</span></strong>
+              </p>
+            </div>
+
+            <div class="row-resumo">
+              <p>Taxa de Entrega</p>
+              <p>
+                <strong><span>R$9,90</span></strong>
+              </p>
+            </div>
+
+            <hr />
+
+            <div class="row-resumo-active">
+              <p><strong>Total</strong></p>
+              <p>
+                <strong><span id="total-resumo">R$0,00</span></strong>
+              </p>
+            </div>
+
+            <a href="finalizado.html">
+              <button class="botao-resumo">
+                <strong>Finalizar Pedido</strong>
+              </button>
+            </a>
+          </div>
+        </div>
+      </main>
     </div>
 
-    <script src="../public/js/produtos.js"></script>
+    <script src="../public/js/finalizar.js"></script>
   </body>
 </html>
