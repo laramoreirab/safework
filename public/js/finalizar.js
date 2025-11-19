@@ -104,7 +104,7 @@ function mascararCVV(valor) {
   const numeros = valor.replace(/\D/g, "");
 
   if (numeros.length <= 4) {
-    return numeros; // CVV normalmente tem 3 ou 4 dígitos
+    return numeros;
   }
 
   return numeros.slice(0, 4);
@@ -121,7 +121,7 @@ function mascararValidade(valor) {
   const numeros = valor.replace(/\D/g, "");
 
   if (numeros.length <= 2) {
-    return numeros; // Apenas MM
+    return numeros;
   }
 
   return `${numeros.slice(0, 2)}/${numeros.slice(2, 4)}`;
@@ -146,5 +146,19 @@ inputs.forEach((input) => {
       this.classList.add("invalid");
       this.classList.remove("valid");
     }
+  });
+});
+
+const paymentOptions = document.querySelectorAll('.one-option');
+
+paymentOptions.forEach(option => {
+  option.addEventListener('click', function() {
+
+    paymentOptions.forEach(opt => opt.classList.remove('active'));
+
+    this.classList.add('active');
+
+    const selectedPayment = this.querySelector('h2').textContent.trim();
+    console.log('Método de pagamento selecionado:', selectedPayment);
   });
 });
