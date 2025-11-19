@@ -7,9 +7,9 @@
         0 1px 4px rgba(0, 0, 0, 0.1);
     /* camada de transição delicada */
     border-radius: 1rem;
-    height: 80vh;
+    height: 30%;
     width: 70%;
-    margin-top: 15vh;
+    margin-top: 2vh;
 }
 
 
@@ -44,6 +44,7 @@
 
 .subtitulo {
     color: var(--cinza-escuro);
+    margin-bottom: 0;
 }
 
 .informacoes {
@@ -56,7 +57,7 @@
 
     p {
         font-weight: 700;
-        margin: 10px 0 10px 0;
+        margin: 8px 0 8px 0;
     }
 
     input {
@@ -64,46 +65,158 @@
         border-radius: 0.4rem;
         padding: 1rem;
         width: 100%;
-        border: 0.5px solid var(--preto);
+        border: 0.5px solid var(--cinza-claro);
+        outline: none;
+    }
+
+    input::placeholder {
+        color: var(--cinza);
     }
 }
 
-#form_cadastro{
-    .alignsubmit{
+.cadastro_each input:focus {
+    transition: all 0.3s ease;
+    outline: none;
+    border-color: var(--azul-crepusculo);
+    transform: translateY(-0.5dvh);
+  }
+
+.cadastro_each  input::placeholder {
+    color: var(--cinza);
+    transition: opacity 0.3s ease;
+  }
+
+.cadastro_each input:focus::placeholder {
+    opacity: 0.5;
+  }
+#form_cadastro {
+
+    .aligncheckbox {
+        display: flex;
+        align-items: center;
+
+        b {
+            color: var(--azul-crepusculo);
+        }
+
+        p {
+            margin-bottom: 0;
+            padding: 0.5rem;
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--azul-escuro);
+            outline: none;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: transparent;
+            border-color: transparent;
+            outline: none;
+        }
+    }
+
+    .alignsubmit {
         display: flex;
         justify-content: center;
         align-items: center;
         align-content: center;
     }
-    .aligncheckbox{
-        display: flex;
-        align-items: center;
-        b{
-            color: var(--azul-crepusculo);
-        }
-    }
-    .continuecom{
-        display: flex;
-        hr{
-            width: 10px;
-        }
-    }
-    .align{
-        a{
-            font-weight: 700;
-            color: var(--azul-crepusculo);
-        }
-    }
-    button{
-        margin: 1.5rem;        
-        padding: 0.6rem;  
-        border-radius: 0.4rem;    
-        background-color: var(--azul-crepusculo);  
+
+    button {
+        margin: 0.4rem;
+        padding: 0.9rem;
+        border-radius: 0.4rem;
+        background: linear-gradient(35deg, var(--azul-claro), var(--azul-crepusculo));
         color: var(--branco);
-        font-weight: 650;
+        font-weight: 700;
         border: transparent;
+        width: 20%;
+        font-size: 1.2rem;
+        transition: all 1s ease;
+    }
+}
+
+#form_cadastro button:hover {
+    transition: all 1s ease;
+    transform: scale(1.1);
+
+}
+
+.continuecom {
+    color: var(--branco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0 1.5rem 0;
+
+    hr {
+        width: 20%;
+        color: var(--preto);
     }
 
+    p {
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 8px;
+        margin-right: 8px;
+        font-weight: 600;
+        color: var(--preto);
+    }
+}
+
+.icones_login {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 1rem 0;
+}
+
+.eachmediason {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1.5rem 0 1.5rem;
+    background-color: var(--azul-escuro);
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+
+    i {
+        font-size: 3rem;
+        color: var(--branco);
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.eachmediason:hover {
+    transform: translateY(-1dvh);
+}
+
+.align {
+    margin-top: 2rem 0 0 0;
+    text-align: center;
+
+    a {
+        margin-left: 0.4rem;
+    }
+
+    b {
+        color: var(--azul-crepusculo);
+    }
+}
+
+.align:hover {
+    a {
+        text-decoration: underline;
+    }
+}
+
+.temconta {
+    margin-top: 2rem;
+    margin-bottom: 0;
 }
 
 /* <!--------------------------------- Responsividade ----------------------------------!> */
@@ -113,11 +226,23 @@
     .criar-conta {
         width: 90%;
     }
+
+    #form_cadastro {
+        button {
+            width: 50%;
+        }
+    }
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
 @media (max-width: 1524px) and (min-width: 481px) {
     .criar-conta {
         width: 90%;
+    }
+
+    #form_cadastro {
+        button {
+            width: 30%;
+        }
     }
 }
