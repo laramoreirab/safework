@@ -7,7 +7,10 @@ import { fileURLToPath } from 'url';
 import { mostrarDadosEmpresa } from './config/database.js';
 
 
-import authRotas from './routes/authRotas.js' //importando arquivo no qual estará 
+import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
+import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
+import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+
 
 //Importando middlewares
 // import { logMiddleware } from './middlewares/logMiddleware.js'

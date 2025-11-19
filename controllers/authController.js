@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser';
 class authController{
 
     //POST /auth/login - Fazer Login
-
     static async login(req, res) {
         try{
             const {email, senha} = req.body; //vai receber email e senha no corpo da requisição
@@ -189,7 +188,10 @@ class authController{
         }
     }
 
-    // controle para o painel do admin
+    // aqui o adm será capaz de excluir, listar, criar, Obter perfil do usuário logado, .....
+
+
+
 }
 
 export default authController;
