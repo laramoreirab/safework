@@ -1,0 +1,331 @@
+/* Banner */
+#banner_index {
+    background-image: url(../img/home/bannerindex.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    .frase_inicial {
+        position: absolute;
+        top: 40vh;
+        display: flex;
+        flex-direction: column;
+        width: 79vh;
+        margin: 0 auto;
+        right: 47%;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+            font-family: var(--bebas);
+            color: var(--branco);
+            font-size: 10vh;
+        }
+
+        b {
+            color: var(--laranja);
+            font-weight: 400;
+        }
+
+        hr {
+            width: 250px;
+            height: 6px;
+            background-color: var(--laranja);
+            opacity: 1;
+        }
+    }
+}
+
+/* Sobre */
+.titulo_protecao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-family: var(--bebas);
+    padding: 5rem;
+}
+
+.informacoes_protecao {
+    width: 80vh;
+}
+
+.frase1 {
+    display: flex;
+    justify-content: flex-start;
+    color: var(--laranja);
+    font-size: 8vh;
+}
+
+.frase2 {
+    margin-top: -3vh;
+    display: flex;
+    justify-content: flex-end;
+    color: var(--azul-crepusculo);
+    font-size: 8vh;
+}
+
+.img_protecao {
+    display: flex;
+
+    img {
+        border-radius: 1.1rem;
+    }
+}
+
+.txt_protecao {
+    font-size: 1.2rem;
+    margin-left: -10rem;
+    color: var(--cinza-escuro);
+}
+
+/* Categorias - Proteções */
+#categorias_protecoes {
+    margin: 6vh 0 6vh 0;
+}
+
+.titulo_produtos {
+    font-family: var(--bebas);
+    text-align: center;
+    color: var(--azul-crepusculo);
+    padding: 4rem;
+
+    h1 {
+        font-size: 8vh;
+    }
+}
+
+.align {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.eachcategorial {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: transparent;
+    background-color: var(--laranja-frio);
+    border-radius: 0 2rem 0 2rem;
+    width: 28vh;
+    height: 17vh;
+}
+
+.eachcategoriab {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: transparent;
+    background-color: var(--azul-escuro);
+    border-radius: 0 2rem 0 2rem;
+    width: 27vh;
+    height: 17vh;
+}
+
+.linha_categoria {
+    padding-bottom: 3rem;
+}
+
+.inputcategoria {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    h1{
+        color: var(--branco);
+        font-weight: 700;
+    }
+}
+
+.linha_eachcategoria {
+    width: 70px;
+    height: 6px;
+    background-color: var(--branco);
+    opacity: 1;
+}
+
+/* Nossos Produtos */
+#nossosprodutos_home {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.nossosprodutos_banner {
+    margin-top: 6vh;
+    background-image: url(../img/home/red_nossosprodutos.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+    border-radius: 1.5rem;
+    width: 80%;
+    height: 45vh;
+    overflow-y: hidden;
+}
+
+.nossosprodutos {
+    margin-top: 23vh;
+    z-index: 1;
+    left: 13%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 80vh;
+
+    h1 {
+        color: var(--azul-crepusculo);
+        font-weight: 550;
+        width: 50vh;
+        text-align: center;
+        font-family: var(--bebas);
+        font-size: 8vh;
+    }
+
+    p {
+        color: var(--preto);
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-weight: 700;
+        color: var(--branco);
+        border: transparent;
+        background-color: var(--azul-escuro);
+        width: 23vh;
+        height: 6vh;
+        font-size: 2.5vh;
+        border-radius: 0.8rem;
+    }
+}
+
+/* Marcas */
+.titulo_marcas{
+   font-family: var(--bebas);
+    color: var(--azul-crepusculo);
+    text-align: center;
+    h1{
+        font-size: 8vh;
+    }
+}
+
+/* Avaliações */
+.titulo_avaliacoes{
+    font-family: var(--bebas);
+    color: var(--azul-crepusculo);
+    text-align: center;
+    h1{
+        font-size: 8vh;
+    }
+}
+
+/* <!--------------------------------- Responsividade ----------------------------------!> */
+
+/* <!----------- Celulares --------------!> */
+@media (max-width: 700px) {
+
+    /* Banner */
+    #banner_index {
+        background-image: url(../img/home/bannexindexmobile.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .frase_inicial {
+            width: 30vh;
+            position: relative;
+            top: 22vh;
+            left: 2%;
+            margin: 0 auto;
+        }
+    }
+
+    /* Sobre */
+    .informacoes_protecao {
+        width: 30vh;
+        text-align: center;
+    }
+
+    .img_protecao {
+        display: flex;
+        justify-content: center;
+    }
+
+    .txt_protecao {
+        text-align: center;
+        margin: 0;
+        padding: 2rem 0 3rem 0;
+    }
+}
+
+/* <!----------- Tablets/Laptops pequenos --------------!> */
+@media (max-width: 1024px) and (min-width: 700px) {
+
+    /* Banner */
+    #banner_index {
+        background-image: url(../img/home/bannerindextablet.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        .frase_inicial {
+            position: relative;
+            top: 8vh;
+            margin: 0 auto;
+            left: 15%;
+            transform: translateX(-21%);
+
+        }
+    }
+
+    /* Sobre */
+    .informacoes_protecao {
+        width: 50vh;
+    }
+
+    .txt_protecao {
+        margin: 0;
+    }
+}
+
+@media (max-width:1300px) and (min-width: 1025px) {
+
+    /* Banner */
+    #banner_index {
+        background-image: url(../img/home/bannerindextablet.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        .frase_inicial {
+            position: relative;
+            top: 8vh;
+            margin: 0 auto;
+            right: 13%;
+        }
+    }
+
+    /* Sobre */
+    .txt_protecao {
+        margin: 0;
+    }
+}
