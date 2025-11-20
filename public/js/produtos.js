@@ -88,3 +88,17 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', filterProducts);
     
 });
+
+const btnAbrir = document.getElementById("open-filtrar");
+const sidebar = document.getElementById("aba-filtrar");
+const overlay = document.getElementById("escurecer-filtrar");
+
+btnAbrir.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+});

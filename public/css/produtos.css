@@ -144,7 +144,7 @@
 }
 
 .one-button:active {
-  transform: translateY(0.5dvh);
+  transform: translateY(0.25dvh);
 }
 
 main {
@@ -200,6 +200,7 @@ main {
 
   i {
     font-size: 1.25rem;
+    color: #f7ce08;
   }
 
   p {
@@ -218,6 +219,68 @@ main {
   transform: translateY(1dvh);
 }
 
+.escurecer-filtrar {
+  position: fixed;
+  z-index: 7000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.escurecer-filtrar.active {
+  display: block;
+}
+
+.aba-filtrar {
+  position: fixed;
+  width: 30%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  transform: translateX(100%);
+  padding: 2.5rem;
+}
+
+.aba-filtrar.active {
+  transform: translateX(0);
+}
+
+.titulo-filtrar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, var(--azul-crepusculo), #4e4cae);
+  padding: 2rem;
+  margin: -2.5rem;
+
+  h1 {
+    font-family: var(--bebas);
+    color: white;
+    font-size: 3rem;
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 3.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  i:hover {
+    transform: scale(1.1);
+  }
+}
+
 @media (max-width: 1024px) {
   .titulo-produto h1 {
     font-size: 3rem;
@@ -225,7 +288,7 @@ main {
 
   .info-produtos {
     justify-content: center;
-    
+
     p {
       font-size: 1.5rem;
     }
