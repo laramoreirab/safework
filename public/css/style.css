@@ -41,6 +41,11 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* <-------------------------------- Header -----------------------------------> */
 #header_usuario {
   height: 7.5vh;
