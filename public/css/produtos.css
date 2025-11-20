@@ -143,6 +143,10 @@
   }
 }
 
+.one-button:active {
+  transform: translateY(0.5dvh);
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -170,7 +174,7 @@ main {
   h5 {
     margin-top: 1rem;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-right: auto;
   }
 
@@ -208,6 +212,10 @@ main {
   transform: translateY(-1dvh);
   border: 1px solid var(--azul-crepusculo);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.one-produto:active {
+  transform: translateY(1dvh);
 }
 
 @media (max-width: 1024px) {
