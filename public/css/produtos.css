@@ -209,3 +209,25 @@ main {
   border: 1px solid var(--azul-crepusculo);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+@media (max-width: 1024px) {
+  .titulo-produto h1 {
+    font-size: 3rem;
+  }
+
+  .info-produtos {
+    justify-content: center;
+    
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .buttons-info {
+    display: none;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+}
