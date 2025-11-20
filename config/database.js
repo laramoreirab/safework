@@ -14,15 +14,69 @@ const pool = mysql.createPool({ // conecta ao banco de dados
     queueLimit: 0
 })
 
-async function mostrarDadosEmpresa() { // função MostrarDadosEmpresa
-    const connection = await pool.getConnection() // cria uma conexão com o banco
+
+async function getConnection() { // função que cria uma conexão com o banco
+    return pool.getConnection()
+}
+
+
+
+// função para ler os registros
+async function read(table, where = null) {
+    const connection = await getConnection(); // cria uma conexão com o pool
     try{
-        
-        const [rows] = await connection.execute('select * from empresas') // executa uma ação de mostrar todos os dados da tabela empresas
-        return rows
+        let sql = `SELECT * FROM ${table}` // seleciona todos os item da tabela (tabela)
+        if(where){
+            sql += ` WHERE senha = ${where}` // caso tenha um where, adicione ao (select * from)
+        }
+        const [rows] = await connection.execute(sql) // executa o comando sql 
+        return rows 
+    } finally{
+        connection.release()
+    }
+}
+
+// função para inserir um novo registro
+async function create(table, data){
+    const connection = await getConnection()
+    
+    try{
+        const columns = Object.keys(data).join(', ') // separa as colunas do registro ex : (nome, rep, cnpj)
+        const placeholders = Array(Object.keys(data).length).fill('?').join(', ') // aqui criamos uma array com interrogações para identificar a quantidade de valores que serão adicionados ex: ('?', '?', '?', '?')
+        const sql = `INSERT INTO ${table} (${columns}) VALUES (${placeholders})` // inserimos as informações ex: (insert into empresas (nome, rep, cnpj) values (?, ?, ?, ?))
+        const values = Object.values(data) // pegamos os valores das chaves (nome, rep, cnpj) que retornará no ex: (safework, Lara Moreira, 12345678900190)
+        const [result] = await connection.execute(sql , values) // executa o insert com os valores corretos
+        return result.insertId // retorna o id automático da tabela ex: 1
+    } finally {
+        connection.release() // devolve a conexão ao pool, evitando esgotar as conexões 
+    }
+}
+
+async function update(table, data, where) {
+    const connection = await getConnection();
+    try{
+        const set = Object.keys(data).map(column => `${column} = ?`).join(', ') 
+        // o código acima pega cada coluna ex: (nome, email, idade) e coloca o valor '?' em cada coluna.
+        // depois transforma os objetos em uma string retornando (nome = ?, email = ?, idade = ?)
+        const sql = `UPDATE ${table} SET ${set} WHERE ${where}`
+        // ex de saída sql : UPDATE usuario SET nome = ?, email = ?, idade = ? WHERE id = 1
+        const values = Object.values(data)
+        // o values pega todos os valores do data e retorna, ex: idade = 18, retornará 18.
+
+        const [result] = await connection.execute(sql, values)
+        // ex de saída result : UPDATE usuario SET nome = 'Roger', email = 'roger123@gmail.com', idade = 18 WHERE id = 1
+        return result.affectedRows
     }finally{
         connection.release()
     }
 }
 
-export {mostrarDadosEmpresa}
+
+
+
+export { // exportando as funções. (para utilizar é necessário usar o import {read, create, update, getConnection} from '../config/database.js')
+    read,
+    create,
+    update,
+    getConnection
+}
