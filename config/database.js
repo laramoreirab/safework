@@ -71,12 +71,45 @@ async function update(table, data, where) {
     }
 }
 
+// função para deletar um registro
+async function deleteRecord(table, where){ 
+    const connection = await getConnection()
+    try{
+    const sql = `DELETE FROM ${table} WHERE ${where}`
+    const [result] = connection.execute(sql)
+    return result.affectedRows
+    }finally{
+        connection.release()
+    }
+}
 
+// gera um hash para senha 
+async function hashPassword(password){
+    try{
+        return bcrypt.hash(password, 10)
+    } catch(err) {
+        console.error("Erro ao gerar hash da senha", err)
+        throw err
+    }
+}
+
+// compara a senha com o hash
+async function comparePassword(password, hash) {
+    try{
+        return bcrypt.compare(password, hash)
+    } catch(err) {
+        console.log("Erro ao comparar senha:", err)
+        return false
+    }
+}
 
 
 export { // exportando as funções. (para utilizar é necessário usar o import {read, create, update, getConnection} from '../config/database.js')
     read,
     create,
     update,
+    deleteRecord,
+    hashPassword,
+    comparePassword,
     getConnection
 }
