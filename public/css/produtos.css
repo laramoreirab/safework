@@ -410,6 +410,46 @@ main {
   }
 }
 
+.row-ordenar {
+  display: flex;
+  gap: 1dvw;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  :hover {
+    transform: translateY(-0.5dvh);
+  }
+
+  :active {
+    transform: translateY(0);
+  }
+
+  input[type="radio"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--cinza);
+  }
+
+  input[type="checkbox"]:hover {
+    transform: scale(1.25);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  label {
+    font-size: 1.5rem;
+    color: var(--cinza-escuro);
+    transition: all 0.3s ease;
+  }
+
+  label:hover {
+    font-weight: 700;
+  }
+}
+
 @media (max-width: 1024px) {
   .titulo-produto h1 {
     font-size: 3rem;
