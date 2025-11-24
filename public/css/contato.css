@@ -1,0 +1,42 @@
+.banner-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    height: 80vh;
+    background-image: url(../img/banner-ctt.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0 6.75%;
+
+    h1 {
+        font-family: var(--bebas);
+        font-size: 13.5rem;
+        color: white;
+        line-height: 0.85;
+    }
+
+    span {
+        color: #f3c22e;
+    }
+}
+
+.padding {
+    display: flex;
+    flex-direction: column;
+    gap: 15dvh;
+    padding: 10dvh 10%;
+
+    h1 {
+        font-size: 2.25rem;
+        text-align: center;
+        color: var(--azul-crepusculo);
+        font-weight: 700;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 3dvh;
+}
