@@ -1,0 +1,61 @@
+.titulo_informacoes {
+    font-family: var(--bebas);
+}
+
+.especificacoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.avaliacaoprod {
+    display: flex;
+    gap: 3px;
+
+    i {
+        font-size: 1.25rem;
+        color: #f7ce08;
+    }
+}
+
+.squaretam{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--preto);
+    border-radius: 8px;
+    margin: 0.5rem;
+}
+
+.tam{
+    padding-left: 1rem;
+}
+
+.preco_produto{
+    font-family: var(--bebas);
+}
+
+.input_frete{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo-linha {
+  display: flex;
+  align-items: center;
+}
+
+.titulo_secaoprod {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0;
+  margin-right: 16px; /* espaço entre o h1 e a linha */
+}
+
+.linha-gradiente {
+  flex-grow: 1;
+  height: 4px;
+}
+
+.titulo_interesses{
+    font-family: var(--bebas);
+}

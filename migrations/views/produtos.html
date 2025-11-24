@@ -15,7 +15,7 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../public/css/finalizar.css" />
+    <link rel="stylesheet" href="../public/css/produtos.css" />
     <link
       rel="shortcut icon"
       href="../public/img/icon.svg"
@@ -245,115 +245,46 @@
     </header>
 
     <div class="padding">
-      <nav>
-        <div class="one-step">
-          <div class="circ-step">
-            <p>1</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong>Dados</strong></p>
-          </div>
+        <div class="titulo-produto">
+            <h1>Nossos Produtos</h1>
         </div>
 
-        <hr />
+        <div class="search-bar">
+            <p>Pesquise por um produto...</p>
 
-        <div class="one-step">
-          <div class="circ-step circ-active">
-            <p>2</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong class="escrita-active">Entrega</strong></p>
-          </div>
+            <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <hr />
+        <div class="info-produtos">
+            <p>Exibindo <span id="quantidade-produtos">0</span> resultados.</p>
 
-        <div class="one-step">
-          <div class="circ-step">
-            <p>3</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong>Pagamento</strong></p>
-          </div>
-        </div>
-      </nav>
+            <div class="buttons-info">
+                <button class="one-button">
+                    <i class="fi fi-sr-sort-alt"></i>
+                    <p>Ordenar</p>
+                </button>
 
-      <main>
-        <div class="titulo-main">
-          <i class="fa-solid fa-briefcase"></i>
-          <h1>Dados Empresariais</h1>
-        </div>
-
-        <form action="">
-          <div class="inteira-input">
-            <label for="endereco"><strong>Endereço *</strong></label>
-            <input
-              type="text"
-              name="endereco"
-              id="endereco"
-              placeholder="Rua João, 272"
-              required
-            />
-          </div>
-
-          <div class="metade-input">
-            <div class="one-metade">
-              <label for="CPF"><strong>CPF do Representante *</strong></label>
-              <input
-                type="text"
-                name="CPF"
-                id="CPF"
-                placeholder="999.999.999-99"
-                required
-                maxlength="14"
-              />
+                <button class="one-button">
+                    <i class="fi fi-rr-settings-sliders"></i>
+                    <p>Filtrar</p>
+                </button>
             </div>
+        </div>
 
-            <div class="one-metade">
-              <label for="telefone-representante"
-                ><strong>Telefone do Representante *</strong></label
-              >
-              <input
-                type="tel"
-                name="telefone-representante"
-                id="telefone-empresa"
-                placeholder="(11) 99999-9999"
-                required
-                maxlength="15"
-              />
+        <main>
+            <div class="one-produto">
+                <img src="../public/img/respirador.svg" alt="">
+                <div class="estrelas">
+                    <i class="fi fi-ss-star"></i>
+                    <i class="fi fi-ss-star"></i>
+                    <i class="fi fi-ss-star"></i>
+                    <i class="fi fi-ss-star"></i>
+                    <i class="fi fi-ts-star-sharp-half-stroke metadinha"></i>
+                </div>
             </div>
-          </div>
-
-          <div class="inteira-input">
-            <label for="nome-representante"
-              ><strong>Nome Completo do Representante *</strong></label
-            >
-            <input
-              type="text"
-              name="nome-representante"
-              id="nome-representante"
-              placeholder="Marcos Vinicíus"
-              required
-            />
-          </div>
-
-          <div class="inteira-input">
-            <label for="email-empresa"><strong>Portaria *</strong></label>
-            <input
-              type="portaria"
-              name="portaria"
-              id="portaria"
-              placeholder="523"
-              required
-            />
-          </div>
-        </form>
-        <a href="./entrega-finalizar.html">
-          <button><strong>Continuar</strong></button>
-        </a>
-      </main>
+        </main>
     </div>
 
-    <script src="../public/js/dados-finalizar.js"></script>
+    <script src="../public/js/produtos.js"></script>
   </body>
 </html>
