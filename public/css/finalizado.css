@@ -398,3 +398,32 @@
 .one-option:active {
     transform: translateY(0);
 }
+
+@media (max-height: 1024px) {
+    .msg-confirmado h2 {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .cont-number {
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .titulo-info {
+        gap: 5dvw;
+
+        i {
+            font-size: 1.25rem;
+        }
+
+        h5 {
+            font-size: 1.5rem;
+        }
+    }
+}
