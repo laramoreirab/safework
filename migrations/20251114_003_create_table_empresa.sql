@@ -1,7 +1,7 @@
 use safework -- usar banco de dados
 
 create table if not exists empresas (
-    id int primary key not null, -- chave primaria sem valor nulo
+    id int primary key not null auto_increment, -- chave primaria sem valor nulo
     nome varchar(70) not null,
     rep varchar(120) not null,
     cnpj char(14) not null,

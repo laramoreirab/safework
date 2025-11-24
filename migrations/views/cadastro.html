@@ -38,7 +38,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <div class="nav_item">
-                        <a class="menu_redirecionamento" href="../views/index.html">
+                        <a class="menu_redirecionamento" href="../views/produtos.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-house-door-fill" viewBox="0 0 16 16">
                                 <path
@@ -87,6 +87,11 @@
                             </a>
                             <a class="submenu_redirecionamento" href="../views/produtos.html">Pés e Pernas
                                 <i class="fi fi-ts-angle-small-right"></i>
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                                </svg> -->
                             </a>
                             <a class="submenu_redirecionamento" href="../views/produtos.html">Cabeça
                                 <i class="fi fi-ts-angle-small-right"></i>
@@ -152,16 +157,16 @@
                     <p class="subtitulo">Junte-se a milhares de clientes satisfeitos!</p>
                     <form id="form_cadastro" action="#">
                         <div class="cadastro_each">
-                            <p>Nome da Empresa</p>
+                            <p>Nome Completo</p>
                             <input type="text" id="nome_cadastro" placeholder="João da Silva">
                         </div>
                         <div class="cadastro_each">
-                            <p>Email da Empresa</p>
+                            <p>Email</p>
                             <input type="email" id="email_cadastro" placeholder="joaosilva@gmail.com">
                         </div>
                         <div class="cadastro_each">
-                            <p>Telefone da Empresa</p>
-                            <input type="tel" id="tel_cadastro" placeholder="(11) 97284-9552">
+                            <p>Telefone</p>
+                            <input type="tel"  id="tel_cadastro" placeholder="(11) 97284-9552">
                         </div>
                         <div class="cadastro_each">
                             <p>Senha</p>
@@ -169,42 +174,28 @@
                         </div>
                         <div class="aligncheckbox">
                             <input type="checkbox" class="aceitartermos" id="aceitartermos">
-                            <p>Aceito os <b>Termos de uso</b> e <b>Políticas de Privacidade</b> </p>
+                            <p>Eu Aceito os <b>Termos de uso</b> e <b>Políticas de Privacidade</b> </p>
                         </div>
-
+                        
                         <div class="alignsubmit">
                             <button type="submit">Cadastrar</button>
                         </div>
                     </form>
                     <div class="continuecom">
-                        <hr class="linha_login1">
+                        <hr>
                         <p>ou continue com</p>
-                        <hr class="linha_login2">
+                        <hr>
                     </div>
-                    <div class="icones_login">
-                        <div class="eachmedia">
-                            <div class="eachmediason">
-                                <i class="fa-brands fa-google fa-lg"></i>
-                            </div>   
-                        </div>
-                        <div class="eachmedia">
-                            <div class="eachmediason">
-                              <i class="fa-brands fa-facebook-f fa-lg"></i>  
-                            </div>
-                        </div>
-                        <div class="eachmedia">
-                            <div class="eachmediason">
-                                <i class="fa-brands fa-apple fa-xl"></i>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="align">
-                        <p class="temconta">Já tem uma conta?<a href="login.html"><b>Fazer login</a></b></p>
+                        <p>Já tem uma conta? <a href="login.html">Fazer login</a></p>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const toggle = document.querySelector(".toggle-produtos");
@@ -216,8 +207,6 @@
             });
         });
     </script>
-    <script src="../public/js/scriptCadastro.js"></script>
-    <script src="../public/js/funcoesprincipais.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { mostrarDadosEmpresa } from './config/database.js';
+import { read } from './config/database.js';
 
 
 import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
@@ -39,10 +39,12 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(logMiddleware);
 
 // Middleware para interpretar cookies
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // Rotas da API 
-app.use('/api/auth', authRotas)
+// app.use('/api/auth') // 
+
+app.use('/api/db', authRotas)
 
 app.get('/', (req, res) => {
     res.json({
@@ -60,7 +62,7 @@ app.get('/', (req, res) => {
 
 app.get('/empresa', async (req, res) => { // comando para testar o banco de dados
     try {
-        const empresa = await mostrarDadosEmpresa()
+        const empresa = await read('empresas')
         res.status(200).json(empresa)
     } catch (err) {
         res.status(404).send('Empresa não encontrada')
