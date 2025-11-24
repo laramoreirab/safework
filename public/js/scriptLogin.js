@@ -2,9 +2,9 @@ const form = document.getElementById('loginForm')
 form.addEventListener('submit', async(e) => {
     e.preventDefault();
 
-
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
+    
 try{
     const res = await fetch('http://localhost:3000/login', {
         method: 'POST',

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import usuarioModel from '../models/usuarioModel';
+import usuarioModel from '../models/usuarioModel.js';
 import cookieParser from 'cookie-parser';
 
 class authController{
@@ -88,7 +88,7 @@ class authController{
 
     static async registrar(req, res){
         try{
-            const { nome, email, senha, tipo } = req.body;
+            const { nome, email, telefone, senha, tipo } = req.body;
 
             //validaçõe básicas 
             if(!nome || nome.trim() === ''){  // verifica se o campo nome está vazio, ele vem sem espaços
@@ -103,6 +103,14 @@ class authController{
                     sucesso: false,
                     erro: 'Email obrigatório',
                     mensagem: 'O email é obrigatório'
+                });
+            }
+
+            if (!telefone || telefone.trim() === '') { // verifica se o campo telefone está vazio, ele vem sem espaços
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'Telefone é obrigatório',
+                    mensagem: 'O telefone é obrigatória'
                 });
             }
 
@@ -139,6 +147,14 @@ class authController{
                     mensagem: 'Formato de email inválido'
                 });
             }
+            // verificando o telefone
+            if (telefone.length < 11) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'Telefone inválido',
+                    mensagem: 'O telefone deve ter pelo menos 11 caracteres'
+                });
+            }
             // verificando a senha
             if (senha.length < 6) {
                 return res.status(400).json({
@@ -161,6 +177,7 @@ class authController{
             const dadosUsuario = {
                 nome: nome.trim(),
                 email: email.trim().toLowerCase(),
+                telefone: telefone.trim(),
                 senha: senha,
                 tipo: tipo || 'comum'
             };
@@ -175,6 +192,7 @@ class authController{
                     id: usuarioId,
                     nome: dadosUsuario.nome,
                     email: dadosUsuario.email,
+                    telefone: dadosUsuario.telefone,
                     tipo: dadosUsuario.tipo
                 }
             })

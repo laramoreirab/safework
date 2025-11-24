@@ -3,13 +3,14 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
 import { read } from './config/database.js';
 
 
-import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
+// import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
 import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
-import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+// import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
 
 
 //Importando middlewares
@@ -39,12 +40,13 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(logMiddleware);
 
 // Middleware para interpretar cookies
-// app.use(cookieParser());
+app.use(cookieParser());
 
 // Rotas da API 
-// app.use('/api/auth') // 
+app.use('/api/auth', authRotas)
 
-app.use('/api/db', authRotas)
+// servir arquivos estáticos da pasta 'views'
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/', (req, res) => {
     res.json({

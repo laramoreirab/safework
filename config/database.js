@@ -14,11 +14,9 @@ const pool = mysql.createPool({ // conecta ao banco de dados
     queueLimit: 0
 })
 
-
 async function getConnection() { // função que cria uma conexão com o banco
     return pool.getConnection()
 }
-
 
 
 // função para ler os registros
