@@ -251,12 +251,13 @@
           <i class="fi fi-br-check"></i>
         </div>
 
-        <h1>Pedido Confirmado!</h1>
-
-        <h2>
-          Obrigado por sua compra! Seu pedido foi recebido com sucesso e já está
-          sendo processado.
-        </h2>
+        <div class="msg-confirmado">
+          <h1>Pedido Confirmado!</h1>
+          <h2>
+            Obrigado por sua compra! Seu pedido foi recebido com sucesso e já
+            está sendo processado.
+          </h2>
+        </div>
 
         <div class="cont-number">
           <h3>Número do Pedido</h3>
@@ -277,59 +278,103 @@
           </p>
           <p><strong>Destinatário: </strong>Marcos Vinícius</p>
         </div>
+      </div>
 
-        <div class="steps-entrega">
-          <div class="row-images">
-            <div class="circ-img">
-              <i class="fi fi-br-check"></i>
-            </div>
-            <hr />
-            <div class="circ-img">
-              <i class="fi fi-sr-box-open"></i>
-            </div>
-            <hr />
-            <div class="circ-img">
-              <i class="fi fi-ss-truck-side"></i>
-            </div>
-            <hr />
-            <div class="circ-img">
-              <i class="fi fi-sr-home"></i>
-            </div>
+      <div class="steps-entrega">
+        <div class="row-images">
+          <div class="circ-img-active">
+            <i class="fi fi-br-check"></i>
           </div>
-
-          <div class="row-escrita">
-            <p>Pedido<br>Confirmado</p>
-            <p>Em<br>Preparação</p>
-            <p>Em<br>Transporte</p>
-            <p>Pedido<br>Entregue</p>
+          <hr />
+          <div class="circ-img">
+            <i class="fi fi-sr-box-open"></i>
+          </div>
+          <hr />
+          <div class="circ-img">
+            <i class="fi fi-ss-truck-side"></i>
+          </div>
+          <hr />
+          <div class="circ-img">
+            <i class="fi fi-sr-home"></i>
           </div>
         </div>
 
-        <div class="cont-pedido">
-            <h2>Pedido Confirmado</h2>
-
-            <div class="descricao-pedido">
-                <div class="row-pedido">
-                    <p>Subtotal</p>
-                    <p><strong>R$<span id="subtotal-pedido">0,00</span></strong></p>
-                </div>
-                <hr>
-                <div class="row-pedido">
-                    <p>Subtotal</p>
-                    <p><strong>R$9,90</strong></p>
-                </div>
-                <hr>
-                <div class="row-pedido">
-                    <p>Forma de Pagamento</p>
-                    <p><strong><span id="forma-pedido">0</span></strong></p>
-                </div>
-                <hr>
-                <div class="row-total">
-                    <p>Total Pago</p>
-                    <p><strong>R$<span id="subtotal-pedido">0,00</span></strong></p>
-                </div>
-            </div>
+        <div class="row-escrita">
+          <p>Pedido<br />Confirmado</p>
+          <p>Em<br />Preparação</p>
+          <p>Em<br />Transporte</p>
+          <p>Pedido<br />Entregue</p>
         </div>
+      </div>
+
+      <div class="cont-pedido">
+        <h2>Pedido Confirmado</h2>
+
+        <div class="descricao-pedido">
+          <div class="row-pedido">
+            <p>Subtotal</p>
+            <p>
+              <strong>R$<span id="subtotal-pedido"> 0,00</span></strong>
+            </p>
+          </div>
+          <hr />
+          <div class="row-pedido">
+            <p>Taxa de Entrega</p>
+            <p><strong>R$ 9,90</strong></p>
+          </div>
+          <hr />
+          <div class="row-pedido">
+            <p>Forma de Pagamento</p>
+            <p>
+              <strong><span id="forma-pedido">0</span></strong>
+            </p>
+          </div>
+          <hr />
+          <div class="row-total">
+            <p><strong>Total Pago</strong></p>
+            <p>
+              <strong>R$<span id="subtotal-pedido"> 0,00</span></strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="buttons-pedido">
+          <a href="index.html" class="one-button-active">
+            <i class="fi fi-sr-home"></i>
+            <p>Ir para a Home</p>
+          </a>
+
+          <a href="produtos.html" class="one-button">
+            <i class="fi fi-ss-truck-side"></i>
+            <p>Continuar Comprando</p>
+          </a>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="cont-compartilhar">
+        <h2>Compartilhar Comprovante</h2>
+
+        <div class="options-share">
+          <a href="https://www.whatsapp.com/" class="one-option">
+            <i class="fi fi-brands-whatsapp"></i>
+          </a>
+          <a
+            href="https://www.gmail.com/mail/help/intl/pt_pt/about.html?linkId=75998329"
+            class="one-option"
+          >
+            <i class="fi fi-br-envelope"></i>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en-GB&pli=1"
+            class="one-option"
+          >
+            <i class="fi fi-brands-instagram"></i>
+          </a>
+        </div>
+
+        <p>Precisa de ajuda?<a href="https://support.mozilla.org/"> Entre em contato com o suporte</a></p>
       </div>
     </div>
   </body>
