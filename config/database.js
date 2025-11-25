@@ -27,7 +27,7 @@ async function read(table, where = null) {
     try{
         let sql = `SELECT * FROM ${table}` // seleciona todos os item da tabela (tabela)
         if(where){
-            sql += ` WHERE senha = ${where}` // caso tenha um where, adicione ao (select * from)
+            sql += ` WHERE ${where}` // caso tenha um where, adicione ao (select * from)
         }
         const [rows] = await connection.execute(sql) // executa o comando sql 
         return rows 

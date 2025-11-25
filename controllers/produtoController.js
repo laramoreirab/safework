@@ -66,13 +66,41 @@ class ProdutoController {
     }
 
     // GET /produtos/:id
-    static async buscarPorId(req, res){
-        if (!id || isNaN(id)){
-            res.status(400).json({
+    static async buscarPorId(req, res) {
+        try {
+            const { id } = req.params
+
+            if (!id || isNaN(id)) { // caso for diferente ou não for um numero 
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'ID Inválido',
+                    mensagem: 'O ID deve ser um número válido'
+                })
+            }
+
+            const produto = await ProdutoModel.buscarPorId(id);
+
+            if(!produto) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'Produto não encontrado',
+                    mensagem: `Produto com ID ${id} não foi encontrado`
+                })
+            }
+            
+            res.status(200).json({
+                suceso: true,
+                dados: produto
+            })
+        } catch(err) {
+            console.error('Erro ao buscar produto', err)
+            res.status(500).json({
                 sucesso: false,
-                erro: 'ID Inválido',
-                mensagem: 'O ID deve ser um número válido'
+                erro: 'Erro interno do servidor',
+                mensagem: "Não foi possível buscar o produto"
             })
         }
     }
 }
+
+export default ProdutoController
