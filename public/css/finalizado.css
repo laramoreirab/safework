@@ -1,6 +1,7 @@
 .padding {
   padding: 2.5% 10%;
   display: flex;
+  margin-top: 7.5dvh;
   flex-direction: column;
   gap: 7.5dvh;
 

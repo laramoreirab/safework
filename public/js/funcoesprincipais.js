@@ -33,3 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+const btnOpen = document.getElementById("open-carrinho");
+const aba = document.getElementById("aba-carrinho");
+const btnClose = document.getElementById("btnFechar-filtrar");
+const overlay = document.getElementById("escurecer-filtrar");
+
+// Abrir a aba + overlay
+btnOpen.addEventListener("click", (e) => {
+    e.stopPropagation();
+    aba.classList.add("active");
+    overlay.classList.add("active");
+});
+
+// Fechar ao clicar no X
+btnClose.addEventListener("click", () => {
+    aba.classList.remove("active");
+    overlay.classList.remove("active");
+});
+
+// Fechar ao clicar fora (incluindo overlay)
+document.addEventListener("click", (e) => {
+    const clicouFora =
+        !aba.contains(e.target) &&
+        !btnOpen.contains(e.target);
+
+    if (clicouFora) {
+        aba.classList.remove("active");
+        overlay.classList.remove("active");
+    }
+});
+
+// Clicar no overlay fecha
+overlay.addEventListener("click", () => {
+    aba.classList.remove("active");
+    overlay.classList.remove("active");
+});
+
+// Impedir clique dentro da aba de fechar
+aba.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
