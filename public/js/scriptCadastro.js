@@ -2,23 +2,23 @@ const form = document.getElementById('form_cadastro')
 form.addEventListener('submit', async(e) =>{
     e.preventDefault();
 
-    const nomeEmpresa = document.getElementById('nome_cadastro').value
-    const emailEmpresa = document.getElementById('email_cadastro').value
-    const telEmpresa = document.getElementById('tel_cadastro').value
-    const senhaEmpresa = document.getElementById('senha_cadastro').value
+    const nome = document.getElementById('nome_cadastro').value;
+    const email = document.getElementById('email_cadastro').value;
+    const telefone = document.getElementById('tel_cadastro').value;
+    const senha = document.getElementById('senha_cadastro').value;
     
 try{
-    const res = await fetch('http://localhost:3000/cadastro', {
+    const res = await fetch('http://localhost:3000/auth/registrar', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({nomeEmpresa,emailEmpresa,telEmpresa,senhaEmpresa})
+        body: JSON.stringify({ nome, email, telefone, senha })
     })
 
     const data = await res.json()
 
     if(data.sucesso){
         //se o registro der certo ele redireciona o usuário até o index
-         window.location.href = '../views/login.html'
+         window.location.href = '/login.html'
     }
     else{
         //registro falhou

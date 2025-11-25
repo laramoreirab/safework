@@ -5,7 +5,7 @@ class usuarioModel {
      // Buscar usuário por email
     static async buscarPorEmail(email) {
         try {
-            const rows = await read('empresas', `email = '${email}'`);
+            const rows = await read('empresas', "email = ?", [email]); //houve mudanças
             return rows[0] || null;
         } catch (error) {
             console.error('Erro ao buscar usuário por email:', error);

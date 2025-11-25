@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import usuarioModel from '../models/usuarioModel.js';
+import { JWT_CONFIG } from '../config/jwt.js';
 import cookieParser from 'cookie-parser';
 
 class authController{
@@ -58,8 +59,8 @@ class authController{
             //agora o token vai ser enviado para a verificação via cookie
             res.cookie('token',token, {
                 httpOnly: true, // protege contra acesso via JS no browser
-                secure: true, //o navegador só vai enviar esse cookie em conexões HTTPS
-                sameSite: 'strict'
+                secure: false, //o navegador só vai enviar esse cookie em conexões HTTPS
+                sameSite: 'Strict'
 
             });
             res.status(200).json({
