@@ -1,0 +1,78 @@
+import ProdutoModel from '../models/produtoModel.js'
+import { fileURLToPath } from 'url'
+import path from 'path'
+import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
+
+const _filename = fileURLToPath(import.meta.url)
+const _dirname = path.dirname(_filename)
+
+// Controller para operações com produtos
+
+class ProdutoController {
+
+    // GET /produtos  para listar todos os produtos (paginação)
+    static async ListarProdutos(req, res) {
+        try {
+
+            let pagina = parseInt(req.query.pagina) || 1;
+            let limite = parseInt(req.query.limite) || 10;
+
+            if (pagina <= 0) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'Página Inválida',
+                    mensagem: 'A página deve ser um número maior que zero'
+                })
+            }
+            if (limite <= 0) {
+                res.status(400).json({
+                    sucesso: false,
+                    erro: 'Limite inválido',
+                    mensagem: 'O limite deve ser um número maior que zero'
+                })
+            }
+
+            const limiteMaximo = parseInt(process.env.PAGINACAO_LIMITE_MAXIMO) || 100
+            if (limite > limiteMaximo) {
+                res.status(400).json({
+                    sucesso: false,
+                    erro: 'Limite Inválido',
+                    mensagem: `O limite deve ser um numero entre 1 e ${limiteMaximo}`
+                })
+            }
+
+            const offset = (pagina - 1) * limite;
+
+            const resultado = await ProdutoModel.listarTodos(limite, offset);
+
+            res.status(200).json({
+                sucesso: true,
+                dados: resultado.produtos,
+                paginacao: {
+                    pagina: resultado.pagina,
+                    limite: resultado.limite,
+                    total: resultado.total,
+                    totalPaginas: resultado.totalPaginas
+                }
+            })
+        } catch (err) {
+            console.error('Erro ao listar produtos:', err)
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível listar os produtos'
+            })
+        }
+    }
+
+    // GET /produtos/:id
+    static async buscarPorId(req, res){
+        if (!id || isNaN(id)){
+            res.status(400).json({
+                sucesso: false,
+                erro: 'ID Inválido',
+                mensagem: 'O ID deve ser um número válido'
+            })
+        }
+    }
+}
