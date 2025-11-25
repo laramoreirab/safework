@@ -48,7 +48,7 @@ app.use('/auth', authRotas)
 // servir arquivos estáticos da pasta 'views'
 app.use(express.static(path.join(__dirname, 'views')));
 // Expõe a pasta "public" como estática
-app.use(express.static(path.join(__dirname, "public")));
+app.use('/public', express.static(path.join(__dirname, "public")));
 
 app.get('/', (req, res) => {
     res.json({
