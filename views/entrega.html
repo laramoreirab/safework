@@ -244,25 +244,25 @@
       </div>
     </header>
 
-    <div class="padding" style="gap: 5dvh;">
+    <div class="padding">
       <nav>
         <div class="one-step">
-          <div class="circ-step circ-active">
+          <div class="circ-step">
             <p>1</p>
           </div>
           <div class="escrita-step">
-            <p><strong class="escrita-active">Dados</strong></p>
+            <p><strong>Dados</strong></p>
           </div>
         </div>
 
         <hr />
 
         <div class="one-step">
-          <div class="circ-step">
+          <div class="circ-step circ-active">
             <p>2</p>
           </div>
           <div class="escrita-step">
-            <p><strong>Entrega</strong></p>
+            <p><strong class="escrita-active">Entrega</strong></p>
           </div>
         </div>
 
@@ -278,44 +278,44 @@
         </div>
       </nav>
 
-      <main style="gap: 5dvh;">
+      <main>
         <div class="titulo-main">
-          <i class="fa-solid fa-briefcase"></i>
-          <h1>Dados Empresariais</h1>
+          <i class="fa-solid fa-box-open"></i>
+          <h1>Entrega dos Produtos</h1>
         </div>
 
         <form action="">
           <div class="inteira-input">
-            <label for="nome-empresa"><strong>Nome da Empresa *</strong></label>
+            <label for="endereco"><strong>Endereço *</strong></label>
             <input
               type="text"
-              name="nome-empresa"
-              id="nome-empresa"
-              placeholder="SafeWork"
+              name="endereco"
+              id="endereco"
+              placeholder="Rua João, 272"
               required
             />
           </div>
 
           <div class="metade-input">
             <div class="one-metade">
-              <label for="CNPJ"><strong>CNPJ *</strong></label>
+              <label for="CPF"><strong>CPF do Representante *</strong></label>
               <input
                 type="text"
-                name="CNPJ"
-                id="CNPJ"
-                placeholder="XX.XXX.XXX/0001-AA"
+                name="CPF"
+                id="CPF"
+                placeholder="999.999.999-99"
                 required
-                maxlength="18"
+                maxlength="14"
               />
             </div>
 
             <div class="one-metade">
-              <label for="telefone-empresa"
-                ><strong>Telefone da Empresa *</strong></label
+              <label for="telefone-representante"
+                ><strong>Telefone do Representante *</strong></label
               >
               <input
                 type="tel"
-                name="telefone-empresa"
+                name="telefone-representante"
                 id="telefone-empresa"
                 placeholder="(11) 99999-9999"
                 required
@@ -325,24 +325,36 @@
           </div>
 
           <div class="inteira-input">
-            <label for="email-empresa"
-              ><strong>E-mail da Empresa *</strong></label
+            <label for="nome-representante"
+              ><strong>Nome Completo do Representante *</strong></label
             >
             <input
-              type="email"
-              name="email-empresa"
-              id="email-empresa"
-              placeholder="safework@gmail.com"
+              type="text"
+              name="nome-representante"
+              id="nome-representante"
+              placeholder="Marcos Vinicíus"
+              required
+            />
+          </div>
+
+          <div class="inteira-input">
+            <label for="email-empresa"><strong>Portaria *</strong></label>
+            <input
+              type="portaria"
+              name="portaria"
+              id="portaria"
+              placeholder="523"
               required
             />
           </div>
         </form>
-        <a href="./entrega-finalizar.html">
+        <a href="./pagamento.html">
           <button><strong>Continuar</strong></button>
         </a>
       </main>
     </div>
 
-    <script src="../public/js/dados-finalizar.js"></script>
+    <script src="../public/js/finalizar.js"></script>
+    <script src="../public/js/funcoesprincipais.js"></script>
   </body>
 </html>

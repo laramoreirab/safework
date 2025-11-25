@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork</title>
+    <title>SafeWork - Produto</title>
     <link rel="shortcut icon" href="../public/img/icon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
     <link rel="stylesheet" href="../public/css/style.css" />
-    <link rel="stylesheet" href="../public/css/home.css" />
+    <link rel="stylesheet" href="../public/css/infoprodutos.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body id="cadastro">
     <header id="header_usuario">
         <div class="menulateral_usuario">
             <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
@@ -138,161 +138,250 @@
             </a>
         </div>
     </header>
-    <section id="banner_index">
-        <div class="frase_inicial">
-            <h1>cada <b>estrutura</b> começa com <b>segurança</b></h1>
-            <hr>
-        </div>
-    </section>
-    <section id="protecaogarantida">
-        <div class="titulo_protecao">
-            <div class="informacoes_protecao">
-                <h1 class="frase1">proteção confiável,</h1>
-                <h1 class="frase2">cuidado garantido!</h1>
-            </div>
-        </div>
+    <section id="info_prods">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="img_protecao">
-                        <img src="../public/img/home/sobreindex.svg">
+                    <div class="img_informacoes">
+                        <img src="../public/img/abafador.svg" style="width:100%;max-width:400px;display:block;">
                     </div>
-
                 </div>
+
                 <div class="col-12 col-md-6">
-                    <p class="txt_protecao">Na <b>SafeWor</b>k, nossa <b>missão</b> é clara: oferecer <b>Equipamentos de
-                            Proteção Individual</b> que unem
-                        <b>resistência</b>, <b>qualidade</b> e <b>confiança</b> para quem enfrenta os desafios do
-                        <b>trabalho pesado</b>. Sabemos
-                        que cada peça de <b>EPI</b> representa mais do que um item — representa <b>segurança</b>,
-                        <b>responsabilidade</b> e
-                        <b>compromisso com a vida</b>. <br><br>
+                    <div class="informacoes_produto">
+                        <h1 class="titulo_informacoes" id="tituloprod">ABAFADOR 3M AMARELO</h1>
+                        <div class="especificacoes">
+                            <div class="caprod" id="caprod">
+                                <p>C.A: 0001</p>
+                            </div>
+                            <div class="codprod">
+                                <p>Cód: 0001</p>
+                            </div>
+                            <div class="avaliacaoprod">
+                                <i class="fi fi-ss-star"></i>
+                                <i class="fi fi-ss-star"></i>
+                                <i class="fi fi-ss-star"></i>
+                                <i class="fi fi-ss-star"></i>
+                                <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                            </div>
+                        </div>
+                        <div class="escolherquant">
+                            <div class="pretexto">
+                                <p>Escolha os tamanhos e quantidades de lotes* desejadas</p>
+                            </div>
+                            <div class="subtitle">
+                                <p>* 1 lote equivale a 50 unidades.</p>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">P</div>
+                                            <div class="linha_informacoes" data-tamanho="P">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">M</div>
+                                            <div class="linha_informacoes" data-tamanho="M">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">G</div>
+                                            <div class="linha_informacoes" data-tamanho="G">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">GG</div>
+                                            <div class="linha_informacoes" data-tamanho="GG">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">G1</div>
+                                            <div class="linha_informacoes" data-tamanho="G1">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="squaretam">
+                                            <div class="tam">G2</div>
+                                            <div class="linha_informacoes" data-tamanho="G2">
+                                                <div class="quantidade-container">
+                                                    <button class="diminuir-btn" type="button">-</button>
+                                                    <input type="number" class="quantidade-input" value="0" min="0"
+                                                        max="50">
+                                                    <button class="aumentar-btn" type="button">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="preco_produto">R$ 39.90</h1>
+                        <button class="addcarrinho_informacoes">Comprar<i class="fi fi-rs-shopping-cart"></i></button>
+                        <div class="calc_frete">
+                            <p class="pretexto_frete">Calcule seu frete</p>
+                            <div class="input_frete">
+                                <div class="cont_frete">
+                                    <input type="number">
+                                    <button type="button">Calcular</button>
+                                </div>
+                                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sei meu CEP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Descrição -->
+        <div class="descricao_prod">
+            <div class="titulo-linha">
+                <h1 class="titulo_secaoprod">Descrição</h1>
+                <hr class="linha-gradiente">
+            </div>
+            <p>
+                O Abafador 3M Amarelo é a escolha ideal para quem busca proteção auditiva eficiente em ambientes com
+                alto nível de ruído. Fabricado com materiais resistentes e confortáveis, ele oferece excelente vedação
+                sonora sem comprometer o bem-estar durante o uso prolongado.<br><br>
 
-                        Com foco em setores como <b>indústria</b>, <b>construção civil</b>, <b>logística</b> e
-                        <b>serviços operacionais</b>,
-                        desenvolvemos soluções que atendem às <b>normas técnicas</b> e superam expectativas. Cada
-                        produto é
-                        <b>selecionado com rigor</b>, <b>testado com precisão</b> e enviado com o <b>cuidado</b> que só
-                        quem entende de
-                        <b>proteção</b> pode oferecer. <br><br>
+                Características principais:
+                Redução de ruído eficaz (atenuação média de até 14 dB)
+                Almofadas macias e anatômicas para maior conforto
+                Arco ajustável com revestimento acolchoado
+                Design leve e ergonômico
+                Certificado de Aprovação (C.A: 0001) – conforme normas de segurança<br><br>
 
-                        Mais do que vender EPIs, a <b>SafeWork entrega tranquilidade</b>. Porque quando o ambiente exige
-                        <b>força</b>,
-                        nós garantimos <b>proteção</b>.
-                    </p>
+                Indicado para:
+                Construção civil
+                Indústrias metalúrgicas e químicas
+                Ambientes com máquinas pesadas
+                Eventos com exposição sonora intensa
+                Disponível nos tamanhos P, M, G, GG, G1 e G2, com ajuste de quantidade por unidade.
+            </p>
+        </div>
+        <!-- Avaliações -->
+        <div class="avaliacao_prod">
+            <div class="titulo-linha">
+                <h1 class="titulo_secaoprod">Avaliações</h1>
+                <hr class="linha-gradiente">
+            </div>
+            <div class="avaliacoes">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="eachavaliacao">
+                                <div class="avaliacaoprod">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                </div>
+                                <div class="conteudodaavaliacao">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
+                                        doloremque. Officiis, quis.</p>
+                                </div>
+                                <div class="nomeavaliador">
+                                    <p>Nome da Empresa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="eachavaliacao">
+                                <div class="avaliacaoprod">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                </div>
+                                <div class="conteudodaavaliacao">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
+                                        doloremque. Officiis, quis.</p>
+                                </div>
+                                <div class="nomeavaliador">
+                                    <p>Nome da Empresa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="eachavaliacao">
+                                <div class="avaliacaoprod">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                </div>
+                                <div class="conteudodaavaliacao">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
+                                        doloremque. Officiis, quis.</p>
+                                </div>
+                                <div class="nomeavaliador">
+                                    <p>Nome da Empresa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="categorias_protecoes">
-        <div class="titulo_produtos">
-            <h1>nossas proteções</h1>
-        </div>
-        <div class="align">
+    <!-- Interesses -->
+    <section id="interesses">
+        <h1 class="titulo_interesses">Quem Comprou, Comprou Também!</h1>
+        <div class="prods_interesses">
             <div class="container">
-                <div class="linha_categoria">
-                    <div class="row g-5">
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategoriab">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Facial</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3">Produto 1</div>
+                    <div class="col-12 col-md-3">Produto 2</div>
+                    <div class="col-12 col-md-3">Produto 3</div>
+                    <div class="col-12 col-md-3">Produto 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategorial">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Ocular</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategoriab">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Corporal</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategorial">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Respiratório</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="linha_categoria">
-                    <div class="row g-5">
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategorial">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Auditivo</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategoriab">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Manual</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategorial">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Pés e Pernas</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 mb-5 px-5">
-                            <div class="eachcategoriab">
-                                <div class="inputcategoria">
-                                    <img src="../public/img/home/">
-                                    <h1>Cabeça</h1>
-                                    <hr class="linha_eachcategoria">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="nossosprodutos_home">
-        <div class="nossosprodutos_banner">
-            <div class="nossosprodutos">
-                <h1>Nossos Produtos</h1>
-                <p>Confira nosso catálogo com mais de 120 <br> equipamentos de proteção individual!</p>
-                <a href="produtos.html"><button>Ver Produtos</button></a>
-            </div>
-        </div>
-    </section>
-    <section id="marcas">
-        <div class="titulo_marcas">
-            <h1>marcas</h1>
-        </div>
-    </section>
-    <section id="avaliacoes_home">
-        <div class="titulo_avaliacoes">
-            <h1>o que dizem nossos clientes?</h1>      
-        </div>
-    </section>
 
     <div class="footer_fundo">
         <div class="container ffg">
