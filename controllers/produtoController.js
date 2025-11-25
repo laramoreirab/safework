@@ -1,7 +1,7 @@
 import ProdutoModel from '../models/produtoModel.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
+// import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
 
 const _filename = fileURLToPath(import.meta.url)
 const _dirname = path.dirname(_filename)
@@ -103,4 +103,4 @@ class ProdutoController {
     }
 }
 
-export default ProdutoController
+export default  ProdutoController 

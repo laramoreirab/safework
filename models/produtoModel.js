@@ -85,4 +85,4 @@ class ProdutoModel {
     }
 }
 
-export {ProdutoModel} // exporta a classe ProdutoModel para ser utilizada em outros arquivos
+export default ProdutoModel // exporta a classe ProdutoModel para ser utilizada em outros arquivos
