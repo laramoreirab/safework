@@ -19,16 +19,15 @@ async function getConnection() { // função que cria uma conexão com o banco
     return pool.getConnection()
 }
 
-
 // função para ler os registros
-async function read(table, whereClause = null, params = []) {
+async function read(table, where= null) {
     const connection = await getConnection(); // cria uma conexão com o pool
     try{
         let sql = `SELECT * FROM ${table}` // seleciona todos os item da tabela (tabela)
-        if(whereClause){
-            sql += ` WHERE ${whereClause}` // caso tenha um where nulo, faça apenas (select * from)
+        if(where){
+            sql += ` WHERE ${where}` // caso tenha um where nulo, faça apenas (select * from)
         }
-        const [rows] = await connection.execute(sql, params) // executa o comando sql + o parametro que substitui o '?' no "email = ?", [email] por exemplo
+        const [rows] = await connection.execute(sql) // executa o comando sql + o parametro que substitui o '?' no "email = ?", [email] por exemplo
         return rows 
     } finally{
         connection.release()
