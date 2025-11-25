@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import bcrypt from 'bcryptjs';
 import mysql from 'mysql2/promise'
 
 dotenv.config()
@@ -14,22 +15,19 @@ const pool = mysql.createPool({ // conecta ao banco de dados
     queueLimit: 0
 })
 
-
 async function getConnection() { // função que cria uma conexão com o banco
     return pool.getConnection()
 }
 
-
-
 // função para ler os registros
-async function read(table, where = null) {
+async function read(table, where= null) {
     const connection = await getConnection(); // cria uma conexão com o pool
     try{
         let sql = `SELECT * FROM ${table}` // seleciona todos os item da tabela (tabela)
         if(where){
-            sql += ` WHERE senha = ${where}` // caso tenha um where, adicione ao (select * from)
+            sql += ` WHERE ${where}` // caso tenha um where nulo, faça apenas (select * from)
         }
-        const [rows] = await connection.execute(sql) // executa o comando sql 
+        const [rows] = await connection.execute(sql) // executa o comando sql + o parametro que substitui o '?' no "email = ?", [email] por exemplo
         return rows 
     } finally{
         connection.release()
@@ -70,7 +68,6 @@ async function update(table, data, where) {
         connection.release()
     }
 }
-
 // função para deletar um registro
 async function deleteRecord(table, where){ 
     const connection = await getConnection()
@@ -102,8 +99,6 @@ async function comparePassword(password, hash) {
         return false
     }
 }
-
-
 export { // exportando as funções. (para utilizar é necessário usar o import {read, create, update, getConnection} from '../config/database.js')
     read,
     create,
