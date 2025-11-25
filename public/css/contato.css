@@ -38,5 +38,68 @@
 form {
     display: flex;
     flex-direction: column;
-    gap: 3dvh;
+    gap: 5dvh;
+
+    button {
+        border: none;
+        color: white;
+        font-weight: 700;
+        font-size: 1.5rem;
+        background-color: var(--azul-crepusculo);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-0.75dvh);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+}
+
+.row-inteira {
+    display: flex;
+    flex-direction: column;
+    gap: 1dvh;
+
+    label {
+        color: var(--cinza-escuro);
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    input {
+        font-size: 1.5rem;
+        border: 1px solid var(--cinza-claro);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    input:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    input:focus {
+        outline: none;
+        text-decoration: none;
+        border: 1px solid var(--azul-crepusculo);
+        transform: translateY(-1dvh);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    input::placeholder {
+        color: var(--cinza);
+    }
+
+    textarea {
+        resize: none;
+    }
 }
