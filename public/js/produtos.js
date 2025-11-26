@@ -85,6 +85,88 @@ document.addEventListener("DOMContentLoaded", function () {
   searchInput.addEventListener("keyup", filterProducts);
 
   searchInput.addEventListener("input", filterProducts);
+
+  const ordenarRadios = document.querySelectorAll(
+    'input[name="radio-ordenar"]'
+  );
+  const ordenarConfirmar = document.querySelector("#aba-ordenar button");
+
+  ordenarConfirmar.addEventListener("click", () => {
+    let criterio = Array.from(ordenarRadios).find((radio) => radio.checked)?.id;
+
+    if (criterio) {
+      ordenarProdutos(criterio);
+      closeAllSidebars(); // Fecha a aba de ordenação
+    }
+  });
+
+  function ordenarProdutos(criterio) {
+    const produtos = Array.from(productList.querySelectorAll("a"));
+
+    produtos.sort((a, b) => {
+      const produtoA = a.querySelector(".one-produto");
+      const produtoB = b.querySelector(".one-produto");
+
+      switch (criterio) {
+        case "radio-menor":
+          return (
+            parseFloat(
+              produtoA
+                .querySelector(".preco-produtos")
+                .textContent.replace("R$", "")
+                .replace(",", ".")
+            ) -
+            parseFloat(
+              produtoB
+                .querySelector(".preco-produtos")
+                .textContent.replace("R$", "")
+                .replace(",", ".")
+            )
+          );
+        case "radio-maior":
+          return (
+            parseFloat(
+              produtoB
+                .querySelector(".preco-produtos")
+                .textContent.replace("R$", "")
+                .replace(",", ".")
+            ) -
+            parseFloat(
+              produtoA
+                .querySelector(".preco-produtos")
+                .textContent.replace("R$", "")
+                .replace(",", ".")
+            )
+          );
+        case "radio-ordem":
+          return produtoA
+            .querySelector("h5")
+            .textContent.localeCompare(
+              produtoB.querySelector("h5").textContent
+            );
+        case "radio-mais":
+          return (
+            parseInt(
+              produtoB
+                .querySelector("#quantidade-avaliacoes")
+                .textContent.replace("(", "")
+                .replace(")", "")
+            ) -
+            parseInt(
+              produtoA
+                .querySelector("#quantidade-avaliacoes")
+                .textContent.replace("(", "")
+                .replace(")", "")
+            )
+          );
+        default:
+          return 0;
+      }
+    });
+
+    // Atualiza a exibição dos produtos
+    produtos.forEach((produto) => productList.appendChild(produto));
+  }
 });
 
 // ================= SIDEBARS =================
@@ -93,8 +175,12 @@ const sidebar = document.getElementById("aba-filtrar");
 const ordenarSidebar = document.getElementById("aba-ordenar");
 const overlay = document.getElementById("escurecer-filtrar");
 const btnFechar = document.querySelector("#aba-filtrar .titulo-filtrar i");
-const btnFecharOrdenar = document.querySelector("#aba-ordenar .titulo-filtrar i");
-const btnAbrirOrdenar = document.querySelector(".buttons-info .one-button:first-child");
+const btnFecharOrdenar = document.querySelector(
+  "#aba-ordenar .titulo-filtrar i"
+);
+const btnAbrirOrdenar = document.querySelector(
+  ".buttons-info .one-button:first-child"
+);
 
 function closeAllSidebars() {
   sidebar.classList.remove("active");
