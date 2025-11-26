@@ -168,7 +168,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
 
         // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
         bloco.innerHTML = ` 
-            <a href='/produto/${produto.id}'>
+            <a href='/produtos/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt="" />
                 <h5>${produto.nome}</h5>
@@ -206,7 +206,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
 
         // escreve o que vai ter nesse bloco
         bloco.innerHTML = ` 
-            <a href='/produto/${produto.id}'>
+            <a href='/produtos/${produto.tipo}/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt="" />
                 <h5>${produto.nome}</h5>

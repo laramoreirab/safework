@@ -113,18 +113,16 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/empresa', async (req, res) => { // comando para testar o banco de dados
-    try {
-        const empresa = await read('empresas')
-        res.status(200).json(empresa)
-    } catch (err) {
-        res.status(404).send('Empresa não encontrada')
-    }
-})
-
-app.get('/produtos', (req, res) => {
+app.get('/produtos/:categorias', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/produtos.html'))
 })
+
+app.get('/produtos/:descricao/:id', (req,res) => {
+    req.params.descricao
+    req.params.id
+    res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
+})
+
 
 // Middleware para tratar rotas não encontradas
 // app.use('*', (req, res) => {
