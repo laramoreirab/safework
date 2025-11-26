@@ -24,6 +24,7 @@
 </head>
 
 <body id="cadastro">
+    <!---------------------- HEADER  ------------------------>
     <header id="header_usuario">
         <div class="menulateral_usuario">
             <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
@@ -122,13 +123,13 @@
             <a href="../views/index.html"><img src="../public/img/logo.svg"></a>
         </div>
         <div class="icons_header">
-            <button id="open-carrinho">
+            <a href="#carrinho">
                 <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
                     viewBox="0 0 16 16">
                     <path
                         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                 </svg>
-            </button>
+            </a>
             <a href="../views/cadastro.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person"
                     viewBox="0 0 16 16">
@@ -138,23 +139,30 @@
             </a>
         </div>
     </header>
+    <!---------------------- TUDO SOBRE O PRODUTO  ------------------------>
     <section id="info_prods">
         <div class="container">
             <div class="row">
+                <!---------------------- IMAGEM DO PRODUTO  ------------------------>
                 <div class="col-12 col-md-6">
                     <div class="img_informacoes">
                         <img src="../public/img/abafador.svg" style="width:100%;max-width:400px;display:block;">
                     </div>
                 </div>
-
+                <!---------------------- INFORMAÇÕES DO PRODUTO  ------------------------>
                 <div class="col-12 col-md-6">
                     <div class="informacoes_produto">
-                        <h1 class="titulo_informacoes" id="tituloprod">ABAFADOR 3M AMARELO</h1>
+                        <h1 class="titulo_informacoes" id="tituloprod">
+                            <!-- Colocar aqui o nome do produto -->
+                            ABAFADOR 3M AMARELO
+                        </h1>
                         <div class="especificacoes">
                             <div class="caprod" id="caprod">
+                                <!-- Colocar aqui o CA do produto, nessa mesma formatação: C.A: NNNN -->
                                 <p>C.A: 0001</p>
                             </div>
                             <div class="codprod">
+                                <!-- Colocar aqui o ID do produto nessa mesma formatação: Cód: NNNN -->
                                 <p>Cód: 0001</p>
                             </div>
                             <div class="avaliacaoprod">
@@ -165,6 +173,7 @@
                                 <i class="fi fi-ts-star-sharp-half-stroke"></i>
                             </div>
                         </div>
+                        <!---------------------- TAMANHOS DO PRODUTO  ------------------------>
                         <div class="escolherquant">
                             <div class="pretexto">
                                 <p>Escolha os tamanhos e quantidades de lotes* desejadas</p>
@@ -257,7 +266,10 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="preco_produto">R$ 39.90</h1>
+                        <h1 class="preco_produto">
+                            <!-- Colocar aqui o preço do produto -->
+                            R$ 39.90
+                        </h1>
                         <button class="addcarrinho_informacoes">Comprar<i class="fi fi-rs-shopping-cart"></i></button>
                         <div class="calc_frete">
                             <p class="pretexto_frete">Calcule seu frete</p>
@@ -266,20 +278,22 @@
                                     <input type="number">
                                     <button type="button">Calcular</button>
                                 </div>
-                                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sei meu CEP</a>
+                                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sei meu
+                                    CEP</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Descrição -->
+        <!-- Descrição do Produto -->
         <div class="descricao_prod">
             <div class="titulo-linha">
                 <h1 class="titulo_secaoprod">Descrição</h1>
                 <hr class="linha-gradiente">
             </div>
             <p>
+                <!-- Colocar aqui a descrição do produto -->
                 O Abafador 3M Amarelo é a escolha ideal para quem busca proteção auditiva eficiente em ambientes com
                 alto nível de ruído. Fabricado com materiais resistentes e confortáveis, ele oferece excelente vedação
                 sonora sem comprometer o bem-estar durante o uso prolongado.<br><br>
@@ -299,7 +313,7 @@
                 Disponível nos tamanhos P, M, G, GG, G1 e G2, com ajuste de quantidade por unidade.
             </p>
         </div>
-        <!-- Avaliações -->
+        <!-- Avaliações do Produto -->
         <div class="avaliacao_prod">
             <div class="titulo-linha">
                 <h1 class="titulo_secaoprod">Avaliações</h1>
@@ -307,7 +321,7 @@
             </div>
             <div class="avaliacoes">
                 <div class="container">
-                    <div class="row">
+                    <div class="row rtj">
                         <div class="col-12 col-md-4">
                             <div class="eachavaliacao">
                                 <div class="avaliacaoprod">
@@ -318,11 +332,11 @@
                                     <i class="fi fi-ts-star-sharp-half-stroke"></i>
                                 </div>
                                 <div class="conteudodaavaliacao">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
-                                        doloremque. Officiis, quis.</p>
+                                    <p>Chegada pontual, material satisfatório, fácil utilização e transmite confiança no
+                                        dia a dia.</p>
                                 </div>
                                 <div class="nomeavaliador">
-                                    <p>Nome da Empresa</p>
+                                    <p>Metalúrgica Horizonte S.A.</p>
                                 </div>
                             </div>
                         </div>
@@ -336,11 +350,11 @@
                                     <i class="fi fi-ts-star-sharp-half-stroke"></i>
                                 </div>
                                 <div class="conteudodaavaliacao">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
-                                        doloremque. Officiis, quis.</p>
+                                    <p>Material durável, fácil de usar, protege bem e oferece confiança em diversas
+                                        situações.</p>
                                 </div>
                                 <div class="nomeavaliador">
-                                    <p>Nome da Empresa</p>
+                                    <p>BioProtec Indústria Ltda.</p>
                                 </div>
                             </div>
                         </div>
@@ -354,11 +368,11 @@
                                     <i class="fi fi-ts-star-sharp-half-stroke"></i>
                                 </div>
                                 <div class="conteudodaavaliacao">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum laboriosam a
-                                        doloremque. Officiis, quis.</p>
+                                    <p>Proteção confiável, preço acessível, chegou no prazo e mantém conforto durante o
+                                        uso.</p>
                                 </div>
                                 <div class="nomeavaliador">
-                                    <p>Nome da Empresa</p>
+                                    <p>TecnoMaq Industrial</p>
                                 </div>
                             </div>
                         </div>
@@ -367,22 +381,98 @@
             </div>
         </div>
     </section>
-    <!-- Interesses -->
+    <!---------------------- INTERESSES ------------------------>
     <section id="interesses">
         <h1 class="titulo_interesses">Quem Comprou, Comprou Também!</h1>
         <div class="prods_interesses">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-3">Produto 1</div>
-                    <div class="col-12 col-md-3">Produto 2</div>
-                    <div class="col-12 col-md-3">Produto 3</div>
-                    <div class="col-12 col-md-3">Produto 4</div>
+                <div class="row ">
+                    <div class="col-12 col-md-3">
+                        <a href="">
+                            <div class="one-produto">
+                                <img src="../public/img/abafador.svg" alt="" />
+                                <h5>Capacete de Segurança</h5>
+                                <p>
+                                    CA: 54389 | <span id="marca-produtos">3M</span>
+                                </p>
+                                <div class="estrelas">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    <p id="quantidade-avaliacoes">(201)</p>
+                                </div>
+                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <a href="">
+                            <div class="one-produto">
+                                <img src="../public/img/abafador.svg" alt="" />
+                                <h5>Capacete de Segurança</h5>
+                                <p>
+                                    CA: 54389 | <span id="marca-produtos">3M</span>
+                                </p>
+                                <div class="estrelas">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    <p id="quantidade-avaliacoes">(201)</p>
+                                </div>
+                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <a href="">
+                            <div class="one-produto">
+                                <img src="../public/img/abafador.svg" alt="" />
+                                <h5>Capacete de Segurança</h5>
+                                <p>
+                                    CA: 54389 | <span id="marca-produtos">3M</span>
+                                </p>
+                                <div class="estrelas">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    <p id="quantidade-avaliacoes">(201)</p>
+                                </div>
+                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <a href="">
+                            <div class="one-produto">
+                                <img src="../public/img/abafador.svg" alt="" />
+                                <h5>Capacete de Segurança</h5>
+                                <p>
+                                    CA: 54389 | <span id="marca-produtos">3M</span>
+                                </p>
+                                <div class="estrelas">
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ss-star"></i>
+                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    <p id="quantidade-avaliacoes">(201)</p>
+                                </div>
+                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
+    <!---------------------- FOOTER  ------------------------>
     <div class="footer_fundo">
         <div class="container ffg">
             <footer class="py-5">
@@ -446,55 +536,6 @@
         </div>
     </div>
 
-    <div class="aba-carrinho" id="aba-carrinho">
-        <div class="titulo-filtrar">
-          <h1>Seu Carrinho</h1>
-          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
-        </div>
-
-        <div class="padding-filtrar">
-          <div class="one-produto-carrinho">
-            <div class="space-img-carrinho">
-                <img src="../public/img/abafador.svg" alt="">
-            </div>
-
-            <div class="space-meio-carrinho">
-                <div class="names-carrinho">
-                    <p><strong>Capacete de Proteção</strong></p>
-                    
-                    <span>CA: 56578</span>
-                </div>
-
-                <div class="add-remove-carrinho">
-                    <button class="add-carrinho" id="adicionar-carrinho">
-                        <p>+</p>
-                    </button>
-
-                    <p id="quantidade-carrinho">1</p>
-
-                    <button class="reduzir-carrinho" id="reduzir-carrinho">
-                        <p>-</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="space-final-carrinho">
-                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
-                <p>R$ <span id="preco-item-carrinho">0</span></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="esp-button-carrinho">
-            <div class="subtotal-carrinho">
-                <p>Subtotal:</p>
-                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
-            </div>
-            <a href="dados.html"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
-        </div>
-      </div>
-
-      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
     <script src="../public/js/funcoesprincipais.js"></script>
 </body>
 
