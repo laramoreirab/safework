@@ -3,6 +3,6 @@ import ProdutoController from '../controllers/produtoController.js'
 import PageController from  '../controllers/pageController.js'
 const router = express.Router()
 
-router.get('/',  PageController.paginaProduto)
+router.get('/listar', ProdutoController.ListarProdutos)
 
 export default router

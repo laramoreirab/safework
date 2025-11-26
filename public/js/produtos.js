@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("search-bar");
   const productList = document.querySelector("main");
   const quantidadeProdutos = document.getElementById("quantidade-produtos");
-
   const allProducts = Array.from(productList.querySelectorAll("a"));
 
   updateProductCount(allProducts.length);
@@ -140,3 +139,44 @@ if (btnFecharOrdenar) {
 overlay.addEventListener("click", () => {
   closeAllSidebars();
 });
+
+// ================= LISTA DE PRODUTOS =================
+
+const container = document.getElementById("produtosDaPagina"); // cria um container no elemento html que tem ID = "produtosDaPagina", no caso, a main
+container.innerHTML = ""; // limpa antes de renderizar
+
+const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
+  .then(res => res.json()) // transforma o valor que está vindo em um array.json
+  .then(data => {
+    const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
+
+    produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+      const bloco = document.createElement("div"); // cria um elemento div
+      bloco.className = "produto"; // nome da classe do bloco é produto
+
+      // escreve o que vai ter nesse bloco
+      bloco.innerHTML = ` 
+            <a href='/produto/${produto.id}'>
+              <div class="one-produto">
+                <img src="${produto.img}" alt="" />
+                <h5>${produto.nome}</h5>
+                <p>
+                  CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
+                  <span id="tipo-produtos">Proteção para ${produto.tipo}</span>
+                </p>
+                <div class="estrelas">
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                  <p id="quantidade-avaliacoes">(201)</p>
+                </div>
+                <h4 class="preco-produtos" id="preco-produtos">R$${produto.ValorUni}</h4>
+              </div>
+            </a>
+            `;
+
+      container.appendChild(bloco); // fala para adicionar o bloco dentro do container (no caso, adicionar esse bloco dentro da main)
+    })
+  })

@@ -27,6 +27,46 @@ const PORT = process.env.PORT || 3000;
 
 app.use(helmet()); //helmet é um middleware para segurança HTTP
 
+app.use(helmet({
+    contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+            "default-src": ["'self'"],
+            "script-src": [
+                "'self'",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com",
+                "https://kit.fontawesome.com",
+                "https://cdnjs.cloudflare.com"
+            ],
+            "style-src": [
+                "'self'",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com",
+                "'unsafe-inline'"
+            ],
+            "font-src": [
+                "'self'",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com",
+                "https://fonts.googleapis.com",
+                "https://fonts.gstatic.com"
+            ],
+            "connect-src": [
+                "'self'",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com"
+            ],
+            "img-src": [
+                "'self'",
+                "data:",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com"
+            ]
+        }
+    }
+}));
+
 app.use(cors({
     origin: '*', // Permitir todas as origens. Ajuste conforme necessário. Ex.: 'http://meufrontend.com'
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
@@ -73,6 +113,10 @@ app.get('/empresa', async (req, res) => { // comando para testar o banco de dado
     } catch (err) {
         res.status(404).send('Empresa não encontrada')
     }
+})
+
+app.get('/produtos', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/produtos.html'))
 })
 
 // Middleware para tratar rotas não encontradas
