@@ -1,0 +1,96 @@
+#adm {
+    padding: 6rem;
+}
+
+.linha-inicial {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo_linha-inicial {
+    font-family: var(--bebas);
+    color: var(--azul-crepusculo);
+    font-size: 5rem;
+}
+
+.novo_produto {
+    background-color: var(--azure);
+    border-radius: 5px;
+    border: none;
+    width: 20vh;
+    height: 3.5vh;
+}
+
+.cont_addproduto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+        color: var(--branco);
+        margin: 0;
+        font-size: 1.2rem;
+        padding: 0.4rem 0.2rem 0 0;
+    }
+
+    p {
+        color: var(--branco);
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+}
+
+.total-prod {
+    background-color: var(--azul-vivido);
+
+    h1,
+    p {
+        font-weight: 700;
+    }
+}
+
+.cont_total-prod {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.box-modals {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        border: none;
+        border-radius: 8px;
+        color: var(--branco);
+    }
+}
+
+.total-vendas {
+    background-color: var(--verde);
+
+    h1,
+    p {
+        font-weight: 700;
+    }
+}
+
+.estoque-baixo {
+    background-color: var(--vermelho-vivo);
+
+    h1,
+    p {
+        font-weight: 700;
+    }
+}
+
+.total-usuarios {
+    background-color: var(--roxo-apagado);
+
+    h1,
+    p {
+        font-weight: 700;
+    }
+}

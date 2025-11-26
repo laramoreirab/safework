@@ -20,6 +20,10 @@
   --cinza-claro2: #cfcfcf;
   --cinza-claro3: #adb0b7;
   --cinza-escuro2: #616161;
+  --azul-vivido: #5d83f2;
+  --verde: #00bf63;
+  --vermelho-vivo: #ff3131;
+  --roxo-apagado: #7e6278;
 }
 
 * {
@@ -131,6 +135,12 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-right: 1dvw;
     border: none;
     background-color: transparent;
+  }
+
+  a{
+    margin-right: 1dvw;
+    border: none;
+    background-color: transparent; 
   }
 }
 
