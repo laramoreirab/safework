@@ -213,20 +213,13 @@
         <a href="../views/index.html"><img src="../public/img/logo.svg" /></a>
       </div>
       <div class="icons_header">
-        <a href="#carrinho">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="27"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-            />
-          </svg>
-        </a>
+        <button id="open-carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
+            </button>
         <a href="../views/cadastro.html">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -353,6 +346,56 @@
         </a>
       </main>
     </div>
+
+    <div class="aba-carrinho" id="aba-carrinho">
+        <div class="titulo-filtrar">
+          <h1>Seu Carrinho</h1>
+          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+        </div>
+
+        <div class="padding-filtrar">
+          <div class="one-produto-carrinho">
+            <div class="space-img-carrinho">
+                <img src="../public/img/abafador.svg" alt="">
+            </div>
+
+            <div class="space-meio-carrinho">
+                <div class="names-carrinho">
+                    <p><strong>Capacete de Proteção</strong></p>
+                    
+                    <span>CA: 56578</span>
+                </div>
+
+                <div class="add-remove-carrinho">
+                    <button class="add-carrinho" id="adicionar-carrinho">
+                        <p>+</p>
+                    </button>
+
+                    <p id="quantidade-carrinho">1</p>
+
+                    <button class="reduzir-carrinho" id="reduzir-carrinho">
+                        <p>-</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-final-carrinho">
+                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+                <p>R$ <span id="preco-item-carrinho">0</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="esp-button-carrinho">
+            <div class="subtotal-carrinho">
+                <p>Subtotal:</p>
+                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
+            </div>
+            <a href="dados.html"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+        </div>
+      </div>
+
+      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
 
     <script src="../public/js/finalizar.js"></script>
     <script src="../public/js/funcoesprincipais.js"></script>
