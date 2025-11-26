@@ -3,19 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork - Dados Empresariais</title>
+    <title>SafeWork - Entre em Contato</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../public/css/finalizar.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/contato.css" />
     <link
       rel="shortcut icon"
       href="../public/img/icon.svg"
@@ -33,7 +34,6 @@
       href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../public/css/style.css" />
   </head>
   <body>
     <header id="header_usuario">
@@ -164,10 +164,10 @@
                   >Pés e Pernas
                   <i class="fi fi-ts-angle-small-right"></i>
                   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                  class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                  <path fill-rule="evenodd"
-                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                              </svg> -->
+                                    class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                                </svg> -->
                 </a>
                 <a
                   class="submenu_redirecionamento"
@@ -213,20 +213,13 @@
         <a href="../views/index.html"><img src="../public/img/logo.svg" /></a>
       </div>
       <div class="icons_header">
-        <a href="#carrinho">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="27"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-            />
-          </svg>
-        </a>
+        <button id="open-carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
+            </button>
         <a href="../views/cadastro.html">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -244,116 +237,204 @@
       </div>
     </header>
 
-    <div class="padding">
-      <nav>
-        <div class="one-step">
-          <div class="circ-step">
-            <p>1</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong>Dados</strong></p>
-          </div>
-        </div>
-
-        <hr />
-
-        <div class="one-step">
-          <div class="circ-step circ-active">
-            <p>2</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong class="escrita-active">Entrega</strong></p>
-          </div>
-        </div>
-
-        <hr />
-
-        <div class="one-step">
-          <div class="circ-step">
-            <p>3</p>
-          </div>
-          <div class="escrita-step">
-            <p><strong>Pagamento</strong></p>
-          </div>
-        </div>
-      </nav>
-
-      <main>
-        <div class="titulo-main">
-          <i class="fa-solid fa-box-open"></i>
-          <h1>Entrega dos Produtos</h1>
-        </div>
-
-        <form action="">
-          <div class="inteira-input">
-            <label for="endereco"><strong>Endereço *</strong></label>
-            <input
-              type="text"
-              name="endereco"
-              id="endereco"
-              placeholder="Rua João, 272"
-              required
-            />
-          </div>
-
-          <div class="metade-input">
-            <div class="one-metade">
-              <label for="CPF"><strong>CPF do Representante *</strong></label>
-              <input
-                type="text"
-                name="CPF"
-                id="CPF"
-                placeholder="999.999.999-99"
-                required
-                maxlength="14"
-              />
-            </div>
-
-            <div class="one-metade">
-              <label for="telefone-representante"
-                ><strong>Telefone do Representante *</strong></label
-              >
-              <input
-                type="tel"
-                name="telefone-representante"
-                id="telefone-empresa"
-                placeholder="(11) 99999-9999"
-                required
-                maxlength="15"
-              />
-            </div>
-          </div>
-
-          <div class="inteira-input">
-            <label for="nome-representante"
-              ><strong>Nome Completo do Representante *</strong></label
-            >
-            <input
-              type="text"
-              name="nome-representante"
-              id="nome-representante"
-              placeholder="Marcos Vinicíus"
-              required
-            />
-          </div>
-
-          <div class="inteira-input">
-            <label for="email-empresa"><strong>Portaria *</strong></label>
-            <input
-              type="portaria"
-              name="portaria"
-              id="portaria"
-              placeholder="523"
-              required
-            />
-          </div>
-        </form>
-        <a href="./pagamento.html">
-          <button><strong>Continuar</strong></button>
-        </a>
-      </main>
+    <div class="banner-hero">
+      <h1>Entre em<br /><span>contato</span></h1>
     </div>
 
+    <div class="padding">
+      <h1>
+        Aguardamos seu contato para atender suas necessidades<br />em soluções
+        de proteção a vida.
+      </h1>
+
+      <form class="form_info-contato">
+        <div class="row-inteira">
+          <label for="nome-empresa">Nome da Empresa</label>
+          <input
+            type="text"
+            name="nome-empresa"
+            id=""
+            placeholder="SafeWork"
+            required
+          />
+        </div>
+        <div class="row-metade">
+          <div class="one-input">
+            <label for="email-empresa">E-Mail</label>
+            <input
+              type="email"
+              name="email-empresa"
+              id="email-empresa"
+              placeholder="safework@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="one-input">
+            <label for="telefone-empresa">Telefone</label>
+            <input
+              type="text"
+              name="telefone-empresa"
+              id="telefone-empresa"
+              placeholder="(11) 99999-9999"
+              required
+            />
+          </div>
+        </div>
+        <div class="row-inteira">
+          <label for="mensagem-contato">Mensagem</label>
+          <textarea
+            name="mensagem-contato"
+            id=""
+            placeholder="Digite a sua mensagem aqui..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="footer_fundo">
+      <div class="container ffg">
+        <footer class="py-5">
+          <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+              <div class="principal_footer">
+                <img src="../public/img/logo-branca.svg" style="width: 80%" />
+              </div>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <div class="socialmedia2">
+                <ul class="nav flex-column">
+                  <div class="socialmedia">
+                    <i class="fa-solid fa-phone"></i>
+                    <li class="nav-item mb-2">
+                      <a href="#" class="nav-link p-0 footerlink"
+                        >4002 - 8922</a
+                      >
+                    </li>
+                  </div>
+                  <div class="socialmedia">
+                    <i class="fa-brands fa-instagram"></i>
+                    <li class="nav-item mb-2">
+                      <a href="#" class="nav-link p-0 footerlink">@safework</a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <div class="redirecionamento_footer">
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2">
+                    <a href="index.html" class="nav-link p-0 footerlink"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="nav-item mb-2">
+                    <a href="cardapio.html" class="nav-link p-0 footerlink"
+                      >Produtos</a
+                    >
+                  </li>
+                  <li class="nav-item mb-2">
+                    <a
+                      href="personalizacao.html"
+                      class="nav-link p-0 footerlink"
+                      >Sobre Nós</a
+                    >
+                  </li>
+                  <li class="nav-item mb-2">
+                    <a href="index.html#contato" class="nav-link p-0 footerlink"
+                      >Contato</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+              <form class="cadastro_lancamentos">
+                <p>
+                  Cadastre-se para receber lançamentos de novos produtos e
+                  promoções!
+                </p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
+                  <input
+                    id="newsletter1"
+                    type="email"
+                    placeholder="Email"
+                    required
+                  />
+                  <button id="btnCadastrarLancamento" type="button">
+                    Cadastre-se
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls"
+          >
+            <p>© 2025. SafeWork. Todos os direitos reservados.</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div class="aba-carrinho" id="aba-carrinho">
+        <div class="titulo-filtrar">
+          <h1>Seu Carrinho</h1>
+          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+        </div>
+
+        <div class="padding-filtrar">
+          <div class="one-produto-carrinho">
+            <div class="space-img-carrinho">
+                <img src="../public/img/abafador.svg" alt="">
+            </div>
+
+            <div class="space-meio-carrinho">
+                <div class="names-carrinho">
+                    <p><strong>Capacete de Proteção</strong></p>
+                    
+                    <span>CA: 56578</span>
+                </div>
+
+                <div class="add-remove-carrinho">
+                    <button class="add-carrinho" id="adicionar-carrinho">
+                        <p>+</p>
+                    </button>
+
+                    <p id="quantidade-carrinho">1</p>
+
+                    <button class="reduzir-carrinho" id="reduzir-carrinho">
+                        <p>-</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-final-carrinho">
+                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+                <p>R$ <span id="preco-item-carrinho">0</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="esp-button-carrinho">
+            <div class="subtotal-carrinho">
+                <p>Subtotal:</p>
+                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
+            </div>
+            <a href="dados.html"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+        </div>
+      </div>
+
+      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+
     <script src="../public/js/finalizar.js"></script>
+    <script src="../public/js/funcoesprincipais.js"></script>
   </body>
 </html>

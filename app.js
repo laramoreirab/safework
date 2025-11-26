@@ -3,11 +3,15 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
-import { mostrarDadosEmpresa } from './config/database.js';
+import { read } from './config/database.js';
 
 
-import authRotas from './routes/authRotas.js' //importando arquivo no qual estará 
+// import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
+import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
+// import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+
 
 //Importando middlewares
 // import { logMiddleware } from './middlewares/logMiddleware.js'
@@ -39,7 +43,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Rotas da API 
-app.use('/api/auth', authRotas)
+app.use('/auth', authRotas)
+
+// servir arquivos estáticos da pasta 'views'
+app.use(express.static(path.join(__dirname, 'views')));
+// Expõe a pasta "public" como estática
+app.use('/public', express.static(path.join(__dirname, "public")));
 
 app.get('/', (req, res) => {
     res.json({
@@ -47,17 +56,17 @@ app.get('/', (req, res) => {
         mensagem: 'API projeto Safework',
         versao: '1.0.0',
         rotas: {
-            autenticacao: '/api/auth'
+            autenticacao: '/auth'
         },
         documentacao: {
-            login: 'POST /api/auth/login'
+            login: 'POST /auth/login'
         }
     });
 });
 
 app.get('/empresa', async (req, res) => { // comando para testar o banco de dados
     try {
-        const empresa = await mostrarDadosEmpresa()
+        const empresa = await read('empresas')
         res.status(200).json(empresa)
     } catch (err) {
         res.status(404).send('Empresa não encontrada')
