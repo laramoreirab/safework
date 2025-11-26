@@ -6,7 +6,7 @@
     <title>SafeWork - Faça seu login aqui</title>
     <link
       rel="shortcut icon"
-      href="/img/icon.svg"
+      href="../public/img/icon.svg"
       type="image/x-icon"
     />
     <script
@@ -14,7 +14,7 @@
       crossorigin="anonymous"
     ></script>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist../public/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
@@ -35,7 +35,7 @@
       <div class="menulateral_usuario">
           <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><img
-                  src="/img/menuicon.svg" alt="Menu Lateral"></button>
+                  src="../public/img/menuicon.svg" alt="Menu Lateral"></button>
           <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
               aria-labelledby="offcanvasWithBothOptionsLabel">
               <div class="offcanvas-header">
@@ -131,16 +131,16 @@
           </div>
       </div>
       <div class="logo_header">
-          <a href="../views/index.html"><img src="/img/logo.svg"></a>
+          <a href="../views/index.html"><img src="../public/img/logo.svg"></a>
       </div>
       <div class="icons_header">
-          <a href="#carrinho">
-              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-              </svg>
-          </a>
+          <button id="open-carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
+            </button>
           <a href="../views/cadastro.html">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person"
                   viewBox="0 0 16 16">
@@ -156,7 +156,7 @@
       <main class="main-login">
         <div class="lado-form">
           <div class="logo-reta">
-            <img src="/img/icon.svg" alt="" />
+            <img src="../public/img/icon.svg" alt="" />
             <h1>SAFEWORK</h1>
           </div>
 
@@ -197,7 +197,7 @@
 
           <div class="others-login">
             <div class="one-other other-google">
-              <img src="/img/google.svg" alt="">
+              <img src="../public/img/google.svg" alt="">
             </div>
 
             <div class="one-other other-facebook">
@@ -218,7 +218,7 @@
 
         <div class="lado-img">
           <div class="escrita-benef">
-            <img src="/img/icon.svg" alt="" />
+            <img src="../public/img/icon.svg" alt="" />
             <h2><strong>Sua Segurança é Nossa<br>Prioridade</strong></h2>
             <p>
               Acesse os melhores equipamentos de proteção individual com entrega
@@ -270,7 +270,58 @@
         </div>
       </main>
     </div>
-    <script src="/js/scriptLogin.js"></script>
-    <script src="/js/funcoesprincipais.js"></script>
+
+    <div class="aba-carrinho" id="aba-carrinho">
+        <div class="titulo-filtrar">
+          <h1>Seu Carrinho</h1>
+          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+        </div>
+
+        <div class="padding-filtrar">
+          <div class="one-produto-carrinho">
+            <div class="space-img-carrinho">
+                <img src="../public/img/abafador.svg" alt="">
+            </div>
+
+            <div class="space-meio-carrinho">
+                <div class="names-carrinho">
+                    <p><strong>Capacete de Proteção</strong></p>
+                    
+                    <span>CA: 56578</span>
+                </div>
+
+                <div class="add-remove-carrinho">
+                    <button class="add-carrinho" id="adicionar-carrinho">
+                        <p>+</p>
+                    </button>
+
+                    <p id="quantidade-carrinho">1</p>
+
+                    <button class="reduzir-carrinho" id="reduzir-carrinho">
+                        <p>-</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-final-carrinho">
+                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+                <p>R$ <span id="preco-item-carrinho">0</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="esp-button-carrinho">
+            <div class="subtotal-carrinho">
+                <p>Subtotal:</p>
+                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
+            </div>
+            <a href="dados.html"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+        </div>
+      </div>
+
+      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+
+    <script src="../public/js/scriptLogin.js"></script>
+    <script src="../public/js/funcoesprincipais.js"></script>
   </body>
 </html>
