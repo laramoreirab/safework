@@ -151,15 +151,23 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
     const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
     const searchInput = document.getElementById("search-bar");
     renderizarProdutos() // função para puxar todos os produtos ja formatados para pagina produto
+    contarProdutos()
+
+    function contarProdutos() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const produtosFilter = produtos.filter(produto => produto.nome.toLowerCase().includes(searchTerm))
+      const quantidadeProd = document.getElementById('quantidade-produtos') // pega o elemento pelo ID que serve para aparecer a quantidade de items na pagina
+      quantidadeProd.innerHTML = (produtosFilter.length) // faz uma contagem dos registros do filter
+    }
 
     function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
       container.innerHTML = ''
-        produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
-          const bloco = document.createElement("div"); // cria um elemento div
-          bloco.className = "produto"; // nome da classe do bloco é produto
+      produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+        const bloco = document.createElement("div"); // cria um elemento div
+        bloco.className = "produto"; // nome da classe do bloco é produto
 
-          // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
-          bloco.innerHTML = ` 
+        // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+        bloco.innerHTML = ` 
             <a href='/produto/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt="" />
@@ -181,11 +189,10 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
             </a>
             `;
 
-          container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
-          const quantidadeProd = document.getElementById('quantidade-produtos') // pega um elemento do html pelo ID
-          quantidadeProd.innerHTML = ((container.querySelectorAll('.produto')).length) // faz uma contagem das divs dentro do elemento container que tem a class '.produto' e imprime o numero no elemento que contem o id 'quantidade-produtos'
-        })
-      }
+        container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
+        contarProdutos()
+      })
+    }
 
     function filtrarProduto() {
       container.innerHTML = ''
@@ -220,11 +227,11 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
             </a>
             `;
 
+
         container.appendChild(bloco); // fala para adicionar o bloco dentro do container (no caso, adicionar esse bloco dentro da main)
-        const quantidadeProd = document.getElementById('quantidade-produtos') // pega o elemento pelo ID que serve para aparecer a quantidade de items na pagina
-        quantidadeProd.innerHTML = ((container.querySelectorAll('.produto')).length) // faz uma contagem das divs dentro do elemento container que tem a class produto
+        contarProdutos()
       })
     }
-
+  searchInput.addEventListener('input', contarProdutos) 
     searchInput.addEventListener('input', filtrarProduto) // atualiza as informações ao escrever na barra de pesquisa
   })
