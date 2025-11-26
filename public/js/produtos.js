@@ -1,90 +1,90 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const style = document.createElement("style");
-  style.textContent = `
-        .no-results-message {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            background-color: #f9f9f9;
-            border-radius: 1rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .no-results-message:hover {
-            transform: translateY(-1dvh);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-        }
+// document.addEventListener("DOMContentLoaded", function () {
+//   const style = document.createElement("style");
+//   style.textContent = `
+//         .no-results-message {
+//             grid-column: 1 / -1;
+//             text-align: center;
+//             padding: 3rem;
+//             background-color: #f9f9f9;
+//             border-radius: 1rem;
+//             margin-top: 2rem;
+//             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+//             transition: all 0.3s ease;
+//             cursor: pointer;
+//         }
 
-        .no-results-message:active {
-            transform: translateY(0.5dvh);
-        }
-    `;
-  document.head.appendChild(style);
+//         .no-results-message:hover {
+//             transform: translateY(-1dvh);
+//             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+//         }
 
-  const searchInput = document.getElementById("search-bar");
-  const productList = document.querySelector("main");
-  const quantidadeProdutos = document.getElementById("quantidade-produtos");
-  const allProducts = Array.from(productList.querySelectorAll("a"));
+//         .no-results-message:active {
+//             transform: translateY(0.5dvh);
+//         }
+//     `;
+//   document.head.appendChild(style);
 
-  updateProductCount(allProducts.length);
+//   const searchInput = document.getElementById("search-bar");
+//   const productList = document.querySelector("main");
+//   const quantidadeProdutos = document.getElementById("quantidade-produtos");
+//   const allProducts = Array.from(productList.querySelectorAll("a"));
 
-  function filterProducts() {
-    const searchTerm = searchInput.value.toLowerCase().trim();
+//   updateProductCount(allProducts.length);
 
-    let visibleCount = 0;
+//   function filterProducts() {
+//     const searchTerm = searchInput.value.toLowerCase().trim();
 
-    allProducts.forEach((productLink) => {
-      const product = productLink.querySelector(".one-produto");
+//     let visibleCount = 0;
 
-      const productName = product.querySelector("h5").textContent.toLowerCase();
+//     allProducts.forEach((productLink) => {
+//       const product = productLink.querySelector(".one-produto");
 
-      if (productName.includes(searchTerm)) {
-        productLink.style.display = "block";
-        visibleCount++;
-      } else {
-        productLink.style.display = "none";
-      }
-    });
+//       const productName = product.querySelector("h5").textContent.toLowerCase();
 
-    updateProductCount(visibleCount);
+//       if (productName.includes(searchTerm)) {
+//         productLink.style.display = "block";
+//         visibleCount++;
+//       } else {
+//         productLink.style.display = "none";
+//       }
+//     });
 
-    showNoResultsMessage(visibleCount, searchTerm);
-  }
+//     updateProductCount(visibleCount);
 
-  function updateProductCount(count) {
-    quantidadeProdutos.textContent = count;
-  }
+//     showNoResultsMessage(visibleCount, searchTerm);
+//   }
 
-  function showNoResultsMessage(count, searchTerm) {
-    const existingMessage = document.getElementById("no-results-message");
-    if (existingMessage) {
-      existingMessage.remove();
-    }
+//   function updateProductCount(count) {
+//     quantidadeProdutos.textContent = count;
+//   }
 
-    if (count === 0 && searchTerm !== "") {
-      const message = document.createElement("div");
-      message.id = "no-results-message";
-      message.className = "no-results-message";
-      message.innerHTML = `
-                <i class="fi fi-rr-search" style="font-size: 3rem; color: var(--azul-crepusculo); margin-bottom: 1rem;"></i>
-                <h3 style="color: var(--cinza-escuro); margin-bottom: 0.5rem; font-weight: 700;">
-                    Nenhum produto encontrado
-                </h3>
-                <p style="color: var(--azul-crepusculo);">
-                    Não encontramos produtos com o termo "<strong>${searchTerm}</strong>"
-                </p>
-            `;
-      productList.appendChild(message);
-    }
-  }
+//   function showNoResultsMessage(count, searchTerm) {
+//     const existingMessage = document.getElementById("no-results-message");
+//     if (existingMessage) {
+//       existingMessage.remove();
+//     }
 
-  searchInput.addEventListener("keyup", filterProducts);
+//     if (count === 0 && searchTerm !== "") {
+//       const message = document.createElement("div");
+//       message.id = "no-results-message";
+//       message.className = "no-results-message";
+//       message.innerHTML = `
+//                 <i class="fi fi-rr-search" style="font-size: 3rem; color: var(--azul-crepusculo); margin-bottom: 1rem;"></i>
+//                 <h3 style="color: var(--cinza-escuro); margin-bottom: 0.5rem; font-weight: 700;">
+//                     Nenhum produto encontrado
+//                 </h3>
+//                 <p style="color: var(--azul-crepusculo);">
+//                     Não encontramos produtos com o termo "<strong>${searchTerm}</strong>"
+//                 </p>
+//             `;
+//       productList.appendChild(message);
+//     }
+//   }
 
-  searchInput.addEventListener("input", filterProducts);
-});
+//   searchInput.addEventListener("keyup", filterProducts);
+
+//   searchInput.addEventListener("input", filterProducts);
+// });
 
 // ================= SIDEBARS =================
 const btnAbrir = document.getElementById("open-filtrar");
@@ -149,13 +149,17 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
   .then(res => res.json()) // transforma o valor que está vindo em um array.json
   .then(data => {
     const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
+    const searchInput = document.getElementById("search-bar");
+    renderizarProdutos() // função para puxar todos os produtos ja formatados para pagina produto
 
-    produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
-      const bloco = document.createElement("div"); // cria um elemento div
-      bloco.className = "produto"; // nome da classe do bloco é produto
+    function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
+      container.innerHTML = ''
+        produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+          const bloco = document.createElement("div"); // cria um elemento div
+          bloco.className = "produto"; // nome da classe do bloco é produto
 
-      // escreve o que vai ter nesse bloco
-      bloco.innerHTML = ` 
+          // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+          bloco.innerHTML = ` 
             <a href='/produto/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt="" />
@@ -177,6 +181,50 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
             </a>
             `;
 
-      container.appendChild(bloco); // fala para adicionar o bloco dentro do container (no caso, adicionar esse bloco dentro da main)
-    })
+          container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
+          const quantidadeProd = document.getElementById('quantidade-produtos') // pega um elemento do html pelo ID
+          quantidadeProd.innerHTML = ((container.querySelectorAll('.produto')).length) // faz uma contagem das divs dentro do elemento container que tem a class '.produto' e imprime o numero no elemento que contem o id 'quantidade-produtos'
+        })
+      }
+
+    function filtrarProduto() {
+      container.innerHTML = ''
+
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const produtosFilter = produtos.filter(produto => produto.nome.toLowerCase().includes(searchTerm))
+
+      produtosFilter.forEach(produto => { // percorre todos os registros do banco de dados produtos
+        const bloco = document.createElement("div"); // cria um elemento div
+        bloco.className = "produto"; // nome da classe do bloco é produto
+
+        // escreve o que vai ter nesse bloco
+        bloco.innerHTML = ` 
+            <a href='/produto/${produto.id}'>
+              <div class="one-produto">
+                <img src="${produto.img}" alt="" />
+                <h5>${produto.nome}</h5>
+                <p>
+                  CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
+                  <span id="tipo-produtos">Proteção para ${produto.tipo}</span>
+                </p>
+                <div class="estrelas">
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ss-star"></i>
+                  <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                  <p id="quantidade-avaliacoes">(201)</p>
+                </div>
+                <h4 class="preco-produtos" id="preco-produtos">R$${produto.ValorUni}</h4>
+              </div>
+            </a>
+            `;
+
+        container.appendChild(bloco); // fala para adicionar o bloco dentro do container (no caso, adicionar esse bloco dentro da main)
+        const quantidadeProd = document.getElementById('quantidade-produtos') // pega o elemento pelo ID que serve para aparecer a quantidade de items na pagina
+        quantidadeProd.innerHTML = ((container.querySelectorAll('.produto')).length) // faz uma contagem das divs dentro do elemento container que tem a class produto
+      })
+    }
+
+    searchInput.addEventListener('input', filtrarProduto) // atualiza as informações ao escrever na barra de pesquisa
   })
