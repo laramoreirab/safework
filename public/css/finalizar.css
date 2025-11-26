@@ -356,7 +356,7 @@ input.invalid {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 468px) {
   .padding {
     padding: 5% 5%;
     gap: 3dvh;
@@ -364,6 +364,8 @@ input.invalid {
 
   nav {
     gap: 2dvw;
+    margin-bottom: 1dvh;
+    margin-top: 2dvh;
   }
 
   .circ-step {
@@ -465,20 +467,4 @@ input.invalid {
     }
   }
 
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .padding {
-    padding: 3% 7%;
-  }
-
-  .escrita-step p {
-    font-size: 1.3rem;
-  }
-
-  .titulo-main {
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
 }
