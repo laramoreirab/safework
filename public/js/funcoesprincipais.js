@@ -11,20 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Quantidade por tamanho
-  document.querySelectorAll('.linha_informacoes').forEach((linha) => {
-    const diminuirBtn = linha.querySelector('.diminuir-btn');
-    const aumentarBtn = linha.querySelector('.aumentar-btn');
-    const quantidadeInput = linha.querySelector('.quantidade-input');
+  document.querySelectorAll(".linha_informacoes").forEach((linha) => {
+    const diminuirBtn = linha.querySelector(".diminuir-btn");
+    const aumentarBtn = linha.querySelector(".aumentar-btn");
+    const quantidadeInput = linha.querySelector(".quantidade-input");
 
     if (diminuirBtn && aumentarBtn && quantidadeInput) {
-      aumentarBtn.addEventListener('click', () => {
+      aumentarBtn.addEventListener("click", () => {
         let valor = parseInt(quantidadeInput.value);
         if (valor < parseInt(quantidadeInput.max)) {
           quantidadeInput.value = valor + 1;
         }
       });
 
-      diminuirBtn.addEventListener('click', () => {
+      diminuirBtn.addEventListener("click", () => {
         let valor = parseInt(quantidadeInput.value);
         if (valor > parseInt(quantidadeInput.min)) {
           quantidadeInput.value = valor - 1;
@@ -32,45 +32,33 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-});
 
-const btnOpen = document.getElementById("open-carrinho");
-const aba = document.getElementById("aba-carrinho");
-const btnClose = document.getElementById("btnFechar-filtrar");
-const overlay = document.getElementById("escurecer-filtrar");
+  const btnOpenCarrinho = document.getElementById("open-carrinho");
+  const abaCarrinho = document.getElementById("aba-carrinho");
+  const btnCloseCarrinho = abaCarrinho.querySelector(".titulo-filtrar i"); // Botão de fechar do carrinho
+  const overlay = document.getElementById("escurecer-filtrar");
 
-// Abrir a aba + overlay
-btnOpen.addEventListener("click", (e) => {
+  // Abrir a aba do carrinho
+  btnOpenCarrinho.addEventListener("click", (e) => {
     e.stopPropagation();
-    aba.classList.add("active");
+    abaCarrinho.classList.add("active");
     overlay.classList.add("active");
-});
+  });
 
-// Fechar ao clicar no X
-btnClose.addEventListener("click", () => {
-    aba.classList.remove("active");
+  // Fechar a aba do carrinho
+  btnCloseCarrinho.addEventListener("click", () => {
+    abaCarrinho.classList.remove("active");
     overlay.classList.remove("active");
-});
+  });
 
-// Fechar ao clicar fora (incluindo overlay)
-document.addEventListener("click", (e) => {
-    const clicouFora =
-        !aba.contains(e.target) &&
-        !btnOpen.contains(e.target);
-
-    if (clicouFora) {
-        aba.classList.remove("active");
-        overlay.classList.remove("active");
-    }
-});
-
-// Clicar no overlay fecha
-overlay.addEventListener("click", () => {
-    aba.classList.remove("active");
+  // Fechar ao clicar fora (incluindo overlay)
+  overlay.addEventListener("click", () => {
+    abaCarrinho.classList.remove("active");
     overlay.classList.remove("active");
-});
+  });
 
-// Impedir clique dentro da aba de fechar
-aba.addEventListener("click", (e) => {
+  // Impedir clique dentro da aba de fechar
+  abaCarrinho.addEventListener("click", (e) => {
     e.stopPropagation();
+  });
 });
