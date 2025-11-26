@@ -43,6 +43,11 @@ app.use(helmet({
                 "'self'",
                 "https://cdn.jsdelivr.net",
                 "https://stackpath.bootstrapcdn.com",
+                "'unsafe-inline'",
+                "https://cdn.jsdelivr.net",
+                "https://stackpath.bootstrapcdn.com",
+                "https://cdnjs.cloudflare.com",
+                "https://fonts.googleapis.com",
                 "'unsafe-inline'"
             ],
             "font-src": [
@@ -50,7 +55,9 @@ app.use(helmet({
                 "https://cdn.jsdelivr.net",
                 "https://stackpath.bootstrapcdn.com",
                 "https://fonts.googleapis.com",
-                "https://fonts.gstatic.com"
+                "https://fonts.gstatic.com",
+                "https://fonts.gstatic.com",
+                "https://cdnjs.cloudflare.com"
             ],
             "connect-src": [
                 "'self'",

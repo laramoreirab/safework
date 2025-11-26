@@ -166,7 +166,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
                 <h5>${produto.nome}</h5>
                 <p>
                   CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
-                  <span id="tipo-produtos">Proteção para ${produto.tipo}</span>
+                  <span id="tipo-produtos"> ${produto.tipo}</span>
                 </p>
                 <div class="estrelas">
                   <i class="fi fi-ss-star"></i>
@@ -176,7 +176,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
                   <i class="fi fi-ts-star-sharp-half-stroke"></i>
                   <p id="quantidade-avaliacoes">(201)</p>
                 </div>
-                <h4 class="preco-produtos" id="preco-produtos">R$${produto.ValorUni}</h4>
+                <h4 class="preco-produtos" id="preco-produtos">R$${produto.preco}</h4>
               </div>
             </a>
             `;
@@ -205,7 +205,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
                 <h5>${produto.nome}</h5>
                 <p>
                   CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
-                  <span id="tipo-produtos">Proteção para ${produto.tipo}</span>
+                  <span id="tipo-produtos"> ${produto.tipo}</span>
                 </p>
                 <div class="estrelas">
                   <i class="fi fi-ss-star"></i>
@@ -215,7 +215,7 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
                   <i class="fi fi-ts-star-sharp-half-stroke"></i>
                   <p id="quantidade-avaliacoes">(201)</p>
                 </div>
-                <h4 class="preco-produtos" id="preco-produtos">R$${produto.ValorUni}</h4>
+                <h4 class="preco-produtos" id="preco-produtos">R$${produto.preco}</h4>
               </div>
             </a>
             `;
