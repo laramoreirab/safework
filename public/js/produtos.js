@@ -92,8 +92,12 @@ const sidebar = document.getElementById("aba-filtrar");
 const ordenarSidebar = document.getElementById("aba-ordenar");
 const overlay = document.getElementById("escurecer-filtrar");
 const btnFechar = document.querySelector("#aba-filtrar .titulo-filtrar i");
-const btnFecharOrdenar = document.querySelector("#aba-ordenar .titulo-filtrar i");
-const btnAbrirOrdenar = document.querySelector(".buttons-info .one-button:first-child");
+const btnFecharOrdenar = document.querySelector(
+  "#aba-ordenar .titulo-filtrar i"
+);
+const btnAbrirOrdenar = document.querySelector(
+  ".buttons-info .one-button:first-child"
+);
 
 function closeAllSidebars() {
   sidebar.classList.remove("active");
@@ -139,6 +143,7 @@ if (btnFecharOrdenar) {
 overlay.addEventListener("click", () => {
   closeAllSidebars();
 });
+
 
 // ================= LISTA DE PRODUTOS =================
 

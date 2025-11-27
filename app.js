@@ -25,9 +25,7 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
-app.use(helmet()); //helmet é um middleware para segurança HTTP
-
-app.use(helmet({
+app.use(helmet({ //helmet é um middleware para segurança HTTP
     contentSecurityPolicy: {
         useDefaults: true,
         directives: {
@@ -98,6 +96,13 @@ app.use('/api/produtos', produtoRotas)
 app.use(express.static(path.join(__dirname, 'views')));
 // Expõe a pasta "public" como estática
 app.use('/public', express.static(path.join(__dirname, "public")));
+
+app.get('/login', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'login.html'))
+})
+app.get('/cadastro', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'cadastro.html'))
+})
 
 app.get('/', (req, res) => {
     res.json({
