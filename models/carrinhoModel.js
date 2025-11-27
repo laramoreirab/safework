@@ -1,6 +1,6 @@
 import { create, read, update, deleteRecord, comparePassword, hashPassword, getConnection } from '../config/database.js';
 
-class usuarioModel{
+class carrinhoModel{
 
     static async buscarCarrinhoUsuario(usuarioId){
         try{
@@ -12,7 +12,7 @@ class usuarioModel{
         }
     }
 
-    static async  buscarItens(pedido){
+    static async buscarItens(pedido){
         try{
         const connection = await getConnection();
             try {
@@ -39,7 +39,60 @@ class usuarioModel{
             }
     }
 
+    static async criarPedido(usuarioId){
+        try{
+        const row = await create ('pedidos', {
+            usuario_id: usuarioId,
+            status: 'carrinho',
+            total: 0.00
+        })
+        return row
+        }catch(error){
+            console.error('Erro ao criar pedido', error);
+            throw error;
+        }
+    }
 
+    static async buscarItemPorId(pedidoId, tamanho, produtoId){
+        try{
+            const row = await read('itens_pedidos',
+            `pedido_id = ${pedidoId} AND produto_id = ${produtoId}` + 
+            (tamanho ? ` AND tamanho = '${tamanho}'` : '') )
+            return row
+        }catch(error){
+            console.error('Erro ao buscar item específico', error);
+            throw error;
+        }
+    }
+
+    static async alterarQuantidade(novaQuantidade, produtoId){
+        try{
+             const row = await update ('itens_pedidos',
+                {quantidade: novaQuantidade},
+                `produto_id = ${produtoId}`)
+             return row
+        }catch(error){
+            console.error('Erro ao alterar quantidade', error);
+            throw error;
+        }
+    }
+
+    static async adicionarItem(pedidoId, produtoId, quantidade, tamanho){
+        try{
+            const produto = await read('produto', id = produtoId)
+            const id = await create('itens_pedidos', {
+                pedido_id: pedidoId,
+                produto_id: produtoId,
+                quantidade: quantidade,
+                preco_unitario: produto[0].preco,
+                tamanho: tamanho || null
+            });
+            return id
+        }catch(error){
+            console.error('Erro ao adicionar item', error);
+            throw error;
+        }
+    }
 }
 
 

@@ -478,7 +478,7 @@ class authController{
             }
 
             // Verificar se o usuário existe
-            const usuarioExistente = await UsuarioModel.buscarPorId(id);
+            const usuarioExistente = await usuarioModel.buscarPorId(id);
             if (!usuarioExistente) {
                 return res.status(404).json({
                     sucesso: false,
@@ -519,7 +519,7 @@ class authController{
                 }
                 
                 // Verificar se o email já está em uso por outro usuário
-                const usuarioComEmail = await UsuarioModel.buscarPorEmail(email);
+                const usuarioComEmail = await usuarioModel.buscarPorEmail(email);
                 if (usuarioComEmail && usuarioComEmail.id !== parseInt(id)) {
                     return res.status(409).json({
                         sucesso: false,
@@ -556,7 +556,7 @@ class authController{
             }
 
             // Atualizar usuário
-            const resultado = await UsuarioModel.atualizar(id, dadosAtualizacao);
+            const resultado = await usuarioModel.atualizar(id, dadosAtualizacao);
             
             res.status(200).json({
                 sucesso: true,
