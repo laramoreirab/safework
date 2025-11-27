@@ -176,33 +176,15 @@
                     <!-------------- Modal de Total de Produtos ------------->
                     <div class="col-12 col-md-3">
                         <!---- Trigger modal ----->
-                        <button type="button" class="total-prod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <div class="cont_total-prod">
-                                <h1>Produtos</h1>
-                                <i class="fi fi-ts-box-open"></i>
-                                <p class="qtd-produtos">147</p>
-                            </div>
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="paimodal">
-                                            <div class="titulo-modal">
-
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    </div>
+                        <button type="button" class="total-prod">
+                            <a href="#produtos_adm">
+                                <div class="cont_total-prod">
+                                    <h1>Produtos</h1>
+                                    <i class="fi fi-ts-box-open"></i>
+                                    <p class="qtd-produtos">147</p>
                                 </div>
-                            </div>
-                        </div>
+                            </a>
+                        </button>
                     </div>
                     <!-------------- Modal de Total de Vendas ------------->
                     <div class="col-12 col-md-3">
@@ -303,7 +285,184 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section id="produtos_adm">
+        <div class="titulo-linha">
+            <h1 class="titulo_secaoprod">Produtos</h1>
+            <hr class="linha-gradiente">
+        </div>
+        <div class="searchbar">
+            <div class="searchbar2">
+                <div class="searchId">
+                    <input type="search" placeholder="Busque por nome, categoria ou CA...">
+                    <button id="botaoBusca"><i class="fi fi-rs-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="tabela_produtos">
+            <table>
+                <thead class="cabecalho_tabela">
+                    <tr>
+                        <th>produto</th>
+                        <th>categoria</th>
+                        <th>ca</th>
+                        <th>estoque</th>
+                        <th>preço</th>
+                        <th>status</th>
+                        <th class="acoes_cabecalho">ações</th>
+                    </tr>
+                </thead>
 
+                <tr class="eachproduto">
+                    <td class="nome_prod">Capacete de Segurança</td>
+                    <td class="cat_prod">Cabeça</td>
+                    <td class="ca_prod">0001</td>
+                    <td class="estoque_prod">
+                        <p class="estoque-verde">45 un.</p>
+                    </td>
+                    <td class="preco_prod">R$ 35.00</td>
+                    <td class="status_prod">
+                        <p class="status_ativo">
+                            ativo
+                        </p>
+                    </td>
+                    <td class="actions_prod">
+                        <div class="acoes">
+                            <div class="editar-produto">
+                                <!---- Editar Produto modal ----->
+                                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="fi-sr-pencil"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="paimodal">
+                                                    <div class="titulo-modal">
+
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excluir-produto">
+                                <!-- Botão Excluir modal -->
+                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="fi-sr-trash"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary">Salvar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="eachproduto">
+                    <td class="nome_prod">Luva de vaqueta</td>
+                    <td class="cat_prod">Manual</td>
+                    <td class="ca_prod">0002</td>
+                    <td class="estoque_prod">
+                        <p class="estoque-vermelho">8 un.</p>
+                    </td>
+                    <td class="preco_prod">R$ 35.00</td>
+                    <td class="status_prod">
+                        <p class="status_ativo">
+                            ativo
+                        </p>
+                    </td>
+                    <td class="actions_prod">
+                        <div class="acoes">
+                            <div class="editar-produto">
+                                <!---- Editar Produto modal ----->
+                                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="fi-sr-pencil"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="paimodal">
+                                                    <div class="titulo-modal">
+
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excluir-produto">
+                                <!-- Botão Excluir modal -->
+                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="fi-sr-trash"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary">Salvar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </section>
     <script src="../public/js/funcoesprincipais.js"></script>
 </body>

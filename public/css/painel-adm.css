@@ -94,3 +94,197 @@
         font-weight: 700;
     }
 }
+
+#produtos_adm {
+    padding: 6rem;
+}
+
+.titulo-linha {
+    display: flex;
+    align-items: center;
+}
+
+.titulo_secaoprod {
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0;
+    margin-right: 16px;
+    /* espaço entre o h1 e a linha */
+}
+
+.linha-gradiente {
+    flex-grow: 1;
+    height: 4px;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 4vh;
+}
+
+.searchbar2 {
+    background-color: var(--cinza-claro4);
+    border-radius: 25px;
+    width: 80%;
+}
+
+.searchId {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 2px solid transparent;
+    align-items: center;
+    padding: 0.5rem;
+
+    input {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        outline: none;
+        padding-left: 0.5rem;
+        font-size: 1rem;
+        height: 100%;
+        padding-right: 3rem;
+    }
+
+    input::placeholder {
+        color: var(--cinza);
+        font-size: 1.2rem;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        padding-right: 0.7rem;
+    }
+
+    i {
+        font-size: 1.25rem;
+    }
+}
+
+
+
+.tabela_produtos {
+    width: 100%;
+    margin-top: 6vh;
+
+    table {
+        width: 100%;
+    }
+}
+
+.cabecalho_tabela {
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        padding: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 2px solid #ccc;
+    }
+}
+
+/* Linhas da tabela */
+.eachproduto {
+    td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+}
+
+.nome_prod {
+    font-weight: 700;
+}
+
+/* Estoque com cores */
+.estoque-verde {
+    background-color: #dcfce7;
+    color: #009f52;
+    width: 6vh;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.estoque-vermelho {
+    background-color: #fee2e2;
+    color: #b30000;
+    width: 6vh;
+    text-align: center;
+    border-radius: 15px;
+}
+
+/* Preço */
+.preco_prod {
+    color: #333;
+}
+
+/* Status */
+.status_prod {
+    color: #1800ad;
+    text-transform: capitalize;
+}
+
+.status_ativo {
+    background-color: #dbeafe;
+    width: 5vh;
+    text-align: center;
+    border-radius: 15px;
+}
+
+/* Ícones de ação */
+.actions_prod .acoes {
+    display: flex;
+    gap: 10px;
+}
+
+
+.acoes_cabecalho{
+    text-align: end;
+}
+.acoes {
+    display: flex;
+    justify-content: end;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+    i {
+        font-size: 1.6rem;
+        color: black;
+    }
+}
+
+.editar_prod{
+    i{
+        color: #122f60;}
+}
+
+.botao_excluirprod{
+    i{
+        color: #b30000;
+    }
+}
+.editar_produto button,
+.excluir-produto button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.editar_produto button:hover {
+    color: #007bff;
+}
+
+.excluir-produto button:hover {
+    color: #dc3545;
+}
