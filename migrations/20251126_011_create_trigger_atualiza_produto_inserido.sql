@@ -6,7 +6,11 @@ after insert on itens_pedidos
 for each row
 begin
     update pedidos
-    set total = (select sum(quantidade*preco_unitario) from itens_pedidos)
+    set total = (
+        SELECT SUM(quantidade * preco_unitario)
+        FROM itens_pedidos
+        WHERE pedido_id = NEW.pedido_id
+    )
     where id = new.pedido_id;
 end;
 //

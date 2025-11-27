@@ -6,8 +6,12 @@ after delete on itens_pedidos
 for each row
 begin
     update pedidos
-    set total = (select sum(quantidade*preco_unitario) from itens_pedidos)
-    where id = new.pedido_id;
+    set total =  (
+        SELECT SUM(quantidade * preco_unitario)
+        FROM itens_pedidos
+        WHERE pedido_id = OLD.pedido_id
+    )
+    where id = OLD.pedido_id;
 end;
 //
 delimiter ;
