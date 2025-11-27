@@ -144,8 +144,18 @@ overlay.addEventListener("click", () => {
 
 const container = document.getElementById("produtosDaPagina"); // cria um container no elemento html que tem ID = "produtosDaPagina", no caso, a main
 container.innerHTML = ""; // limpa antes de renderizar
-
-const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
+const categoria = ((window.location.pathname).split('/'))[2] // https://localhost:3000/produtos/variavel => retornando variavel
+  let url
+  if(categoria === 'todos') {
+    url = '/api/produtos/listar'
+  }
+  if(categoria !== 'todos'){
+    url = `/api/produtos/listar/${categoria}`
+  }
+  if(categoria === 'pesepernas') {
+    url = `/api/produtos/listar/Pés e Pernas`
+  }
+  fetch(url) // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
   .then(res => res.json()) // transforma o valor que está vindo em um array.json
   .then(data => {
     const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
@@ -166,11 +176,13 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
         const bloco = document.createElement("div"); // cria um elemento div
         bloco.className = "produto"; // nome da classe do bloco é produto
 
+
+
         // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
         bloco.innerHTML = ` 
-            <a href='/produtos/${produto.id}'>
+            <a href='/produtos/${categoria}/${produto.id}'>
               <div class="one-produto">
-                <img src="${produto.img}" alt="" />
+                <img src="${produto.img}" alt=""/>
                 <h5>${produto.nome}</h5>
                 <p>
                   CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
@@ -232,6 +244,6 @@ const produtos = fetch('/api/produtos/listar') // usa a rota da api produtos par
         contarProdutos()
       })
     }
-  searchInput.addEventListener('input', contarProdutos) 
+    searchInput.addEventListener('input', contarProdutos) // atualiza o contador ao escrever na barra de tarefas
     searchInput.addEventListener('input', filtrarProduto) // atualiza as informações ao escrever na barra de pesquisa
   })

@@ -77,7 +77,7 @@ class ProdutoModel {
     // Buscar por categoria
     static async buscarPorCategoria(categoria) { // pega a variavel categoria
         try{
-            return await read('produtos', `categoria = ${categoria}`) // procura na tabela produtos a categoria enviada
+            return await read('produtos', `tipo = '${categoria}'`) // procura na tabela produtos a categoria enviada
         } catch(err) {
             console.error('Erro ao buscar Categoria', err) // aparece o erro caso houver
             throw err 

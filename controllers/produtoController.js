@@ -15,7 +15,7 @@ class ProdutoController {
         try {
 
             let pagina = parseInt(req.query.pagina) || 1;
-            let limite = parseInt(req.query.limite) || 10;
+            let limite = parseInt(req.query.limite) || 40;
 
             if (pagina <= 0) {
                 return res.status(400).json({
@@ -93,6 +93,35 @@ class ProdutoController {
                 dados: produto
             })
         } catch(err) {
+            console.error('Erro ao buscar produto', err)
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: "Não foi possível buscar o produto"
+            })
+        }
+    }
+
+    // GET /produtos/:categoria
+    static async buscarPorCategoria(req, res) {
+        try {
+            const { categoria } = req.params
+            
+            const produto = await ProdutoModel.buscarPorCategoria(categoria);
+
+            if (!produto) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'Produto não encontrado',
+                    mensagem: `Produto com categoria ${id} não foi encontrado`
+                })
+            }
+
+            res.status(200).json({
+                suceso: true,
+                dados: produto
+            })
+        } catch (err) {
             console.error('Erro ao buscar produto', err)
             res.status(500).json({
                 sucesso: false,

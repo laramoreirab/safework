@@ -113,13 +113,14 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/produtos/:categorias', (req, res) => {
+app.get('/produtos/:descricao', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/produtos.html'))
 })
 
+app.get('/produtos/pesepernas/:id', (req,res) => {
+    res.sendFile(path.join(__dirname, '/views/infoprodpes.html'))
+})
 app.get('/produtos/:descricao/:id', (req,res) => {
-    req.params.descricao
-    req.params.id
     res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
 })
 
@@ -134,6 +135,7 @@ app.get('/produtos/:descricao/:id', (req,res) => {
 // });
 
 //iniciando o Servidor
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
     console.log(`API projeto Safework`)
