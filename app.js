@@ -25,52 +25,53 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
-app.use(helmet({ //helmet é um middleware para segurança HTTP
+app.use(
+  helmet({
     contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-            "default-src": ["'self'"],
-            "script-src": [
-                "'self'",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com",
-                "https://kit.fontawesome.com",
-                "https://cdnjs.cloudflare.com"
-            ],
-            "style-src": [
-                "'self'",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com",
-                "'unsafe-inline'",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com",
-                "https://cdnjs.cloudflare.com",
-                "https://fonts.googleapis.com",
-                "'unsafe-inline'"
-            ],
-            "font-src": [
-                "'self'",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com",
-                "https://fonts.googleapis.com",
-                "https://fonts.gstatic.com",
-                "https://fonts.gstatic.com",
-                "https://cdnjs.cloudflare.com"
-            ],
-            "connect-src": [
-                "'self'",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com"
-            ],
-            "img-src": [
-                "'self'",
-                "data:",
-                "https://cdn.jsdelivr.net",
-                "https://stackpath.bootstrapcdn.com"
-            ]
-        }
+      useDefaults: true,
+      directives: {
+        "default-src": ["'self'"],
+        "script-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "https://stackpath.bootstrapcdn.com",
+          "https://kit.fontawesome.com",
+          "https://cdnjs.cloudflare.com"
+        ],
+        "style-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "https://stackpath.bootstrapcdn.com",
+          "https://cdnjs.cloudflare.com",
+          "https://fonts.googleapis.com",
+          "'unsafe-inline'"
+        ],
+        "font-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "https://stackpath.bootstrapcdn.com",
+          "https://fonts.googleapis.com",
+          "https://fonts.gstatic.com",
+          "https://cdnjs.cloudflare.com",
+          "https://ka-f.fontawesome.com"
+        ],
+        "connect-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "https://stackpath.bootstrapcdn.com",
+          "https://ka-f.fontawesome.com"
+        ],
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://cdn.jsdelivr.net",
+          "https://stackpath.bootstrapcdn.com",
+          "https://ka-f.fontawesome.com"
+        ]
+      }
     }
-}));
+  })
+);
 
 app.use(cors({
     origin: '*', // Permitir todas as origens. Ajuste conforme necessário. Ex.: 'http://meufrontend.com'

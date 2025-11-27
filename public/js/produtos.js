@@ -150,17 +150,19 @@ overlay.addEventListener("click", () => {
 const container = document.getElementById("produtosDaPagina"); // cria um container no elemento html que tem ID = "produtosDaPagina", no caso, a main
 container.innerHTML = ""; // limpa antes de renderizar
 const categoria = ((window.location.pathname).split('/'))[2] // https://localhost:3000/produtos/variavel => retornando variavel
-  let url
-  if(categoria === 'todos') {
-    url = '/api/produtos/listar'
-  }
-  if(categoria !== 'todos'){
-    url = `/api/produtos/listar/${categoria}`
-  }
-  if(categoria === 'pesepernas') {
-    url = `/api/produtos/listar/Pés e Pernas`
-  }
-  fetch(url) // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
+let url
+if (categoria === 'todos') {
+  url = '/api/produtos/listar'
+
+}
+if (categoria !== 'todos') {
+  url = `/api/produtos/listar/${categoria}`
+}
+if (categoria === 'pesepernas') {
+  url = `/api/produtos/listar/Pés e Pernas`
+}
+
+fetch(url) // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
   .then(res => res.json()) // transforma o valor que está vindo em um array.json
   .then(data => {
     const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
@@ -182,10 +184,22 @@ const categoria = ((window.location.pathname).split('/'))[2] // https://localhos
         bloco.className = "produto"; // nome da classe do bloco é produto
 
 
+        let tipoProd;
+        switch (produto.tipo) {
+          case 'Facial': tipoProd = 'facial'; break;
+          case 'Ocular': tipoProd = 'ocular'; break;
+          case 'Corporal': tipoProd = 'corporal'; break;
+          case 'Respiratório': tipoProd = 'respiratorio'; break;
+          case 'Auditivo': tipoProd = 'auditivo'; break;
+          case 'Manual': tipoProd = 'manual'; break;
+          case 'Pés e Pernas': tipoProd = 'pesepernas'; break;
+          case 'Cabeça': tipoProd = 'cabeca'; break;
+          default: tipoProd = 'todos';
+        }
 
         // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
         bloco.innerHTML = ` 
-            <a href='/produtos/${categoria}/${produto.id}'>
+            <a href='/produtos/${tipoProd}/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt=""/>
                 <h5>${produto.nome}</h5>
@@ -220,6 +234,7 @@ const categoria = ((window.location.pathname).split('/'))[2] // https://localhos
       produtosFilter.forEach(produto => { // percorre todos os registros do banco de dados produtos
         const bloco = document.createElement("div"); // cria um elemento div
         bloco.className = "produto"; // nome da classe do bloco é produto
+
 
         // escreve o que vai ter nesse bloco
         bloco.innerHTML = ` 
