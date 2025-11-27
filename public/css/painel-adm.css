@@ -1,3 +1,18 @@
+:root {
+    --item-gap: 8px;
+    --item-padding: 6px 10px;
+    /* menor */
+    --item-radius: 6px;
+    --item-font-size: 14px;
+    /* menor */
+    --item-border: 1px solid #cfd4dc;
+    --item-bg: #fff;
+    --item-bg-hover: #f3f5f7;
+    --item-bg-active: #0d6efd;
+    --item-color: #0b1220;
+    --item-color-active: #fff;
+}
+
 #adm {
     padding: 6rem;
 }
@@ -38,6 +53,142 @@
         font-weight: 700;
         font-size: 1.2rem;
     }
+}
+
+.paimodal {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.btn-close {
+    margin-right: 1rem !important;
+    outline: none !important;
+}
+
+.titulo-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azure);
+    padding: 0 2rem 0 2rem;
+    border-radius: 5px;
+
+    i {
+        color: var(--branco);
+        margin: 0;
+        font-size: 2rem;
+        padding: 0.4rem 0.2rem 0 0;
+    }
+
+    h1 {
+        font-weight: 700;
+        color: white;
+    }
+}
+
+
+.align {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.eachinput {
+    width: 95%;
+    height: 7vh;
+
+    p {
+        color: var(--preto);
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"] {
+        border: 1px solid var(--preto);
+        border-radius: 5px;
+        padding-left: 0.5rem;
+        outline: none;
+        width: 100%;
+        height: 3.5vh;
+    }
+}
+
+.each2inputs {
+    width: 96.3%;
+    /* igual ao .eachinput */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.each2inputs .row {
+    width: 100%;
+    margin: 0;
+}
+
+.each2inputs .col-12,
+.each2inputs .col-md-6 {
+    padding: 0 0.5rem;
+    /* opcional: espaçamento interno */
+}
+
+.each2inputs .eachinput {
+    width: 100%;
+}
+
+.tam_input {
+    width: 95%;
+
+    p {
+        color: var(--preto);
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* celular: 2 por linha */
+    gap: 8px;
+    max-width: 100%;
+}
+
+.size-item {
+    height: 5vh;
+}
+
+.salvar_novo-prod {
+    margin: 2rem;
+    border: none;
+    background-color: #0a1e3f;
+    color: white;
+    font-weight: 700;
+    font-size: 1.7rem;
+    padding: 0.4rem 3rem 0.4rem 3rem;
+    border-radius: 8px;
+}
+
+input[type="file"] {
+    direction: rtl;
+    text-align: left;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background: #274e90;
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .total-prod {
@@ -167,7 +318,6 @@
 }
 
 
-
 .tabela_produtos {
     width: 100%;
     margin-top: 6vh;
@@ -244,9 +394,10 @@
 }
 
 
-.acoes_cabecalho{
+.acoes_cabecalho {
     text-align: end;
 }
+
 .acoes {
     display: flex;
     justify-content: end;
@@ -255,22 +406,25 @@
         background-color: transparent;
         border: none;
     }
+
     i {
         font-size: 1.6rem;
         color: black;
     }
 }
 
-.editar_prod{
-    i{
-        color: #122f60;}
+.editar_prod {
+    i {
+        color: #122f60;
+    }
 }
 
-.botao_excluirprod{
-    i{
+.botao_excluirprod {
+    i {
         color: #b30000;
     }
 }
+
 .editar_produto button,
 .excluir-produto button {
     background: none;
@@ -287,4 +441,40 @@
 
 .excluir-produto button:hover {
     color: #dc3545;
+}
+
+/* tablet e desktop: 7 por linha */
+@media (min-width: 768px) {
+    .size-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+.size-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dcdcdc;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    user-select: none;
+}
+
+/* esconder checkbox nativo */
+.size-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+/* estilo quando selecionado */
+.size-item input[type="checkbox"]:checked+span {
+    background-color: var(--cinza-meioescuro);
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
 }
