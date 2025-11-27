@@ -185,8 +185,6 @@ class authController{
                 tipo: tipo || 'comum'
             };
 
-            console.log(`esse é os dados do usuario: ${dadosUsuario}`)
-
             //Criar usuário no banco de dados
             const usuarioId = await usuarioModel.criar(dadosUsuario);
 
