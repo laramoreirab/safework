@@ -10,7 +10,8 @@ import { read } from './config/database.js';
 
 // import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
 import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
-// import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+import carrinhoRotas from './routes/carrinhoRotas.js'; //rota do carrinho
 
 
 //Importando middlewares
@@ -89,7 +90,8 @@ app.use(cookieParser());
 
 // Rotas da API 
 app.use('/auth', authRotas)
-
+app.use('/usuarios', usuarioRotas)
+app.use('/carrinho' , carrinhoRotas)
 
 // servir arquivos estáticos da pasta 'views'
 app.use(express.static(path.join(__dirname, 'views')));
