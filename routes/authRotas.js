@@ -10,6 +10,7 @@ const router = express.Router()
 router.post('/login', authController.login);
 router.post('/registrar', authController.registrar);
 
+
 // Rotas protegidas (precisam de autenticação)
 router.get('/perfil', authMiddleware, authController.obterPerfil); //pagina d eperfil
 

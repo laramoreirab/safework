@@ -1,11 +1,16 @@
-// onde o adminin poderá adicionar, excluir, atualizar ou listas os produtos
-//e onde os usuários poderão procurar os produtos por id
-
 import ProdutoModel from '../models/produtoModel.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
 // import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
 
+<<<<<<< HEAD
+import ProdutoModel from '../models/produtoModel.js'
+import { fileURLToPath } from 'url'
+import path from 'path'
+// import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
+
+=======
+>>>>>>> backAria
 const _filename = fileURLToPath(import.meta.url)
 const _dirname = path.dirname(_filename)
 
