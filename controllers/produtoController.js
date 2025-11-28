@@ -3,14 +3,6 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 // import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
 
-<<<<<<< HEAD
-import ProdutoModel from '../models/produtoModel.js'
-import { fileURLToPath } from 'url'
-import path from 'path'
-// import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
-
-=======
->>>>>>> backAria
 const _filename = fileURLToPath(import.meta.url)
 const _dirname = path.dirname(_filename)
 

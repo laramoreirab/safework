@@ -94,7 +94,8 @@ app.use(cookieParser());
 app.use('/auth', authRotas)
 app.use('/usuarios', usuarioRotas)
 app.use('/carrinho' , carrinhoRotas)
-app.use('/finalizacao', finalizacaoRotas)app.use('/api/produtos', produtoRotas)
+app.use('/finalizacao', finalizacaoRotas)
+app.use('/api/produtos', produtoRotas)
 
 // servir arquivos estáticos da pasta 'views'
 app.use(express.static(path.join(__dirname, 'views')));
