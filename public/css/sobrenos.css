@@ -1,0 +1,199 @@
+.banner-sobre {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 5%;
+    margin-top: 7.5dvh;
+    height: 80dvh;
+    overflow: hidden;
+    height: 80vh;
+    background-image: url(../img/banner-sobre.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    h1 {
+        font-size: 10rem;
+        color: white;
+        font-family: var(--bebas);
+    }
+}
+
+.padding {
+    display: flex;
+    flex-direction: column;
+    gap: 10dvh;
+    padding: 10dvh 7.5%;
+}
+
+.escritas-sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 5dvh;
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    strong {
+        font-weight: 650;
+        color: var(--azul-crepusculo);
+    }
+}
+
+.titulos-sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5dvh;
+
+    h3 {
+        color: var(--cinza-escuro);
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-family: var(--bebas);
+        color: var(--azul-crepusculo);
+        font-size: 3.5rem;
+    }
+}
+
+.linha-titulos {
+    width: 27.5%;
+    border: 0.1rem solid var(--azul-crepusculo);
+}
+
+.titulo-laranja {
+    color: #f86402;
+}
+
+.titulo-preto {
+    color: black;
+}
+
+.beneficios-sobre {
+    margin: 0 -10%;
+    padding: 5%;
+    background-color: #122f60;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6dvh;
+
+    h2 {
+        color: white;
+        font-size: 5rem;
+        font-family: var(--bebas);
+    }
+}
+
+.all-beneficios {
+    display: flex;
+    width:  75%;
+    gap: 2dvw;
+}
+
+.one-beneficio {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5dvh;
+
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f86402;
+        font-size: 6.5rem;
+    }
+
+    h3 {
+        color: white;
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+
+    p {
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+.linha-beneficio {
+    border: 2px solid #f86402;
+    width: 35%;
+}
+
+
+
+
+
+
+
+
+
+
+
+#nossosprodutos_home {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.nossosprodutos_banner {
+    margin-top: 6vh;
+    background-image: url(../img/home/red_nossosprodutos.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+    border-radius: 1.5rem;
+    width: 80%;
+    height: 45vh;
+    overflow-y: hidden;
+}
+
+.nossosprodutos {
+    margin-top: 23vh;
+    z-index: 1;
+    left: 13%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 80vh;
+
+    h1 {
+        color: var(--azul-crepusculo);
+        font-weight: 550;
+        width: 50vh;
+        text-align: center;
+        font-family: var(--bebas);
+        font-size: 8vh;
+    }
+
+    p {
+        color: var(--preto);
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-weight: 700;
+        color: var(--branco);
+        border: transparent;
+        background-color: var(--azul-escuro);
+        width: 23vh;
+        height: 6vh;
+        font-size: 2.5vh;
+        border-radius: 0.8rem;
+    }
+}
