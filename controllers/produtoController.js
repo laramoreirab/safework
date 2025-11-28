@@ -80,19 +80,19 @@ class ProdutoController {
 
             const produto = await ProdutoModel.buscarPorId(id);
 
-            if(!produto) {
+            if (!produto) {
                 return res.status(400).json({
                     sucesso: false,
                     erro: 'Produto não encontrado',
                     mensagem: `Produto com ID ${id} não foi encontrado`
                 })
             }
-            
+
             res.status(200).json({
                 suceso: true,
                 dados: produto
             })
-        } catch(err) {
+        } catch (err) {
             console.error('Erro ao buscar produto', err)
             res.status(500).json({
                 sucesso: false,
@@ -106,7 +106,7 @@ class ProdutoController {
     static async buscarPorCategoria(req, res) {
         try {
             const { categoria } = req.params
-            
+
             const produto = await ProdutoModel.buscarPorCategoria(categoria);
 
             if (!produto) {
@@ -213,6 +213,7 @@ class ProdutoController {
             });
         }
     }
+
 }
 
-export default  ProdutoController 
+export default ProdutoController 

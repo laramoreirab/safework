@@ -183,7 +183,18 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class="eachinput">
                                                         <p>Categoria</p>
-                                                        <input type="text" id="categoria_prod-new">
+                                                        <section>
+                                                            <select id="categoria_prod-new">
+                                                                <option value="Facial">Facial</option>
+                                                                <option value="Ocular">Ocular</option>
+                                                                <option value="Corporal">Corporal</option>
+                                                                <option value="Respiratório">Respiratório</option>
+                                                                <option value="Auditivo">Auditivo</option>
+                                                                <option value="Manual">Manual</option>
+                                                                <option value="Pés e Pernas">Pés e Pernas</option>
+                                                                <option value="Cabeça">Cabeça</option>
+                                                            </select>
+                                                        </section>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
@@ -199,13 +210,13 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class="eachinput">
                                                         <p>Preço</p>
-                                                        <input type="text" id="preco_prod-new">
+                                                        <input type="number" id="preco_prod-new">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
-                                                        <input type="text" id="qtd_prod-new">
+                                                        <input type="number" id="qtd_prod-new">
                                                     </div>
                                                 </div>
                                             </div>
@@ -709,7 +720,7 @@
         </div>
         <!--------------------------------------- Tabela de exibição --------------------------------->
         <div class="tabela_produtos">
-            <table>
+            <table id="produtos-container">
                 <thead class="cabecalho_tabela">
                     <tr>
                         <th>produto</th>
@@ -721,90 +732,6 @@
                         <th class="acoes_cabecalho">ações</th>
                     </tr>
                 </thead>
-
-                <tr class="eachproduto">
-                    <td class="nome_prod">
-                        <!------- Coloque aqui o nome do prdouto ------->
-                        Capacete de Segurança
-                    </td>
-                    <td class="cat_prod">
-                        <!----- Coloque aqui a categoria do produto ----->
-                        Cabeça
-                    </td>
-                    <td class="ca_prod">
-                        <!----- Coloque aqui o ca do produto ----->
-                        0001
-                    </td>
-                    <td class="estoque_prod">
-                        <!-- Atenção!! Se a quantidade de lotes no estoque for maior que 20, a classe do p deve ser .estoque-verde para estilização! -->
-                        <p class="estoque-verde">
-                            <!----- Coloque aqui quantidade no estoque do produto ----->
-                            45 un.
-                        </p>
-                    </td>
-                    <td class="preco_prod">
-                        <!----- Coloque aqui o preço do produto ----->
-                        R$ 35.00
-                    </td>
-                    <td class="status_prod">
-                        <p class="status_ativo">
-                            ativo
-                        </p>
-                    </td>
-                    <td class="actions_prod">
-                        <div class="acoes">
-                            <div class="editar-produto">
-                                <!---- Botão que redireciona para modal do Editar Produto  ----->
-                                <button type="button" class="editar_prod" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditarProd">
-                                    <i class="fi-sr-pencil"></i>
-                                </button>
-                            </div>
-                            <div class="excluir-produto">
-                                <!-- Botão ue redireciona para modal do Excluir Produto -->
-                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
-                                    data-bs-target="#modalExcluirProd">
-                                    <i class="fi fi-rs-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <!-- Só para demonstração, mas observe o comentário no td.estoque prod -->
-                <tr class="eachproduto">
-                    <td class="nome_prod">Luva de vaqueta</td>
-                    <td class="cat_prod">Manual</td>
-                    <td class="ca_prod">0002</td>
-                    <td class="estoque_prod">
-                        <!-- Observe que a quantidade de lotes no estoque é menor que 20, por isso a classe utilizada no p é .estoque-vermelho.
-                         Essa classe é necessária para estilização. -->
-                        <p class="estoque-vermelho">8 un.</p>
-                    </td>
-                    <td class="preco_prod">R$ 35.00</td>
-                    <td class="status_prod">
-                        <p class="status_ativo">
-                            ativo
-                        </p>
-                    </td>
-                    <td class="actions_prod">
-                        <div class="acoes">
-                            <div class="editar-produto">
-                                <!---- Editar Produto modal ----->
-                                <button type="button" class="editar_prod" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditarProd">
-                                    <i class="fi-sr-pencil"></i>
-                                </button>
-                            </div>
-                            <div class="excluir-produto">
-                                <!-- Botão Excluir Produto modal -->
-                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
-                                    data-bs-target="#modalExcluirProd">
-                                    <i class="fi fi-rs-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
                 <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
                 <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -923,7 +850,7 @@
                                         </div>
                                     </div>
                                     <div class="align">
-                                        <button class="atualizar-prod" type="submit">Editar</button>
+                                        <button id="atualizar-prod" class="atualizar-prod" type="submit">Editar</button>
                                     </div>
 
                                 </form>
