@@ -137,17 +137,24 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    h1{
+    padding-bottom: 4rem;
+
+    h1 {
         color: var(--branco);
         font-weight: 700;
     }
+}
+
+.inputcategoria:hover {
+    transition: 1s ease all;
 }
 
 .linha_eachcategoria {
     width: 70px;
     height: 6px;
     background-color: var(--branco);
-    opacity: 1;
+    opacity: 20;
+    border: none;
 }
 
 /* Nossos Produtos */
@@ -214,23 +221,139 @@
 }
 
 /* Marcas */
-.titulo_marcas{
-   font-family: var(--bebas);
+.titulo_marcas {
+    font-family: var(--bebas);
     color: var(--azul-crepusculo);
     text-align: center;
-    h1{
+
+    h1 {
         font-size: 8vh;
     }
 }
 
 /* Avaliações */
-.titulo_avaliacoes{
+.titulo_avaliacoes {
     font-family: var(--bebas);
     color: var(--azul-crepusculo);
     text-align: center;
-    h1{
+
+    h1 {
         font-size: 8vh;
     }
+}
+
+.avaliacoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+
+.eachavaliacao {
+    margin: 1.5rem;
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 25vh;
+    width: 35vh;
+    border-radius: 15px;
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.3),
+        /* sombra principal mais suave */
+        0 3px 10px rgba(0, 0, 0, 0.2),
+        /* camada intermediária */
+        0 1px 4px rgba(0, 0, 0, 0.1);
+    /* camada de transição delicada */
+}
+
+.avaliacaoprod {
+    i {
+        font-size: 2rem;
+        color: #f7ce08;
+    }
+}
+
+.conteudodaavaliacao {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.nomeavaliador {
+    font-weight: 700;
+}
+
+/* 3M - vermelho vibrante */
+.bg-3m {
+  background: linear-gradient(135deg, #d50000, #ff8a80);
+  color: white;
+}
+
+/* Montana - cinza neutro */
+.bg-montana {
+  background: linear-gradient(135deg, #424242, #bdbdbd);
+  color: white;
+}
+
+/* Soft Works - amarelo alaranjado */
+.bg-softworks {
+  background: linear-gradient(135deg, #ffb300, #fff3e0);
+  color: black;
+}
+
+/* Volk do Brasil - azul escuro */
+.bg-volk {
+  background: linear-gradient(135deg, #0d47a1, #90caf9);
+  color: white;
+}
+
+/* APA SEC - amarelo vibrante */
+.bg-apa {
+  background: linear-gradient(135deg, #ffeb3b, #fffde7);
+  color: black;
+}
+
+/* Honeywell - vermelho escuro */
+.bg-honeywell {
+  background: linear-gradient(135deg,#ef9a9a, #b71c1c);
+  color: white;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../img/home/previous-carrosel.svg"); /* sua imagem */
+  width: 40px;
+  height: 40px;
+}
+
+.carousel-control-next-icon {
+  background-image: url("../img/home/next-carrosel.svg"); /* sua imagem */
+  width: 40px;
+  height: 40px;
+}
+
+.cont_marca{
+    border-radius: 12px;
+    height: 30vh;
+    width: 20vh;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.marcas_epis{
+    a{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.img_error{
+    width: 95%;
 }
 
 /* <!--------------------------------- Responsividade ----------------------------------!> */

@@ -1,550 +1,668 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork</title>
-    <link
-      rel="shortcut icon"
-      href="../public/img/icon.svg"
-      type="image/x-icon"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/167f6b34b8.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../public/css/style.css" />
-    <link rel="stylesheet" href="../public/css/home.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <header id="header_usuario">
-      <div class="menulateral_usuario">
-        <button
-          class="button_openmenu"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasWithBothOptions"
-          aria-controls="offcanvasWithBothOptions"
-        >
-          <img src="../public/img/menuicon.svg" alt="Menu Lateral" />
-        </button>
-        <div
-          class="offcanvas offcanvas-start"
-          data-bs-scroll="true"
-          tabindex="-1"
-          id="offcanvasWithBothOptions"
-          aria-labelledby="offcanvasWithBothOptionsLabel"
-        >
-          <div class="offcanvas-header">
-            <a href="../views/index.html"
-              ><img
-                src="../public/img/logo-branca.svg"
-                class="menulateral_header"
-            /></a>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeWork</title>
+  <link rel="shortcut icon" href="../public/img/icon.svg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/167f6b34b8.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/home.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header id="header_usuario">
+    <div class="menulateral_usuario">
+      <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <img src="../public/img/menuicon.svg" alt="Menu Lateral" />
+      </button>
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+          <a href="../views/index.html"><img src="../public/img/logo-branca.svg" class="menulateral_header" /></a>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="nav_item">
+            <a class="menu_redirecionamento" href="../views/index.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+              </svg>
+              <p>home</p>
+            </a>
           </div>
-          <div class="offcanvas-body">
-            <div class="nav_item">
-              <a class="menu_redirecionamento" href="../views/index.html">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-house-door-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"
-                  />
-                </svg>
-                <p>home</p>
-              </a>
-            </div>
-            <hr />
+          <hr />
 
-            <div class="nav_item dropdown">
-              <!-- link principal -->
-              <a class="menu_redirecionamento toggle-produtos" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-box-seam-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"
-                  />
+          <div class="nav_item dropdown">
+            <!-- link principal -->
+            <a class="menu_redirecionamento toggle-produtos" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z" />
+              </svg>
+              <p>
+                Produtos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
                 </svg>
-                <p>
-                  Produtos
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-chevron-down"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-                    />
-                  </svg>
-                </p>
+              </p>
+            </a>
+            <!-- submenu -->
+            <div class="submenu">
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Facial
+                <i class="fi fi-ts-angle-small-right"></i>
               </a>
-              <!-- submenu -->
-              <div class="submenu">
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Facial
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Ocular
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Corporal
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Respiratório
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Auditivo
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Manual
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Pés e Pernas
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-                <a
-                  class="submenu_redirecionamento"
-                  href="../views/produtos.html"
-                  >Cabeça
-                  <i class="fi fi-ts-angle-small-right"></i>
-                </a>
-              </div>
-            </div>
-            <hr />
-
-            <div class="nav_item">
-              <a class="menu_redirecionamento" href="../views/contato.html">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-telephone-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
-                  />
-                </svg>
-                <p>contato</p>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Ocular
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Corporal
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Respiratório
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Auditivo
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Manual
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Pés e Pernas
+                <i class="fi fi-ts-angle-small-right"></i>
+              </a>
+              <a class="submenu_redirecionamento" href="../views/produtos.html">Cabeça
+                <i class="fi fi-ts-angle-small-right"></i>
               </a>
             </div>
-            <hr />
-
-            <div class="nav_item">
-              <a class="menu_redirecionamento" href="../views/sobrenos.html">
-                <i class="fi fi-sr-bullseye-arrow"></i>
-                <p>sobre nós</p>
-              </a>
-            </div>
-            <hr />
           </div>
+          <hr />
+
+          <div class="nav_item">
+            <a class="menu_redirecionamento" href="../views/contato.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+              </svg>
+              <p>contato</p>
+            </a>
+          </div>
+          <hr />
+
+          <div class="nav_item">
+            <a class="menu_redirecionamento" href="../views/sobrenos.html">
+              <i class="fi fi-sr-bullseye-arrow"></i>
+              <p>sobre nós</p>
+            </a>
+          </div>
+          <hr />
         </div>
       </div>
-      <div class="logo_header">
-        <a href="../views/index.html"><img src="../public/img/logo.svg" /></a>
+    </div>
+    <div class="logo_header">
+      <a href="../views/index.html"><img src="../public/img/logo.svg" /></a>
+    </div>
+    <div class="icons_header">
+      <button id="open-carrinho">
+        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+        </svg>
+      </button>
+      <a href="../views/cadastro.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+        </svg>
+      </a>
+    </div>
+  </header>
+  <section id="banner_index">
+    <div class="frase_inicial">
+      <h1>cada <b>estrutura</b> começa com <b>segurança</b></h1>
+      <hr />
+    </div>
+  </section>
+  <section id="protecaogarantida">
+    <div class="titulo_protecao">
+      <div class="informacoes_protecao">
+        <h1 class="frase1">proteção confiável,</h1>
+        <h1 class="frase2">cuidado garantido!</h1>
       </div>
-      <div class="icons_header">
-        <button id="open-carrinho">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="27"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-            />
-          </svg>
-        </button>
-        <a href="../views/cadastro.html">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            fill="currentColor"
-            class="bi bi-person"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
-            />
-          </svg>
-        </a>
-      </div>
-    </header>
-    <section id="banner_index">
-      <div class="frase_inicial">
-        <h1>cada <b>estrutura</b> começa com <b>segurança</b></h1>
-        <hr />
-      </div>
-    </section>
-    <section id="protecaogarantida">
-      <div class="titulo_protecao">
-        <div class="informacoes_protecao">
-          <h1 class="frase1">proteção confiável,</h1>
-          <h1 class="frase2">cuidado garantido!</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="img_protecao">
+            <img src="../public/img/home/sobreindex.svg" />
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <p class="txt_protecao">
+            Na <b>SafeWor</b>k, nossa <b>missão</b> é clara: oferecer
+            <b>Equipamentos de Proteção Individual</b> que unem
+            <b>resistência</b>, <b>qualidade</b> e <b>confiança</b> para quem
+            enfrenta os desafios do <b>trabalho pesado</b>. Sabemos que cada
+            peça de <b>EPI</b> representa mais do que um item — representa
+            <b>segurança</b>, <b>responsabilidade</b> e
+            <b>compromisso com a vida</b>. <br /><br />
+
+            Com foco em setores como <b>indústria</b>,
+            <b>construção civil</b>, <b>logística</b> e
+            <b>serviços operacionais</b>, desenvolvemos soluções que atendem
+            às <b>normas técnicas</b> e superam expectativas. Cada produto é
+            <b>selecionado com rigor</b>, <b>testado com precisão</b> e
+            enviado com o <b>cuidado</b> que só quem entende de
+            <b>proteção</b> pode oferecer. <br /><br />
+
+            Mais do que vender EPIs, a <b>SafeWork entrega tranquilidade</b>.
+            Porque quando o ambiente exige <b>força</b>, nós garantimos
+            <b>proteção</b>.
+          </p>
         </div>
       </div>
+    </div>
+  </section>
+  <section id="categorias_protecoes">
+    <div class="titulo_produtos">
+      <h1>nossas proteções</h1>
+    </div>
+    <div class="align">
       <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="img_protecao">
-              <img src="../public/img/home/sobreindex.svg" />
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <p class="txt_protecao">
-              Na <b>SafeWor</b>k, nossa <b>missão</b> é clara: oferecer
-              <b>Equipamentos de Proteção Individual</b> que unem
-              <b>resistência</b>, <b>qualidade</b> e <b>confiança</b> para quem
-              enfrenta os desafios do <b>trabalho pesado</b>. Sabemos que cada
-              peça de <b>EPI</b> representa mais do que um item — representa
-              <b>segurança</b>, <b>responsabilidade</b> e
-              <b>compromisso com a vida</b>. <br /><br />
-
-              Com foco em setores como <b>indústria</b>,
-              <b>construção civil</b>, <b>logística</b> e
-              <b>serviços operacionais</b>, desenvolvemos soluções que atendem
-              às <b>normas técnicas</b> e superam expectativas. Cada produto é
-              <b>selecionado com rigor</b>, <b>testado com precisão</b> e
-              enviado com o <b>cuidado</b> que só quem entende de
-              <b>proteção</b> pode oferecer. <br /><br />
-
-              Mais do que vender EPIs, a <b>SafeWork entrega tranquilidade</b>.
-              Porque quando o ambiente exige <b>força</b>, nós garantimos
-              <b>proteção</b>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="categorias_protecoes">
-      <div class="titulo_produtos">
-        <h1>nossas proteções</h1>
-      </div>
-      <div class="align">
-        <div class="container">
-          <div class="linha_categoria">
-            <div class="row g-5">
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategoriab">
+        <div class="linha_categoria">
+          <div class="row g-5">
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategoriab">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/facial.svg" />
                     <h1>Facial</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategorial">
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategorial">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/ocular.svg" />
                     <h1>Ocular</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategoriab">
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategoriab">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/corporal.svg" />
                     <h1>Corporal</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategorial">
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategorial">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/respiratorio.svg" />
                     <h1>Respiratório</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
-          <div class="linha_categoria">
-            <div class="row g-5">
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategorial">
+        </div>
+        <div class="linha_categoria">
+          <div class="row g-5">
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategorial">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/auditivo.svg" />
                     <h1>Auditivo</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategoriab">
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategoriab">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/manual.svg" />
                     <h1>Manual</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
-              </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategorial">
+              </div></a>
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategorial">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/pesepernas.svg" />
                     <h1>Pés e Pernas</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-6 col-md-3 mb-5 px-5">
-                <div class="eachcategoriab">
+            </div>
+            <div class="col-6 col-md-3 mb-5 px-5">
+              <div class="eachcategoriab">
+                <a href="produtos.html">
                   <div class="inputcategoria">
-                    <img src="../public/img/home/" />
+                    <img src="../public/img/home/cabeca.svg" />
                     <h1>Cabeça</h1>
                     <hr class="linha_eachcategoria" />
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section id="nossosprodutos_home">
-      <div class="nossosprodutos_banner">
-        <div class="nossosprodutos">
-          <h1>Nossos Produtos</h1>
-          <p>
-            Confira nosso catálogo com mais de 120 <br />
-            equipamentos de proteção individual!
-          </p>
-          <a href="produtos.html"><button>Ver Produtos</button></a>
+    </div>
+  </section>
+  <section id="nossosprodutos_home">
+    <div class="nossosprodutos_banner">
+      <div class="nossosprodutos">
+        <h1>Nossos Produtos</h1>
+        <p>
+          Confira nosso catálogo com mais de 120 <br />
+          equipamentos de proteção individual!
+        </p>
+        <a href="produtos.html"><button>Ver Produtos</button></a>
+      </div>
+    </div>
+  </section>
+  <section id="marcas">
+    <div class="titulo_marcas">
+      <h1>marcas</h1>
+      <div class="marcas_epis">
+        <div id="carouselPPE-mobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-3m p-3">
+                        <img src="../public/img/home/marcas/3m.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/img3m.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-montana p-3">
+                        <img src="../public/img/home/marcas/montana.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgmontana.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-softworks p-3">
+                        <img src="../public/img/home/marcas/softwork.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgsoftwork.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-volk p-3">
+                        <img src="../public/img/home/marcas/volk.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgvolk.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-apa p-3">
+                        <img src="../public/img/home/marcas/apaseg.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgapaseg.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-12">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-honeywell p-3">
+                        <img src="../public/img/home/marcas/honeywell.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imghoneywell.svg" class="img_error">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselPPE-mobile" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselPPE-mobile" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+        <!-- Carrossel Desktop/MD+ (3 por slide) -->
+        <div id="carouselPPE-desktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-3m p-3">
+                        <img src="../public/img/home/marcas/3m.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/img3m.svg">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-montana p-3">
+                        <img src="../public/img/home/marcas/montana.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgmontana.svg">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-softworks p-3">
+                        <img src="../public/img/home/marcas/softwork.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgsoftwork.svg">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row text-center">
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-volk p-3">
+                        <img src="../public/img/home/marcas/volk.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgvolk.svg">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-apa p-3">
+                        <img src="../public/img/home/marcas/apaseg.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imgapaseg.svg">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="produtos.html">
+                      <div class="cont_marca bg-honeywell p-3">
+                        <img src="../public/img/home/marcas/honeywell.svg" class="img-fluid">
+                        <img src="../public/img/home/marcas/imghoneywell.svg" class="img_error">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselPPE-desktop"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselPPE-desktop"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </div>
       </div>
-    </section>
-    <section id="marcas">
-      <div class="titulo_marcas">
-        <h1>marcas</h1>
-      </div>
-    </section>
-    <section id="avaliacoes_home">
-      <div class="titulo_avaliacoes">
-        <h1>o que dizem nossos clientes?</h1>
-      </div>
-    </section>
-
-    <div class="footer_fundo">
-      <div class="container ffg">
-        <footer class="py-5">
-          <div class="row">
-            <div class="col-6 col-md-2 mb-3">
-              <div class="principal_footer">
-                <img src="../public/img/logo-branca.svg" style="width: 80%" />
+  </section>
+  <section id="avaliacoes_home">
+    <div class="titulo_avaliacoes">
+      <h1>o que dizem nossos clientes?</h1>
+    </div>
+    <div class="avaliacoes">
+      <div class="container">
+        <div class="row rtj">
+          <div class="col-12 col-md-4">
+            <div class="eachavaliacao">
+              <div class="avaliacaoprod">
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ts-star-sharp-half-stroke"></i>
               </div>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-              <div class="socialmedia2">
-                <ul class="nav flex-column">
-                  <div class="socialmedia">
-                    <i class="fa-solid fa-phone"></i>
-                    <li class="nav-item mb-2">
-                      <a href="#" class="nav-link p-0 footerlink"
-                        >4002 - 8922</a
-                      >
-                    </li>
-                  </div>
-                  <div class="socialmedia">
-                    <i class="fa-brands fa-instagram"></i>
-                    <li class="nav-item mb-2">
-                      <a href="#" class="nav-link p-0 footerlink">@safework</a>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-              <div class="redirecionamento_footer">
-                <ul class="nav flex-column">
-                  <li class="nav-item mb-2">
-                    <a href="index.html" class="nav-link p-0 footerlink"
-                      >Home</a
-                    >
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="cardapio.html" class="nav-link p-0 footerlink"
-                      >Produtos</a
-                    >
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a
-                      href="personalizacao.html"
-                      class="nav-link p-0 footerlink"
-                      >Sobre Nós</a
-                    >
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="index.html#contato" class="nav-link p-0 footerlink"
-                      >Contato</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-              <form class="cadastro_lancamentos">
-                <p>
-                  Cadastre-se para receber lançamentos de novos produtos e
-                  promoções!
+              <div class="conteudodaavaliacao">
+                <p>Entrega rápida, produtos de boa qualidade e atendimento eficiente, garantindo confiança constante.
                 </p>
-                <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
-                  <input
-                    id="newsletter1"
-                    type="email"
-                    placeholder="Email"
-                    required
-                  />
-                  <button id="btnCadastrarLancamento" type="button">
-                    Cadastre-se
-                  </button>
+              </div>
+              <div class="nomeavaliador">
+                <p>Metalúrgica Horizonte S.A.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="eachavaliacao">
+              <div class="avaliacaoprod">
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ts-star-sharp-half-stroke"></i>
+              </div>
+              <div class="conteudodaavaliacao">
+                <p>Serviço ágil, variedade de produtos, proteção garantida e experiência satisfatória em compras.</p>
+              </div>
+              <div class="nomeavaliador">
+                <p>BioProtec Indústria Ltda.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="eachavaliacao">
+              <div class="avaliacaoprod">
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ts-star-sharp-half-stroke"></i>
+              </div>
+              <div class="conteudodaavaliacao">
+                <p>Empresa confiável, oferece EPIs resistentes, preço justo e suporte adequado aos clientes.</p>
+              </div>
+              <div class="nomeavaliador">
+                <p>TecnoMaq Industrial</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer_fundo">
+    <div class="container ffg">
+      <footer class="py-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <div class="principal_footer">
+              <img src="../public/img/logo-branca.svg" style="width: 80%" />
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <div class="socialmedia2">
+              <ul class="nav flex-column">
+                <div class="socialmedia">
+                  <i class="fa-solid fa-phone"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">4002 - 8922</a>
+                  </li>
                 </div>
-              </form>
+                <div class="socialmedia">
+                  <i class="fa-brands fa-instagram"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">@safework</a>
+                  </li>
+                </div>
+              </ul>
             </div>
           </div>
 
-          <div
-            class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls"
-          >
-            <p>© 2025. SafeWork. Todos os direitos reservados.</p>
-          </div>
-        </footer>
-      </div>
-    </div>
-    <!------------------- Carrinho ------------------------>
-    <div class="aba-carrinho" id="aba-carrinho">
-      <div class="titulo-filtrar">
-        <h1>Seu Carrinho</h1>
-        <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
-      </div>
-
-      <div class="padding-filtrar">
-        <div class="one-produto-carrinho">
-          <div class="space-img-carrinho">
-            <img src="../public/img/abafador.svg" alt="" />
-          </div>
-
-          <div class="space-meio-carrinho">
-            <div class="names-carrinho">
-              <p><strong>Capacete de Proteção</strong></p>
-
-              <span>CA: 56578</span>
-            </div>
-
-            <div class="add-remove-carrinho">
-              <button class="reduzir-carrinho" id="reduzir-carrinho">
-                <p>-</p>
-              </button>
-
-              <p id="quantidade-carrinho">1</p>
-              <button class="add-carrinho" id="adicionar-carrinho">
-                <p>+</p>
-              </button>
+          <div class="col-6 col-md-2 mb-3">
+            <div class="redirecionamento_footer">
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="index.html" class="nav-link p-0 footerlink">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="cardapio.html" class="nav-link p-0 footerlink">Produtos</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="personalizacao.html" class="nav-link p-0 footerlink">Sobre Nós</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="index.html#contato" class="nav-link p-0 footerlink">Contato</a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="space-final-carrinho">
-            <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
-            <p>R$ <span id="preco-item-carrinho">0</span></p>
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form class="cadastro_lancamentos">
+              <p>
+                Cadastre-se para receber lançamentos de novos produtos e
+                promoções!
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
+                <input id="newsletter1" type="email" placeholder="Email" required />
+                <button id="btnCadastrarLancamento" type="button">
+                  Cadastre-se
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
 
-      <div class="esp-button-carrinho">
-        <div class="subtotal-carrinho">
-          <p>Subtotal:</p>
-          <p>
-            <strong>R$ <span id="subtotal-carrinho">0</span></strong>
-          </p>
+        <div class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls">
+          <p>© 2025. SafeWork. Todos os direitos reservados.</p>
         </div>
-        <a href="dados.html"
-          ><button type="submit" id="confirmar-filtrar">
-            Finalizar Compra
-          </button></a
-        >
+      </footer>
+    </div>
+  </div>
+  <!------------------- Carrinho ------------------------>
+  <div class="aba-carrinho" id="aba-carrinho">
+    <div class="titulo-filtrar">
+      <h1>Seu Carrinho</h1>
+      <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+    </div>
+
+    <div class="padding-filtrar">
+      <div class="one-produto-carrinho">
+        <div class="space-img-carrinho">
+          <img src="../public/img/abafador.svg" alt="" />
+        </div>
+
+        <div class="space-meio-carrinho">
+          <div class="names-carrinho">
+            <p><strong>Capacete de Proteção</strong></p>
+
+            <span>CA: 56578</span>
+          </div>
+
+          <div class="add-remove-carrinho">
+            <button class="reduzir-carrinho" id="reduzir-carrinho">
+              <p>-</p>
+            </button>
+
+            <p id="quantidade-carrinho">1</p>
+            <button class="add-carrinho" id="adicionar-carrinho">
+              <p>+</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-final-carrinho">
+          <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+          <p>R$ <span id="preco-item-carrinho">0</span></p>
+        </div>
       </div>
     </div>
 
-    <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+    <div class="esp-button-carrinho">
+      <div class="subtotal-carrinho">
+        <p>Subtotal:</p>
+        <p>
+          <strong>R$ <span id="subtotal-carrinho">0</span></strong>
+        </p>
+      </div>
+      <a href="dados.html"><button type="submit" id="confirmar-filtrar">
+          Finalizar Compra
+        </button></a>
+    </div>
+  </div>
 
-    <script src="../public/js/funcoesprincipais.js"></script>
-  </body>
+  <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+
+  <script src="../public/js/funcoesprincipais.js"></script>
+</body>
+
 </html>
