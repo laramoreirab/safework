@@ -82,6 +82,7 @@ app.use(cors({
     optionsSuccessStatus: 200 // Responder com 200 para requisições OPTIONS
 }));
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -148,6 +149,10 @@ app.get('/produtos/pesepernas/:id', (req,res) => {
 })
 app.get('/produtos/:descricao/:id', (req,res) => {
     res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
+})
+
+app.get('/adm', (req,res) => {
+    res.sendFile(path.join(__dirname, '/views/painel-adm.html'))
 })
 
 
