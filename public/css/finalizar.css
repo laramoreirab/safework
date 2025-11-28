@@ -117,6 +117,12 @@ main {
     color: var(--azul-crepusculo);
     margin: 0;
   }
+
+  svg{
+    width: 4vh;
+    height: 4vh;
+    color: var(--azul-crepusculo);
+  }
 }
 
 form {

@@ -1,6 +1,9 @@
 header {
     height: 7.5vh;
-    background-color: turquoise;
+}
+
+#login{
+    padding-top: 6vh;
 }
 
 .padding {
