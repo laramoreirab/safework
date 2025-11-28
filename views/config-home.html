@@ -3,19 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork - Dados Empresariais</title>
+    <title>SafeWork - Suas Informações</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../public/css/finalizar.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/config.css" />
     <link
       rel="shortcut icon"
       href="../public/img/icon.svg"
@@ -28,12 +29,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../public/css/style.css" />
   </head>
   <body>
     <header id="header_usuario">
@@ -164,10 +164,10 @@
                   >Pés e Pernas
                   <i class="fi fi-ts-angle-small-right"></i>
                   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                  class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                  <path fill-rule="evenodd"
-                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                              </svg> -->
+                                        class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                                    </svg> -->
                 </a>
                 <a
                   class="submenu_redirecionamento"
@@ -214,12 +214,19 @@
       </div>
       <div class="icons_header">
         <button id="open-carrinho">
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                </svg>
-            </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="27"
+            height="27"
+            fill="currentColor"
+            class="bi bi-cart"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+            />
+          </svg>
+        </button>
         <a href="../views/cadastro.html">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -237,173 +244,137 @@
       </div>
     </header>
 
-    <div class="padding">
-      <nav>
-        <a href="dados.html">
-          <div class="one-step">
-            <div class="circ-step">
-              <p>1</p>
-            </div>
-            <div class="escrita-step">
-              <p><strong>Dados</strong></p>
-            </div>
-          </div>
-        </a>
-
-        <hr />
-
-        <a href="entrega.html">
-          <div class="one-step">
-            <div class="circ-step circ-active">
-              <p>2</p>
-            </div>
-            <div class="escrita-step">
-              <p><strong class="escrita-active">Entrega</strong></p>
-            </div>
-          </div>
-        </a>
-
-        <hr />
-
-        <a href="pagamento.html">
-          <div class="one-step">
-            <div class="circ-step">
-              <p>3</p>
-            </div>
-            <div class="escrita-step">
-              <p><strong>Pagamento</strong></p>
-            </div>
-          </div>
-        </a>
-      </nav>
-
-      <main>
-        <div class="titulo-main">
-          <i class="fa-solid fa-box-open"></i>
-          <h1>Entrega dos Produtos</h1>
+    <div class="cont-all">
+      <div class="cont-lateral-config">
+        <div class="cont-user">
+          <a href="">
+            <img src="../public/img/user.svg" alt="" />
+          </a>
         </div>
-
-        <form action="">
-          <div class="inteira-input">
-            <label for="endereco"><strong>Endereço *</strong></label>
-            <input
-              type="text"
-              name="endereco"
-              id="endereco"
-              placeholder="Rua João, 272"
-              required
-            />
-          </div>
-
-          <div class="metade-input">
-            <div class="one-metade">
-              <label for="CPF"><strong>CPF do Representante *</strong></label>
-              <input
-                type="text"
-                name="CPF"
-                id="CPF"
-                placeholder="999.999.999-99"
-                required
-                maxlength="14"
-              />
-            </div>
-
-            <div class="one-metade">
-              <label for="telefone-representante"
-                ><strong>Telefone do Representante *</strong></label
-              >
-              <input
-                type="tel"
-                name="telefone-representante"
-                id="telefone-empresa"
-                placeholder="(11) 99999-9999"
-                required
-                maxlength="15"
-              />
-            </div>
-          </div>
-
-          <div class="inteira-input">
-            <label for="nome-representante"
-              ><strong>Nome Completo do Representante *</strong></label
-            >
-            <input
-              type="text"
-              name="nome-representante"
-              id="nome-representante"
-              placeholder="Marcos Vinicíus"
-              required
-            />
-          </div>
-
-          <div class="inteira-input">
-            <label for="email-empresa"><strong>Portaria *</strong></label>
-            <input
-              type="portaria"
-              name="portaria"
-              id="portaria"
-              placeholder="523"
-              required
-            />
-          </div>
-        </form>
-        <a href="./pagamento.html">
-          <button><strong>Continuar</strong></button>
-        </a>
-      </main>
-    </div>
-
-    <div class="aba-carrinho" id="aba-carrinho">
-        <div class="titulo-filtrar">
-          <h1>Seu Carrinho</h1>
-          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
-        </div>
-
-        <div class="padding-filtrar">
-          <div class="one-produto-carrinho">
-            <div class="space-img-carrinho">
-                <img src="../public/img/abafador.svg" alt="">
-            </div>
-
-            <div class="space-meio-carrinho">
-                <div class="names-carrinho">
-                    <p><strong>Capacete de Proteção</strong></p>
-                    
-                    <span>CA: 56578</span>
-                </div>
-
-                <div class="add-remove-carrinho">
-                  <button class="reduzir-carrinho" id="reduzir-carrinho">
-                    <p>-</p>
-                  </button>
-    
-                  <p id="quantidade-carrinho">1</p>
-                  
-                  <button class="add-carrinho" id="adicionar-carrinho">
-                    <p>+</p>
-                </div>
-            </div>
-
-            <div class="space-final-carrinho">
-                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
-                <p>R$ <span id="preco-item-carrinho">0</span></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="esp-button-carrinho">
-            <div class="subtotal-carrinho">
-                <p>Subtotal:</p>
-                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
-            </div>
-            <a href="dados.html"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+        <h3 id="nome-representante">Lucas Nascimento dos Santos</h3>
+        <div class="pags-config">
+          <a href="config-home.html" class="one-pag">
+            <i class="fi fi-sr-settings"></i>
+            <p>Configurações</p>
+          </a>
+          <a href="config-compras.html" class="one-pag">
+            <i class="fi fi-sr-shopping-bag"></i>
+            <p>Minhas Compras</p>
+          </a>
+          <button class="one-pag" id="openSairConta">
+            <i class="fi fi-ss-leave"></i>
+            <p>Sair</p>
+          </button>
         </div>
       </div>
 
-      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+      <div class="cont-main-config">
+        <h1>Configurações</h1>
 
-    <script src="../public/js/finalizar.js"></script>
+        <div class="all-informations">
+          <div class="one-information">
+            <div class="esquerda-information">
+              <h3>Nome do Representante</h3>
+              <p id="nome-representante">Lucas Nascimento dos Santos</p>
+            </div>
+
+            <div class="direita-information">
+              <button id="alterar-nome">Alterar</button>
+            </div>
+          </div>
+
+          <div class="one-information">
+            <div class="esquerda-information">
+              <h3>E-Mail</h3>
+              <p id="email-representante">lucasnascimento@gmail.com</p>
+            </div>
+
+            <div class="direita-information">
+              <button id="alterar-email">Alterar</button>
+            </div>
+          </div>
+
+          <div class="one-information">
+            <div class="esquerda-information">
+              <h3>Número de Telefone</h3>
+              <p id="numero-representante">(11) 99999-9999</p>
+            </div>
+
+            <div class="direita-information">
+              <button id="alterar-numero">Alterar</button>
+            </div>
+          </div>
+
+          <div class="one-information">
+            <div class="esquerda-information">
+              <h3>CNPJ</h3>
+              <p id="cnpj-representante">99.999.999/0001-99</p>
+            </div>
+
+            <div class="direita-information">
+              <button id="alterar-cnpj">Alterar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aba-carrinho" id="aba-carrinho">
+      <div class="titulo-filtrar">
+        <h1>Seu Carrinho</h1>
+        <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+      </div>
+
+      <div class="padding-filtrar">
+        <div class="one-produto-carrinho">
+          <div class="space-img-carrinho">
+            <img src="../public/img/abafador.svg" alt="" />
+          </div>
+
+          <div class="space-meio-carrinho">
+            <div class="names-carrinho">
+              <p><strong>Capacete de Proteção</strong></p>
+
+              <span>CA: 56578</span>
+            </div>
+
+            <div class="add-remove-carrinho">
+              <button class="reduzir-carrinho" id="reduzir-carrinho">
+                <p>-</p>
+              </button>
+
+              <p id="quantidade-carrinho">1</p>
+
+              <button class="add-carrinho" id="adicionar-carrinho">
+                <p>+</p>
+              </button>
+            </div>
+          </div>
+
+          <div class="space-final-carrinho">
+            <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+            <p>R$ <span id="preco-item-carrinho">0</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="esp-button-carrinho">
+        <div class="subtotal-carrinho">
+          <p>Subtotal:</p>
+          <p>
+            <strong>R$ <span id="subtotal-carrinho">0</span></strong>
+          </p>
+        </div>
+        <a href="dados.html"
+          ><button type="submit" id="confirmar-filtrar">
+            Finalizar Compra
+          </button></a
+        >
+      </div>
+    </div>
+
+    <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+
     <script src="../public/js/funcoesprincipais.js"></script>
-    <script src="../public/js/entrega.js"></script>
   </body>
 </html>
