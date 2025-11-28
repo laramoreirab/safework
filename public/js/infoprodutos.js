@@ -102,6 +102,42 @@ try {
             caProd.innerHTML = `<p>C.A: ${produto.ca}</p>` // imprimindo o ca do produto 
             codProd.innerHTML = `${codigoProd}` // imprimindo o código do produto
             descProd.innerHTML = `<p>${produto.descricao}</p>` // imprimindo a descrição do produto
+
+            //função para atualizar preço total
+            function atualizarPrecoTotal() {
+                const linhas = document.querySelectorAll('.linha_informacoes');
+                let total = 0;
+
+                linhas.forEach(linha => {
+                    const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
+                    if (!isNaN(quantidadeLotes) && quantidadeLotes > 0) {
+                        total += quantidadeLotes * 50 * produto.preco_unitario;
+                    }
+                });
+
+                precoProdElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+
+            // adicionar eventos nos botões + e -
+            document.querySelectorAll('.aumentar-btn, .diminuir-btn, .quantidade-input').forEach(el => {
+                el.addEventListener('click', atualizarPrecoTotal);
+                el.addEventListener('input', atualizarPrecoTotal);
+            });
+
+            //botão comprar
+             document.querySelector('.addcarrinho_informacoes').addEventListener('click', () => {
+                const linhas = document.querySelectorAll('.linha_informacoes');
+
+                linhas.forEach(linha => {
+                    const tamanho = linha.dataset.tamanho;
+                    const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
+
+                    if (quantidadeLotes > 0) {
+                        const quantidadeUnidades = quantidadeLotes * 50;
+                        adicionarAoCarrinho(produto.id, quantidadeUnidades, tamanho);
+                    }
+                });
+            });
         })
 } catch (err) {
     console.error('Erro ao procurar produto', err)

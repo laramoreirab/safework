@@ -8,10 +8,11 @@ import { fileURLToPath } from 'url';
 import { read } from './config/database.js';
 
 
-// import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
 import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
 import produtoRotas from './routes/produtoRotas.js' // rota que manipula produtos
-// import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
+import carrinhoRotas from './routes/carrinhoRotas.js'; //rota do carrinho
+import finalizacaoRotas from './routes/finalizacaoRotas.js' //rota para finalizar pedido
 
 
 //Importando middlewares
@@ -92,6 +93,9 @@ app.use(cookieParser());
 
 // Rotas da API 
 app.use('/auth', authRotas)
+app.use('/usuarios', usuarioRotas)
+app.use('/carrinho' , carrinhoRotas)
+app.use('/finalizacao', finalizacaoRotas)
 app.use('/api/produtos', produtoRotas)
 
 // servir arquivos estáticos da pasta 'views'
@@ -105,6 +109,22 @@ app.get('/login', (req,res) =>{
 app.get('/cadastro', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'cadastro.html'))
 })
+app.get('/sobrenos', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'sobrenos.html'))
+})
+app.get('/dados', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'dados.html'))
+})
+app.get('/entrega', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
+})
+app.get('/entrega', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
+})
+app.get('/finalizar', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'finalizado.html'))
+})
+
 
 app.get('/', (req, res) => {
     res.json({
