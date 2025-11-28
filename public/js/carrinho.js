@@ -96,7 +96,7 @@ async function atualizarQuantidade(itemId, novaQuantidade) {
     }
     
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${item.id}`, {
+        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -120,7 +120,7 @@ async function removerItem(itemId) {
     if (!confirm('Deseja remover este item do carrinho?')) return;
     
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${item.id}`, {
+        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
         method: 'DELETE',
         credentials: 'include'
     });

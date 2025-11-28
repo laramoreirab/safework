@@ -1,5 +1,6 @@
 import carrinhoModel from '../models/carrinhoModel.js';
 import produtoModel from '../models/produtoModel.js';
+import { read } from '../config/database.js';
 
 class carrinhoController {
 
