@@ -226,6 +226,7 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
     }
 
     function filtrarProduto() {
+
       container.innerHTML = ''
 
       const searchTerm = searchInput.value.toLowerCase().trim();
@@ -236,15 +237,28 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
         bloco.className = "produto"; // nome da classe do bloco é produto
 
 
+        let tipoProd;
+        switch (produto.tipo) {
+          case 'Facial': tipoProd = 'facial'; break;
+          case 'Ocular': tipoProd = 'ocular'; break;
+          case 'Corporal': tipoProd = 'corporal'; break;
+          case 'Respiratório': tipoProd = 'respiratorio'; break;
+          case 'Auditivo': tipoProd = 'auditivo'; break;
+          case 'Manual': tipoProd = 'manual'; break;
+          case 'Pés e Pernas': tipoProd = 'pesepernas'; break;
+          case 'Cabeça': tipoProd = 'cabeca'; break;
+          default: tipoProd = 'todos';
+        }
+
         // escreve o que vai ter nesse bloco
         bloco.innerHTML = ` 
-            <a href='/produtos/${produto.tipo}/${produto.id}'>
+            <a href='/produtos/${tipoProd}/${produto.id}'>
               <div class="one-produto">
                 <img src="${produto.img}" alt="" />
                 <h5>${produto.nome}</h5>
                 <p>
                   CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |
-                  <span id="tipo-produtos"> ${produto.tipo}</span>
+                  <span id="tipo-produtos">${produto.tipo}</span>
                 </p>
                 <div class="estrelas">
                   <i class="fi fi-ss-star"></i>
