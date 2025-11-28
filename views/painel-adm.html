@@ -317,9 +317,9 @@
                                 <div class="cont_total-prod">
                                     <h1>Produtos</h1>
                                     <i class="fi fi-ts-box-open"></i>
-                                    <p class="qtd-produtos">
+                                    <p class="qtd-produtos" id="qtd-produtos">
                                         <!-- Coloque aqui a quantidade total de produtos  -->
-                                        147
+                                        0
                                     </p>
                                 </div>
                             </a>
@@ -335,7 +335,7 @@
                                 <i class="fi fi-ts-bags-shopping"></i>
                                 <p class="qtd-vendas">
                                     <!-- Coloque aqui a quantidade total de vendas -->
-                                    390
+                                    1
                                 </p>
                             </div>
                         </button>
@@ -406,9 +406,9 @@
                             <div class="cont_estoque-baixo">
                                 <h1>Estoque Baixo</h1>
                                 <i class="fi fi-ts-triangle-warning"></i>
-                                <p class="qtd-estoquebaixo">
+                                <p class="qtd-estoquebaixo" id="qtd-estoquebaixo">
                                     <!-- Coloque aqui a quantidade total de produtos com estoque baixo -->
-                                    5
+                                    0
                                 </p>
                             </div>
                         </button>
@@ -444,51 +444,6 @@
                                                             <th>status</th>
                                                         </tr>
                                                     </thead>
-
-                                                    <tr class="eachproduto">
-                                                        <td class="nome_prod">
-                                                            <!-- Colocar aqui o nome do produto -->
-                                                            Luva de Vaqueta
-                                                        </td>
-                                                        <td class="cat_prod">
-                                                            <!-- Colocar aqui a categoria do produto -->
-                                                            Manual
-                                                        </td>
-                                                        <td class="ca_prod">
-                                                            <!-- Colocar aqui o ca do produto -->
-                                                            0002
-                                                        </td>
-                                                        <td class="estoque_prod">
-                                                            <p class="estoque-vermelho">
-                                                                <!-- Colocar aqui a quantidade de produtos no estoque, ele deve ficar dentro do p.estoque-vermelho para pegar a estilização -->
-                                                                8 un.
-                                                            </p>
-                                                        </td>
-                                                        <td class="preco_prod">
-                                                            <!-- Colocar aqui o preço do produto, ele dev estar formatado da seguinte maneira: R$ NN.NN -->
-                                                            R$ 35.00
-                                                        </td>
-                                                        <td class="status_prod">
-                                                            <p class="status_ativo">
-                                                                ativo
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <!-- Só para demonstração -->
-                                                    <tr class="eachproduto">
-                                                        <td class="nome_prod">Luva de Vaqueta</td>
-                                                        <td class="cat_prod">Manual</td>
-                                                        <td class="ca_prod">0002</td>
-                                                        <td class="estoque_prod">
-                                                            <p class="estoque-vermelho">8 un.</p>
-                                                        </td>
-                                                        <td class="preco_prod">R$ 35.00</td>
-                                                        <td class="status_prod">
-                                                            <p class="status_ativo">
-                                                                ativo
-                                                            </p>
-                                                        </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -507,7 +462,7 @@
                                 <i class="fi fi-tr-users"></i>
                                 <p class="qtd-users">
                                     <!-- Coloque aqui a quantidade total de usuários  -->
-                                    222
+                                    2
                                 </p>
                             </div>
                         </button>
@@ -932,7 +887,7 @@
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
                         <!-- Cá está a minha dúvida novamente! -->
-                        <button type="submit" class="submit-delete_prod">Sim,
+                        <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
                             Deletar</button>
                     </div>
                 </div>

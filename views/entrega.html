@@ -228,6 +228,21 @@
     <div class="titulo-filtrar">
       <h1>Seu Carrinho</h1>
       <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+          <div class="inteira-input">
+            <label for="email-empresa"><strong>Portaria *</strong></label>
+            <input
+              type="portaria"
+              name="portaria"
+              id="portaria"
+              placeholder="523"
+              required
+            />
+          </div>
+        </form>
+        <a href="/pagamento">
+          <button><strong>Continuar</strong></button>
+        </a>
+      </main>
     </div>
 
     <div class="padding-filtrar">
@@ -258,6 +273,12 @@
         <div class="space-final-carrinho">
           <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
           <p>R$ <span id="preco-item-carrinho">0</span></p>
+        <div class="esp-button-carrinho">
+            <div class="subtotal-carrinho">
+                <p>Subtotal:</p>
+                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
+            </div>
+            <a href="/dados"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
         </div>
       </div>
     </div>
@@ -273,8 +294,8 @@
 
   <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
 
-    <script src="../public/js/finalizar.js"></script>
-    <script src="../public/js/funcoesprincipais.js"></script>
-    <script src="../public/js/entrega.js"></script>
+    <script src="/public/js/finalizar.js"></script>
+    <script src="/public/js/funcoesprincipais.js"></script>
+    <script src="/public/js/entrega.js"></script>
   </body>
 </html>

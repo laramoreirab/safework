@@ -91,3 +91,123 @@ if (document.getElementById("nao-sair")) {
     modalSairConta.hide();
   });
 }
+
+// Fechar modal de alterar nome ao clicar em "Cancelar" ou no botão "X"
+const modalAlterarNome = document.getElementById("modalAlterarNome");
+if (modalAlterarNome) {
+  const cancelarButton = modalAlterarNome.querySelector(
+    ".buttons-modal button:first-child"
+  );
+  const fecharButton = modalAlterarNome.querySelector(".tirar-transparent");
+
+  if (cancelarButton) {
+    cancelarButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarNome);
+      modalInstance.hide();
+    });
+  }
+
+  if (fecharButton) {
+    fecharButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarNome);
+      modalInstance.hide();
+    });
+  }
+}
+
+// Fechar modal de alterar email ao clicar em "Cancelar" ou no botão "X"
+const modalAlterarEmail = document.getElementById("modalAlterarEmail");
+if (modalAlterarEmail) {
+  const cancelarButton = modalAlterarEmail.querySelector(
+    ".buttons-modal button:first-child"
+  );
+  const fecharButton = modalAlterarEmail.querySelector(".tirar-transparent");
+
+  if (cancelarButton) {
+    cancelarButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarEmail);
+      modalInstance.hide();
+    });
+  }
+
+  if (fecharButton) {
+    fecharButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarEmail);
+      modalInstance.hide();
+    });
+  }
+}
+
+// Fechar modal de alterar número ao clicar em "Cancelar" ou no botão "X"
+const modalAlterarNumero = document.getElementById("modalAlterarNumero");
+if (modalAlterarNumero) {
+  const cancelarButton = modalAlterarNumero.querySelector(
+    ".buttons-modal button:first-child"
+  );
+  const fecharButton = modalAlterarNumero.querySelector(".tirar-transparent");
+
+  if (cancelarButton) {
+    cancelarButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarNumero);
+      modalInstance.hide();
+    });
+  }
+
+  if (fecharButton) {
+    fecharButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarNumero);
+      modalInstance.hide();
+    });
+  }
+}
+
+// Fechar modal de alterar CNPJ ao clicar em "Cancelar" ou no botão "X"
+const modalAlterarCnpj = document.getElementById("modalAlterarCnpj");
+if (modalAlterarCnpj) {
+  const cancelarButton = modalAlterarCnpj.querySelector(
+    ".buttons-modal button:first-child"
+  );
+  const fecharButton = modalAlterarCnpj.querySelector(".tirar-transparent");
+
+  if (cancelarButton) {
+    cancelarButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarCnpj);
+      modalInstance.hide();
+    });
+  }
+
+  if (fecharButton) {
+    fecharButton.addEventListener("click", () => {
+      const modalInstance = bootstrap.Modal.getInstance(modalAlterarCnpj);
+      modalInstance.hide();
+    });
+  }
+}
+
+// Fechar modal ao clicar no botão "Cancelar" ou no botão "X" (fechar)
+function adicionarEventosFecharModal(modalId) {
+  const modalElement = document.getElementById(modalId);
+  if (modalElement) {
+    const cancelarButton = modalElement.querySelector(".btn-secondary");
+    const fecharButton = modalElement.querySelector(".btn-close");
+
+    if (cancelarButton) {
+      cancelarButton.addEventListener("click", () => {
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+      });
+    }
+
+    if (fecharButton) {
+      fecharButton.addEventListener("click", () => {
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+      });
+    }
+  }
+}
+
+// Adiciona eventos para os modais de alteração
+adicionarEventosFecharModal("modalAlterarEmail");
+adicionarEventosFecharModal("modalAlterarNumero");
+adicionarEventosFecharModal("modalAlterarCnpj");

@@ -340,7 +340,6 @@ footer.col-6.col-md-2.mb-3 {
   height: 100%;
   top: 0;
   right: 0;
-  border-radius: 1rem;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   z-index: 9999;
@@ -650,6 +649,10 @@ footer.col-6.col-md-2.mb-3 {
     align-items: center;
     align-content: center;
   }
+
+  .aba-carrinho {
+    width: 100%;
+  }
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
@@ -659,6 +662,10 @@ footer.col-6.col-md-2.mb-3 {
     img {
       width: 3rem;
     }
+  }
+
+  .aba-carrinho {
+    width: 100%;
   }
 
   .logo_header {

@@ -1,21 +1,57 @@
 // Carregar carrinho ao abrir a aba
+document.getElementById('open-carrinho').addEventListener('click', () => {
+    console.log('Abrindo modal do carrinho...');
+    carregarCarrinho();
+});
+
+// Fechar carrinho quando clicar no X
+document.getElementById('btnFechar-filtrar').addEventListener('click', () => {
+    document.getElementById('aba-carrinho').style.display = 'none';
+    document.getElementById('escurecer-filtrar').style.display = 'none';
+});
+
+// Fechar carrinho quando clicar no escurecer
+document.getElementById('escurecer-filtrar').addEventListener('click', () => {
+    document.getElementById('aba-carrinho').style.display = 'none';
+    document.getElementById('escurecer-filtrar').style.display = 'none';
+});
+
 async function carregarCarrinho() {
     try {
-        const res = await fetch('http://localhost:3000/carrinho', {
+        console.log('Carregando carrinho...');
+        
+        const res = await fetch('/carrinho', {
             method: 'GET',
-            credentials: 'include' // Importante para enviar o cookie do token
+            credentials: 'include'
         });
         
         const data = await res.json();
+        console.log('Dados recebidos:', data);
         
         if (data.sucesso) {
             renderizarCarrinho(data.dados);
+            // Mostrar o modal
+            document.getElementById('aba-carrinho').style.display = 'block';
+            document.getElementById('escurecer-filtrar').style.display = 'block';
         } else {
             console.error('Erro ao carregar carrinho:', data.mensagem);
+            renderizarCarrinhoVazio();
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
+        renderizarCarrinhoVazio();
     }
+}
+
+function renderizarCarrinhoVazio() {
+    const container = document.querySelector('.padding-filtrar');
+    const subtotalElement = document.getElementById('subtotal-carrinho');
+    
+    container.innerHTML = '<p style="text-align: center; padding: 2rem;">Seu carrinho está vazio</p>';
+    subtotalElement.textContent = '0,00';
+    
+    // Configurar botão finalizar para carrinho vazio
+    configurarBotaoFinalizar(true);
 }
 
 // Renderizar itens do carrinho
@@ -23,120 +59,308 @@ function renderizarCarrinho(dados) {
     const container = document.querySelector('.padding-filtrar');
     const subtotalElement = document.getElementById('subtotal-carrinho');
     
-    if (dados.itens.length === 0) {
-        container.innerHTML = '<p style="text-align: center; padding: 2rem;">Seu carrinho está vazio</p>';
-        subtotalElement.textContent = '0,00';
+    if (!dados.itens || dados.itens.length === 0) {
+        renderizarCarrinhoVazio();
         return;
     }
     
-    container.innerHTML = dados.itens.map(item => `
+    container.innerHTML = dados.itens.map(item => {
+        const precoUnitario = item.preco_unitario || item.preco || 0;
+        const quantidade = item.quantidade || 1;
+        const totalItem = precoUnitario * quantidade;
+        
+        // Calcular quantidade em lotes (cada lote = 50 unidades)
+        const quantidadeLotes = Math.ceil(quantidade / 50);
+        
+        return `
         <div class="one-produto-carrinho" data-item-id="${item.id}">
             <div class="space-img-carrinho">
-                <img src="${item.imagem || '../public/img/abafador.svg'}" alt="${item.nome}">
+                <img src="${item.imagem || item.img || '../public/img/abafador.svg'}" alt="${item.nome}">
             </div>
 
             <div class="space-meio-carrinho">
                 <div class="names-carrinho">
                     <p><strong>${item.nome}</strong></p>
-                    <span>CA: ${item.ca} | Tamanho: ${item.tamanho}</span>
+                    <span>CA: ${item.ca} | Tamanho: ${item.tamanho || 'Único'}</span>
+                    <small style="display: block; color: #666; margin-top: 5px;">
+                        ${quantidade} unidades (${quantidadeLotes} lote${quantidadeLotes > 1 ? 's' : ''})
+                    </small>
                 </div>
 
                 <div class="add-remove-carrinho">
-                    <button class="reduzir-carrinho" onclick="atualizarQuantidade(${item.id}, ${item.quantidade - 1})">
+                    <button class="reduzir-carrinho" data-item-id="${item.id}" data-action="decrease" title="Diminuir 50 unidades">
                         <p>-</p>
                     </button>
 
-                    <p class="quantidade-carrinho">${item.quantidade}</p>
+                    <p class="quantidade-carrinho">${quantidade}</p>
 
-                    <button class="add-carrinho" onclick="atualizarQuantidade(${item.id}, ${item.quantidade + 1})">
+                    <button class="add-carrinho" data-item-id="${item.id}" data-action="increase" title="Aumentar 50 unidades">
                         <p>+</p>
                     </button>
                 </div>
             </div>
 
             <div class="space-final-carrinho">
-                <i class="fi fi-br-cross-small" onclick="removerItem(${item.id})"></i>
-                <p>R$ <span>${(item.preco_unitario * item.quantidade).toFixed(2).replace('.', ',')}</span></p>
+                <i class="fi fi-br-cross-small" data-item-id="${item.id}" data-action="remove" title="Remover item"></i>
+                <p>R$ <span class="preco-item">${totalItem.toFixed(2).replace('.', ',')}</span></p>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
     
-    subtotalElement.textContent = dados.total.toFixed(2).replace('.', ',');
+    subtotalElement.textContent = (dados.total || 0).toFixed(2).replace('.', ',');
+    
+    // Configurar botão finalizar
+    configurarBotaoFinalizar(false);
+    
+    // Adicionar event listeners aos botões
+    adicionarEventListenersCarrinho();
 }
 
-// Adicionar item ao carrinho
-async function adicionarAoCarrinho(produtoId, quantidade = 1, tamanho = null) {
+// Configurar botão finalizar compra
+function configurarBotaoFinalizar(carrinhoVazio = false) {
+    const btnFinalizar = document.querySelector('#btn-finalizar-compra') || 
+                        document.querySelector('a[href*="dados.html"]') ||
+                        document.querySelector('.btn-finalizar-compra')?.closest('a');
+    
+    if (btnFinalizar) {
+        if (carrinhoVazio) {
+            // Desabilita o botão se carrinho estiver vazio
+            btnFinalizar.style.pointerEvents = 'none';
+            btnFinalizar.style.opacity = '0.5';
+            const button = btnFinalizar.querySelector('button');
+            if (button) {
+                button.disabled = true;
+                button.style.cursor = 'not-allowed';
+            }
+        } else {
+            // Habilita o botão se carrinho tiver itens
+            btnFinalizar.style.pointerEvents = 'auto';
+            btnFinalizar.style.opacity = '1';
+            const button = btnFinalizar.querySelector('button');
+            if (button) {
+                button.disabled = false;
+                button.style.cursor = 'pointer';
+            }
+            
+            // Garante que o link está correto
+            const caminhoDados = obterCaminhoDados();
+            btnFinalizar.href = caminhoDados;
+            console.log('Link finalizar compra definido para:', caminhoDados);
+        }
+    }
+}
+
+// Função para detectar o caminho correto da página dados
+function obterCaminhoDados() {
+    const caminhoAtual = window.location.pathname;
+    console.log('Caminho atual:', caminhoAtual);
+    
+    // Se está em /produtos/cabeca/37 ou similar
+    if (caminhoAtual.includes('/produtos/')) {
+        return '../dados.html';
+    }
+    // Se está na raiz
+    else if (caminhoAtual === '/' || caminhoAtual.includes('/views/')) {
+        return 'dados.html';
+    }
+    // Se está em outra pasta
+    else {
+        return '/views/dados.html';
+    }
+}
+
+// Adicionar event listeners aos botões do carrinho
+function adicionarEventListenersCarrinho() {
+    const container = document.querySelector('.padding-filtrar');
+    
+    // Remove event listeners antigos para evitar duplicação
+    const newContainer = container.cloneNode(true);
+    container.parentNode.replaceChild(newContainer, container);
+    
+    // Novo event listener com delegation
+    document.querySelector('.padding-filtrar').addEventListener('click', function(e) {
+        const target = e.target;
+        
+        // Encontrar o elemento clicado (botão ou ícone)
+        const button = target.closest('button') || target.closest('i');
+        if (!button) return;
+        
+        const itemId = button.dataset.itemId;
+        const action = button.dataset.action;
+        
+        console.log('Botão clicado:', { itemId, action });
+        
+        if (!itemId) return;
+        
+        // Encontrar a quantidade atual
+        const itemElement = button.closest('.one-produto-carrinho');
+        const quantidadeElement = itemElement.querySelector('.quantidade-carrinho');
+        const quantidadeAtual = parseInt(quantidadeElement.textContent);
+        
+        switch(action) {
+            case 'increase':
+                // Aumenta em 50 unidades (1 lote)
+                atualizarQuantidade(itemId, quantidadeAtual + 50);
+                break;
+            case 'decrease':
+                // Diminui em 50 unidades (1 lote), mínimo de 50 unidades
+                if (quantidadeAtual > 50) {
+                    atualizarQuantidade(itemId, quantidadeAtual - 50);
+                } else if (quantidadeAtual === 50) {
+                    // Se tem exatamente 50, pergunta se quer remover
+                    if (confirm('Deseja remover este item do carrinho?')) {
+                        removerItem(itemId);
+                    }
+                } else {
+                    // Se tem menos de 50 (não deveria acontecer), remove
+                    removerItem(itemId);
+                }
+                break;
+            case 'remove':
+                removerItem(itemId);
+                break;
+        }
+    });
+}
+
+// Função global para adicionar item ao carrinho
+window.adicionarAoCarrinho = async function(produtoId, quantidade = 50, tamanho = null) {
     try {
-        const res = await fetch('http://localhost:3000/carrinho/adicionar', {
+        console.log('Adicionando ao carrinho:', { produtoId, quantidade, tamanho });
+        
+        // Garante que a quantidade seja múltipla de 50
+        const quantidadeFinal = Math.max(50, Math.ceil(quantidade / 50) * 50);
+        
+        const res = await fetch('/carrinho/adicionar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ produtoId, quantidade, tamanho })
+            body: JSON.stringify({ 
+                produtoId: parseInt(produtoId), 
+                quantidade: quantidadeFinal, 
+                tamanho: tamanho,
+                tipoQuantidade: 'unidade'
+            })
         });
         
         const data = await res.json();
+        console.log('Resposta do servidor:', data);
         
         if (data.sucesso) {
-            alert('Item adicionado ao carrinho!');
-            carregarCarrinho(); // Recarregar carrinho
+            alert(`${quantidadeFinal} unidades adicionadas ao carrinho!`);
+            // Atualiza contador
+            atualizarContadorCarrinho();
         } else {
-            alert(data.mensagem);
+            alert((data.mensagem || 'Não foi possível adicionar ao carrinho'));
         }
     } catch (error) {
         console.error('Erro ao adicionar item:', error);
-        alert('Erro ao adicionar item ao carrinho');
+        alert('Erro de conexão ao adicionar item ao carrinho');
     }
 }
 
-// Atualizar quantidade
-async function atualizarQuantidade(itemId, novaQuantidade) {
-    if (novaQuantidade < 1) {
-        removerItem(itemId);
-        return;
-    }
-    
+// Função global para atualizar quantidade (agora em múltiplos de 50)
+window.atualizarQuantidade = async function(itemId, novaQuantidade) {
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
+        console.log('Atualizando quantidade:', { itemId, novaQuantidade });
+        
+        // Garante que a quantidade seja múltipla de 50 e pelo menos 50
+        const quantidadeFinal = Math.max(50, Math.ceil(novaQuantidade / 50) * 50);
+        
+        const res = await fetch(`/carrinho/item/${itemId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ quantidade: novaQuantidade })
+            body: JSON.stringify({ quantidade: quantidadeFinal })
         });
         
         const data = await res.json();
         
         if (data.sucesso) {
-            carregarCarrinho();
+            console.log(`Quantidade atualizada para ${quantidadeFinal} unidades`);
+            carregarCarrinho(); // Recarrega todo o carrinho para atualizar preços
         } else {
-            alert(data.mensagem);
+            alert(data.mensagem || 'Erro ao atualizar quantidade');
         }
     } catch (error) {
         console.error('Erro ao atualizar quantidade:', error);
+        alert(' Erro ao atualizar quantidade');
     }
 }
 
-// Remover item
-async function removerItem(itemId) {
-    if (!confirm('Deseja remover este item do carrinho?')) return;
+// Função global para remover item
+window.removerItem = async function(itemId) {
+    if (!confirm('Tem certeza que deseja remover este item do carrinho?')) return;
     
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
-        method: 'DELETE',
-        credentials: 'include'
-    });
+        console.log('Removendo item:', itemId);
+        
+        const res = await fetch(`/carrinho/item/${itemId}`, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+        
         const data = await res.json();
         
         if (data.sucesso) {
-            carregarCarrinho();
+            console.log('Item removido com sucesso');
+            carregarCarrinho(); // Recarrega todo o carrinho
+            atualizarContadorCarrinho(); // Atualiza contador
         } else {
-            alert(data.mensagem);
+            alert(data.mensagem || 'Erro ao remover item');
         }
     } catch (error) {
         console.error('Erro ao remover item:', error);
+        alert('Erro ao remover item');
     }
 }
 
-// Carregar carrinho ao abrir a aba
-document.getElementById('open-carrinho').addEventListener('click', () => {
-    carregarCarrinho();
+// Atualizar contador do carrinho
+window.atualizarContadorCarrinho = async function() {
+    try {
+        const res = await fetch('/carrinho/contador', {
+            credentials: 'include'
+        });
+        const data = await res.json();
+        
+        if (data.sucesso) {
+            const contador = document.querySelector('.contador-carrinho');
+            if (contador) {
+                contador.textContent = data.dados.totalItens;
+                contador.style.display = data.dados.totalItens > 0 ? 'flex' : 'none';
+            }
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar contador:', error);
+    }
+}
+
+// Event listener para o botão finalizar compra (fallback)
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'confirmar-filtrar' || 
+        e.target.classList.contains('btn-finalizar-compra')) {
+        
+        e.preventDefault();
+        
+        // Verifica se o carrinho tem itens
+        const subtotalText = document.getElementById('subtotal-carrinho').textContent;
+        const subtotal = parseFloat(subtotalText.replace(',', '.'));
+        
+        if (subtotal > 0 && !isNaN(subtotal)) {
+            console.log('Redirecionando para finalização...');
+            
+            const caminhoDados = obterCaminhoDados();
+            console.log('Indo para:', caminhoDados);
+            window.location.href = caminhoDados;
+            
+        } else {
+            alert('Seu carrinho está vazio! Adicione itens antes de finalizar a compra.');
+        }
+    }
+});
+
+// Inicializar contador ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔧 Carrinho.js inicializado');
+    atualizarContadorCarrinho();
 });
