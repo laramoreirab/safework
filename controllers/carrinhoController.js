@@ -7,12 +7,12 @@ class carrinhoController {
     static async obterCarrinho(req, res) {
         try {
             const usuarioId = req.usuario.id;
-            console.log(`🔍 Buscando carrinho para usuário: ${usuarioId}`);
+            console.log(`Buscando carrinho para usuário: ${usuarioId}`);
 
             const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
             
             if (!pedido) {
-                console.log('📭 Carrinho vazio para usuário:', usuarioId);
+                console.log('Carrinho vazio para usuário:', usuarioId);
                 return res.json({
                     sucesso: true,
                     dados: { 
@@ -24,7 +24,7 @@ class carrinhoController {
             }
 
             const itens = await carrinhoModel.buscarItens(pedido.id);
-            console.log(`🛒 Carrinho encontrado com ${itens.length} itens para usuário: ${usuarioId}`);
+            console.log(`Carrinho encontrado com ${itens.length} itens para usuário: ${usuarioId}`);
 
             return res.status(200).json({
                 sucesso: true,
@@ -35,7 +35,7 @@ class carrinhoController {
                 }
             });
         } catch (error) {
-            console.error('❌ Erro ao obter carrinho:', error);
+            console.error('Erro ao obter carrinho:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
@@ -50,7 +50,7 @@ class carrinhoController {
             const usuarioId = req.usuario.id;
             const { produtoId, quantidade, tamanho, tipoQuantidade } = req.body;
 
-            console.log('📥 Recebendo item para carrinho:', { 
+            console.log('Recebendo item para carrinho:', { 
                 usuarioId, produtoId, quantidade, tamanho, tipoQuantidade 
             });
 
@@ -87,7 +87,7 @@ class carrinhoController {
                 });
             }
 
-            console.log('✅ Produto encontrado:', produto.nome);
+            console.log('Produto encontrado:', produto.nome);
 
             // Buscar ou criar pedido
             let pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
@@ -95,17 +95,17 @@ class carrinhoController {
 
             if (!pedido) {
                 pedidoId = await carrinhoModel.criarPedido(usuarioId);
-                console.log('🆕 Novo pedido criado:', pedidoId);
+                console.log('Novo pedido criado:', pedidoId);
             } else {
                 pedidoId = pedido.id;
-                console.log('📋 Pedido existente:', pedidoId);
+                console.log('Pedido existente:', pedidoId);
             }
 
             // Verificar se item já existe (mesmo produto + mesmo tamanho)
             const itemExistente = await carrinhoModel.buscarItemExistente(pedidoId, produtoId, tamanho);
             
             if (itemExistente) {
-                console.log('🔄 Item existente encontrado, atualizando quantidade...');
+                console.log('Item existente encontrado, atualizando quantidade...');
                 const novaQuantidade = itemExistente.quantidade + quantidadeFinal;
                 await carrinhoModel.atualizarQuantidadeItem(itemExistente.id, novaQuantidade);
                 await carrinhoModel.atualizarTotalPedido(pedidoId);
@@ -119,7 +119,7 @@ class carrinhoController {
                     }
                 });
             } else {
-                console.log('🆕 Adicionando novo item ao carrinho...');
+                console.log('Adicionando novo item ao carrinho...');
                 const itemId = await carrinhoModel.adicionarItem(
                     pedidoId, 
                     produtoId, 
@@ -137,7 +137,7 @@ class carrinhoController {
                 });
             }
         } catch (error) {
-            console.error('❌ Erro ao adicionar item:', error);
+            console.error('Erro ao adicionar item:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
@@ -153,7 +153,7 @@ class carrinhoController {
             const { quantidade } = req.body;
             const usuarioId = req.usuario.id;
 
-            console.log('📝 Atualizando quantidade do item:', { itemId: id, novaQuantidade: quantidade });
+            console.log('Atualizando quantidade do item:', { itemId: id, novaQuantidade: quantidade });
 
             if (!quantidade || quantidade < 1) {
                 return res.status(400).json({
@@ -190,7 +190,7 @@ class carrinhoController {
                 mensagem: 'Quantidade atualizada com sucesso'
             });
         } catch (error) {
-            console.error('❌ Erro ao atualizar quantidade:', error);
+            console.error('Erro ao atualizar quantidade:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
@@ -205,7 +205,7 @@ class carrinhoController {
             const { id } = req.params;
             const usuarioId = req.usuario.id;
 
-            console.log('🗑️ Removendo item do carrinho:', { itemId: id });
+            console.log('Removendo item do carrinho:', { itemId: id });
 
             const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
             if (!pedido) {
@@ -234,7 +234,7 @@ class carrinhoController {
                 mensagem: 'Item removido do carrinho com sucesso'
             });
         } catch (error) {
-            console.error('❌ Erro ao remover item:', error);
+            console.error('Erro ao remover item:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
@@ -263,7 +263,7 @@ class carrinhoController {
                 dados: { totalItens }
             });
         } catch (error) {
-            console.error('❌ Erro ao obter contador:', error);
+            console.error('Erro ao obter contador:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',

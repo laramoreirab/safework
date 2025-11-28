@@ -10,5 +10,6 @@ router.get('/', authMiddleware, carrinhoController.obterCarrinho);
 router.post('/adicionar', authMiddleware, carrinhoController.adicionarItem);
 router.put('/item/:id', authMiddleware, carrinhoController.atualizarQuantidadeItem);
 router.delete('/item/:id', authMiddleware, carrinhoController.removerItem);
+router.get('/contador', authMiddleware, carrinhoController.obterContador);
 
 export default router;

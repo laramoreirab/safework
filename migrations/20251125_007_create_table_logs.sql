@@ -8,5 +8,7 @@ create table if not exists logs (
     user_agent varchar(100),
     dados_requisicao varchar(100),
     tempo_resposta_ms int,
-    status_code int
+    usuario_id int,
+    status_code int,
+    dados_resposta varchar(100)
 );

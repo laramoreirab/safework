@@ -57,7 +57,10 @@ class authController{
                 { expiresIn: JWT_CONFIG.expiresIn } //pega informações como período de expiração do token no .env
             );
             //agora o token vai ser enviado para a verificação via cookie
-            res.cookie('token',token, {
+            res.cookie('token',token, usuario.id,
+                usuario.nome,
+                usuario.email,
+                usuario.tipo, {
                 httpOnly: true, // protege contra acesso via JS no browser
                 secure: false, //o navegador só vai enviar esse cookie em conexões HTTPS
                 sameSite: 'Strict',

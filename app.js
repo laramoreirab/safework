@@ -114,6 +114,7 @@ const pages = {
     '/sobrenos': 'sobrenos.html',
     '/dados': 'dados.html',
     '/entrega': 'entrega.html',
+    '/pagamento': 'pagamento.html',
     '/finalizar': 'finalizado.html',
     '/': 'index.html' // Adicione uma página inicial se necessário
 };

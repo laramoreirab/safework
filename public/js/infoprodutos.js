@@ -148,75 +148,27 @@ try {
 } catch (err) {
     console.error('Erro ao procurar produto', err)
 }
-// Função para adicionar item ao carrinho (DEVE SER GLOBAL)
-async function adicionarAoCarrinho(produtoId, quantidade, tamanho = null) {
-    try {
-        console.log('Tentando adicionar ao carrinho:', { produtoId, quantidade, tamanho });
-        
-        const res = await fetch('/carrinho/adicionar', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({ 
-                produtoId, 
-                quantidade, 
-                tamanho,
-                tipoQuantidade: 'unidade' // ← ESPECIFIQUE QUE É EM UNIDADES
-            })
-        });
-        
-        const data = await res.json();
-        console.log('Resposta do servidor:', data);
-        
-        if (data.sucesso) {
-            alert('Item adicionado ao carrinho com sucesso!');
-            // Opcional: atualizar contador do carrinho
-            if (window.atualizarContadorCarrinho) {
-                window.atualizarContadorCarrinho();
-            }
-        } else {
-            alert('Erro: ' + (data.mensagem || 'Não foi possível adicionar ao carrinho'));
-        }
-    } catch (error) {
-        console.error('Erro ao adicionar item:', error);
-        alert('Erro de conexão ao adicionar item ao carrinho');
-    }
-}
+document.querySelector('.addcarrinho_informacoes').addEventListener('click', () => {
+    const linhas = document.querySelectorAll('.linha_informacoes');
+    let itensAdicionados = 0;
 
-async function adicionarAoCarrinho(produtoId, quantidade, tamanho = null) {
-    try {
-        console.log('Tentando adicionar ao carrinho:', { produtoId, quantidade, tamanho });
-        
-        const res = await fetch('/carrinho/adicionar', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({ 
-                produtoId, 
-                quantidade, 
-                tamanho,
-                tipoQuantidade: 'unidade' // ← ESPECIFIQUE QUE É EM UNIDADES
-            })
-        });
-        
-        const data = await res.json();
-        console.log('Resposta do servidor:', data);
-        
-        if (data.sucesso) {
-            alert('Item adicionado ao carrinho com sucesso!');
-            // Opcional: atualizar contador do carrinho
-            if (window.atualizarContadorCarrinho) {
-                window.atualizarContadorCarrinho();
+    linhas.forEach(linha => {
+        const tamanho = linha.dataset.tamanho;
+        const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
+
+        if (quantidadeLotes > 0) {
+            const quantidadeUnidades = quantidadeLotes * 50;
+            // Chama a função GLOBAL do carrinho.js
+            if (window.adicionarAoCarrinho) {
+                window.adicionarAoCarrinho(produto.id, quantidadeUnidades, tamanho);
+                itensAdicionados++;
+            } else {
+                console.error('Função adicionarAoCarrinho não encontrada');
             }
-        } else {
-            alert('Erro: ' + (data.mensagem || 'Não foi possível adicionar ao carrinho'));
         }
-    } catch (error) {
-        console.error('Erro ao adicionar item:', error);
-        alert('Erro de conexão ao adicionar item ao carrinho');
+    });
+
+    if (itensAdicionados === 0) {
+        alert('Selecione pelo menos um tamanho e quantidade!');
     }
-}
+});

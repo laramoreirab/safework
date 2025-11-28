@@ -8,7 +8,7 @@ class carrinhoModel {
             const rows = await read('pedidos', `usuario_id = ${usuarioId} AND status = 'carrinho'`);
             return rows[0] || null;
         } catch (error) {
-            console.error('❌ Erro ao buscar pedido no carrinho:', error);
+            console.error(' Erro ao buscar pedido no carrinho:', error);
             throw error;
         }
     }
@@ -27,8 +27,8 @@ class carrinhoModel {
                         ip.preco_unitario,
                         ip.tamanho,
                         p.nome,
-                        p.preco_unitario as preco_produto,
-                        p.imagem,
+                        p.preco as preco_produto,
+                        p.img,
                         p.ca,
                         p.descricao,
                         (ip.quantidade * ip.preco_unitario) AS subtotal
@@ -43,7 +43,7 @@ class carrinhoModel {
                 connection.release();
             }
         } catch (error) {
-            console.error('❌ Erro ao obter itens do carrinho:', error);
+            console.error('Erro ao obter itens do carrinho:', error);
             throw error;
         }
     }
@@ -55,11 +55,11 @@ class carrinhoModel {
                 usuario_id: usuarioId,
                 status: 'carrinho',
                 total: 0.00,
-                data_pedido: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                data_: new Date().toISOString().slice(0, 19).replace('T', ' ')
             });
             return result.insertId;
         } catch (error) {
-            console.error('❌ Erro ao criar pedido:', error);
+            console.error(' Erro ao criar pedido:', error);
             throw error;
         }
     }
@@ -78,7 +78,7 @@ class carrinhoModel {
             const rows = await read('itens_pedidos', whereClause);
             return rows[0] || null;
         } catch (error) {
-            console.error('❌ Erro ao buscar item existente:', error);
+            console.error(' Erro ao buscar item existente:', error);
             throw error;
         }
     }
@@ -89,7 +89,7 @@ class carrinhoModel {
             const rows = await read('itens_pedidos', `id = ${itemId} AND pedido_id = ${pedidoId}`);
             return rows[0] || null;
         } catch (error) {
-            console.error('❌ Erro ao buscar item por ID:', error);
+            console.error('Erro ao buscar item por ID:', error);
             throw error;
         }
     }
@@ -106,7 +106,7 @@ class carrinhoModel {
             });
             return result.insertId;
         } catch (error) {
-            console.error('❌ Erro ao adicionar item:', error);
+            console.error('Erro ao adicionar item:', error);
             throw error;
         }
     }
@@ -121,7 +121,7 @@ class carrinhoModel {
             );
             return result;
         } catch (error) {
-            console.error('❌ Erro ao atualizar quantidade do item:', error);
+            console.error('Erro ao atualizar quantidade do item:', error);
             throw error;
         }
     }
@@ -132,7 +132,7 @@ class carrinhoModel {
             const result = await deleteRecord('itens_pedidos', `id = ${itemId}`);
             return result;
         } catch (error) {
-            console.error('❌ Erro ao remover item:', error);
+            console.error('Erro ao remover item:', error);
             throw error;
         }
     }
@@ -157,7 +157,7 @@ class carrinhoModel {
                 connection.release();
             }
         } catch (error) {
-            console.error('❌ Erro ao atualizar total do pedido:', error);
+            console.error('Erro ao atualizar total do pedido:', error);
             throw error;
         }
     }
@@ -178,7 +178,7 @@ class carrinhoModel {
                 connection.release();
             }
         } catch (error) {
-            console.error('❌ Erro ao obter total de itens:', error);
+            console.error('Erro ao obter total de itens:', error);
             throw error;
         }
     }
@@ -201,7 +201,7 @@ class carrinhoModel {
                 connection.release();
             }
         } catch (error) {
-            console.error('❌ Erro ao limpar carrinho:', error);
+            console.error('Erro ao limpar carrinho:', error);
             throw error;
         }
     }
@@ -219,7 +219,7 @@ class carrinhoModel {
             );
             return result;
         } catch (error) {
-            console.error('❌ Erro ao finalizar pedido:', error);
+            console.error('Erro ao finalizar pedido:', error);
             throw error;
         }
     }
