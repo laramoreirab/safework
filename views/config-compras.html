@@ -381,6 +381,175 @@
 
     <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
 
+    <div
+      class="modal fade"
+      id="modalSairConta"
+      tabindex="-1"
+      data-bs-backdrop="false"
+      aria-labelledby="modalSairContaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content cont-sair">
+          <h1>Deseja sair?</h1>
+
+          <div class="checkbox-sair">
+            <input type="checkbox" name="permanecer-conectado" id="permanecer-conectado">
+            <label for="permanecer-conectado">Permanecer conectado</label>
+          </div>
+
+          <div class="buttons-sair">
+            <button id="nao-sair">Não</button>
+            <button class="active-button-sair" id="sim-sair">Sim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Alterar Nome -->
+    <div
+      class="modal fade"
+      id="modalAlterarNome"
+      tabindex="-1"
+      data-bs-backdrop="false"
+      aria-labelledby="modalAlterarNomeLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAlterarNomeLabel">
+              Alterar Nome do Representante
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="novoNome" class="form-label">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="novoNome"
+                placeholder="Digite o novo nome"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Alterar E-Mail -->
+    <div
+      class="modal fade"
+      id="modalAlterarEmail"
+      tabindex="-1"
+      data-bs-backdrop="false"
+      aria-labelledby="modalAlterarEmailLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAlterarEmailLabel">
+              Alterar E-Mail
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="novoEmail" class="form-label">E-Mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="novoEmail"
+                placeholder="Digite o novo e-mail"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Alterar Telefone -->
+    <div
+      class="modal fade"
+      id="modalAlterarNumero"
+      tabindex="-1"
+      data-bs-backdrop="false"
+      aria-labelledby="modalAlterarNumeroLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAlterarNumeroLabel">
+              Alterar Número de Telefone
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="novoNumero" class="form-label"
+                >Número de Telefone</label
+              >
+              <input
+                type="tel"
+                class="form-control"
+                id="novoNumero"
+                placeholder="(XX) XXXXX-XXXX"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="../public/js/funcoesprincipais.js"></script>
+    <script src="../public/js/config.js"></script>
   </body>
 </html>
