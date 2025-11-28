@@ -4,7 +4,7 @@ import { JWT_CONFIG } from '../config/jwt.js'
 const authMiddleware = (req, res, next) =>{
     try {
         // pega o token do cookie
-        const token = req.cookie.token;
+        const token = req.cookies.token;
 
         if(!token){ // caso falhe a operação de pegar o token do cookie
             return res.status(401).json({
@@ -52,8 +52,8 @@ const adminMiddleware = (req, res, next) => {
             erro: 'Acesso negado!',
             mensagem: 'Apenas administradores podem acessar esse recurso!'
         })
-        next();
     };
+        next();
 };
 
 export { authMiddleware, adminMiddleware } //exportando as autenticações de Token e de Administrador
