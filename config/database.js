@@ -73,7 +73,7 @@ async function deleteRecord(table, where){
     const connection = await getConnection()
     try{
     const sql = `DELETE FROM ${table} WHERE ${where}`
-    const [result] = connection.execute(sql)
+    const [result] = await connection.execute(sql)
     return result.affectedRows
     }finally{
         connection.release()
