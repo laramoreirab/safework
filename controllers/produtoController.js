@@ -133,7 +133,7 @@ class ProdutoController {
 
     static async criar(req, res) {
         try {
-            const { nome, tipo, ca, preco, estoque, descricao } = req.body;
+            const { nome, tipo, ca, preco, estoque, descricao, marcaProduto } = req.body;
             console.log(`esse é o req :`, req.body);
 
             // Validações manuais - coletar todos os erros
@@ -185,7 +185,8 @@ class ProdutoController {
                 tipo: tipo,
                 ca: ca,
                 estoque: estoque,
-                descricao: descricao
+                descricao: descricao,
+                marca: marcaProduto
             };
 
 

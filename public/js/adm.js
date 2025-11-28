@@ -14,6 +14,7 @@ async function criarProduto() {
     const precoProduto = document.getElementById('preco_prod-new').value
     const estoqueProduto = document.getElementById('qtd_prod-new').value
     const descricaoProduto = document.getElementById('descricao_prod-new').value
+    const marcaProduto = document.getElementById('marca_prod-new').value
     const InputImg = document.getElementById('img_prod-upload')
 
     const formData = new FormData()
@@ -23,6 +24,7 @@ async function criarProduto() {
     formData.append('preco', precoProduto)
     formData.append('estoque', estoqueProduto)
     formData.append('descricao', descricaoProduto)
+    formData.append('marca', marcaProduto)
 
     if (InputImg.files.length > 0) {
         formData.append('imagem', InputImg.files[0])
