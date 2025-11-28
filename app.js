@@ -109,6 +109,9 @@ app.get('/login', (req,res) =>{
 app.get('/cadastro', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'cadastro.html'))
 })
+app.get('/contato', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'contato.html'))
+})
 app.get('/sobrenos', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'sobrenos.html'))
 })
