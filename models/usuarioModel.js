@@ -14,7 +14,7 @@ class usuarioModel {
             const [usuarios] = await connection.query(sql, [limite, offset]);
             
             // Contar total de registros
-            const [totalResult] = await connection.execute('SELECT COUNT(*) as total FROM usuarios');
+            const [totalResult] = await connection.execute('SELECT COUNT(*) as total FROM empresas');
             const total = totalResult[0].total;
             
             return {
@@ -36,7 +36,7 @@ class usuarioModel {
        // Buscar usuário por ID
        static async buscarPorId(id) {
         try {
-            const rows = await read('usuarios', `id = ${id}`);
+            const rows = await read('empresas', `id = ${id}`);
             return rows[0] || null;
         } catch (error) {
             console.error('Erro ao buscar usuário por ID:', error);
@@ -99,7 +99,7 @@ class usuarioModel {
      // Excluir usuário
      static async excluir(id) {
         try {
-            return await deleteRecord('usuarios', `id = ${id}`);
+            return await deleteRecord('empresas', `id = ${id}`);
         } catch (error) {
             console.error('Erro ao excluir usuário:', error);
             throw error;

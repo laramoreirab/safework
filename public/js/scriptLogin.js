@@ -6,18 +6,18 @@ form.addEventListener('submit', async(e) => {
     const senha = document.getElementById('senha').value;
     
 try{
-    const res = await fetch('http://localhost:3000/auth/login', {
+        const res = await fetch('/auth/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, senha}),
-        credentials: "include" //autorizando o envio/recebimento de cookies
-    })
+        credentials: "include"
+});
 
     const data = await res.json()
 
     if(data.sucesso){
         //se o login der certo ele redireciona o usuário até o index
-         window.location.href = '../index.html'
+         window.location.href = '../'
     }
     else{
         //login falhou

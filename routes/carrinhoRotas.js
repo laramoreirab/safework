@@ -1,16 +1,15 @@
+// carrinhoRotas.js
 import express from 'express';
 import carrinhoController from '../controllers/carrinhoController.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// GET /carrinho - Obter carrinho
-router.get('/',authMiddleware, carrinhoController.obterCarrinho);
-// POST /carrinho/adicionar - Adicionar item
-router.post('/adicionar',authMiddleware, carrinhoController.adicionarItem);
-// PUT /carrinho/item/:id - Atualizar quantidade
-router.put('/carrinho/item/:id', carrinhoController.atualizarQuantidadeItem);
-// DELETE /carrinho/item/:id - Remover item
-router.delete('/item/:id',authMiddleware, carrinhoController.removerItem);
+// Todas as rotas protegidas por autenticação
+router.get('/', authMiddleware, carrinhoController.obterCarrinho);
+router.post('/adicionar', authMiddleware, carrinhoController.adicionarItem);
+router.put('/item/:id', authMiddleware, carrinhoController.atualizarQuantidadeItem);
+router.delete('/item/:id', authMiddleware, carrinhoController.removerItem);
+router.get('/contador', authMiddleware, carrinhoController.obterContador);
 
 export default router;

@@ -18,7 +18,7 @@ try{
 
     if(data.sucesso){
         //se o registro der certo ele redireciona o usuário até o index
-         window.location.href = '/login.html'
+         window.location.href = '/login'
     }
     else{
         //registro falhou
