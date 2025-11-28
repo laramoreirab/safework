@@ -137,17 +137,25 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    h1{
+    padding-bottom: 4rem;
+
+    h1 {
         color: var(--branco);
         font-weight: 700;
+        text-align: center;
     }
+}
+
+.inputcategoria:hover {
+    transition: 1s ease all;
 }
 
 .linha_eachcategoria {
     width: 70px;
     height: 6px;
     background-color: var(--branco);
-    opacity: 1;
+    opacity: 20;
+    border: none;
 }
 
 /* Nossos Produtos */
@@ -214,23 +222,176 @@
 }
 
 /* Marcas */
-.titulo_marcas{
-   font-family: var(--bebas);
+.titulo_marcas {
+    font-family: var(--bebas);
     color: var(--azul-crepusculo);
     text-align: center;
-    h1{
+
+    h1 {
         font-size: 8vh;
     }
 }
 
 /* Avaliações */
-.titulo_avaliacoes{
+.titulo_avaliacoes {
     font-family: var(--bebas);
     color: var(--azul-crepusculo);
     text-align: center;
-    h1{
+
+    h1 {
         font-size: 8vh;
     }
+}
+
+.avaliacoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+
+.eachavaliacao {
+    margin: 1.5rem;
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 25vh;
+    width: 35vh;
+    border-radius: 15px;
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.3),
+        /* sombra principal mais suave */
+        0 3px 10px rgba(0, 0, 0, 0.2),
+        /* camada intermediária */
+        0 1px 4px rgba(0, 0, 0, 0.1);
+    /* camada de transição delicada */
+}
+
+.avaliacaoprod {
+    i {
+        font-size: 2rem;
+        color: #f7ce08;
+    }
+}
+
+.conteudodaavaliacao {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.nomeavaliador {
+    font-weight: 700;
+}
+
+/* Marcas */
+
+.marcas_epis {
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+
+    a {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+#bg-3m {
+    background: linear-gradient(135deg, #a33f3f, #ff0000);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .img-1 {
+        align-items: center;
+        margin-top: -2rem;
+        width: 100%;
+    }
+
+    .img-2 {
+        width: 100%;
+        margin-top: -1rem;
+        vertical-align: middle;
+    }
+}
+
+.bg-montana {
+    background: linear-gradient(135deg, #bdbdbd, #424242);
+    color: white;
+}
+
+.bg-softworks {
+    background: linear-gradient(135deg, #ffb300, #fff3e0);
+    color: black;
+}
+
+.bg-volk {
+    background: linear-gradient(135deg, #0d47a1, #4c8ec5);
+    color: white;
+}
+
+.bg-apa {
+    background: linear-gradient(135deg, #ffeb3b, #fffde7);
+    color: black;
+}
+
+#bg-honeywell {
+    background: linear-gradient(135deg, #ffcccc, #cc0000f8);
+    color: white;
+
+    .img-1 {
+        align-items: center;
+        margin-top: -0.8rem;
+        width: 100%;
+    }
+
+    .img-2 {
+        margin-top: 5rem;
+        width: 112%;
+    }
+}
+
+.carousel-control-prev-icon {
+    background-image: url("../img/home/previous-carrosel.svg");
+    /* sua imagem */
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-control-next-icon {
+    background-image: url("../img/home/next-carrosel.svg");
+    /* sua imagem */
+    width: 40px;
+    height: 40px;
+}
+
+.cont_marca {
+    border-radius: 12px;
+    height: 35vh;
+    /* altura proporcional */
+    width: 50%;
+    /* deixa responsivo */
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    img {
+        vertical-align: middle;
+    }
+}
+
+
+.img_error {
+    width: 95%;
 }
 
 /* <!--------------------------------- Responsividade ----------------------------------!> */
@@ -269,6 +430,86 @@
         margin: 0;
         padding: 2rem 0 3rem 0;
     }
+
+    .frase2 {
+        margin-top: 0.5rem;
+    }
+
+    /* Categorias */
+    .titulo_produtos {
+        h1 {
+            padding-bottom: 4rem;
+        }
+    }
+
+    .eachcategoriab {
+        width: 20vh;
+        height: 22vh;
+    }
+
+    .eachcategorial {
+        width: 20vh;
+        height: 22vh;
+    }
+
+    .px-5 {
+        padding-left: 1rem !important;
+    }
+
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+
+    /* marcas */
+    .cont_marca {
+        height: 45vh;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 35vh;
+        width: 35vh;
+    }
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
@@ -288,10 +529,16 @@
             position: relative;
             top: 8vh;
             margin: 0 auto;
-            left: 15%;
+            left: 22%;
             transform: translateX(-21%);
 
+            h1 {
+                font-size: 7vh;
+            }
+
         }
+
+
     }
 
     /* Sobre */
@@ -300,7 +547,99 @@
     }
 
     .txt_protecao {
-        margin: 0;
+        margin-left: 6rem;
+        width: 30vh;
+    }
+
+    .informacoes_protecao {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .frase2 {
+        margin-top: 0.5rem;
+    }
+
+    /* Categorias */
+    .titulo_produtos {
+        h1 {
+            padding-bottom: 4rem;
+        }
+    }
+
+    .eachcategoriab {
+        width: 18vh;
+        height: 30vh;
+    }
+
+    .eachcategorial {
+        width: 18vh;
+        height: 30vh;
+    }
+
+    .px-5 {
+        padding-left: 1rem !important;
+    }
+
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+
+    /* marcas */
+    .cont_marca {
+        height: 45vh;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 45vh;
+        width: 25vh;p{
+            text-align: center;
+        }
     }
 }
 
@@ -327,5 +666,143 @@
     /* Sobre */
     .txt_protecao {
         margin: 0;
+    }
+
+    .frase2 {
+        margin-top: 0.5rem;
+    }
+
+    /* Categorias */
+    .titulo_produtos {
+        h1 {
+            padding-bottom: 4rem;
+        }
+    }
+
+    .eachcategoriab {
+        width: 23vh;
+        height: 22vh;
+    }
+
+    .eachcategorial {
+        width: 23vh;
+        height: 22vh;
+    }
+
+    .px-5 {
+        padding-left: 1rem !important;
+    }
+
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+
+    /* marcas */
+    .cont_marca {
+        height: 45vh;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 35vh;
+        width: 35vh;
+    }
+}
+
+@media (max-width: 1424px) and (min-width: 1302px) {
+    #banner_index {
+        .frase_inicial {
+            right: 42%;
+        }
+    }
+
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 16%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 50vh;
+        width: 40vh;
     }
 }

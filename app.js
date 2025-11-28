@@ -96,6 +96,30 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use('/public', express.static(path.join(__dirname, "public")));
 
+app.get('/login', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'login.html'))
+})
+app.get('/cadastro', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'cadastro.html'))
+})
+app.get('/contato', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'contato.html'))
+})
+app.get('/sobrenos', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'sobrenos.html'))
+})
+app.get('/dados', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'dados.html'))
+})
+app.get('/entrega', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
+})
+app.get('/entrega', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
+})
+app.get('/finalizar', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'finalizado.html'))
+})
 // Middleware de debug para cookies e headers
 app.use((req, res, next) => {
     console.log('📦 Cookies recebidos:', req.cookies);
