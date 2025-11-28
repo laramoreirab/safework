@@ -132,7 +132,7 @@
             </a>
         </div>
     </header>
-    <!----------------------  Tela ADM ------------------------>
+    <!--------------------------------------------------------  Tela ADM ------------------------------------------------------------------>
     <section id="adm">
         <div class="linha-inicial">
             <div class="titulo_linha-inicial">
@@ -148,7 +148,7 @@
                     </div>
                 </button>
 
-                <!-- Modal Novo produto-->
+                <!-------------------------------- Modal Novo produto ----------------------------------------->
                 <div class="modal fade" id="modalNovoProduto" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-xl">
@@ -165,7 +165,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-
+                                <!--------------------- Formulário para enviar as informações do novo produto -------------------------->
                                 <form action="" id="info_novoproduto">
                                     <div class="align">
                                         <div class="eachinput">
@@ -206,6 +206,660 @@
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
                                                         <input type="text" id="qtd_prod-new">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="align">
+                                        <div class="tam_input">
+                                            <p>Tamanhos Disponíveis</p>
+                                            <div class="size-grid">
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="P"><span>P</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="M"><span>M</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="G"><span>G</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="GG"><span>GG</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="G1"><span>G1</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="G2"><span>G2</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="G3"><span>G3</span>
+                                                </label>
+                                                <!-- Númeração -->
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="36"><span>36</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="37"><span>37</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="38"><span>38</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="39"><span>39</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="40"><span>40</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="41"><span>41</span>
+                                                </label>
+                                                <label class="size-item">
+                                                    <input type="checkbox" name="size[]" value="42"><span>42</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="align">
+                                        <button class="salvar_novo-prod" type="submit">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-modals">
+            <div class="container">
+                <div class="row">
+                    <!-------------- Total de Produtos ------------->
+                    <div class="col-12 col-md-3">
+                        <button type="button" class="total-prod">
+                            <a href="#produtos_adm">
+                                <div class="cont_total-prod">
+                                    <h1>Produtos</h1>
+                                    <i class="fi fi-ts-box-open"></i>
+                                    <p class="qtd-produtos">
+                                        <!-- Coloque aqui a quantidade total de produtos  -->
+                                        147
+                                    </p>
+                                </div>
+                            </a>
+                        </button>
+                    </div>
+                    <!--------------------------------- Modal de Total de Vendas / Exibição de Compras -------------------------------->
+                    <div class="col-12 col-md-3">
+                        <!---- Trigger modal ----->
+                        <button type="button" class="total-vendas" data-bs-toggle="modal"
+                            data-bs-target="#modalTotalVendas">
+                            <div class="cont_total-vendas">
+                                <h1>Vendas</h1>
+                                <i class="fi fi-ts-bags-shopping"></i>
+                                <p class="qtd-vendas">
+                                    <!-- Coloque aqui a quantidade total de vendas -->
+                                    390
+                                </p>
+                            </div>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalTotalVendas" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="paimodal">
+                                            <div class="titulo-modal Vendas">
+                                                <h1>Vendas</h1>
+                                                <div class="icon_titulo-modal">
+                                                    <i class="fi fi-ts-bags-shopping"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="align">
+                                            <div class="tabela_vendas">
+                                                <table id="tabela_vendas">
+                                                    <thead class="cabecalho_tabela">
+                                                        <tr>
+                                                            <th>Empresa</th>
+                                                            <th>Data</th>
+                                                            <th>Produtos</th>
+                                                            <th class="valor_vendas">Valor Total</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tr class="eachproduto">
+                                                        <td class="nomeUser_compra">
+                                                            <!-- Colocar aqui o nome do comprador -->
+                                                            Petrobras
+                                                        </td>
+                                                        <td class="data_Compra">
+                                                            <!-- Colocar aqui a data da compra -->
+                                                            21/09/25
+                                                        </td>
+                                                        <td class="produtos_Compra">
+                                                            <p>
+                                                                <!-- Colocar aqui os produtos comprador, cada produto deve estar separados por br -->
+                                                                Capacete<br>Óculos Incolor<br>Luva
+                                                            </p>
+                                                        </td>
+                                                        <td class="valor_Compra">
+                                                            <!-- Colocar aqui o valor da compra -->
+                                                            R$ 547,80
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------------------------------- Modal de Produtos com Estoque Baixo -------------------------------------------------->
+                    <div class="col-12 col-md-3">
+                        <!---- Trigger modal ----->
+                        <button type="button" class="estoque-baixo" data-bs-toggle="modal"
+                            data-bs-target="#modalEstoqueBaixo">
+                            <div class="cont_estoque-baixo">
+                                <h1>Estoque Baixo</h1>
+                                <i class="fi fi-ts-triangle-warning"></i>
+                                <p class="qtd-estoquebaixo">
+                                    <!-- Coloque aqui a quantidade total de produtos com estoque baixo -->
+                                    5
+                                </p>
+                            </div>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalEstoqueBaixo" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="paimodal">
+                                            <div class="titulo-modal Estoque">
+                                                <h1>Estoque baixo</h1>
+                                                <div class="icon_titulo-modal">
+                                                    <i class="fi fi-ts-triangle-warning"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="align">
+                                            <div class="tabela_estoquebaixo">
+                                                <table id="tabela_estoquebaixo">
+                                                    <thead class="cabecalho_tabela">
+                                                        <tr>
+                                                            <th>produto</th>
+                                                            <th>categoria</th>
+                                                            <th>ca</th>
+                                                            <th>estoque</th>
+                                                            <th>preço</th>
+                                                            <th>status</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tr class="eachproduto">
+                                                        <td class="nome_prod">
+                                                            <!-- Colocar aqui o nome do produto -->
+                                                            Luva de Vaqueta
+                                                        </td>
+                                                        <td class="cat_prod">
+                                                            <!-- Colocar aqui a categoria do produto -->
+                                                            Manual
+                                                        </td>
+                                                        <td class="ca_prod">
+                                                            <!-- Colocar aqui o ca do produto -->
+                                                            0002
+                                                        </td>
+                                                        <td class="estoque_prod">
+                                                            <p class="estoque-vermelho">
+                                                                <!-- Colocar aqui a quantidade de produtos no estoque, ele deve ficar dentro do p.estoque-vermelho para pegar a estilização -->
+                                                                8 un.
+                                                            </p>
+                                                        </td>
+                                                        <td class="preco_prod">
+                                                            <!-- Colocar aqui o preço do produto, ele dev estar formatado da seguinte maneira: R$ NN.NN -->
+                                                            R$ 35.00
+                                                        </td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                                ativo
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Só para demonstração -->
+                                                    <tr class="eachproduto">
+                                                        <td class="nome_prod">Luva de Vaqueta</td>
+                                                        <td class="cat_prod">Manual</td>
+                                                        <td class="ca_prod">0002</td>
+                                                        <td class="estoque_prod">
+                                                            <p class="estoque-vermelho">8 un.</p>
+                                                        </td>
+                                                        <td class="preco_prod">R$ 35.00</td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                                ativo
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------------------------------------ Modal de Usuários -------------------------------------------------------->
+                    <div class="col-12 col-md-3">
+                        <!---- Trigger modal ----->
+                        <button type="button" class="total-usuarios" data-bs-toggle="modal"
+                            data-bs-target="#modalUsers">
+                            <div class="cont_total-usuarios">
+                                <h1>Usuários</h1>
+                                <i class="fi fi-tr-users"></i>
+                                <p class="qtd-users">
+                                    <!-- Coloque aqui a quantidade total de usuários  -->
+                                    222
+                                </p>
+                            </div>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalUsers" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="paimodal">
+                                            <div class="titulo-modal Users">
+                                                <h1>Usuários</h1>
+                                                <div class="icon_titulo-modal">
+                                                    <i class="fi fi-tr-users"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="linha-inicial_modal">
+                                            <div class="searchbarUser">
+                                                <div class="searchbar2User">
+                                                    <div class="searchIdUser">
+                                                        <input type="search" placeholder="Pesquise por ID...">
+                                                        <button id="botaoBuscaUser"><i
+                                                                class="fi fi-rs-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button_novoUser">
+                                                <!---- Trigger modal ----->
+                                                <button type="button" class="novo_produto" data-bs-toggle="modal"
+                                                    data-bs-target="#modalNovoUser">
+                                                    <div class="cont_addproduto">
+                                                        <i class="fi fi-rr-plus-small"></i>
+                                                        <p>Novo Usuário</p>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="align">
+                                            <div class="tabela_users">
+                                                <table id="tabela_users">
+                                                    <thead class="cabecalho_tabela">
+                                                        <tr>
+                                                            <th>Nome</th>
+                                                            <th>ID</th>
+                                                            <th>Email</th>
+                                                            <th>telefone</th>
+                                                            <th>status</th>
+                                                            <th class="acoes_cabecalho">ações</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tr class="eachUser">
+                                                        <td class="nome_user">
+                                                            <!-- Colocar aqui o nome do user -->
+                                                            Petrobras
+                                                        </td>
+                                                        <td class="id_user">
+                                                            <!-- Colocar aqui o nome do user -->
+                                                            130909
+                                                        </td>
+                                                        <td class="email_user">
+                                                            <!-- Colocar aqui o email do user -->
+                                                            aria@gmail.com
+                                                        </td>
+                                                        <td class="tel_user">
+                                                            <!-- Colocar aqui o telefone do user -->
+                                                            (11) 94561-1673
+                                                        </td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                                ativo
+                                                            </p>
+                                                        </td>
+                                                        <td class="actions_prod">
+                                                            <div class="acoes">
+                                                                <div class="excluir-produto">
+                                                                    <!-- Botão Excluir Usuário -->
+                                                                    <button type="button" class="botao_excluirprod"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#excluirUsuario">
+                                                                        <i class="fi fi-rs-trash"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Só para demonstração -->
+                                                    <tr class="eachUser">
+                                                        <td class="nome_user">Petrobras</td>
+                                                        <td class="id_user">130909</td>
+                                                        <td class="email_user">aria@gmail.com</td>
+                                                        <td class="tel_user">(11) 94561-1673</td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                                ativo
+                                                            </p>
+                                                        </td>
+                                                        <td class="actions_prod">
+                                                            <div class="acoes">
+                                                                <div class="excluir-produto">
+                                                                    <!-- Botão Excluir Usuário -->
+                                                                    <button type="button" class="botao_excluirprod"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#excluirUsuario">
+                                                                        <i class="fi fi-rs-trash"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------------- Modal Novo User ---------------------------->
+                        <div class="modal fade" id="modalNovoUser" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div></div>
+                                        <div class="paimodal">
+                                            <div class="titulo-modal Prod">
+                                                <i class="fi fi-rr-plus-small"></i>
+                                                <h1>Novo Usuário</h1>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!----------- Formulário para informações do Usuário  ---------->
+                                        <form action="" id="">
+                                            <div class="align">
+                                                <div class="eachinput">
+                                                    <p>Nome da Empresa</p>
+                                                    <input type="text" id="nome_user-new">
+                                                </div>
+                                                <div class="each2inputs">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="eachinput">
+                                                                <p>Telefone</p>
+                                                                <input type="text" id="tel_user-new">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="eachinput">
+                                                                <p>Email</p>
+                                                                <input type="text" id="email_user-new">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="eachinput">
+                                                    <p>Senha</p>
+                                                    <input type="password" id="senha_user-new">
+                                                </div>
+                                                <button class="salvar_novo-user" type="submit">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------------------------- Modal Excluir Usuário ------------------------------->
+                        <div class="modal fade" id="excluirUsuario" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="delete_usuario">
+                                            <h1 class="modal-title_delete-usuario" id="exampleModalLabel">Excluir
+                                                Usuário</h1>
+                                            <i class="fi fi-rs-trash"></i>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="confirm_delete">
+                                            <div class="align">
+                                                <div class="icon_deletar">
+                                                    <i class="fi fi-rr-triangle-warning"></i>
+                                                </div>
+                                                <h2>Você tem certeza que deseja excluir o usuário?</h2>
+                                                <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não poderão
+                                                    ser restauradas após excluí-las!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="cancel-btn"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <!-- nessa parte que estava com dúvida, pode alterar, mas por favor, a mantenha a classe .submit-delete_usuario -->
+                                        <button type="submit" class="submit-delete_usuario">Sim, Deletar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+    </section>
+    <!------------------------------------------------------------ Tabela de Produtos --------------------------------------------------------->
+    <section id="produtos_adm">
+        <div class="titulo-linha">
+            <h1 class="titulo_secaoprod">Produtos</h1>
+            <hr class="linha-gradiente">
+        </div>
+        <!-- Barra de pesquisa que deve ser funcional -->
+        <div class="searchbar">
+            <div class="searchbar2">
+                <div class="searchId">
+                    <input type="search" placeholder="Busque por nome, categoria ou CA...">
+                    <button id="botaoBuscaProd"><i class="fi fi-rs-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <!--------------------------------------- Tabela de exibição --------------------------------->
+        <div class="tabela_produtos">
+            <table>
+                <thead class="cabecalho_tabela">
+                    <tr>
+                        <th>produto</th>
+                        <th>categoria</th>
+                        <th>ca</th>
+                        <th>estoque</th>
+                        <th>preço</th>
+                        <th>status</th>
+                        <th class="acoes_cabecalho">ações</th>
+                    </tr>
+                </thead>
+
+                <tr class="eachproduto">
+                    <td class="nome_prod">
+                        <!------- Coloque aqui o nome do prdouto ------->
+                        Capacete de Segurança
+                    </td>
+                    <td class="cat_prod">
+                        <!----- Coloque aqui a categoria do produto ----->
+                        Cabeça
+                    </td>
+                    <td class="ca_prod">
+                        <!----- Coloque aqui o ca do produto ----->
+                        0001
+                    </td>
+                    <td class="estoque_prod">
+                        <!-- Atenção!! Se a quantidade de lotes no estoque for maior que 20, a classe do p deve ser .estoque-verde para estilização! -->
+                        <p class="estoque-verde">
+                            <!----- Coloque aqui quantidade no estoque do produto ----->
+                            45 un.
+                        </p>
+                    </td>
+                    <td class="preco_prod">
+                        <!----- Coloque aqui o preço do produto ----->
+                        R$ 35.00
+                    </td>
+                    <td class="status_prod">
+                        <p class="status_ativo">
+                            ativo
+                        </p>
+                    </td>
+                    <td class="actions_prod">
+                        <div class="acoes">
+                            <div class="editar-produto">
+                                <!---- Botão que redireciona para modal do Editar Produto  ----->
+                                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarProd">
+                                    <i class="fi-sr-pencil"></i>
+                                </button>
+                            </div>
+                            <div class="excluir-produto">
+                                <!-- Botão ue redireciona para modal do Excluir Produto -->
+                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                                    data-bs-target="#modalExcluirProd">
+                                    <i class="fi fi-rs-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Só para demonstração, mas observe o comentário no td.estoque prod -->
+                <tr class="eachproduto">
+                    <td class="nome_prod">Luva de vaqueta</td>
+                    <td class="cat_prod">Manual</td>
+                    <td class="ca_prod">0002</td>
+                    <td class="estoque_prod">
+                        <!-- Observe que a quantidade de lotes no estoque é menor que 20, por isso a classe utilizada no p é .estoque-vermelho.
+                         Essa classe é necessária para estilização. -->
+                        <p class="estoque-vermelho">8 un.</p>
+                    </td>
+                    <td class="preco_prod">R$ 35.00</td>
+                    <td class="status_prod">
+                        <p class="status_ativo">
+                            ativo
+                        </p>
+                    </td>
+                    <td class="actions_prod">
+                        <div class="acoes">
+                            <div class="editar-produto">
+                                <!---- Editar Produto modal ----->
+                                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarProd">
+                                    <i class="fi-sr-pencil"></i>
+                                </button>
+                            </div>
+                            <div class="excluir-produto">
+                                <!-- Botão Excluir Produto modal -->
+                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                                    data-bs-target="#modalExcluirProd">
+                                    <i class="fi fi-rs-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
+                <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div></div>
+                                <div class="paimodal">
+                                    <div class="titulo-modal Prod">
+                                        <h1>Editar Produto</h1>
+                                        <div class="icon_titulo-modal">
+                                            <i class="fi-sr-pencil"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="" id="info_atualizaproduto">
+                                    <div class="align">
+                                        <div class="eachinput">
+                                            <p>Upload da Imagem</p>
+                                            <div class="upload_container">
+                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*">
+                                            </div>
+                                        </div>
+                                        <div class="eachinput">
+                                            <p>Nome do Produto</p>
+                                            <input type="text" id="nome_prod-new">
+                                        </div>
+                                        <div class="each2inputs">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Categoria</p>
+                                                        <input type="text" id="atualiza-categoria_prod">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>CA</p>
+                                                        <input type="text" id="atualiza-ca_prod">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="each2inputs">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Preço</p>
+                                                        <input type="text" id="atualiza-preco_prod">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Estoque</p>
+                                                        <input type="text" id="atualiza-qtd_prod">
                                                     </div>
                                                 </div>
                                             </div>
@@ -264,7 +918,7 @@
                                         </div>
                                     </div>
                                     <div class="align">
-                                        <button class="salvar_novo-prod" type="submit">Salvar</button>
+                                        <button class="atualizar-prod" type="submit">Editar</button>
                                     </div>
 
                                 </form>
@@ -272,658 +926,45 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <div class="box-modals">
-            <div class="container">
-                <div class="row">
-                    <!-------------- Modal de Total de Produtos ------------->
-                    <div class="col-12 col-md-3">
-                        <!---- Trigger modal ----->
-                        <button type="button" class="total-prod">
-                            <a href="#produtos_adm">
-                                <div class="cont_total-prod">
-                                    <h1>Produtos</h1>
-                                    <i class="fi fi-ts-box-open"></i>
-                                    <p class="qtd-produtos">147</p>
+                <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
+                <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="delete_usuario">
+                                    <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
+                                        Excluir
+                                        Produto</h1>
+                                    <i class="fi fi-rs-trash"></i>
                                 </div>
-                            </a>
-                        </button>
-                    </div>
-                    <!-------------- Modal de Total de Vendas ------------->
-                    <div class="col-12 col-md-3">
-                        <!---- Trigger modal ----->
-                        <button type="button" class="total-vendas" data-bs-toggle="modal"
-                            data-bs-target="#modalTotalVendas">
-                            <div class="cont_total-vendas">
-                                <h1>Vendas</h1>
-                                <i class="fi fi-rs-shopping-cart"></i>
-                                <p class="qtd-vendas">390</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                        </button>
+                            <div class="modal-body">
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalTotalVendas" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="paimodal">
-                                            <div class="titulo-modal Vendas">
-                                                <div class="icon_titulo-modal">
-
-                                                </div>
-                                            </div>
+                                <div class="confirm_delete">
+                                    <div class="align">
+                                        <div class="icon_deletar">
+                                            <i class="fi fi-rr-triangle-warning"></i>
                                         </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
+                                        <h2>Você tem certeza que deseja excluir o produto?</h2>
+                                        <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
+                                            poderão
+                                            ser restauradas após excluí-las!</p>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
+                                <!-- Cá está a minha dúvida novamente! -->
+                                <button type="submit" class="submit-delete_prod">Sim,
+                                    Deletar</button>
                             </div>
                         </div>
-                    </div>
-                    <!---------- Modal de Estoque Baixo ----------->
-                    <div class="col-12 col-md-3">
-                        <!---- Trigger modal ----->
-                        <button type="button" class="estoque-baixo" data-bs-toggle="modal"
-                            data-bs-target="#modalEstoqueBaixo">
-                            <div class="cont_estoque-baixo">
-                                <h1>Estoque Baixo</h1>
-                                <i class="fi fi-ts-triangle-warning"></i>
-                                <p class="qtd-estoquebaixo">5</p>
-                            </div>
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalEstoqueBaixo" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="paimodal">
-                                            <div class="titulo-modal Estoque">
-                                                <div class="icon_titulo-modal">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!----------- Modal de Usuários --------->
-                    <div class="col-12 col-md-3">
-                        <!---- Trigger modal ----->
-                        <button type="button" class="total-usuarios" data-bs-toggle="modal"
-                            data-bs-target="#modalUsers">
-                            <div class="cont_total-usuarios">
-                                <h1>Usuários</h1>
-                                <i class="fi fi-tr-users"></i>
-                                <p class="qtd-users">222</p>
-                            </div>
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalUsers" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="paimodal">
-                                            <div class="titulo-modal Users">
-                                                <h1>Usuários</h1>
-                                                <div class="icon_titulo-modal">
-                                                    <i class="fi fi-tr-users"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="linha-inicial_modal">
-                                            <div class="searchbarUser">
-                                                <div class="searchbar2User">
-                                                    <div class="searchIdUser">
-                                                        <input type="search" placeholder="Pesquise por ID...">
-                                                        <button id="botaoBuscaUser"><i
-                                                                class="fi fi-rs-search"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="button_novoUser">
-                                                <!---- Trigger modal ----->
-                                                <button type="button" class="novo_produto" data-bs-toggle="modal"
-                                                    data-bs-target="#modalNovoUser">
-                                                    <div class="cont_addproduto">
-                                                        <i class="fi fi-rr-plus-small"></i>
-                                                        <p>Novo Usuário</p>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="align">
-                                            <div class="tabela_users">
-                                                <table id="tabela_users">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>ID</th>
-                                                            <th>Email</th>
-                                                            <th>telefone</th>
-                                                            <th>status</th>
-                                                            <th class="acoes_cabecalho">ações</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tr class="eachUser">
-                                                        <td class="nome_user">Petrobras</td>
-                                                        <td class="id_user">Cabeça</td>
-                                                        <td class="email_user">0001</td>
-                                                        <td class="tel_user">(11) 94561-1673</td>
-                                                        <td class="status_prod">
-                                                            <p class="status_ativo">
-                                                                ativo
-                                                            </p>
-                                                        </td>
-                                                        <td class="actions_prod">
-                                                            <div class="acoes">
-                                                                <div class="excluir-produto">
-                                                                    <!-- Botão Excluir Usuário -->
-                                                                    <button type="button" class="botao_excluirprod"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#excluirUsuario">
-                                                                        <i class="fi-sr-trash"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Novo User -->
-                        <div class="modal fade" id="modalNovoUser" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div></div>
-                                        <div class="paimodal">
-                                            <div class="titulo-modal Prod">
-                                                <i class="fi fi-rr-plus-small"></i>
-                                                <h1>Novo Usuário</h1>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="align">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Excluir Usuário -->
-                        <div class="modal fade" id="excluirUsuario" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
-                                            title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-    </section>
-    <!-- Tabela de Produtos -->
-    <section id="produtos_adm">
-        <div class="titulo-linha">
-            <h1 class="titulo_secaoprod">Produtos</h1>
-            <hr class="linha-gradiente">
-        </div>
-        <div class="searchbar">
-            <div class="searchbar2">
-                <div class="searchId">
-                    <input type="search" placeholder="Busque por nome, categoria ou CA...">
-                    <button id="botaoBuscaProd"><i class="fi fi-rs-search"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="tabela_produtos">
-            <table>
-                <thead class="cabecalho_tabela">
-                    <tr>
-                        <th>produto</th>
-                        <th>categoria</th>
-                        <th>ca</th>
-                        <th>estoque</th>
-                        <th>preço</th>
-                        <th>status</th>
-                        <th class="acoes_cabecalho">ações</th>
-                    </tr>
-                </thead>
 
-                <tr class="eachproduto">
-                    <td class="nome_prod">Capacete de Segurança</td>
-                    <td class="cat_prod">Cabeça</td>
-                    <td class="ca_prod">0001</td>
-                    <td class="estoque_prod">
-                        <p class="estoque-verde">45 un.</p>
-                    </td>
-                    <td class="preco_prod">R$ 35.00</td>
-                    <td class="status_prod">
-                        <p class="status_ativo">
-                            ativo
-                        </p>
-                    </td>
-                    <td class="actions_prod">
-                        <div class="acoes">
-                            <div class="editar-produto">
-                                <!---- Editar Produto modal ----->
-                                <button type="button" class="editar_prod" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditarProd">
-                                    <i class="fi-sr-pencil"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="modalEditarProd" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div></div>
-                                                <div class="paimodal">
-                                                    <div class="titulo-modal Prod">
-                                                        <h1>Editar Produto</h1>
-                                                        <div class="icon_titulo-modal">
-                                                            <i class="fi-sr-pencil"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <form action="" id="info_atualizaproduto">
-                                                    <div class="align">
-                                                        <div class="eachinput">
-                                                            <p>Upload da Imagem</p>
-                                                            <div class="upload_container">
-                                                                <input type="file" id="atualiza-img_prod-upload"
-                                                                    accept="image/*">
-                                                            </div>
-                                                        </div>
-                                                        <div class="eachinput">
-                                                            <p>Nome do Produto</p>
-                                                            <input type="text" id="nome_prod-new">
-                                                        </div>
-                                                        <div class="each2inputs">
-                                                            <div class="row">
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Categoria</p>
-                                                                        <input type="text" id="atualiza-categoria_prod">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>CA</p>
-                                                                        <input type="text" id="atualiza-ca_prod">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="each2inputs">
-                                                            <div class="row">
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Preço</p>
-                                                                        <input type="text" id="atualiza-preco_prod">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Estoque</p>
-                                                                        <input type="text" id="atualiza-qtd_prod">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="align">
-                                                        <div class="tam_input">
-                                                            <p>Tamanhos Disponíveis</p>
-                                                            <div class="size-grid">
-                                                                <!-- Letras -->
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="P"><span>P</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="M"><span>M</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G"><span>G</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="GG"><span>GG</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G1"><span>G1</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G2"><span>G2</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G3"><span>G3</span>
-                                                                </label>
-
-                                                                <!-- Números -->
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="36"><span>36</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="37"><span>37</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="38"><span>38</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="39"><span>39</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="40"><span>40</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="41"><span>41</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="42"><span>42</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="align">
-                                                        <button class="atualizar-prod" type="submit">Editar</button>
-                                                    </div>
-
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="excluir-produto">
-                                <!-- Botão Excluir modal -->
-                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
-                                    data-bs-target="#modalExcluirProd">
-                                    <i class="fi-sr-trash"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="modalExcluirProd" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn btn-primary">Salvar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="eachproduto">
-                    <td class="nome_prod">Luva de vaqueta</td>
-                    <td class="cat_prod">Manual</td>
-                    <td class="ca_prod">0002</td>
-                    <td class="estoque_prod">
-                        <p class="estoque-vermelho">8 un.</p>
-                    </td>
-                    <td class="preco_prod">R$ 35.00</td>
-                    <td class="status_prod">
-                        <p class="status_ativo">
-                            ativo
-                        </p>
-                    </td>
-                    <td class="actions_prod">
-                        <div class="acoes">
-                            <div class="editar-produto">
-                                <!---- Editar Produto modal ----->
-                                <button type="button" class="editar_prod" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditarProd">
-                                    <i class="fi-sr-pencil"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="modalEditarProd" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div></div>
-                                                <div class="paimodal">
-                                                    <div class="titulo-modal Prod">
-                                                        <h1>Editar Produto</h1>
-                                                        <div class="icon_titulo-modal ">
-                                                            <i class="fi-sr-pencil"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <form action="" id="info_atualizaproduto">
-                                                    <div class="align">
-                                                        <div class="eachinput">
-                                                            <p>Upload da Imagem</p>
-                                                            <div class="upload_container">
-                                                                <input type="file" id="atualiza-img_prod-upload"
-                                                                    accept="image/*">
-                                                            </div>
-                                                        </div>
-                                                        <div class="eachinput">
-                                                            <p>Nome do Produto</p>
-                                                            <input type="text" id="nome_prod-new">
-                                                        </div>
-                                                        <div class="each2inputs">
-                                                            <div class="row">
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Categoria</p>
-                                                                        <input type="text" id="atualiza-categoria_prod">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>CA</p>
-                                                                        <input type="text" id="atualiza-ca_prod">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="each2inputs">
-                                                            <div class="row">
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Preço</p>
-                                                                        <input type="text" id="atualiza-preco_prod">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="eachinput">
-                                                                        <p>Estoque</p>
-                                                                        <input type="text" id="atualiza-qtd_prod">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="align">
-                                                        <div class="tam_input">
-                                                            <p>Tamanhos Disponíveis</p>
-                                                            <div class="size-grid">
-                                                                <!-- Letras -->
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="P"><span>P</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="M"><span>M</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G"><span>G</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="GG"><span>GG</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G1"><span>G1</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G2"><span>G2</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="G3"><span>G3</span>
-                                                                </label>
-
-                                                                <!-- Números -->
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="36"><span>36</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="37"><span>37</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="38"><span>38</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="39"><span>39</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="40"><span>40</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="41"><span>41</span>
-                                                                </label>
-                                                                <label class="size-item">
-                                                                    <input type="checkbox" name="size[]"
-                                                                        value="42"><span>42</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="align">
-                                                        <button class="atualizar-prod" type="submit">Editar</button>
-                                                    </div>
-
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="excluir-produto">
-                                <!-- Botão Excluir modal -->
-                                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <i class="fi-sr-trash"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn btn-primary">Salvar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
             </table>
         </div>
     </section>

@@ -5,12 +5,17 @@
 .linha-inicial {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .titulo_linha-inicial {
     font-family: var(--bebas);
     color: var(--azul-crepusculo);
-    font-size: 5rem;
+
+    h1 {
+        font-size: 4rem;
+    }
+
 }
 
 .novo_produto {
@@ -103,6 +108,7 @@
     align-items: center;
     padding: 0 0.9rem 0 0.9rem;
     border-radius: 5px;
+
     i {
         color: var(--branco);
         margin: 0;
@@ -138,7 +144,8 @@
 
     input[type="text"],
     input[type="tel"],
-    input[type="number"] {
+    input[type="number"],
+    input[type="password"] {
         border: 1px solid var(--preto);
         border-radius: 5px;
         padding-left: 0.5rem;
@@ -212,6 +219,17 @@
     border-radius: 8px;
 }
 
+.salvar_novo-user {
+    margin: 2rem;
+    border: none;
+    background-color: #0a1e3f;
+    color: white;
+    font-weight: 700;
+    font-size: 1.7rem;
+    padding: 0.4rem 3rem 0.4rem 3rem;
+    border-radius: 8px;
+}
+
 .atualizar-prod {
     margin: 2rem;
     border: none;
@@ -242,27 +260,22 @@ input[type="file"]::-webkit-file-upload-button {
 .total-prod {
     background-color: var(--azul-vivido);
 
+
     h1,
     p {
         font-weight: 700;
     }
 }
 
-.cont_total-prod {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
-
 .box-modals {
     display: flex;
     justify-content: space-between;
+    margin: 2rem;
+    padding-top: 5vh;
 
     button {
         border: none;
-        border-radius: 8px;
+        border-radius: 23px;
         color: var(--branco);
     }
 }
@@ -295,7 +308,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 #produtos_adm {
-    padding: 6rem;
+    padding: 1vh 6rem;
 }
 
 .titulo-linha {
@@ -330,6 +343,7 @@ input[type="file"]::-webkit-file-upload-button {
     align-items: center;
     align-content: center;
     margin-top: 0;
+    width: 80%;
 }
 
 .searchbar2 {
@@ -529,7 +543,7 @@ input[type="file"]::-webkit-file-upload-button {
     transition: color 0.3s ease;
 }
 
-.linha-inicial_modal{
+.linha-inicial_modal {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -548,7 +562,216 @@ input[type="file"]::-webkit-file-upload-button {
     font-weight: 700;
 }
 
+.tabela_users {
+    width: 100%;
+    margin-top: 3vh;
 
+    table {
+        width: 100%;
+    }
+}
+
+.delete_usuario {
+    display: flex;
+    align-items: center;
+    background-color: #b30000;
+    width: fit-content;
+    color: var(--branco);
+    border-radius: 8px;
+
+    h1 {
+        padding: 0 0.7rem 0 1.5rem;
+        font-weight: 700;
+    }
+
+    i {
+        padding: 0.5rem 1.5rem 0 0;
+        font-size: 3rem;
+    }
+}
+
+.icon_deletar {
+    i {
+        font-size: 6rem;
+        color: rgb(224, 224, 53);
+    }
+}
+
+.confirm_delete {
+    text-align: center;
+
+    h2 {
+        font-weight: 700;
+    }
+
+    p {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+.submit-delete_usuario {
+    background-color: #b30000;
+    padding: 0.7rem 2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.submit-delete_prod {
+    background-color: #b30000 !important;
+    padding: 0.7rem 2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white !important;
+    border-radius: 0.8rem;
+    border: none !important;
+}
+
+.cancel-btn {
+    background-color: var(--cinza) !important;
+    padding: 0.7rem 2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white !important;
+    border-radius: 0.8rem;
+    border: none !important;
+}
+
+.Estoque {
+    background-color: var(--vermelho-vivo) !important;
+}
+
+.tabela_estoquebaixo {
+    width: 100%;
+    margin-top: 1vh;
+
+    table {
+        width: 100%;
+    }
+}
+
+.Vendas {
+    background-color: var(--verde);
+}
+
+.tabela_vendas {
+    width: 100%;
+    margin-top: 1vh;
+
+    table {
+        width: 100%;
+    }
+}
+
+.nomeUser_compra {
+    font-weight: 700;
+}
+
+.cont_total-vendas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 20vh;
+    height: 20vh;
+    padding: 2rem;
+    margin: 1.5rem;
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    i {
+        color: #1f2224;
+        font-size: 5rem;
+        padding-top: 0.6rem;
+    }
+
+    p {
+        font-size: 1.8rem;
+    }
+}
+
+.cont_estoque-baixo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 20vh;
+    height: 20vh;
+    padding: 2rem;
+    margin: 1.5rem;
+
+    h1 {
+        font-size: 1.7rem;
+        padding-top: -0.2rem;
+    }
+
+    i {
+        color: #1f2224;
+        font-size: 5rem;
+        padding-top: 0;
+    }
+
+    p {
+        font-size: 1.8rem;
+        margin-top: -2rem;
+    }
+}
+
+.cont_total-usuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 20vh;
+    height: 20vh;
+    padding: 2rem;
+    margin: 1.5rem;
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    i {
+        color: #1f2224;
+        font-size: 5rem;
+        padding-top: 0.6rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
+}
+
+.cont_total-prod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 20vh;
+    height: 20vh;
+    padding: 2rem;
+    margin: 1.5rem;
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    i {
+        color: #1f2224;
+        font-size: 5rem;
+        padding-top: 0.6rem;
+    }
+
+    p {
+        font-size: 1.8rem;
+    }
+}
 
 /* tablet e desktop: 7 por linha */
 @media (min-width: 768px) {
