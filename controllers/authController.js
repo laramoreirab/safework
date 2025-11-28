@@ -60,7 +60,8 @@ class authController{
             res.cookie('token',token, {
                 httpOnly: true, // protege contra acesso via JS no browser
                 secure: false, //o navegador só vai enviar esse cookie em conexões HTTPS
-                sameSite: 'Strict'
+                sameSite: 'Strict',
+                path: "/"
 
             });
             res.status(200).json({
