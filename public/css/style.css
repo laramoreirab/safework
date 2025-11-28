@@ -649,6 +649,10 @@ footer.col-6.col-md-2.mb-3 {
     align-items: center;
     align-content: center;
   }
+
+  .aba-carrinho {
+    width: 100%;
+  }
 }
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
@@ -658,6 +662,10 @@ footer.col-6.col-md-2.mb-3 {
     img {
       width: 3rem;
     }
+  }
+
+  .aba-carrinho {
+    width: 100%;
   }
 
   .logo_header {
