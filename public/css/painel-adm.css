@@ -153,11 +153,18 @@
         width: 100%;
         height: 3.5vh;
     }
+
+    select {
+        border: 1px solid var(--preto);
+        border-radius: 5px;
+        outline: none;
+        width: 100%;
+        height: 3.5vh;
+    }
 }
 
 .each2inputs {
     width: 96.3%;
-    /* igual ao .eachinput */
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
@@ -171,7 +178,19 @@
 .each2inputs .col-12,
 .each2inputs .col-md-6 {
     padding: 0 0.5rem;
-    /* opcional: espaçamento interno */
+}
+
+.col-md-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 0 0.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
 }
 
 .each2inputs .eachinput {
