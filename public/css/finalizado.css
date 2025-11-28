@@ -147,8 +147,23 @@
     display: flex;
     flex-direction: column;
     gap: 1dvh;
-    padding: 0 20%;
 }
+
+.cont_processa {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+
+  p {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
 
 .row-images {
     display: flex;
