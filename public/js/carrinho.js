@@ -38,7 +38,7 @@ function renderizarCarrinho(dados) {
             <div class="space-meio-carrinho">
                 <div class="names-carrinho">
                     <p><strong>${item.nome}</strong></p>
-                    <span>CA: ${item.ca}</span>
+                    <span>CA: ${item.ca} | Tamanho: ${item.tamanho}</span>
                 </div>
 
                 <div class="add-remove-carrinho">
@@ -96,7 +96,7 @@ async function atualizarQuantidade(itemId, novaQuantidade) {
     }
     
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
+        const res = await fetch(`http://localhost:3000/carrinho/item/${item.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -120,11 +120,10 @@ async function removerItem(itemId) {
     if (!confirm('Deseja remover este item do carrinho?')) return;
     
     try {
-        const res = await fetch(`http://localhost:3000/carrinho/item/${itemId}`, {
-            method: 'DELETE',
-            credentials: 'include'
-        });
-        
+        const res = await fetch(`http://localhost:3000/carrinho/item/${item.id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    });
         const data = await res.json();
         
         if (data.sucesso) {

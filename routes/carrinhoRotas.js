@@ -9,7 +9,7 @@ router.get('/',authMiddleware, carrinhoController.obterCarrinho);
 // POST /carrinho/adicionar - Adicionar item
 router.post('/adicionar',authMiddleware, carrinhoController.adicionarItem);
 // PUT /carrinho/item/:id - Atualizar quantidade
-router.put('/item/:id',authMiddleware, carrinhoController.atualizarItem);
+router.put('/carrinho/item/:id', carrinhoController.atualizarQuantidadeItem);
 // DELETE /carrinho/item/:id - Remover item
 router.delete('/item/:id',authMiddleware, carrinhoController.removerItem);
 
