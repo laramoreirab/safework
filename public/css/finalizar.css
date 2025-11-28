@@ -147,7 +147,7 @@ form {
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    height: 4.5dvh;
+    height: 5.5dvh;
     min-height: 45px;
     padding: 0.75rem;
     border-radius: 0.75rem;
@@ -195,7 +195,7 @@ form {
     border: 1px solid var(--cinza-claro);
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    height: 4.5dvh;
+    height: 5.5dvh;
     min-height: 45px;
     padding: 0.75rem;
     border-radius: 0.75rem;
@@ -221,7 +221,7 @@ form {
 
 main button {
   width: 100%;
-  height: 4.5dvh;
+  height: 5.5dvh;
   min-height: 50px;
   margin-top: 2dvh;
   border-radius: 0.75rem;
@@ -362,7 +362,7 @@ input.invalid {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 468px) {
   .padding {
     padding: 5% 5%;
     gap: 3dvh;
@@ -370,6 +370,8 @@ input.invalid {
 
   nav {
     gap: 2dvw;
+    margin-bottom: 1dvh;
+    margin-top: 2dvh;
   }
 
   .circ-step {
@@ -471,20 +473,4 @@ input.invalid {
     }
   }
 
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .padding {
-    padding: 3% 7%;
-  }
-
-  .escrita-step p {
-    font-size: 1.3rem;
-  }
-
-  .titulo-main {
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
 }
