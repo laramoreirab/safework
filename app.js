@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import { read } from './config/database.js';
 
 
-// import produtoTotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
+import produtoRotas from './routes/produtoRotas.js' // rota que faz toda a manipulação de produtos 
 import authRotas from './routes/authRotas.js' //rota que manipula cadastro,login
 import usuarioRotas from './routes/usuarioRotas.js' //rota que faz a manipulação de usuário, excluir, buscar etc
 import carrinhoRotas from './routes/carrinhoRotas.js'; //rota do carrinho

@@ -93,6 +93,16 @@ class carrinhoModel{
             throw error;
         }
     }
+
+    static async deletarItem(tamanho, produtoId){
+        try{
+            row = await deleteRecord('itens_pedidos', `produto_id = ${produtoId} AND tamanho = '${tamanho}'`);
+            return row
+        }catch(error){
+            console.error('Erro ao deletar item', error);
+            throw error;
+        }
+    }
 }
 
 

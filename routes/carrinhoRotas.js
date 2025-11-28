@@ -12,7 +12,5 @@ router.post('/adicionar',authMiddleware, carrinhoController.adicionarItem);
 router.put('/item/:id',authMiddleware, carrinhoController.atualizarItem);
 // DELETE /carrinho/item/:id - Remover item
 router.delete('/item/:id',authMiddleware, carrinhoController.removerItem);
-// DELETE /carrinho/limpar - Limpar carrinho
-router.delete('/limpar',authMiddleware, carrinhoController.limparCarrinho);
 
 export default router;

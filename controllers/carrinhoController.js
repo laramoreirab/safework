@@ -120,9 +120,10 @@ class carrinhoController {
     // PUT /carrinho/item/:id - Atualizar quantidade de item
     static async atualizarQuantidadeItem(req, res){
         try {
-            const { id } = req.params;
-            const { quantidade } = req.body;
+            const id = req.params; //id do produto que está na url
+            const quantidade = req.body;
             const usuarioId = req.usuario.id;
+            const tamanho = req.body;
             
             if (!quantidade || quantidade < 1) {
                 return res.status(400).json({
@@ -131,17 +132,70 @@ class carrinhoController {
                     mensagem: 'A quantidade deve ser maior que zero'
                 });
             }
-        }catch{
 
+            linhaPedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId) //pega o pedido que esta com status carrinho, para pegarmos o id da compra
+            const item = await carrinhoModel.buscarItemPorId(linhaPedido[0].id, tamanho, id )
+            if (!item){
+                return res.status(404).json({
+                        sucesso: false,
+                        erro: 'Item não encontrado',
+                        mensagem: 'Item não existe no seu carrinho'
+                    });
+            }
+
+            //atualizar quantidade
+            const atualizarQtd = await carrinhoModel.alterarQuantidade(quantidade, item[0].id)
+            if(atualizarQtd){
+                return res.status(200).json({
+                    sucesso: true,
+                    mensagem: 'Quantidade atualizada'
+                });
+            }
+
+        }catch{
+            console.error('Erro ao atualizar item:', error);
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível atualizar o item'
+            });
         }
     }
 
     // DELETE /carrinho/item/:id - Remover item do carrinho
-    
-
-    // DELETE /carrinho/limpar - Limpar todo o carrinho
-
-
+    static async removerItem(req, res){
+        try {
+            const id = req.params; //id do produto que vem na url
+            const usuarioId = req.usuario.id;
+            const tamanho = req.body
+            
+            // Verificar se item pertence ao usuário
+            linhaPedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId) //pega o pedido que esta com status carrinho, para pegarmos o id da compra
+            const item = await carrinhoModel.buscarItemPorId(linhaPedido[0].id, tamanho, id )
+            if (!item){
+                return res.status(404).json({
+                        sucesso: false,
+                        erro: 'Item não encontrado',
+                        mensagem: 'Item não existe no seu carrinho'
+                    });
+            }
+            //deleta o item
+            const removerItem = await carrinhoModel.deletarItem(tamanho, id)
+            if(removerItem){
+                 return res.status(200).json({
+                    sucesso: true,
+                    mensagem: 'Item removido do carrinho'
+                });
+            }
+        }catch(error){
+            console.error('Erro ao remover item:', error);
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível remover o item'
+            });
+        }
+    }
 }
 
 export default carrinhoController;
