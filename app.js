@@ -87,6 +87,11 @@ app.use(cors({
 // Middleware de Log
 app.use(logMiddleware);
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'views')));
 app.use('/public', express.static(path.join(__dirname, "public")));
@@ -160,6 +165,21 @@ app.get('/api', (req, res) => {
         }
     });
 });
+
+app.get('/produtos/:descricao', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/produtos.html'))
+})
+app.get('/produtos/pesepernas/:id', (req,res) => {
+    res.sendFile(path.join(__dirname, '/views/infoprodpes.html'))
+})
+app.get('/produtos/:descricao/:id', (req,res) => {
+    res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
+})
+
+app.get('/adm', (req,res) => {
+    res.sendFile(path.join(__dirname, '/views/painel-adm.html'))
+})
+
 
 // Middleware para tratar rotas não encontradas
 // app.use('*', (req, res) => {

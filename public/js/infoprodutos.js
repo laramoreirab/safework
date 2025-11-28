@@ -6,6 +6,7 @@ const tituloProd = document.getElementById('tituloprod')
 const caProd = document.getElementById('caprod')
 const codProd = document.getElementById('codprod')
 const descProd = document.getElementById('descricao_prod')
+const imgProd = document.getElementById('imgProd')
 const containerInteresses = document.getElementById('produtos_interesse')
 
 console.log('esse é o id: ', id) //  mostra o id que foi pego
@@ -73,7 +74,7 @@ try {
                         bloco.innerHTML = `
                         <a href="/produtos/${tipoProd}/${produto.id}">
                             <div class="one-produto">
-                                <img src="${produto.img}" alt="" />
+                                <img src="/uploads/imagens/${produto.img}" alt="" />
                                 <h5>${produto.nome}</h5>
                                 <p>
                                     CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span>
@@ -102,6 +103,7 @@ try {
             caProd.innerHTML = `<p>C.A: ${produto.ca}</p>` // imprimindo o ca do produto 
             codProd.innerHTML = `${codigoProd}` // imprimindo o código do produto
             descProd.innerHTML = `<p>${produto.descricao}</p>` // imprimindo a descrição do produto
+            imgProd.src = `/uploads/imagens/${produto.img}` // imprimindo a imagem do produto
 
             //função para atualizar preço total
             function atualizarPrecoTotal() {
