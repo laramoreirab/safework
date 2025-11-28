@@ -87,7 +87,7 @@ try {
                                     <i class="fi fi-ts-star-sharp-half-stroke"></i>
                                     <p id="quantidade-avaliacoes">(201)</p>
                                 </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                <h4 class="preco-produtos" id="preco-produtos">R$${produto.preco}</h4>
                             </div>
                         </a>`
 
