@@ -96,7 +96,6 @@ async function atualizarProduto() {
 // ======================================================================= mostrar produtos na tabela
 
 function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
-
     fetch('/api/produtos/listar') // rota que puxa todos os produtos do banco de dados
         .then(response => response.json())
         .then(data => {
@@ -143,7 +142,13 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
                         </div>
                 </td>
             `;
-                    
+
+         const submiteDel = document.getElementById('submit_delete_prod');           
+            submiteDel.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                console.log('ID do produto a ser excluído:', produto.id);
+            })
         }
                     if (produto.estoque <= 19) {
                         // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
@@ -181,13 +186,20 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
                         </div>
                 </td>
             `;
-            alert(`produto (${produto.nome}) está abaixo de 20 unidades.`)
         }
         
         container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
             })
+
+        const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
+        document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
         })
+
 }
 
+
+// ======================================================================= filtrar produtos com estoque baixo
+
+
 // Chama a função para renderizar os produtos ao carregar a página
-window.onload = renderizarProdutos();
+window.onload = renderizarProdutos(), categoriaProduto();

@@ -254,7 +254,7 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
         bloco.innerHTML = ` 
             <a href='/produtos/${tipoProd}/${produto.id}'>
               <div class="one-produto">
-                <img src="${produto.img}" alt="" />
+                <img src="/uploads/imagens/${produto.img}" alt="" />
                 <h5>${produto.nome}</h5>
                 <p>
                   CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span> |

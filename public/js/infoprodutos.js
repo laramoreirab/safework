@@ -87,7 +87,7 @@ try {
                                     <i class="fi fi-ts-star-sharp-half-stroke"></i>
                                     <p id="quantidade-avaliacoes">(201)</p>
                                 </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                <h4 class="preco-produtos" id="preco-produtos">R$${produto.preco}</h4>
                             </div>
                         </a>`
 
@@ -128,20 +128,49 @@ try {
 
             //botão comprar
              document.querySelector('.addcarrinho_informacoes').addEventListener('click', () => {
-                const linhas = document.querySelectorAll('.linha_informacoes');
+    const linhas = document.querySelectorAll('.linha_informacoes');
+    let itensAdicionados = 0;
 
-                linhas.forEach(linha => {
-                    const tamanho = linha.dataset.tamanho;
-                    const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
+    linhas.forEach(linha => {
+        const tamanho = linha.dataset.tamanho;
+        const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
 
-                    if (quantidadeLotes > 0) {
-                        const quantidadeUnidades = quantidadeLotes * 50;
-                        adicionarAoCarrinho(produto.id, quantidadeUnidades, tamanho);
-                    }
-                });
-            });
+        if (quantidadeLotes > 0) {
+            const quantidadeUnidades = quantidadeLotes * 50;
+            adicionarAoCarrinho(produto.id, quantidadeUnidades, tamanho);
+            itensAdicionados++;
+        }
+    });
+
+    if (itensAdicionados === 0) {
+        alert('Selecione pelo menos um tamanho e quantidade!');
+    }
+});
         })
 } catch (err) {
     console.error('Erro ao procurar produto', err)
 }
+document.querySelector('.addcarrinho_informacoes').addEventListener('click', () => {
+    const linhas = document.querySelectorAll('.linha_informacoes');
+    let itensAdicionados = 0;
 
+    linhas.forEach(linha => {
+        const tamanho = linha.dataset.tamanho;
+        const quantidadeLotes = parseInt(linha.querySelector('.quantidade-input').value);
+
+        if (quantidadeLotes > 0) {
+            const quantidadeUnidades = quantidadeLotes * 50;
+            // Chama a função GLOBAL do carrinho.js
+            if (window.adicionarAoCarrinho) {
+                window.adicionarAoCarrinho(produto.id, quantidadeUnidades, tamanho);
+                itensAdicionados++;
+            } else {
+                console.error('Função adicionarAoCarrinho não encontrada');
+            }
+        }
+    });
+
+    if (itensAdicionados === 0) {
+        alert('Selecione pelo menos um tamanho e quantidade!');
+    }
+});

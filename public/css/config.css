@@ -333,6 +333,19 @@
   display: flex;
   flex-direction: column;
   gap: 5dvh;
+
+  button {
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: translateY(-0.25dvh);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
 }
 
 .modal-alterar:hover {
@@ -360,6 +373,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    button {
+      border: none;
+      background-color: transparent;
+    }
   }
 }
 
@@ -372,11 +390,6 @@
   padding: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-
-  button {
-    border: none;
-    background-color: transparent;
-  }
 
   i {
     display: flex;
@@ -441,6 +454,77 @@
   input:focus {
     transform: translateY(-0.5dvh);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border: 2px solid var(--azul-crepusculo)
+    border: 2px solid var(--azul-crepusculo);
   }
+}
+
+.cont-aviso {
+  display: flex;
+  gap: 1vw;
+  background-color: #f0f9ff;
+  border-radius: 0.75rem;
+  border-left: 0.25rem solid var(--azul-crepusculo);
+  padding: 1rem;
+
+  p {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+}
+
+.align-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--azul-crepusculo);
+    font-size: 1.25rem;
+  }
+}
+
+.buttons-modal {
+  display: flex;
+  gap: 1dvw;
+
+  button {
+    width: 50%;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    color: var(--cinza-escuro);
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+}
+
+.salvar-alterar {
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  background-color: var(--azul-crepusculo);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  gap: 1dvw;
+
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  p {
+    color: white;
+    font-weight: 700;
+  }
+}
+
+.tirar-transparent {
+  background-color: transparent;
 }

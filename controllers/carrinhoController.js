@@ -1,6 +1,5 @@
 import carrinhoModel from '../models/carrinhoModel.js';
 import produtoModel from '../models/produtoModel.js';
-import { read } from '../config/database.js';
 
 class carrinhoController {
 
@@ -8,23 +7,31 @@ class carrinhoController {
     static async obterCarrinho(req, res) {
         try {
             const usuarioId = req.usuario.id;
+            console.log(`Buscando carrinho para usuário: ${usuarioId}`);
 
             const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
+            
             if (!pedido) {
+                console.log('Carrinho vazio para usuário:', usuarioId);
                 return res.json({
                     sucesso: true,
-                    dados: { itens: [], total: 0 }
+                    dados: { 
+                        itens: [], 
+                        total: 0,
+                        pedidoId: null
+                    }
                 });
             }
 
-            const itens = await carrinhoModel.buscarItens(pedido);
+            const itens = await carrinhoModel.buscarItens(pedido.id);
+            console.log(`Carrinho encontrado com ${itens.length} itens para usuário: ${usuarioId}`);
 
             return res.status(200).json({
                 sucesso: true,
                 dados: {
                     pedidoId: pedido.id,
                     itens: itens,
-                    total: pedido.total || 0
+                    total: parseFloat(pedido.total) || 0
                 }
             });
         } catch (error) {
@@ -43,7 +50,11 @@ class carrinhoController {
             const usuarioId = req.usuario.id;
             const { produtoId, quantidade, tamanho, tipoQuantidade } = req.body;
 
-            // Validações
+            console.log('Recebendo item para carrinho:', { 
+                usuarioId, produtoId, quantidade, tamanho, tipoQuantidade 
+            });
+
+            // Validações básicas
             if (!produtoId || !quantidade) {
                 return res.status(400).json({
                     sucesso: false,
@@ -51,7 +62,8 @@ class carrinhoController {
                     mensagem: 'Produto e quantidade são obrigatórios'
                 });
             }
-            if (quantidade < 1) {
+
+            if (quantidade <= 0) {
                 return res.status(400).json({
                     sucesso: false,
                     erro: 'Quantidade inválida',
@@ -60,7 +72,7 @@ class carrinhoController {
             }
 
             // Converter lotes → unidades se necessário
-            let quantidadeFinal = quantidade;
+            let quantidadeFinal = parseInt(quantidade);
             if (tipoQuantidade === 'lote') {
                 quantidadeFinal = quantidade * 50;
             }
@@ -75,38 +87,52 @@ class carrinhoController {
                 });
             }
 
+            console.log('Produto encontrado:', produto.nome);
+
             // Buscar ou criar pedido
             let pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
             let pedidoId;
+
             if (!pedido) {
                 pedidoId = await carrinhoModel.criarPedido(usuarioId);
+                console.log('Novo pedido criado:', pedidoId);
             } else {
                 pedidoId = pedido.id;
+                console.log('Pedido existente:', pedidoId);
             }
 
-            // Verificar se item já existe (produto+tamanho)
-            const itemExistente = await carrinhoModel.buscarItemPorId(pedidoId, tamanho, produtoId);
-            if (itemExistente.length > 0) {
-                const novaQuantidade = itemExistente[0].quantidade + quantidadeFinal;
-                await carrinhoModel.alterarQuantidade(novaQuantidade, itemExistente[0].id);
-
+            // Verificar se item já existe (mesmo produto + mesmo tamanho)
+            const itemExistente = await carrinhoModel.buscarItemExistente(pedidoId, produtoId, tamanho);
+            
+            if (itemExistente) {
+                console.log('Item existente encontrado, atualizando quantidade...');
+                const novaQuantidade = itemExistente.quantidade + quantidadeFinal;
+                await carrinhoModel.atualizarQuantidadeItem(itemExistente.id, novaQuantidade);
                 await carrinhoModel.atualizarTotalPedido(pedidoId);
 
                 return res.status(200).json({
                     sucesso: true,
                     mensagem: 'Quantidade atualizada no carrinho',
                     dados: {
-                        itemId: itemExistente[0].id,
+                        itemId: itemExistente.id,
                         quantidade: novaQuantidade
                     }
                 });
             } else {
-                const itemId = await carrinhoModel.adicionarItem(pedidoId, produtoId, quantidadeFinal, tamanho);
+                console.log('Adicionando novo item ao carrinho...');
+                const itemId = await carrinhoModel.adicionarItem(
+                    pedidoId, 
+                    produtoId, 
+                    quantidadeFinal, 
+                    tamanho, 
+                    produto.preco_unitario || produto.preco
+                );
+                
                 await carrinhoModel.atualizarTotalPedido(pedidoId);
 
                 return res.status(201).json({
                     sucesso: true,
-                    mensagem: 'Item adicionado ao carrinho',
+                    mensagem: 'Item adicionado ao carrinho com sucesso!',
                     dados: { itemId }
                 });
             }
@@ -115,7 +141,7 @@ class carrinhoController {
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
-                mensagem: 'Não foi possível adicionar o item'
+                mensagem: 'Não foi possível adicionar o item ao carrinho'
             });
         }
     }
@@ -123,9 +149,11 @@ class carrinhoController {
     // PUT /carrinho/item/:id - Atualizar quantidade de item
     static async atualizarQuantidadeItem(req, res) {
         try {
-            const { id } = req.params; // id do item
+            const { id } = req.params;
             const { quantidade } = req.body;
             const usuarioId = req.usuario.id;
+
+            console.log('Atualizando quantidade do item:', { itemId: id, novaQuantidade: quantidade });
 
             if (!quantidade || quantidade < 1) {
                 return res.status(400).json({
@@ -144,8 +172,9 @@ class carrinhoController {
                 });
             }
 
-            const item = await read('itens_pedidos', `id = ${id} AND pedido_id = ${pedido.id}`);
-            if (!item || item.length === 0) {
+            // Verificar se o item pertence ao carrinho do usuário
+            const item = await carrinhoModel.buscarItemPorId(id, pedido.id);
+            if (!item) {
                 return res.status(404).json({
                     sucesso: false,
                     erro: 'Item não encontrado',
@@ -153,19 +182,19 @@ class carrinhoController {
                 });
             }
 
-            await carrinhoModel.alterarQuantidade(quantidade, id);
+            await carrinhoModel.atualizarQuantidadeItem(id, quantidade);
             await carrinhoModel.atualizarTotalPedido(pedido.id);
 
             return res.status(200).json({
                 sucesso: true,
-                mensagem: 'Quantidade atualizada'
+                mensagem: 'Quantidade atualizada com sucesso'
             });
         } catch (error) {
-            console.error('Erro ao atualizar item:', error);
+            console.error('Erro ao atualizar quantidade:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
-                mensagem: 'Não foi possível atualizar o item'
+                mensagem: 'Não foi possível atualizar a quantidade'
             });
         }
     }
@@ -173,8 +202,10 @@ class carrinhoController {
     // DELETE /carrinho/item/:id - Remover item do carrinho
     static async removerItem(req, res) {
         try {
-            const { id } = req.params; // id do item
+            const { id } = req.params;
             const usuarioId = req.usuario.id;
+
+            console.log('Removendo item do carrinho:', { itemId: id });
 
             const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
             if (!pedido) {
@@ -185,8 +216,9 @@ class carrinhoController {
                 });
             }
 
-            const item = await read('itens_pedidos', `id = ${id} AND pedido_id = ${pedido.id}`);
-            if (!item || item.length === 0) {
+            // Verificar se o item pertence ao carrinho do usuário
+            const item = await carrinhoModel.buscarItemPorId(id, pedido.id);
+            if (!item) {
                 return res.status(404).json({
                     sucesso: false,
                     erro: 'Item não encontrado',
@@ -194,19 +226,48 @@ class carrinhoController {
                 });
             }
 
-            await carrinhoModel.deletarItem(id);
+            await carrinhoModel.removerItem(id);
             await carrinhoModel.atualizarTotalPedido(pedido.id);
 
             return res.status(200).json({
                 sucesso: true,
-                mensagem: 'Item removido do carrinho'
+                mensagem: 'Item removido do carrinho com sucesso'
             });
         } catch (error) {
             console.error('Erro ao remover item:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
-                mensagem: 'Não foi possível remover o item'
+                mensagem: 'Não foi possível remover o item do carrinho'
+            });
+        }
+    }
+
+    // GET /carrinho/contador - Obter contagem de itens no carrinho
+    static async obterContador(req, res) {
+        try {
+            const usuarioId = req.usuario.id;
+
+            const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
+            if (!pedido) {
+                return res.json({
+                    sucesso: true,
+                    dados: { totalItens: 0 }
+                });
+            }
+
+            const totalItens = await carrinhoModel.obterTotalItens(pedido.id);
+
+            return res.status(200).json({
+                sucesso: true,
+                dados: { totalItens }
+            });
+        } catch (error) {
+            console.error('Erro ao obter contador:', error);
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível obter o contador do carrinho'
             });
         }
     }

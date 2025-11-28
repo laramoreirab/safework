@@ -9,3 +9,21 @@ create table if not exists empresas (
     telefone varchar(11),
     tipo char(20) not null --adicionado
 );
+
+-- insert do admin
+
+INSERT INTO empresas (
+    nome,
+    cnpj,
+    senha,
+    email,
+    telefone,
+    tipo
+) VALUES (
+    'Empresa',
+    '12345678000195',
+    'senha',  
+    'contato@empresaexemplo.com',
+    '11987654321',
+    'admin'
+);
