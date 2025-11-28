@@ -81,3 +81,13 @@ if (document.getElementById("modalAlterarCnpj")) {
     .getElementById("modalAlterarCnpj")
     .addEventListener("hidden.bs.modal", fecharModalComEscurecer);
 }
+
+// Fechar modal de sair da conta ao clicar em "Não"
+if (document.getElementById("nao-sair")) {
+  document.getElementById("nao-sair").addEventListener("click", function () {
+    const modalSairConta = bootstrap.Modal.getInstance(
+      document.getElementById("modalSairConta")
+    );
+    modalSairConta.hide();
+  });
+}

@@ -324,3 +324,123 @@
     transform: translateY(0);
   }
 }
+
+.modal-alterar {
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 5dvh;
+}
+
+.modal-alterar:hover {
+  transform: scale(1.025);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.header-modal {
+  margin: -1.06rem;
+  background-color: #284f92;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3dvh;
+}
+
+.icons-modal {
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fechar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #4d6795;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.25rem;
+  }
+}
+
+.fechar-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.titulo-modal {
+  h3 {
+    text-align: center;
+    font-family: var(--bebas);
+    color: white;
+  }
+
+  p {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+  }
+}
+
+.body-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 3dvh;
+}
+
+.input-alterar {
+  display: flex;
+  flex-direction: column;
+  gap: 1dvh;
+
+  label {
+    color: var(--azul-crepusculo);
+    font-weight: 700;
+  }
+
+  input {
+    background-color: #f8fafc;
+    font-size: 1rem;
+    padding: 0.25rem 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--cinza-claro);
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  input::placeholder {
+    font-size: 0.85rem;
+    color: var(--cinza-claro);
+  }
+
+  input:focus {
+    transform: translateY(-0.5dvh);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--azul-crepusculo)
+  }
+}

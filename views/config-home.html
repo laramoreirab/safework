@@ -411,38 +411,43 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalAlterarNomeLabel">
-              Alterar Nome do Representante
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="novoNome" class="form-label">Nome</label>
-              <input
-                type="text"
-                class="form-control"
-                id="novoNome"
-                placeholder="Digite o novo nome"
-              />
+        <div class="modal-content modal-alterar">
+          <div class="header-modal">
+            <div class="icons-modal">
+                <i class="fi fi-rr-edit"></i>
+
+              <div class="fechar-icon" id="fechar-alterar">
+                <button><i class="fi fi-br-cross"></i></button>
+              </div>
+            </div>
+
+            <div class="titulo-modal">
+              <h3>Alterar Nome do Representante</h3>
+              <p>Atualize o nome do representante da empresa</p>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
+
+          <div class="body-modal">
+            <div class="input-alterar">
+              <label for="nome-representante">Nome Completo</label>
+              <input type="text" name="nome-representante" id="nome-representante" placeholder="Novo Nome">
+            </div>
+
+            <div class="cont-aviso">
+              <div class="align-icon">
+                <i class="fi fi-br-hexagon-exclamation"></i>
+              </div>
+
+              <p>Este nome será exibido em todos os documentos e relatórios oficiais da empresa.</p>
+            </div>
+          </div>
+
+          <div class="buttons-modal">
+            <button>Cancelar</button>
+            <button class="salvar-alterar" id="salvar-alterar">
+              <i class="fi fi-br-check"></i>
+              Salvar Alterações
             </button>
-            <button type="button" class="btn btn-primary">Salvar</button>
           </div>
         </div>
       </div>
