@@ -140,6 +140,15 @@ class ProdutoController {
             // Validações manuais - coletar todos os erros
             const erros = [];
 
+            // validar estoque
+
+            if(estoque < 1 || estoque === 0) {
+                erros.push({
+                    campo: 'estoque',
+                    mensagem: 'Deve ter pelo menos 1 item no estoque'
+                })
+            }
+
             // Validar nome
             if (!nome || nome.trim() === '') {
                 erros.push({

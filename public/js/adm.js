@@ -1,7 +1,8 @@
 // ======================================================================= CRIAR PRODUTO
-const salvar = document.getElementById('submit_prod-new')
+// const salvar = document.getElementById('submit_prod-new')
+const form = document.getElementById('info_novoproduto')
 
-salvar.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault()  // Evita o comportamento padrão do botão de submit
     criarProduto()
 })
@@ -16,6 +17,8 @@ async function criarProduto() {
     const descricaoProduto = document.getElementById('descricao_prod-new').value
     const marcaProduto = document.getElementById('marca_prod-new').value
     const InputImg = document.getElementById('img_prod-upload')
+
+    console.log('esse é o nome do produto: ', nomeProduto)
 
     const formData = new FormData()
     formData.append('nome', nomeProduto)
