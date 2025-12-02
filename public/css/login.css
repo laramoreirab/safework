@@ -1,434 +1,668 @@
 header {
-    height: 7.5vh;
+  height: 7.5vh;
 }
 
-#login{
-    padding-top: 6vh;
+#login {
+  padding-top: 6vh;
 }
 
 .padding {
-    height: 92.5vh;
-    padding: 2.5% 5%;
+  height: 92.5vh;
+  padding: 2.5% 5%;
 }
 
 .main-login {
-    display: flex;
-    border-radius: 1rem;
-    border: 1px solid #ddd;
-    background-color: #f5f5f5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    height: 100%;
-    width: 100%;
-    padding: 1.75%;
-    gap: 3vw;
-    animation: fadeIn 0.6s ease-out;
+  display: flex;
+  border-radius: 1rem;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  padding: 1.75%;
+  gap: 3vw;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .lado-form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 
 .logo-reta {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .logo-reta img {
-    width: 8%;
-    margin-bottom: 2vh;
+  width: 8%;
+  margin-bottom: 2vh;
 }
 
 .logo-reta h1 {
-    font-family: var(--bebas);
-    font-size: 3rem;
+  font-family: var(--bebas);
+  font-size: 3rem;
 }
 
-.welcome-login h2{
-    color: var(--azul-crepusculo);
-    font-size: 2.5rem;
+.welcome-login h2 {
+  color: var(--azul-crepusculo);
+  font-size: 2.5rem;
 }
 
 .welcome-login p {
-    color: var(--cinza-escuro);
-    font-size: 1.3rem;
+  color: var(--cinza-escuro);
+  font-size: 1.3rem;
 }
 
 .form-login {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
 }
 
 .one-input {
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 .one-input label {
-    pointer-events: none;
-    font-size: 1.1rem;
+  pointer-events: none;
+  font-size: 1.1rem;
 }
 
 .one-input input {
-    border-radius: 0.5rem;
-    border: 1px solid var(--cinza);
-    height: 5vh;
-    padding: 0.75rem;
-    transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  border: 1px solid var(--cinza);
+  height: 5vh;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
 }
 
 .one-input input:focus {
-    outline: none;
-    border: 2px solid var(--azul-crepusculo);
-    transform: translateY(-2px);
+  outline: none;
+  border: 2px solid var(--azul-crepusculo);
+  transform: translateY(-2px);
 }
 
 .one-input input::placeholder {
-    color: var(--cinza);
-    font-size: 1rem;
+  color: var(--cinza);
+  font-size: 1rem;
 }
 
 .form-login button {
-    border: none;
-    background-color: var(--azul-crepusculo);
-    height: 5vh;
-    border-radius: 0.5rem;
-    color: white;
-    margin-top: 1vh;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  border: none;
+  background-color: var(--azul-crepusculo);
+  height: 5vh;
+  border-radius: 0.5rem;
+  color: white;
+  margin-top: 1vh;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .form-login button:hover {
-    background-color: #1e40af;
-    transform: translateY(-2px);
+  background-color: #1e40af;
+  transform: translateY(-2px);
 }
 
 .form-login button:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .linha-others {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75dvw;
 }
 
 .linha-others hr {
-    width: 39.5%;
-    border: 1px solid black;
+  width: 39.5%;
+  border: 1px solid black;
 }
 
 .linha-others p {
-    margin: 0;
-    color: var(--cinza-escuro);
-    font-size: 1rem;
-    white-space: nowrap;
+  margin: 0;
+  color: var(--cinza-escuro);
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .others-login {
-    display: flex;
-    gap: 1vw;
-    height: 100%;
+  display: flex;
+  gap: 1vw;
+  height: 100%;
 }
 
 .one-other {
-    height: 13.5vh;
-    border-radius: 1rem;
-    width: 33.3%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  height: 13.5vh;
+  border-radius: 1rem;
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .one-other:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .one-other:active {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .one-other i {
-    font-size: 2.75rem;
-    transition: transform 0.3s ease;
+  font-size: 2.75rem;
+  transition: transform 0.3s ease;
 }
 
 .one-other:hover i,
 .one-other:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .other-google {
-    background-color: #d9d9d9;
+  background-color: #d9d9d9;
 }
 
 .other-google img {
-    width: 2.75rem;
-    transition: transform 0.3s ease;
+  width: 2.75rem;
+  transition: transform 0.3s ease;
 }
 
 .fa-google {
-    color: black;
+  color: black;
 }
 
 .other-facebook {
-    background-color: #1877f2;
+  background-color: #1877f2;
 }
 
 .fa-facebook-f {
-    color: white;
+  color: white;
 }
 
 .other-apple {
-    background-color: black;
+  background-color: black;
 }
 
 .fa-apple {
-    color: white;
+  color: white;
 }
 
 .link-cadastro {
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .link-cadastro p {
-    font-size: 1.25rem;
-    margin: 0;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .link-cadastro a {
-    color: var(--azul-crepusculo);
-    text-decoration: none;
-    transition: all 0.3s ease;
+  color: var(--azul-crepusculo);
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .link-cadastro a:hover {
-    color: #1e40af;
-    text-decoration: underline;
+  color: #1e40af;
+  text-decoration: underline;
 }
 
 .lado-img {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    border-radius: 1rem;
-    overflow: hidden;
-    background-image: url('../img/banner-login.svg');
-    background-size: cover;
-    background-position: cqenter;
-    margin: -1.99%;
-    margin-left: 0;
-    padding: 1.75%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-image: url("../img/banner-login.svg");
+  background-size: cover;
+  background-position: cqenter;
+  margin: -1.99%;
+  margin-left: 0;
+  padding: 1.75%;
 }
 
 .escrita-benef {
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .escrita-benef img {
-    width: 20%;
+  width: 20%;
 }
 
 .escrita-benef h2 {
-    color: white;
-    font-size: 2.35rem;
+  color: white;
+  font-size: 2.35rem;
 }
 
 .escrita-benef p {
-    color: white;
-    font-size: 1.75rem;
+  color: white;
+  font-size: 1.75rem;
 }
 
 .conj-benef {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 30%;
-    gap: 3vh;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30%;
+  gap: 3vh;
+  height: 100%;
 }
 
 .linha-benef {
-    display: flex;
-    gap: 0.85vw;
-    transition: transform 0.3s ease;
+  display: flex;
+  gap: 0.85vw;
+  transition: transform 0.3s ease;
 }
 
 .linha-benef:hover {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }
 
 .circ-benef {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5vw;
-    height: 2.5vw;
-    background-color: #d9d9d9;
-    border-radius: 50%;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
 .linha-benef:hover .circ-benef {
-    background-color: white;
-    transform: scale(1.1);
+  background-color: white;
+  transform: scale(1.1);
 }
 
 .circ-benef i {
-    color: var(--azul-crepusculo);
-    font-size: 1.25rem;
+  color: var(--azul-crepusculo);
+  font-size: 1.25rem;
 }
 
 .one-benef {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .one-benef p {
-    margin: 0;
-    color: white;
-    font-size: 1.25rem;
+  margin: 0;
+  color: white;
+  font-size: 1.25rem;
 }
 
-@media (min-width: 640px) and (max-width: 1024px) {
-    .lado-img {
-        display: none;
-    }
+@media (max-width: 1280px) {
+  .lado-img {
+    width: 45%;
+  }
 
-    .lado-form {
-        width: 100%;
-    }
+  .lado-form {
+    width: 55%;
+  }
 
-    .logo-reta {
-        display: flex;
-        justify-content: center;
+  .conj-benef {
+    margin-left: 20%;
+  }
 
-        img {
-            width: 8%;
-        }
+  .escrita-benef h2 {
+    font-size: 2rem;
+  }
 
-        h1 {
-            font-size: 3.5rem;
-        }
-    }
+  .escrita-benef p {
+    font-size: 1.5rem;
+  }
+}
 
-    .main-login {
-        padding: 1rem;
-    }
+@media (max-width: 1024px) {
+  .padding {
+    height: auto;
+    min-height: 92.5vh;
+    padding: 3% 4%;
+  }
 
-    .welcome-login {
-        text-align: center;
-    }
+  .main-login {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 3vh;
+  }
 
-    .one-input {
-        label {
-            font-size: 1.5rem;
-        }
+  .lado-form {
+    width: 100%;
+  }
 
-        input {
-            height: 6dvh;
-        }
+  .lado-img {
+    width: 100%;
+    margin: 0;
+    margin-top: 2vh;
+    padding: 2rem;
+    min-height: 50vh;
+  }
 
-        input::placeholder {
-            font-size: 1.25rem;
-        }
-    }
+  .logo-reta {
+    justify-content: center;
+  }
 
-    .form-login button {
-        height: 6dvh;
-        font-size: 1.5rem;
-    }
+  .logo-reta img {
+    width: 10%;
+  }
 
-    .linha-others {
-        gap: 1rem;
+  .logo-reta h1 {
+    font-size: 2.5rem;
+  }
 
-        p {
-            font-size: 1.25rem;
-        }
-    }
+  .welcome-login {
+    text-align: center;
+  }
 
-    .link-cadastro p {
-        font-size: 1.5rem;
-    }
+  .welcome-login h2 {
+    font-size: 2rem;
+  }
+
+  .welcome-login p {
+    font-size: 1.1rem;
+  }
+
+  .conj-benef {
+    margin-left: 15%;
+  }
+
+  .escrita-benef img {
+    width: 15%;
+  }
+
+  .escrita-benef h2 {
+    font-size: 1.8rem;
+  }
+
+  .escrita-benef p {
+    font-size: 1.3rem;
+  }
+
+  .circ-benef {
+    width: 3.5vw;
+    height: 3.5vw;
+  }
+
+  .one-benef p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .lado-img {
+    display: none;
+  }
+
+  .main-login {
+    padding: 1.5rem;
+  }
+
+  .logo-reta img {
+    width: 12%;
+  }
+
+  .logo-reta h1 {
+    font-size: 3rem;
+  }
+
+  .welcome-login h2 {
+    font-size: 2.2rem;
+  }
+
+  .welcome-login p {
+    font-size: 1.2rem;
+  }
+
+  .one-input label {
+    font-size: 1.3rem;
+  }
+
+  .one-input input {
+    height: 6vh;
+    font-size: 1.1rem;
+  }
+
+  .one-input input::placeholder {
+    font-size: 1.1rem;
+  }
+
+  .form-login button {
+    height: 6vh;
+    font-size: 1.4rem;
+  }
+
+  .linha-others p {
+    font-size: 1.1rem;
+  }
+
+  .one-other {
+    height: 12vh;
+  }
+
+  .one-other i {
+    font-size: 2.5rem;
+  }
+
+  .other-google img {
+    width: 2.5rem;
+  }
+
+  .link-cadastro p {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 640px) {
-    .lado-img {
-        display: none;
-    }
+  #login {
+    padding-top: 4vh;
+  }
 
-    .lado-form {
-        width: 100%;
-    }
+  .padding {
+    height: auto;
+    min-height: 92.5vh;
+    padding: 4% 3%;
+  }
 
-    .logo-reta {
-        display: flex;
-        justify-content: center;
+  .lado-img {
+    display: none;
+  }
 
-        img {
-            width: 12%;
-        }
+  .lado-form {
+    width: 100%;
+    gap: 2.5vh;
+  }
 
-        h1 {
-            font-size: 3.5rem;
-        }
-    }
+  .logo-reta {
+    justify-content: center;
+    gap: 2vw;
+  }
 
-    .main-login {
-        padding: 1rem;
-    }
+  .logo-reta img {
+    width: 15%;
+    margin-bottom: 1vh;
+  }
 
-    .welcome-login {
-        text-align: center;
-    }
+  .logo-reta h1 {
+    font-size: 2.5rem;
+  }
 
-    .one-input {
-        label {
-            font-size: 1.5rem;
-        }
+  .main-login {
+    padding: 1.5rem;
+  }
 
-        input {
-            height: 6dvh;
-        }
+  .welcome-login {
+    text-align: center;
+  }
 
-        input::placeholder {
-            font-size: 1.25rem;
-        }
-    }
+  .welcome-login h2 {
+    font-size: 1.8rem;
+  }
 
-    .form-login button {
-        height: 6dvh;
-        font-size: 1.5rem;
-    }
+  .welcome-login p {
+    font-size: 1rem;
+  }
 
-    .linha-others {
-        gap: 1rem;
+  .form-login {
+    gap: 2vh;
+  }
 
-        p {
-            font-size: 1.25rem;
-        }
-    }
+  .one-input label {
+    font-size: 1.2rem;
+  }
 
-    .link-cadastro p {
-        font-size: 1.5rem;
-    }
+  .one-input input {
+    height: 6vh;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .one-input input::placeholder {
+    font-size: 1rem;
+  }
+
+  .form-login button {
+    height: 6vh;
+    font-size: 1.3rem;
+    margin-top: 0.5vh;
+  }
+
+  .linha-others {
+    gap: 0.5rem;
+  }
+
+  .linha-others hr {
+    width: 35%;
+  }
+
+  .linha-others p {
+    font-size: 0.9rem;
+  }
+
+  .others-login {
+    gap: 2vw;
+    flex-wrap: wrap;
+  }
+
+  .one-other {
+    height: 10vh;
+    width: 100%;
+  }
+
+  .one-other i {
+    font-size: 2.2rem;
+  }
+
+  .other-google img {
+    width: 2.2rem;
+  }
+
+  .link-cadastro p {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .padding {
+    padding: 3% 2%;
+  }
+
+  .main-login {
+    padding: 1rem;
+  }
+
+  .logo-reta img {
+    width: 18%;
+  }
+
+  .logo-reta h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-login h2 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-login p {
+    font-size: 0.9rem;
+  }
+
+  .one-input label {
+    font-size: 1rem;
+  }
+
+  .one-input input {
+    height: 5.5vh;
+    font-size: 0.9rem;
+  }
+
+  .one-input input::placeholder {
+    font-size: 0.9rem;
+  }
+
+  .form-login button {
+    height: 5.5vh;
+    font-size: 1.1rem;
+  }
+
+  .linha-others p {
+    font-size: 0.8rem;
+  }
+
+  .one-other {
+    height: 9vh;
+  }
+
+  .one-other i {
+    font-size: 2rem;
+  }
+
+  .other-google img {
+    width: 2rem;
+  }
+
+  .link-cadastro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-reta img {
+    width: 20%;
+  }
+
+  .logo-reta h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-login h2 {
+    font-size: 1.3rem;
+  }
+
+  .one-input input,
+  .form-login button {
+    height: 5vh;
+  }
+
+  .one-other {
+    height: 8vh;
+  }
 }
