@@ -1,6 +1,7 @@
 import ProdutoModel from '../models/produtoModel.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import fs from 'fs/promises'
 // import { removerArquivoAntigo } from '../middlewares/uploadMiddleware.js'
 
 const _filename = fileURLToPath(import.meta.url)
@@ -139,6 +140,15 @@ class ProdutoController {
             // Validações manuais - coletar todos os erros
             const erros = [];
 
+            // validar estoque
+
+            if(estoque < 1 || estoque === 0) {
+                erros.push({
+                    campo: 'estoque',
+                    mensagem: 'Deve ter pelo menos 1 item no estoque'
+                })
+            }
+
             // Validar nome
             if (!nome || nome.trim() === '') {
                 erros.push({
@@ -215,6 +225,54 @@ class ProdutoController {
         }
     }
 
+    // excluir produto 
+
+    static async excluirProduto(req, res) {
+        try {
+            const { id, img } = req.params
+            console.log('esse é o req.params', req.params)
+
+            if (!id || isNaN(id)) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'ID inválido',
+                    mensagem: 'o ID deve ser um número válido'
+                })
+            }
+            if (img) {
+                try {
+                    await fs.unlink(`./uploads/imagens/${img}`)
+                    console.log('imagem excluida com sucesso')
+                } catch (err) {
+                    console.error('não foi possivel excluir a imagem')
+                }
+
+            }
+
+
+            await ProdutoModel.excluir(id)
+
+            res.status(200).json({
+                sucesso: true,
+                mensagem: 'Produto excluído com sucesso'
+            })
+            return
+
+
+        } catch (err) {
+            console.error('Erro ao excluir produto', err)
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível excluir o produto'
+            })
+        }
+
+    }
+
 }
+
+
+
 
 export default ProdutoController 

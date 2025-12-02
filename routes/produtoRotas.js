@@ -7,6 +7,7 @@ router.get('/listar', ProdutoController.ListarProdutos)
 router.get('/listar/id/:id', ProdutoController.buscarPorId)
 router.get('/listar/:categoria', ProdutoController.buscarPorCategoria)
 router.post('/criar', uploadImagens.single('imagem'), handleUploadError, ProdutoController.criar)
+router.delete('/excluir/:id/:img', ProdutoController.excluirProduto)
 
 
 export default router
