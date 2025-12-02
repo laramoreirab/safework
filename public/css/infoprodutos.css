@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    padding: 6rem;
+    padding: 6rem 0 0 0;
 }
 
 .img_informacoes {
@@ -83,7 +83,7 @@
     align-items: center;
     border: 2px solid var(--preto);
     border-radius: 8px;
-    margin: 0.5rem;
+    margin: 0.5rem 0 0.5rem 0;
     height: 2.2rem;
 
     button {
@@ -110,7 +110,7 @@
 }
 
 .tam {
-    padding-left: 1rem;
+    padding-left: 0.3rem;
     color: var(--preto);
     font-weight: 700;
 }
@@ -242,9 +242,15 @@
         /* camada intermediária */
         0 1px 4px rgba(0, 0, 0, 0.1);
     /* camada de transição delicada */
+    transition: 0.3s ease all;
 }
 
-.avaliacaoprod {
+.eachavaliacao:hover {
+    transform: translateY(-1dvh);
+
+}
+
+.avaliacaoavaliacao {
     i {
         font-size: 2rem;
         color: #f7ce08;
@@ -261,14 +267,11 @@
 }
 
 /* Interesses */
-#interesses {
-    padding: 0 6rem 0 6rem;
-}
-
 .titulo_interesses {
     font-family: var(--bebas);
     color: var(--azul-crepusculo);
     font-size: 4rem;
+    margin-top: 10vh;
 }
 
 .prods_interesses {
@@ -326,5 +329,96 @@
         justify-content: center;
         align-items: center;
         color: #f7ce08;
+    }
+}
+
+
+
+
+/* <!--------------------------------- Responsividade ----------------------------------!> */
+
+/* <!----------- Celulares --------------!> */
+@media (max-width: 700px) {
+
+    /* Tamanhos */
+    .squaretam {
+        width: 13vh;
+    }
+
+
+    /* Frete */
+    .input_frete {
+        display: table;
+    }
+
+    .calc_frete {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-content: flex-start;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 35vh;
+        width: 35vh;
+    }
+}
+
+/* <!----------- Tablets/Laptops pequenos --------------!> */
+@media (max-width: 1024px) and (min-width: 700px) {
+
+    /* Tamanhos */
+    .squaretam {
+        width: 13vh;
+    }
+
+
+    /* Frete */
+    .input_frete {
+        display: table;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 45vh;
+        width: 25vh;
+
+        p {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width:1300px) and (min-width: 1025px) {
+
+    /* Tamanhos */
+    .squaretam {
+        width: 13vh;
+    }
+
+    /* Frete */
+    .input_frete {
+        display: table;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 35vh;
+        width: 35vh;
+    }
+}
+
+@media (max-width: 1424px) and (min-width: 1302px) {
+
+    /* Frete */
+    .input_frete {
+        display: table;
+    }
+
+    /* Avaliações */
+    .eachavaliacao {
+        height: 50vh;
+        width: 40vh;
     }
 }
