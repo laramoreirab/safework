@@ -278,38 +278,31 @@
 .one-produto {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     border-radius: 1rem;
+    height: 40dvh;
     border: 1px solid var(--cinza-claro);
-    background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 1.5rem;
     margin: 2vh;
     cursor: pointer;
     transition: all 0.3s ease;
+    gap: 1dvh;
 
-    img {
-        width: 75%;
+    h4 {
+        color: var(--azul-crepusculo);
+        font-weight: 700;
     }
 
     h5 {
-        margin-top: 1rem;
-        font-weight: 700;
-        font-size: 1.25rem;
-        margin-right: auto;
-    }
-
-    p {
-        margin-right: auto;
-        font-size: 1rem;
-        color: var(--cinza-escuro);
+        color: var(--azul-crepusculo);
         font-weight: 700;
     }
 }
 
 .one-produto:hover {
     transform: translateY(-1dvh);
-    border: 1px solid var(--azul-crepusculo);
+    border: 1px solid var(--cinza-escuro);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -319,24 +312,19 @@
 
 .estrelas {
     display: flex;
-    align-items: center;
-    margin-right: auto;
     gap: 3px;
 
+    p {
+        color: var(--cinza);
+        font-weight: 700;
+        font-size: 1rem;
+        margin-left: 0.25dvw;
+    }
+
     i {
-        font-size: 1.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #f7ce08;
     }
-
-    p {
-        font-size: 1rem;
-        color: var(--cinza);
-        margin-left: 0.5dvw;
-    }
-}
-
-.preco-produtos {
-    font-size: 1.75rem;
-    color: var(--azul-crepusculo);
-    font-weight: 700;
 }
