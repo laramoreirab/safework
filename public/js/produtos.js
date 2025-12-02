@@ -1,90 +1,41 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const style = document.createElement("style");
-//   style.textContent = `
-//         .no-results-message {
-//             grid-column: 1 / -1;
-//             text-align: center;
-//             padding: 3rem;
-//             background-color: #f9f9f9;
-//             border-radius: 1rem;
-//             margin-top: 2rem;
-//             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-//             transition: all 0.3s ease;
-//             cursor: pointer;
-//         }
+const style = document.createElement("style"); // estilização da mensagem (nenhum produto encontrado)
+style.textContent = `
+        .no-results-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            background-color: #f9f9f9;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            transform: translateY(1dvh);
+            transition: all 0.5s ease;
+        }
 
-//         .no-results-message:hover {
-//             transform: translateY(-1dvh);
-//             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-//         }
+        .no-results-message.show {
+            opacity: 1;
+            transform: scale(1.0);
+        }
 
-//         .no-results-message:active {
-//             transform: translateY(0.5dvh);
-//         }
-//     `;
-//   document.head.appendChild(style);
+        .no-results-message:hover {
+            transform: translateY(-1dvh);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
 
-//   const searchInput = document.getElementById("search-bar");
-//   const productList = document.querySelector("main");
-//   const quantidadeProdutos = document.getElementById("quantidade-produtos");
-//   const allProducts = Array.from(productList.querySelectorAll("a"));
+        .produto { 
+          transform: scale(0.95);
+          transition: all .8s ease;
+        }
 
-//   updateProductCount(allProducts.length);
+        .produto.show {
+          transform: scale(1.0);
+          opacity: 1;
+        }
+    `;
+document.head.appendChild(style); // criando um style no head
 
-//   function filterProducts() {
-//     const searchTerm = searchInput.value.toLowerCase().trim();
-
-//     let visibleCount = 0;
-
-//     allProducts.forEach((productLink) => {
-//       const product = productLink.querySelector(".one-produto");
-
-//       const productName = product.querySelector("h5").textContent.toLowerCase();
-
-//       if (productName.includes(searchTerm)) {
-//         productLink.style.display = "block";
-//         visibleCount++;
-//       } else {
-//         productLink.style.display = "none";
-//       }
-//     });
-
-//     updateProductCount(visibleCount);
-
-//     showNoResultsMessage(visibleCount, searchTerm);
-//   }
-
-//   function updateProductCount(count) {
-//     quantidadeProdutos.textContent = count;
-//   }
-
-//   function showNoResultsMessage(count, searchTerm) {
-//     const existingMessage = document.getElementById("no-results-message");
-//     if (existingMessage) {
-//       existingMessage.remove();
-//     }
-
-//     if (count === 0 && searchTerm !== "") {
-//       const message = document.createElement("div");
-//       message.id = "no-results-message";
-//       message.className = "no-results-message";
-//       message.innerHTML = `
-//                 <i class="fi fi-rr-search" style="font-size: 3rem; color: var(--azul-crepusculo); margin-bottom: 1rem;"></i>
-//                 <h3 style="color: var(--cinza-escuro); margin-bottom: 0.5rem; font-weight: 700;">
-//                     Nenhum produto encontrado
-//                 </h3>
-//                 <p style="color: var(--azul-crepusculo);">
-//                     Não encontramos produtos com o termo "<strong>${searchTerm}</strong>"
-//                 </p>
-//             `;
-//       productList.appendChild(message);
-//     }
-//   }
-
-//   searchInput.addEventListener("keyup", filterProducts);
-
-//   searchInput.addEventListener("input", filterProducts);
-// });
 
 // ================= SIDEBARS =================
 const btnAbrir = document.getElementById("open-filtrar");
@@ -148,7 +99,7 @@ overlay.addEventListener("click", () => {
 // ================= LISTA DE PRODUTOS =================
 
 const container = document.getElementById("produtosDaPagina"); // cria um container no elemento html que tem ID = "produtosDaPagina", no caso, a main
-container.innerHTML = ""; // limpa antes de renderizar
+container.querySelectorAll('.produto').forEach(el => el.remove()) // limpa antes de renderizar
 const categoria = ((window.location.pathname).split('/'))[2] // https://localhost:3000/produtos/variavel => retornando variavel
 let url
 if (categoria === 'todos') {
@@ -171,14 +122,43 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
     contarProdutos()
 
     function contarProdutos() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      const produtosFilter = produtos.filter(produto => produto.nome.toLowerCase().includes(searchTerm))
+      const searchTerm = searchInput.value.toLowerCase().trim(); // pega o valor que esta sendo escrito na barra de pesquisa e formata para comparação
+      const produtosFilter = produtos.filter(produto => produto.nome.toLowerCase().includes(searchTerm)) // filtra produtos por nome
       const quantidadeProd = document.getElementById('quantidade-produtos') // pega o elemento pelo ID que serve para aparecer a quantidade de items na pagina
       quantidadeProd.innerHTML = (produtosFilter.length) // faz uma contagem dos registros do filter
+
+      if (produtosFilter.length === 0) { // caso o contador estiver em zero ele cria uma mensagem de nenhum produto encontrado
+        const oldMessage = document.getElementById('no-results-message')
+        if (oldMessage) { // se existir uma mensagem de aviso, exclua 
+          oldMessage.remove()
+        }
+        const message = document.createElement("div"); // criando a mensagem de aviso
+        message.id = "no-results-message";
+        message.className = "no-results-message";
+        message.innerHTML = `
+                <i class="fi fi-rr-search" style="font-size: 3rem; color: var(--azul-crepusculo); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--cinza-escuro); margin-bottom: 0.5rem; font-weight: 700;">
+                    Nenhum produto encontrado
+                </h3>
+                <p style="color: var(--azul-crepusculo);">
+                    Não encontramos produtos com o termo "<strong>${searchInput.value}</strong>"
+                </p>
+            `;
+        container.appendChild(message); // adiciona a mensagem dentro do container
+
+        setTimeout(() => {
+          message.classList.add("show");
+        }, 10);
+
+      }
+
+      if (produtosFilter.length > 0) {
+        container.querySelectorAll('.no-results-message').forEach(el => el.remove())
+      }
     }
 
     function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
-      container.innerHTML = ''
+      container.querySelectorAll('.produto').forEach(el => el.remove()) // limpa antes de renderizar
       produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
         const bloco = document.createElement("div"); // cria um elemento div
         bloco.className = "produto"; // nome da classe do bloco é produto
@@ -221,13 +201,15 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
             `;
 
         container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
-        contarProdutos()
+        setTimeout(() => {
+          bloco.classList.add("show");
+        }, 10);
       })
     }
 
     function filtrarProduto() {
 
-      container.innerHTML = ''
+      container.querySelectorAll('.produto').forEach(el => el.remove()) // apagar os produtos do container
 
       const searchTerm = searchInput.value.toLowerCase().trim();
       const produtosFilter = produtos.filter(produto => produto.nome.toLowerCase().includes(searchTerm))
@@ -273,9 +255,10 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
             </a>
             `;
 
-
         container.appendChild(bloco); // fala para adicionar o bloco dentro do container (no caso, adicionar esse bloco dentro da main)
-        contarProdutos()
+        setTimeout(() => {
+          bloco.classList.add("show");
+        }, 10);
       })
     }
     searchInput.addEventListener('input', contarProdutos) // atualiza o contador ao escrever na barra de tarefas

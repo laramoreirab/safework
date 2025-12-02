@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork - Produtos</title>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../public/css/produtos.css" />
-    <link
-      rel="shortcut icon"
-      href="../public/img/icon.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../public/css/style.css" />
-  </head>
-  <body>
-    <header id="header_usuario">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeWork - Produtos</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../public/css/produtos.css" />
+  <link rel="shortcut icon" href="../public/img/icon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+</head>
+
+<body>
+  <header id="header_usuario">
     <div class="menulateral_usuario">
       <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-        <img src="../public/img/menuicon.svg" alt="Menu Lateral" />
+        <img src="/public/img/menuicon.svg" alt="Menu Lateral" />
       </button>
       <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
-          <a href="/"><img src="../public/img/logo-branca.svg" class="menulateral_header" /></a>
+          <a href="/"><img src="/public/img/logo-branca.svg" class="menulateral_header" /></a>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -135,7 +120,7 @@
       </div>
     </div>
     <div class="logo_header">
-      <a href="/"><img src="../public/img/logo.svg" /></a>
+      <a href="/"><img src="/public/img/logo.svg" /></a>
     </div>
     <div class="icons_header">
       <button id="open-carrinho">
@@ -184,8 +169,7 @@
     </div>
 
     <!-- onde vai ficar os produtos vindo do arquivo produtos.js -->
-    <main id="produtosDaPagina">
-    </main>
+    <main id="produtosDaPagina"></main>
 
     <div class="aba-filtrar" id="aba-filtrar">
       <div class="titulo-filtrar">
@@ -193,159 +177,91 @@
         <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
       </div>
 
-        <div class="padding-filtrar">
-          <div class="topico-filtrar">
-            <h2>Tipo de Equipamento</h2>
-            <div class="cont-rows">
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-cabeca"
-                />
-                <label for="checkbox-cabeca">Facial</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-olhos"
-                />
-                <label for="checkbox-olhos">Ocular</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-auditiva"
-                />
-                <label for="checkbox-auditiva">Corporal</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-respiratoria"
-                />
-                <label for="checkbox-respiratoria">Respiratório</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-maos"
-                />
-                <label for="checkbox-maos">Auditivo</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-pes"
-                />
-                <label for="checkbox-pes">Manual</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-corpo"
-                />
-                <label for="checkbox-corpo">Pés e Pernas</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-quedas"
-                />
-                <label for="checkbox-quedas">Cabeça</label>
-              </div>
+      <div class="padding-filtrar">
+        <div class="topico-filtrar">
+          <h2>Tipo de Equipamento</h2>
+          <div class="cont-rows">
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-cabeca" />
+              <label for="checkbox-cabeca">Facial</label>
             </div>
-          </div>
-          <div class="topico-filtrar">
-            <h2>Marca do Produto</h2>
-            <div class="cont-rows">
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-3m"
-                />
-                <label for="checkbox-3m">3M</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-montana"
-                />
-                <label for="checkbox-montana">Montana</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-softworks"
-                />
-                <label for="checkbox-softworks">Soft Works</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-volk"
-                />
-                <label for="checkbox-volk">Volk</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-apaseg"
-                />
-                <label for="checkbox-apaseg">APASEG</label>
-              </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-olhos" />
+              <label for="checkbox-olhos">Ocular</label>
             </div>
-          </div>
-          <div class="topico-filtrar">
-            <h2>Faixa de Preço</h2>
-            <div class="cont-rows">
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-preco-200-249"
-                />
-                <label for="checkbox-preco-200-249">R$200,00 à R$249,99</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-preco-250-299"
-                />
-                <label for="checkbox-preco-250-299">R$250,00 à R$299,99</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-preco-300-349"
-                />
-                <label for="checkbox-preco-300-349">R$300,00 à R$349,99</label>
-              </div>
-              <div class="row-filtrar">
-                <input
-                  type="checkbox"
-                  name="checkbox-filtrar"
-                  id="checkbox-preco-350-400"
-                />
-                <label for="checkbox-preco-350-400">R350,00 à R$400,00</label>
-              </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-auditiva" />
+              <label for="checkbox-auditiva">Corporal</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-respiratoria" />
+              <label for="checkbox-respiratoria">Respiratório</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-maos" />
+              <label for="checkbox-maos">Auditivo</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-pes" />
+              <label for="checkbox-pes">Manual</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-corpo" />
+              <label for="checkbox-corpo">Pés e Pernas</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-quedas" />
+              <label for="checkbox-quedas">Cabeça</label>
             </div>
           </div>
         </div>
+        <div class="topico-filtrar">
+          <h2>Marca do Produto</h2>
+          <div class="cont-rows">
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-3m" />
+              <label for="checkbox-3m">3M</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-montana" />
+              <label for="checkbox-montana">Montana</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-softworks" />
+              <label for="checkbox-softworks">Soft Works</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-volk" />
+              <label for="checkbox-volk">Volk</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-apaseg" />
+              <label for="checkbox-apaseg">APASEG</label>
+            </div>
+          </div>
+        </div>
+        <div class="topico-filtrar">
+          <h2>Faixa de Preço</h2>
+          <div class="cont-rows">
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-preco-200-249" />
+              <label for="checkbox-preco-200-249">R$200,00 à R$249,99</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-preco-250-299" />
+              <label for="checkbox-preco-250-299">R$250,00 à R$299,99</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-preco-300-349" />
+              <label for="checkbox-preco-300-349">R$300,00 à R$349,99</label>
+            </div>
+            <div class="row-filtrar">
+              <input type="checkbox" name="checkbox-filtrar" id="checkbox-preco-350-400" />
+              <label for="checkbox-preco-350-400">R350,00 à R$400,00</label>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="padding-filtrar">
         <div class="topico-filtrar">
           <h2>Tipo de Equipamento</h2>
@@ -479,7 +395,6 @@
         <button type="submit" id="confirmar-filtrar">Ordenar</button>
       </div>
     </div>
-
     <!------------------- Carrinho ------------------->
     <div class="aba-carrinho" id="aba-carrinho">
       <div class="titulo-filtrar">
@@ -531,11 +446,81 @@
 
     <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
   </div>
+  <div class="footer_fundo">
+    <div class="container ffg">
+      <footer class="py-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <div class="principal_footer">
+              <img src="/public/img/logo-branca.svg" style="width: 80%">
+            </div>
+          </div>
 
-    <script src="/public/js/produtos.js"></script>
-    <script src="/public/js/carrinho.js"></script>
-    <script src="/public/js/funcoesprincipais.js"></script>
-  </body>
+          <div class="col-6 col-md-2 mb-3">
+            <div class="socialmedia2">
+              <ul class="nav flex-column">
+                <div class="socialmedia">
+                  <i class="fa-solid fa-phone"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">4002 - 8922</a>
+                  </li>
+                </div>
+                <div class="socialmedia">
+                  <i class="fa-brands fa-instagram"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">@safework</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <div class="redirecionamento_footer">
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="/" class="nav-link p-0 footerlink">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="cardapio.html" class="nav-link p-0 footerlink">Produtos</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="personalizacao.html" class="nav-link p-0 footerlink">Sobre Nós</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="contato.html" class="nav-link p-0 footerlink">Contato</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form class="cadastro_lancamentos">
+              <p>
+                Cadastre-se para receber lançamentos de novos produtos e
+                promoções!
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
+                <input id="newsletter1" type="email" placeholder="Email" required />
+                <button id="btnCadastrarLancamento" type="button">
+                  Cadastre-se
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls">
+          <p>© 2025. SafeWork. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="/public/js/produtos.js"></script>
+  <script src="/public/js/carrinho.js"></script>
+  <script src="/public/js/funcoesprincipais.js"></script>
+</body>
+
 </html>
 
 </html>

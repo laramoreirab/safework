@@ -6,6 +6,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
 
+
 // Importar rotas
 import authRotas from './routes/authRotas.js';
 import produtoRotas from './routes/produtoRotas.js';
