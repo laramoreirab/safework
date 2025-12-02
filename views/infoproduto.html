@@ -26,134 +26,135 @@
 <body id="cadastro">
     <!---------------------- HEADER  ------------------------>
     <header id="header_usuario">
-    <div class="menulateral_usuario">
-      <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-        <img src="/public/img/menuicon.svg" alt="Menu Lateral" />
-      </button>
-      <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-          <a href="/"><img src="/public/img/logo-branca.svg" class="menulateral_header" /></a>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div class="nav_item">
-            <a class="menu_redirecionamento" href="/">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                <path
-                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
-              </svg>
-              <p>home</p>
-            </a>
-          </div>
-          <hr />
+        <div class="menulateral_usuario">
+            <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                <img src="/public/img/menuicon.svg" alt="Menu Lateral" />
+            </button>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                    <a href="/"><img src="/public/img/logo-branca.svg" class="menulateral_header" /></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="nav_item">
+                        <a class="menu_redirecionamento" href="/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                            </svg>
+                            <p>home</p>
+                        </a>
+                    </div>
+                    <hr />
 
-          <div class="nav_item dropdown">
-            <!-- link principal -->
-            <a class="menu_redirecionamento toggle-produtos" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-box-seam-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z" />
-              </svg>
-              <p>
-                Produtos
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-chevron-down" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                </svg>
-              </p>
-            </a>
-            <!-- submenu -->
-            <div class="submenu">
-              <a class="submenu_redirecionamento" href="/produtos/todos">Todos os Produtos
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/facial">Facial
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/ocular">Ocular
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/corporal">Corporal
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/respiratorio">Respiratório
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/auditivo">Auditivo
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/manual">Manual
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/pesepernas">Pés e Pernas
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
-              <a class="submenu_redirecionamento" href="/produtos/cabeca">Cabeça
-                <i class="fi fi-ts-angle-small-right"></i>
-              </a>
+                    <div class="nav_item dropdown">
+                        <!-- link principal -->
+                        <a class="menu_redirecionamento toggle-produtos" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z" />
+                            </svg>
+                            <p>
+                                Produtos
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                </svg>
+                            </p>
+                        </a>
+                        <!-- submenu -->
+                        <div class="submenu">
+                            <a class="submenu_redirecionamento" href="/produtos/todos">Todos os Produtos
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/facial">Facial
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/ocular">Ocular
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/corporal">Corporal
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/respiratorio">Respiratório
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/auditivo">Auditivo
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/manual">Manual
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/pesepernas">Pés e Pernas
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                            <a class="submenu_redirecionamento" href="/produtos/cabeca">Cabeça
+                                <i class="fi fi-ts-angle-small-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="nav_item">
+                        <a class="menu_redirecionamento" href="/contato">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                            </svg>
+                            <p>contato</p>
+                        </a>
+                    </div>
+                    <hr />
+
+                    <div class="nav_item">
+                        <a class="menu_redirecionamento" href="/sobrenos">
+                            <i class="fi fi-sr-bullseye-arrow"></i>
+                            <p>sobre nós</p>
+                        </a>
+                    </div>
+                    <hr />
+                </div>
             </div>
-          </div>
-          <hr />
-
-          <div class="nav_item">
-            <a class="menu_redirecionamento" href="/contato">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-              </svg>
-              <p>contato</p>
-            </a>
-          </div>
-          <hr />
-
-          <div class="nav_item">
-            <a class="menu_redirecionamento" href="/sobrenos">
-              <i class="fi fi-sr-bullseye-arrow"></i>
-              <p>sobre nós</p>
-            </a>
-          </div>
-          <hr />
         </div>
-      </div>
-    </div>
-    <div class="logo_header">
-      <a href="/"><img src="/public/img/logo.svg" /></a>
-    </div>
-    <div class="icons_header">
-      <button id="open-carrinho">
-        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
-          viewBox="0 0 16 16">
-          <path
-            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-        </svg>
-      </button>
-      <a href="/cadastro">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person"
-          viewBox="0 0 16 16">
-          <path
-            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-        </svg>
-      </a>
-    </div>
-  </header>
+        <div class="logo_header">
+            <a href="/"><img src="/public/img/logo.svg" /></a>
+        </div>
+        <div class="icons_header">
+            <button id="open-carrinho">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
+            </button>
+            <a href="/cadastro">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                </svg>
+            </a>
+        </div>
+    </header>
     <!---------------------- TUDO SOBRE O PRODUTO  ------------------------>
-    <section id="info_prods">
+    <div id="info_prods">
         <div class="container">
             <div class="row">
                 <!---------------------- IMAGEM DO PRODUTO  ------------------------>
                 <div class="col-12 col-md-6">
                     <div class="img_informacoes">
-                        <img id="imgProd" src="/public/img/abafador.svg" style="width:100%;max-width:400px;display:block;">
+                        <img id="imgProd" src="/public/img/abafador.svg"
+                            style="width:100%;max-width:400px;display:block;">
                     </div>
                 </div>
 
-                 <!---------------------- INFORMAÇÕES DO PRODUTO  ------------------------>
+                <!---------------------- INFORMAÇÕES DO PRODUTO  ------------------------>
                 <div class="col-12 col-md-6">
                     <div class="informacoes_produto">
                         <h1 class="titulo_informacoes" id="tituloprod">ABAFADOR 3M AMARELO</h1>
@@ -287,192 +288,200 @@
                 </div>
             </div>
         </div>
-        <!-- Descrição do Produto -->
-        <div class="descricao_prod">
-            <div class="titulo-linha">
-                <h1 class="titulo_secaoprod">Descrição</h1>
-                <hr class="linha-gradiente">
+        <div class="container">
+            <!-- Descrição do Produto -->
+            <div class="descricao_prod">
+                <div class="titulo-linha">
+                    <h1 class="titulo_secaoprod">Descrição</h1>
+                    <hr class="linha-gradiente">
+                </div>
+                <p id="descricao_prod">
+                    <!-- Colocar aqui a descrição do produto -->
+                    O Abafador 3M Amarelo é a escolha ideal para quem busca proteção auditiva eficiente em ambientes com
+                    alto nível de ruído. Fabricado com materiais resistentes e confortáveis, ele oferece excelente
+                    vedação
+                    sonora sem comprometer o bem-estar durante o uso prolongado.<br><br>
+
+                    Características principais:
+                    Redução de ruído eficaz (atenuação média de até 14 dB)
+                    Almofadas macias e anatômicas para maior conforto
+                    Arco ajustável com revestimento acolchoado
+                    Design leve e ergonômico
+                    Certificado de Aprovação (C.A: 0001) – conforme normas de segurança<br><br>
+
+                    Indicado para:
+                    Construção civil
+                    Indústrias metalúrgicas e químicas
+                    Ambientes com máquinas pesadas
+                    Eventos com exposição sonora intensa
+                    Disponível nos tamanhos P, M, G, GG, G1 e G2, com ajuste de quantidade por unidade.
+                </p>
             </div>
-            <p id="descricao_prod">
-                <!-- Colocar aqui a descrição do produto -->
-                O Abafador 3M Amarelo é a escolha ideal para quem busca proteção auditiva eficiente em ambientes com
-                alto nível de ruído. Fabricado com materiais resistentes e confortáveis, ele oferece excelente vedação
-                sonora sem comprometer o bem-estar durante o uso prolongado.<br><br>
+            <!-- Avaliações do Produto -->
+            <div id="avaliacao_prod">
+                <div class="titulo-linha">
+                    <h1 class="titulo_secaoprod">Avaliações</h1>
+                    <hr class="linha-gradiente">
+                </div>
+                <div class="avaliacoes">
+                    <div class="container">
+                        <div class="row rtj">
+                            <div class="col-12 col-md-4">
+                                <div class="eachavaliacao">
+                                    <div class="avaliacaoprod">
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    </div>
+                                    <div class="conteudodaavaliacao">
+                                        <p>Chegada pontual, material satisfatório, fácil utilização e transmite
+                                            confiança no
+                                            dia a dia.</p>
+                                    </div>
+                                    <div class="nomeavaliador">
+                                        <p>Metalúrgica Horizonte S.A.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="eachavaliacao">
+                                    <div class="avaliacaoprod">
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    </div>
+                                    <div class="conteudodaavaliacao">
+                                        <p>Material durável, fácil de usar, protege bem e oferece confiança em diversas
+                                            situações.</p>
+                                    </div>
+                                    <div class="nomeavaliador">
+                                        <p>BioProtec Indústria Ltda.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="eachavaliacao">
+                                    <div class="avaliacaoavaliacao">
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                    </div>
+                                    <div class="conteudodaavaliacao">
+                                        <p>Proteção confiável, preço acessível, chegou no prazo e mantém conforto
+                                            durante o
+                                            uso.</p>
+                                    </div>
+                                    <div class="nomeavaliador">
+                                        <p>TecnoMaq Industrial</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                Características principais:
-                Redução de ruído eficaz (atenuação média de até 14 dB)
-                Almofadas macias e anatômicas para maior conforto
-                Arco ajustável com revestimento acolchoado
-                Design leve e ergonômico
-                Certificado de Aprovação (C.A: 0001) – conforme normas de segurança<br><br>
-
-                Indicado para:
-                Construção civil
-                Indústrias metalúrgicas e químicas
-                Ambientes com máquinas pesadas
-                Eventos com exposição sonora intensa
-                Disponível nos tamanhos P, M, G, GG, G1 e G2, com ajuste de quantidade por unidade.
-            </p>
-        </div>
-        <!-- Avaliações do Produto -->
-        <div id="avaliacao_prod">
-            <div class="titulo-linha">
-                <h1 class="titulo_secaoprod">Avaliações</h1>
-                <hr class="linha-gradiente">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="avaliacoes">
-                <div class="container">
-                    <div class="row rtj">
-                        <div class="col-12 col-md-4">
-                            <div class="eachavaliacao">
-                                <div class="avaliacaoprod">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                </div>
-                                <div class="conteudodaavaliacao">
-                                    <p>Chegada pontual, material satisfatório, fácil utilização e transmite confiança no
-                                        dia a dia.</p>
-                                </div>
-                                <div class="nomeavaliador">
-                                    <p>Metalúrgica Horizonte S.A.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="eachavaliacao">
-                                <div class="avaliacaoprod">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                </div>
-                                <div class="conteudodaavaliacao">
-                                    <p>Material durável, fácil de usar, protege bem e oferece confiança em diversas
-                                        situações.</p>
-                                </div>
-                                <div class="nomeavaliador">
-                                    <p>BioProtec Indústria Ltda.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="eachavaliacao">
-                                <div class="avaliacaoprod">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                </div>
-                                <div class="conteudodaavaliacao">
-                                    <p>Proteção confiável, preço acessível, chegou no prazo e mantém conforto durante o
-                                        uso.</p>
-                                </div>
-                                <div class="nomeavaliador">
-                                    <p>TecnoMaq Industrial</p>
-                                </div>
-                            </div>
-                        </div>
 
+            <!---------------------- INTERESSES ------------------------>
+            <div class="interesses">
+                <h1 class="titulo_interesses">Quem Comprou, Comprou Também!</h1>
+                <div class="prods_interesses">
+                    <div class="container">
+                        <div class="row" id="produtos_interesse">
+                            <div class="col-12 col-md-3">
+                                <a href="">
+                                    <div class="one-produto">
+                                        <img src="../public/img/abafador.svg" alt="" />
+                                        <h5>Capacete de Segurança</h5>
+                                        <p>
+                                            CA: 54389 | <span id="marca-produtos">3M</span>
+                                        </p>
+                                        <div class="estrelas">
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                            <p id="quantidade-avaliacoes">(201)</p>
+                                        </div>
+                                        <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <a href="">
+                                    <div class="one-produto">
+                                        <img src="../public/img/abafador.svg" alt="" />
+                                        <h5>Capacete de Segurança</h5>
+                                        <p>
+                                            CA: 54389 | <span id="marca-produtos">3M</span>
+                                        </p>
+                                        <div class="estrelas">
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                            <p id="quantidade-avaliacoes">(201)</p>
+                                        </div>
+                                        <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <a href="">
+                                    <div class="one-produto">
+                                        <img src="../public/img/abafador.svg" alt="" />
+                                        <h5>Capacete de Segurança</h5>
+                                        <p>
+                                            CA: 54389 | <span id="marca-produtos">3M</span>
+                                        </p>
+                                        <div class="estrelas">
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                            <p id="quantidade-avaliacoes">(201)</p>
+                                        </div>
+                                        <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <a href="">
+                                    <div class="one-produto">
+                                        <img src="../public/img/abafador.svg" alt="" />
+                                        <h5>Capacete de Segurança</h5>
+                                        <p>
+                                            CA: 54389 | <span id="marca-produtos">3M</span>
+                                        </p>
+                                        <div class="estrelas">
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ts-star-sharp-half-stroke"></i>
+                                            <p id="quantidade-avaliacoes">(201)</p>
+                                        </div>
+                                        <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!---------------------- INTERESSES ------------------------>
-    <section id="interesses">
-        <h1 class="titulo_interesses">Quem Comprou, Comprou Também!</h1>
-        <div class="prods_interesses">
-            <div class="container">
-                <div class="row" id="produtos_interesse">
-                    <div class="col-12 col-md-3">
-                        <a href="">
-                            <div class="one-produto">
-                                <img src="../public/img/abafador.svg" alt="" />
-                                <h5>Capacete de Segurança</h5>
-                                <p>
-                                    CA: 54389 | <span id="marca-produtos">3M</span>
-                                </p>
-                                <div class="estrelas">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                    <p id="quantidade-avaliacoes">(201)</p>
-                                </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <a href="">
-                            <div class="one-produto">
-                                <img src="../public/img/abafador.svg" alt="" />
-                                <h5>Capacete de Segurança</h5>
-                                <p>
-                                    CA: 54389 | <span id="marca-produtos">3M</span>
-                                </p>
-                                <div class="estrelas">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                    <p id="quantidade-avaliacoes">(201)</p>
-                                </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <a href="">
-                            <div class="one-produto">
-                                <img src="../public/img/abafador.svg" alt="" />
-                                <h5>Capacete de Segurança</h5>
-                                <p>
-                                    CA: 54389 | <span id="marca-produtos">3M</span>
-                                </p>
-                                <div class="estrelas">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                    <p id="quantidade-avaliacoes">(201)</p>
-                                </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <a href="">
-                            <div class="one-produto">
-                                <img src="../public/img/abafador.svg" alt="" />
-                                <h5>Capacete de Segurança</h5>
-                                <p>
-                                    CA: 54389 | <span id="marca-produtos">3M</span>
-                                </p>
-                                <div class="estrelas">
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ss-star"></i>
-                                    <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                                    <p id="quantidade-avaliacoes">(201)</p>
-                                </div>
-                                <h4 class="preco-produtos" id="preco-produtos">R$200,90</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+
+
 
     <!---------------------- FOOTER ------------------------>
     <div class="footer_fundo">
@@ -540,40 +549,40 @@
     <!------------------- Carrinho ------------------->
     <div class="aba-carrinho" id="aba-carrinho">
         <div class="titulo-filtrar">
-          <h1>Seu Carrinho</h1>
-          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+            <h1>Seu Carrinho</h1>
+            <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
         </div>
 
         <div class="padding-filtrar">
-          <div class="one-produto-carrinho">
-            <div class="space-img-carrinho">
-                <img src="/public/img/abafador.svg" alt="">
-            </div>
-
-            <div class="space-meio-carrinho">
-                <div class="names-carrinho">
-                    <p><strong>Capacete de Proteção</strong></p>
-                    
-                    <span>CA: 56578</span>
+            <div class="one-produto-carrinho">
+                <div class="space-img-carrinho">
+                    <img src="/public/img/abafador.svg" alt="">
                 </div>
 
-                <div class="add-remove-carrinho">
-                  <button class="reduzir-carrinho" id="reduzir-carrinho">
-                    <p>-</p>
-                  </button>
-    
-                  <p id="quantidade-carrinho">1</p>
-                  
-                  <button class="add-carrinho" id="adicionar-carrinho">
-                    <p>+</p>
+                <div class="space-meio-carrinho">
+                    <div class="names-carrinho">
+                        <p><strong>Capacete de Proteção</strong></p>
+
+                        <span>CA: 56578</span>
+                    </div>
+
+                    <div class="add-remove-carrinho">
+                        <button class="reduzir-carrinho" id="reduzir-carrinho">
+                            <p>-</p>
+                        </button>
+
+                        <p id="quantidade-carrinho">1</p>
+
+                        <button class="add-carrinho" id="adicionar-carrinho">
+                            <p>+</p>
+                    </div>
+                </div>
+
+                <div class="space-final-carrinho">
+                    <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+                    <p>R$ <span id="preco-item-carrinho">0</span></p>
                 </div>
             </div>
-
-            <div class="space-final-carrinho">
-                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
-                <p>R$ <span id="preco-item-carrinho">0</span></p>
-            </div>
-          </div>
         </div>
 
         <div class="esp-button-carrinho">
@@ -581,11 +590,12 @@
                 <p>Subtotal:</p>
                 <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
             </div>
-            <a href="http://localhost:3000/dados"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+            <a href="http://localhost:3000/dados"><button type="submit" id="confirmar-filtrar">Finalizar
+                    Compra</button></a>
         </div>
-      </div>
+    </div>
 
-      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+    <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
 
     <script src="/public/js/funcoesprincipais.js"></script>
     <script src="/public/js/carrinho.js"></script>
