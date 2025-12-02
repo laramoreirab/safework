@@ -1,6 +1,7 @@
 import express from 'express'
 import ProdutoController from '../controllers/produtoController.js'
 import { uploadImagens, handleUploadError } from '../middlewares/uploadMiddleware.js';
+import { authMiddleware, adminMiddleware } from '../middlewares/authMiddleware.js'
 const router = express.Router()
 
 router.get('/listar', ProdutoController.ListarProdutos)
