@@ -26,12 +26,12 @@
     <div class="menulateral_usuario">
       <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-        <img src="../public/img/menuicon.svg" alt="Menu Lateral" />
+        <img src="/public/img/menuicon.svg" alt="Menu Lateral" />
       </button>
       <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
-          <a href="/"><img src="../public/img/logo-branca.svg" class="menulateral_header" /></a>
+          <a href="/"><img src="/public/img/logo-branca.svg" class="menulateral_header" /></a>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -120,7 +120,7 @@
       </div>
     </div>
     <div class="logo_header">
-      <a href="/"><img src="../public/img/logo.svg" /></a>
+      <a href="/"><img src="/public/img/logo.svg" /></a>
     </div>
     <div class="icons_header">
       <button id="open-carrinho">
@@ -395,7 +395,6 @@
         <button type="submit" id="confirmar-filtrar">Ordenar</button>
       </div>
     </div>
-
     <!------------------- Carrinho ------------------->
     <div class="aba-carrinho" id="aba-carrinho">
       <div class="titulo-filtrar">
@@ -447,7 +446,76 @@
 
     <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
   </div>
+  <div class="footer_fundo">
+    <div class="container ffg">
+      <footer class="py-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <div class="principal_footer">
+              <img src="/public/img/logo-branca.svg" style="width: 80%">
+            </div>
+          </div>
 
+          <div class="col-6 col-md-2 mb-3">
+            <div class="socialmedia2">
+              <ul class="nav flex-column">
+                <div class="socialmedia">
+                  <i class="fa-solid fa-phone"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">4002 - 8922</a>
+                  </li>
+                </div>
+                <div class="socialmedia">
+                  <i class="fa-brands fa-instagram"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">@safework</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <div class="redirecionamento_footer">
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="/" class="nav-link p-0 footerlink">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="cardapio.html" class="nav-link p-0 footerlink">Produtos</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="personalizacao.html" class="nav-link p-0 footerlink">Sobre Nós</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="contato.html" class="nav-link p-0 footerlink">Contato</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form class="cadastro_lancamentos">
+              <p>
+                Cadastre-se para receber lançamentos de novos produtos e
+                promoções!
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
+                <input id="newsletter1" type="email" placeholder="Email" required />
+                <button id="btnCadastrarLancamento" type="button">
+                  Cadastre-se
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls">
+          <p>© 2025. SafeWork. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
   <script src="/public/js/produtos.js"></script>
   <script src="/public/js/carrinho.js"></script>
   <script src="/public/js/funcoesprincipais.js"></script>
