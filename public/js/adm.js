@@ -2,12 +2,9 @@
 // const salvar = document.getElementById('submit_prod-new')
 const form = document.getElementById('info_novoproduto')
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault()  // Evita o comportamento padrão do botão de submit
-    criarProduto()
-})
 
-async function criarProduto() {
 
     const nomeProduto = document.getElementById('nome_prod-new').value
     const categoriaProduto = document.getElementById('categoria_prod-new').value
@@ -19,6 +16,17 @@ async function criarProduto() {
     const InputImg = document.getElementById('img_prod-upload')
 
     console.log('esse é o nome do produto: ', nomeProduto)
+    if(estoqueProduto < 1){
+        e.preventDefault()
+        alert('O estoque deve ter pelo menos 1 item')
+        return
+    }
+    if(nomeProduto.length <= 3){
+        alert('nome do produto deve ter pelo menos 3 caracteres')
+        return
+    }
+
+
 
     const formData = new FormData()
     formData.append('nome', nomeProduto)
@@ -46,7 +54,9 @@ async function criarProduto() {
     } else {
         alert('Erro ao criar produto: ' + data.mensagem)
     }
-}
+})
+
+
 
 // ======================================================================= EDITAR PRODUTO
 
