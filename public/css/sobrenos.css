@@ -126,16 +126,6 @@
     width: 35%;
 }
 
-
-
-
-
-
-
-
-
-
-
 #nossosprodutos_home {
     height: 60vh;
     display: flex;
@@ -195,5 +185,113 @@
         height: 6vh;
         font-size: 2.5vh;
         border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 468px) {
+    html {
+        font-size: 12px;
+    }
+
+    .banner-sobre {
+        background-position: center;
+
+        h1 {
+            text-align: center;
+            font-size: 8rem;
+        }
+    }
+
+    .beneficios-sobre {
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+    .one-beneficio {
+        i {
+            font-size: 4rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (min-width: 468px) and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .banner-sobre {
+        background-position: center;
+
+        h1 {
+            text-align: center;
+            font-size: 8rem;
+        }
+    }
+
+    .beneficios-sobre {
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+    .one-beneficio {
+        i {
+            font-size: 4rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+
+    .banner-sobre {
+        background-position: center;
+
+        h1 {
+            text-align: center;
+            font-size: 8rem;
+        }
+    }
+
+    .beneficios-sobre {
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+    .one-beneficio {
+        i {
+            font-size: 4rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
     }
 }
