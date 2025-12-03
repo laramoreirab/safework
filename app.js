@@ -113,6 +113,9 @@ app.get('/sobrenos', (req,res) =>{
 app.get('/dados', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'dados.html'))
 })
+app.get('/pagamento', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'views', 'pagamento.html'))
+})
 app.get('/entrega', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
 })

@@ -270,6 +270,7 @@
 }
 
 .avaliacaoprod {
+    display: flex;
     i {
         font-size: 2rem;
         color: #f7ce08;

@@ -81,7 +81,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid var(--preto);
+    border: 1.3px solid var(--cinza);
     border-radius: 8px;
     margin: 0.5rem 0 0.5rem 0;
     height: 2.2rem;
@@ -101,7 +101,7 @@
     input {
         text-align: center;
         border: transparent;
-        /* width: 2rem; */
+        width: 2rem;
     }
 }
 
@@ -251,6 +251,8 @@
 }
 
 .avaliacaoavaliacao {
+    display: flex;
+    
     i {
         font-size: 2rem;
         color: #f7ce08;
@@ -355,6 +357,10 @@
     /* Tamanhos */
     .squaretam {
         width: 13vh;
+
+        button {
+            width: 0.7rem;
+        }
     }
 
 
@@ -383,6 +389,10 @@
     /* Tamanhos */
     .squaretam {
         width: 13vh;
+
+        button {
+            width: 0.7rem;
+        }
     }
 
 
@@ -407,6 +417,10 @@
     /* Tamanhos */
     .squaretam {
         width: 13vh;
+
+        button {
+            width: 0.7rem;
+        }
     }
 
     /* Frete */
