@@ -159,6 +159,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
   border-radius: 1rem;
   height: 40dvh;
   border: 1px solid var(--cinza-claro);
@@ -177,6 +179,14 @@ main {
       color: var(--azul-crepusculo);
       font-weight: 700;
   }
+
+  img {
+    width: 75%;
+  }
+
+  p {
+    margin-right: auto;
+  }
 }
 
 .one-produto:hover {
@@ -191,6 +201,7 @@ main {
 
 .estrelas {
   display: flex;
+  margin-right: auto;
   gap: 3px;
 
   p {
