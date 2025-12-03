@@ -204,7 +204,7 @@ main {
 .estrelas {
   display: flex;
   margin-right: auto;
-  gap: 3px;
+  gap: 2.9px;
 
   p {
       color: var(--cinza);
