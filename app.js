@@ -116,9 +116,6 @@ app.get('/dados', (req,res) =>{
 app.get('/entrega', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
 })
-app.get('/entrega', (req,res) =>{
-    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
-})
 app.get('/finalizar', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'finalizado.html'))
 })
@@ -151,7 +148,7 @@ const pages = {
     '/entrega': 'entrega.html',
     '/pagamento': 'pagamento.html',
     '/finalizar': 'finalizado.html',
-    '/': 'index.html' // Adicione uma página inicial se necessário
+    '/': 'index.html'
 };
 
 // Registrar rotas de páginas dinamicamente
@@ -206,9 +203,6 @@ app.get('/produtos/:descricao/:id', (req,res) => {
     res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
 })
 
-app.get('/adm', (req,res) => {
-    res.sendFile(path.join(__dirname, '/views/painel-adm.html'))
-})
 
 
 // Middleware para tratar rotas não encontradas

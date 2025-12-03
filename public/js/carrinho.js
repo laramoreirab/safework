@@ -75,7 +75,7 @@ function renderizarCarrinho(dados) {
         return `
         <div class="one-produto-carrinho" data-item-id="${item.id}">
             <div class="space-img-carrinho">
-                <img src="${item.imagem || item.img || '../public/img/abafador.svg'}" alt="${item.nome}">
+                <img src="${item.img || '/public/img/abafador.svg'}" alt="${item.nome}">
             </div>
 
             <div class="space-meio-carrinho">

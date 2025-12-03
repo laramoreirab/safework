@@ -8,13 +8,11 @@ class finalizacaoController {
         try {
             const usuarioId = req.usuario.id;
             
-            // Buscar dados do usuário/empresa
             const usuario = await usuarioModel.buscarPorId(usuarioId);
             if (!usuario) {
                 return res.status(404).json({ sucesso: false, erro: 'Usuário não encontrado' });
             }
             
-            // Buscar carrinho
             const pedidos = await FinalizacaoModel.buscarCarrinho(usuarioId);
             if (pedidos.length === 0) {
                 return res.status(400).json({ sucesso: false, erro: 'Carrinho vazio' });
@@ -26,6 +24,7 @@ class finalizacaoController {
                     nomeEmpresa: usuario.nome,
                     emailEmpresa: usuario.email,
                     telefoneEmpresa: usuario.telefone,
+                    cnpj: usuario.cnpj,
                     pedidoId: pedidos[0].id
                 }
             });
@@ -77,6 +76,8 @@ class finalizacaoController {
             const usuarioId = req.usuario.id;
             const { endereco, cpfRepresentante, telefoneRepresentante, nomeRepresentante, portaria } = req.body;
             
+            console.log('Dados recebidos:', req.body);
+            
             if (!endereco || !cpfRepresentante || !telefoneRepresentante || !nomeRepresentante) {
                 return res.status(400).json({ sucesso: false, erro: 'Dados incompletos' });
             }
@@ -93,20 +94,34 @@ class finalizacaoController {
             
             const pedidoId = pedidos[0].id;
             
-            await FinalizacaoModel.atualizarDadosPedido(pedidoId, {
+            // Verificar se já existe registro em dados_pedido
+            const dadosExistentes = await FinalizacaoModel.buscarDadosPedido(pedidoId);
+            
+            const dadosEntrega = {
                 endereco,
                 cpf_representante: cpfLimpo,
                 telefone_representante: telefoneRepresentante,
                 nome_representante: nomeRepresentante,
                 portaria: portaria || null
-            });
+            };
+            
+            if (dadosExistentes.length > 0) {
+                // Atualizar registro existente
+                await FinalizacaoModel.atualizarDadosPedido(pedidoId, dadosEntrega);
+            } else {
+                // Criar novo registro
+                await FinalizacaoModel.criarDadosPedido({
+                    pedidoId,
+                    ...dadosEntrega
+                });
+            }
             
             await FinalizacaoModel.atualizarStatusPedido(pedidoId, 'aguardando_pagamento');
             
             return res.status(200).json({ sucesso: true, mensagem: 'Dados de entrega salvos com sucesso' });
         } catch (error) {
             console.error('Erro ao salvar dados de entrega:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor', mensagem: error.message });
         }
     }
     
@@ -181,6 +196,8 @@ class finalizacaoController {
             const { id } = req.params;
             const usuarioId = req.usuario.id;
             
+            console.log('Buscando resumo do pedido:', id, 'para usuário:', usuarioId);
+            
             const pedidos = await FinalizacaoModel.buscarPedidoPorId(id, usuarioId);
             if (pedidos.length === 0) {
                 return res.status(404).json({ sucesso: false, erro: 'Pedido não encontrado' });
@@ -189,6 +206,8 @@ class finalizacaoController {
             const pedido = pedidos[0];
             const dadosPedido = await FinalizacaoModel.buscarDadosPedido(id);
             const itens = await FinalizacaoModel.buscarItensPedido(id);
+            
+            console.log('Resumo encontrado:', { pedido, dadosPedido: dadosPedido[0], itens });
             
             return res.status(200).json({
                 sucesso: true,
@@ -206,4 +225,3 @@ class finalizacaoController {
 }
 
 export default finalizacaoController;
-

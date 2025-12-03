@@ -16,8 +16,12 @@ try{
     const data = await res.json()
 
     if(data.sucesso){
-        //se o login der certo ele redireciona o usuário até o index
-         window.location.href = '../'
+        //se o login der certo ele redireciona o usuário usando a url de redirecionamento do backend
+        const redirectUrl = data.dados.redirectUrl || '/';
+         // Redirecionar após pequeno delay
+        setTimeout(() => {
+             window.location.href = redirectUrl;
+        }, 500);
     }
     else{
         //login falhou
