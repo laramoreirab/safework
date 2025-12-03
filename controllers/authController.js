@@ -57,7 +57,8 @@ class authController{
                 { expiresIn: JWT_CONFIG.expiresIn } //pega informações como período de expiração do token no .env
             );
             //agora o token vai ser enviado para a verificação via cookie
-            res.cookie('token',token, usuario.id,
+            res.cookie('token',token,
+                usuario.id,
                 usuario.nome,
                 usuario.email,
                 usuario.tipo, {
@@ -76,7 +77,8 @@ class authController{
                         nome: usuario.nome,
                         email: usuario.email,
                         tipo: usuario.tipo
-                    }
+                    },
+                    redirectUrl: usuario.tipo === 'admin' ? '/adm' : '/' //se for do tipo adm redireciona para o painel do adm
                 }
             });
         } catch(error){

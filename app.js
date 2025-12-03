@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import { authMiddleware, adminMiddleware } from './middlewares/authMiddleware.js';
 import { fileURLToPath } from 'url';
 
 
@@ -115,17 +116,18 @@ app.get('/dados', (req,res) =>{
 app.get('/entrega', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
 })
-app.get('/entrega', (req,res) =>{
-    res.sendFile(path.join(__dirname, 'views', 'entrega.html'))
-})
 app.get('/finalizar', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'finalizado.html'))
 })
+app.get('/adm', authMiddleware, adminMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'painel-adm.html'));
+});
+
 // Middleware de debug para cookies e headers
 app.use((req, res, next) => {
     console.log('📦 Cookies recebidos:', req.cookies);
     console.log('🌐 Origin da requisição:', req.headers.origin);
-    console.log('🔗 Headers da requisição:', req.headers); // ← CORRIGIDO: console.log
+    console.log('🔗 Headers da requisição:', req.headers); 
     next();
 });
 
@@ -146,7 +148,7 @@ const pages = {
     '/entrega': 'entrega.html',
     '/pagamento': 'pagamento.html',
     '/finalizar': 'finalizado.html',
-    '/': 'index.html' // Adicione uma página inicial se necessário
+    '/': 'index.html'
 };
 
 // Registrar rotas de páginas dinamicamente
@@ -201,9 +203,6 @@ app.get('/produtos/:descricao/:id', (req,res) => {
     res.sendFile(path.join(__dirname, '/views/infoproduto.html'))
 })
 
-app.get('/adm', (req,res) => {
-    res.sendFile(path.join(__dirname, '/views/painel-adm.html'))
-})
 
 
 // Middleware para tratar rotas não encontradas

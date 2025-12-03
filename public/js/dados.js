@@ -1,13 +1,7 @@
 // Carregar dados iniciais ao abrir a página
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        console.log('Página dados.html carregada');
-        console.log('URL atual:', window.location.href);
-        
-        // Verificar se veio do carrinho
-        if (document.referrer && document.referrer.includes('carrinho')) {
-            console.log('Veio do carrinho');
-        }
+        console.log('Página dados carregada');
 
         const res = await fetch('/finalizacao/dados', {
             method: 'GET',
@@ -35,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Salvar dados - CORREÇÃO DO REDIRECIONAMENTO
+// Salvar dados 
 document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -67,21 +61,7 @@ document.querySelector('form').addEventListener('submit', async (e) => {
         
         if (data.sucesso) {
             alert('Dados salvos! Redirecionando...');
-            
-            // CORREÇÃO: Redirecionamento inteligente
-            const caminhoAtual = window.location.pathname;
-            let proximaPagina = 'entrega.html';
-            
-            if (caminhoAtual.includes('/views/')) {
-                proximaPagina = 'entrega.html';
-            } else if (caminhoAtual.includes('/produtos/')) {
-                proximaPagina = '../entrega.html';
-            } else {
-                proximaPagina = '/views/entrega.html';
-            }
-            
-            console.log('Indo para:', proximaPagina);
-            window.location.href = proximaPagina;
+            window.location.href = '/entrega';
             
         } else {
             alert('Erro: ' + data.mensagem);
@@ -103,7 +83,7 @@ async function verificarCarrinho() {
         if (data.sucesso && (!data.dados.itens || data.dados.itens.length === 0)) {
             alert('Carrinho vazio! Voltando para produtos...');
             setTimeout(() => {
-                window.location.href = '/produtos';
+                window.location.href = '/produtos/todos';
             }, 2000);
         }
     } catch (error) {
