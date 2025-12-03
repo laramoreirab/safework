@@ -284,3 +284,12 @@ function categoriaProduto() {
 
 // Chama a função para renderizar os produtos ao carregar a página
 window.onload = renderizarProdutos(), categoriaProduto();
+
+
+// ========================================================================================== LISTAR USUARIOS
+
+fetch('/usuarios')
+.then(data)
+
+const qtdUsers = document.getElementById('qtd-users')
+qtdUsers.innerHTML = ''

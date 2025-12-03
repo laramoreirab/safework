@@ -75,7 +75,7 @@ function renderizarCarrinho(dados) {
         return `
         <div class="one-produto-carrinho" data-item-id="${item.id}">
             <div class="space-img-carrinho">
-                <img src="${item.imagem || item.img || '../public/img/abafador.svg'}" alt="${item.nome}">
+                <img src="${item.img || '/public/img/abafador.svg'}" alt="${item.nome}">
             </div>
 
             <div class="space-meio-carrinho">
@@ -157,15 +157,15 @@ function obterCaminhoDados() {
     
     // Se está em /produtos/cabeca/37 ou similar
     if (caminhoAtual.includes('/produtos/')) {
-        return '../dados.html';
+        return '/dados';
     }
     // Se está na raiz
     else if (caminhoAtual === '/' || caminhoAtual.includes('/views/')) {
-        return 'dados.html';
+        return '/dados';
     }
     // Se está em outra pasta
     else {
-        return '/views/dados.html';
+        return '/dados';
     }
 }
 
@@ -223,17 +223,49 @@ function adicionarEventListenersCarrinho() {
     });
 }
 
+// Verificar se usuário está autenticado
+async function verificarAutenticacao() {
+    try {
+        const res = await fetch('/carrinho/contador', {
+            credentials: 'include'
+        });
+        
+        if (res.status === 401) {
+            console.log('❌ Usuário não autenticado');
+            return false;
+        }
+        
+        console.log('✅ Usuário autenticado');
+        return true;
+    } catch (error) {
+        console.error('Erro ao verificar autenticação:', error);
+        return false;
+    }
+}
+
 // Função global para adicionar item ao carrinho
 window.adicionarAoCarrinho = async function(produtoId, quantidade = 50, tamanho = null) {
     try {
-        console.log('Adicionando ao carrinho:', { produtoId, quantidade, tamanho });
+        console.log('🛒 Adicionando ao carrinho:', { produtoId, quantidade, tamanho });
+        
+        // Verificar autenticação primeiro
+        const estaAutenticado = await verificarAutenticacao();
+        if (!estaAutenticado) {
+            alert('Você precisa fazer login para adicionar produtos ao carrinho');
+            window.location.href = '/login';
+            return;
+        }
         
         // Garante que a quantidade seja múltipla de 50
         const quantidadeFinal = Math.max(50, Math.ceil(quantidade / 50) * 50);
         
+        console.log('Enviando requisição para /carrinho/adicionar');
+        
         const res = await fetch('/carrinho/adicionar', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json'
+            },
             credentials: 'include',
             body: JSON.stringify({ 
                 produtoId: parseInt(produtoId), 
@@ -243,15 +275,23 @@ window.adicionarAoCarrinho = async function(produtoId, quantidade = 50, tamanho 
             })
         });
         
+        console.log('📥 Status da resposta:', res.status);
+        
         const data = await res.json();
-        console.log('Resposta do servidor:', data);
+        console.log('📥 Resposta do servidor:', data);
+        
+        if (res.status === 401) {
+            alert('Sessão expirada. Faça login novamente.');
+            window.location.href = '/login';
+            return;
+        }
         
         if (data.sucesso) {
             alert(`${quantidadeFinal} unidades adicionadas ao carrinho!`);
             // Atualiza contador
             atualizarContadorCarrinho();
         } else {
-            alert((data.mensagem || 'Não foi possível adicionar ao carrinho'));
+            alert(data.mensagem || 'Não foi possível adicionar ao carrinho');
         }
     } catch (error) {
         console.error('Erro ao adicionar item:', error);
@@ -284,7 +324,7 @@ window.atualizarQuantidade = async function(itemId, novaQuantidade) {
         }
     } catch (error) {
         console.error('Erro ao atualizar quantidade:', error);
-        alert(' Erro ao atualizar quantidade');
+        alert('Erro ao atualizar quantidade');
     }
 }
 
@@ -348,11 +388,7 @@ document.addEventListener('click', function(e) {
         
         if (subtotal > 0 && !isNaN(subtotal)) {
             console.log('Redirecionando para finalização...');
-            
-            const caminhoDados = obterCaminhoDados();
-            console.log('Indo para:', caminhoDados);
-            window.location.href = caminhoDados;
-            
+            window.location.href = '/dados';
         } else {
             alert('Seu carrinho está vazio! Adicione itens antes de finalizar a compra.');
         }

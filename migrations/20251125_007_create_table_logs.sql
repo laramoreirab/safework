@@ -7,8 +7,8 @@ create table if not exists logs (
     ip_address varchar(100),
     user_agent varchar(100),
     dados_requisicao varchar(100),
+    dados_resposta varchar(500),
     tempo_resposta_ms int,
     usuario_id int,
-    status_code int,
-    dados_resposta varchar(100)
+    status_code int
 );

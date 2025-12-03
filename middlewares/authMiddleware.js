@@ -7,8 +7,13 @@ const authMiddleware = (req, res, next) =>{
         const token = req.cookies.token;
 
         if(!token){ // caso falhe a operação de pegar o token do cookie
+            if(req.path.includes('/adm')){
+                return res.redirect('/login');
+            }
             return res.status(401).json({
-                erro: 'Token de acesso não encontrado'
+                sucesso: false,
+                erro: 'Token de acesso não encontrado',
+                mensagem: 'Você precisa estar logado'
             });
         }
         
@@ -25,12 +30,18 @@ const authMiddleware = (req, res, next) =>{
         next();
     } catch (error){
         if (error.name === 'TokenExpiredError'){ // Exibe o erro do token expirado
+            if(req.path.includes('/adm')){
+                return res.redirect('/login');
+            }
             return res.status(401).json({
                 erro: 'Token expirado',
                 mensagem: 'Faça login novamente'
             });
         }
         if (error.name === 'JsonWebTokenError') { // Exibe o erro do token inválido
+             if(req.path.includes('/adm')){
+                return res.redirect('/login');
+            }
             return res.status(401).json({ 
                 erro: 'Token inválido',
                 mensagem: 'Token de autenticação inválido'
@@ -48,6 +59,9 @@ const authMiddleware = (req, res, next) =>{
 //Middleware para verificar se o usuário é administrador 
 const adminMiddleware = (req, res, next) => {
     if (req.usuario.tipo !== 'admin') {
+         if(req.path.includes('/adm')){
+            return res.redirect('/');
+        }
         return res.status(403).json({
             erro: 'Acesso negado!',
             mensagem: 'Apenas administradores podem acessar esse recurso!'
