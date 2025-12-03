@@ -127,7 +127,7 @@ app.get('/adm', authMiddleware, adminMiddleware, (req, res) => {
 app.use((req, res, next) => {
     console.log('📦 Cookies recebidos:', req.cookies);
     console.log('🌐 Origin da requisição:', req.headers.origin);
-    console.log('🔗 Headers da requisição:', req.headers); // ← CORRIGIDO: console.log
+    console.log('🔗 Headers da requisição:', req.headers); 
     next();
 });
 
