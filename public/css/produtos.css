@@ -173,11 +173,13 @@ main {
   h4 {
       color: var(--azul-crepusculo);
       font-weight: 700;
+      margin-right: auto;
   }
 
   h5 {
       color: var(--azul-crepusculo);
       font-weight: 700;
+      margin-right: auto;
   }
 
   img {
