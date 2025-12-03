@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import { authMiddleware, adminMiddleware } from './middlewares/authMiddleware.js';
 import { fileURLToPath } from 'url';
 
 
@@ -121,6 +122,10 @@ app.get('/entrega', (req,res) =>{
 app.get('/finalizar', (req,res) =>{
     res.sendFile(path.join(__dirname, 'views', 'finalizado.html'))
 })
+app.get('/adm', authMiddleware, adminMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'painel-adm.html'));
+});
+
 // Middleware de debug para cookies e headers
 app.use((req, res, next) => {
     console.log('📦 Cookies recebidos:', req.cookies);

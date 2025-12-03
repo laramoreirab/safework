@@ -76,7 +76,8 @@ class authController{
                         nome: usuario.nome,
                         email: usuario.email,
                         tipo: usuario.tipo
-                    }
+                    },
+                    redirectUrl: usuario.tipo === 'admin' ? '/adm' : '/' //se for do tipo adm redireciona para o painel do adm
                 }
             });
         } catch(error){
