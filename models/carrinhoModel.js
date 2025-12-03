@@ -19,7 +19,7 @@ class carrinhoModel {
             const connection = await getConnection();
             try {
                 const sql = `
-                    SELECT 
+                        SELECT 
                         ip.id,
                         ip.pedido_id,
                         ip.produto_id,
@@ -28,7 +28,7 @@ class carrinhoModel {
                         ip.tamanho,
                         p.nome,
                         p.preco as preco_produto,
-                        p.img,
+                        CONCAT('/uploads/imagens/', p.img) as img,
                         p.ca,
                         p.descricao,
                         (ip.quantidade * ip.preco_unitario) AS subtotal
@@ -55,7 +55,7 @@ class carrinhoModel {
                 usuario_id: usuarioId,
                 status: 'carrinho',
                 total: 0.00,
-                data_: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                data_criacao: new Date().toISOString().slice(0, 19).replace('T', ' ')
             });
             return result.insertId;
         } catch (error) {

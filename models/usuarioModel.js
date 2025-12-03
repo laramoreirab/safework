@@ -10,7 +10,7 @@ class usuarioModel {
         // Buscar usuários com paginação (usando prepared statements para segurança)
         const connection = await getConnection();
         try {
-            const sql = 'SELECT * FROM usuarios ORDER BY id DESC LIMIT ? OFFSET ?';
+            const sql = 'SELECT * FROM empresas ORDER BY id DESC LIMIT ? OFFSET ?';
             const [usuarios] = await connection.query(sql, [limite, offset]);
             
             // Contar total de registros

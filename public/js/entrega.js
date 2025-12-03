@@ -1,14 +1,8 @@
-// entrega.js
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Página entrega.html carregada');
     
-    // Carregar dados salvos anteriormente
     await carregarDadosSalvos();
-    
-    // Configurar máscaras
     configurarMascaras();
-    
-    // Configurar evento do formulário
     configurarFormulario();
 });
 
@@ -23,13 +17,10 @@ async function carregarDadosSalvos() {
         const data = await res.json();
         
         if (data.sucesso) {
-            // Preencher dados da empresa (readonly)
             document.getElementById('nome-empresa').value = data.dados.nomeEmpresa || '';
             document.getElementById('cnpj-empresa').value = data.dados.cnpj || '';
             
             console.log('Dados da empresa carregados');
-        } else {
-            console.warn('Não foi possível carregar dados da empresa');
         }
     } catch (error) {
         console.error('Erro ao carregar dados:', error);
@@ -38,7 +29,6 @@ async function carregarDadosSalvos() {
 
 // Configurar máscaras nos campos
 function configurarMascaras() {
-    // Máscara para CEP
     const cepInput = document.getElementById('cep-empresa');
     if (cepInput) {
         cepInput.addEventListener('input', function(e) {
@@ -50,7 +40,6 @@ function configurarMascaras() {
         });
     }
     
-    // Máscara para telefone
     const telefoneInput = document.getElementById('telefone-empresa');
     if (telefoneInput) {
         telefoneInput.addEventListener('input', function(e) {
@@ -61,6 +50,23 @@ function configurarMascaras() {
                 value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
             } else if (value.length > 2) {
                 value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+            }
+            e.target.value = value;
+        });
+    }
+    
+    const cpfInput = document.getElementById('CPF');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                if (value.length > 9) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                } else if (value.length > 6) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+                } else if (value.length > 3) {
+                    value = value.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+                }
             }
             e.target.value = value;
         });
@@ -78,7 +84,6 @@ function configurarFormulario() {
         });
     }
     
-    // Evento para buscar CEP
     const cepInput = document.getElementById('cep-empresa');
     if (cepInput) {
         cepInput.addEventListener('blur', buscarCEP);
@@ -87,7 +92,8 @@ function configurarFormulario() {
 
 // Buscar endereço via CEP
 async function buscarCEP() {
-    const cep = document.getElementById('cep-empresa').value.replace(/\D/g, '');
+    const cepInput = document.getElementById('cep-empresa');
+    const cep = cepInput.value.replace(/\D/g, '');
     
     if (cep.length !== 8) {
         return;
@@ -105,7 +111,6 @@ async function buscarCEP() {
             document.getElementById('cidade-empresa').value = endereco.localidade || '';
             document.getElementById('estado-empresa').value = endereco.uf || '';
             
-            // Focar no número
             document.getElementById('numero-empresa').focus();
             
             console.log('Endereço preenchido automaticamente');
@@ -120,20 +125,15 @@ async function buscarCEP() {
 
 // Finalizar pedido
 async function finalizarPedido() {
-    console.log(' Finalizando pedido...');
+    console.log('Finalizando pedido...');
     
     // Coletar dados do formulário
     const dadosEntrega = {
-        cep: document.getElementById('cep-empresa').value,
-        endereco: document.getElementById('endereco-empresa').value,
-        numero: document.getElementById('numero-empresa').value,
-        complemento: document.getElementById('complemento-empresa').value,
-        bairro: document.getElementById('bairro-empresa').value,
-        cidade: document.getElementById('cidade-empresa').value,
-        estado: document.getElementById('estado-empresa').value,
-        nome_representante: document.getElementById('nome-representante').value,
-        telefone: document.getElementById('telefone-empresa').value,
-        metodo_pagamento: document.querySelector('input[name="pagamento"]:checked')?.value
+        endereco: `${document.getElementById('endereco-empresa').value}, ${document.getElementById('numero-empresa').value}`,
+        cpfRepresentante: document.getElementById('CPF').value.replace(/\D/g, ''),
+        telefoneRepresentante: document.getElementById('telefone-empresa').value.replace(/\D/g, ''),
+        nomeRepresentante: document.getElementById('nome-representante').value,
+        portaria: document.getElementById('portaria').value || null
     };
     
     // Validações
@@ -142,13 +142,12 @@ async function finalizarPedido() {
     }
     
     try {
-        // Mostrar loading
         const btnSubmit = document.querySelector('button[type="submit"]');
         const btnOriginalText = btnSubmit.textContent;
         btnSubmit.textContent = 'Processando...';
         btnSubmit.disabled = true;
         
-        console.log(' Enviando dados de entrega:', dadosEntrega);
+        console.log('Enviando dados de entrega:', dadosEntrega);
         
         // Salvar dados de entrega
         const resEntrega = await fetch('/finalizacao/entrega', {
@@ -164,78 +163,41 @@ async function finalizarPedido() {
             throw new Error(dataEntrega.mensagem || 'Erro ao salvar dados de entrega');
         }
         
-        console.log(' Dados de entrega salvos');
+        console.log('Dados de entrega salvos');
         
-        // Finalizar pedido
-        const resFinalizar = await fetch('/finalizacao/finalizar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({
-                metodo_pagamento: dadosEntrega.metodo_pagamento
-            })
-        });
-        
-        const dataFinalizar = await resFinalizar.json();
-        
-        console.log('Resposta finalização:', dataFinalizar);
-        
-        if (dataFinalizar.sucesso) {
-            // SALVAR O PEDIDO ID NO LOCALSTORAGE
-            const pedidoId = dataFinalizar.dados.pedidoId || dataFinalizar.dados.id;
-            localStorage.setItem('pedidoId', pedidoId);
-            sessionStorage.setItem('pedidoId', pedidoId);
-            
-            console.log(' Pedido finalizado! ID:', pedidoId);
-            
-            // Redirecionar para página de confirmação
-            setTimeout(() => {
-                window.location.href = 'finalizado.html';
-            }, 1000);
-            
-        } else {
-            throw new Error(dataFinalizar.mensagem || 'Erro ao finalizar pedido');
-        }
+        // Redirecionar para página de pagamento
+        alert('Dados de entrega salvos! Redirecionando para pagamento...');
+        window.location.href = '/pagamento';
         
     } catch (error) {
-        console.error(' Erro ao finalizar pedido:', error);
+        console.error('Erro ao finalizar pedido:', error);
         alert('Erro: ' + error.message);
         
-        // Restaurar botão
         const btnSubmit = document.querySelector('button[type="submit"]');
-        btnSubmit.textContent = 'Finalizar Compra';
+        btnSubmit.textContent = 'Continuar';
         btnSubmit.disabled = false;
     }
 }
 
 // Validar formulário
 function validarFormulario(dados) {
-    const camposObrigatorios = [
-        'cep', 'endereco', 'numero', 'bairro', 'cidade', 'estado', 
-        'nome_representante', 'telefone', 'metodo_pagamento'
-    ];
-    
-    for (let campo of camposObrigatorios) {
-        if (!dados[campo] || dados[campo].trim() === '') {
-            alert(`Por favor, preencha o campo: ${campo.replace('_', ' ')}`);
-            document.getElementById(`${campo}-empresa` || campo)?.focus();
-            return false;
-        }
-    }
-    
-    // Validar CEP
-    const cep = dados.cep.replace(/\D/g, '');
-    if (cep.length !== 8) {
-        alert('CEP inválido');
-        document.getElementById('cep-empresa').focus();
+    if (!dados.endereco || dados.endereco.trim() === '') {
+        alert('Por favor, preencha o endereço completo');
         return false;
     }
     
-    // Validar telefone
-    const telefone = dados.telefone.replace(/\D/g, '');
-    if (telefone.length < 10) {
+    if (!dados.cpfRepresentante || dados.cpfRepresentante.length !== 11) {
+        alert('CPF inválido');
+        return false;
+    }
+    
+    if (!dados.telefoneRepresentante || dados.telefoneRepresentante.length < 10) {
         alert('Telefone inválido');
-        document.getElementById('telefone-empresa').focus();
+        return false;
+    }
+    
+    if (!dados.nomeRepresentante || dados.nomeRepresentante.trim() === '') {
+        alert('Por favor, preencha o nome do representante');
         return false;
     }
     
