@@ -1,192 +1,401 @@
 import FinalizacaoModel from '../models/finalizacaoModel.js';
-import usuarioModel from '../models/usuarioModel.js';
 
-class finalizacaoController {
+class FinalizacaoController {
     
     // GET /finalizacao/dados - Obter dados iniciais
     static async obterDadosIniciais(req, res) {
         try {
-            const usuarioId = req.usuario.id;
+            // req.usuario.id já é o ID da empresa
+            const empresaId = req.usuario.id;
             
-            const usuario = await usuarioModel.buscarPorId(usuarioId);
-            if (!usuario) {
-                return res.status(404).json({ sucesso: false, erro: 'Usuário não encontrado' });
+            console.log('Obtendo dados para empresa ID:', empresaId);
+            
+            // Buscar empresa diretamente
+            const empresa = await FinalizacaoModel.buscarEmpresaPorId(empresaId);
+            
+            if (!empresa) {
+                console.log('Empresa não encontrada para ID:', empresaId);
+                return res.status(404).json({ 
+                    sucesso: false, 
+                    erro: 'Empresa não encontrada' 
+                });
             }
             
-            const pedidos = await FinalizacaoModel.buscarCarrinho(usuarioId);
+            console.log('Empresa encontrada:', {
+                id: empresa.id,
+                nome: empresa.nome,
+                email: empresa.email,
+                telefone: empresa.telefone,
+                cnpj: empresa.cnpj
+            });
+            
+            // Verificar carrinho
+            const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
+            
+            console.log('Pedidos no carrinho:', pedidos.length);
+            
             if (pedidos.length === 0) {
-                return res.status(400).json({ sucesso: false, erro: 'Carrinho vazio' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Carrinho vazio' 
+                });
             }
             
             return res.status(200).json({
                 sucesso: true,
                 dados: {
-                    nomeEmpresa: usuario.nome,
-                    emailEmpresa: usuario.email,
-                    telefoneEmpresa: usuario.telefone,
-                    cnpj: usuario.cnpj,
+                    nomeEmpresa: empresa.nome || '',
+                    emailEmpresa: empresa.email || '',
+                    telefoneEmpresa: empresa.telefone || '',
+                    cnpj: empresa.cnpj || '',
                     pedidoId: pedidos[0].id
                 }
             });
+            
         } catch (error) {
             console.error('Erro ao obter dados iniciais:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro interno do servidor',
+                mensagem: error.message 
+            });
         }
     }
     
     // POST /finalizacao/dados - Salvar dados empresariais
     static async salvarDadosEmpresariais(req, res) {
         try {
-            const usuarioId = req.usuario.id;
+            const empresaId = req.usuario.id;
             const { nomeEmpresa, cnpj, telefoneEmpresa, emailEmpresa } = req.body;
+            
+            console.log('Salvando dados para empresa ID:', empresaId);
+            console.log('Dados recebidos:', { nomeEmpresa, cnpj, telefoneEmpresa, emailEmpresa });
             
             // Validações
             if (!nomeEmpresa || !cnpj || !telefoneEmpresa || !emailEmpresa) {
-                return res.status(400).json({ sucesso: false, erro: 'Dados incompletos' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Todos os campos são obrigatórios' 
+                });
             }
             
             const cnpjLimpo = cnpj.replace(/\D/g, '');
             if (cnpjLimpo.length !== 14) {
-                return res.status(400).json({ sucesso: false, erro: 'CNPJ inválido' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'CNPJ inválido (deve ter 14 dígitos)'
+                });
             }
             
             const telefoneLimpo = telefoneEmpresa.replace(/\D/g, '');
             if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
-                return res.status(400).json({ sucesso: false, erro: 'Telefone inválido' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Telefone inválido (10 ou 11 dígitos)'
+                });
             }
             
-            // Atualizar dados da empresa
-            await FinalizacaoModel.atualizarEmpresa(usuarioId, {
-                nome: nomeEmpresa,
+            // Verificar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailEmpresa)) {
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Email inválido'
+                });
+            }
+            
+            // Preparar dados para atualização
+            const dadosAtualizacao = {
+                nome: nomeEmpresa.trim(),
                 cnpj: cnpjLimpo,
                 telefone: telefoneLimpo,
-                email: emailEmpresa
+                email: emailEmpresa.toLowerCase().trim()
+            };
+            
+            console.log('Atualizando empresa com dados:', dadosAtualizacao);
+            
+            // Atualizar empresa
+            const resultado = await FinalizacaoModel.atualizarEmpresa(empresaId, dadosAtualizacao);
+            
+            console.log('Resultado da atualização:', resultado);
+            
+            return res.status(200).json({ 
+                sucesso: true, 
+                mensagem: 'Dados empresariais salvos com sucesso'
             });
             
-            return res.status(200).json({ sucesso: true, mensagem: 'Dados empresariais salvos com sucesso' });
         } catch (error) {
             console.error('Erro ao salvar dados empresariais:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro interno do servidor',
+                mensagem: error.message
+            });
         }
     }
     
     // POST /finalizacao/entrega - Salvar dados de entrega
     static async salvarDadosEntrega(req, res) {
         try {
-            const usuarioId = req.usuario.id;
+            const empresaId = req.usuario.id;
             const { endereco, cpfRepresentante, telefoneRepresentante, nomeRepresentante, portaria } = req.body;
             
+            console.log('=== SALVANDO DADOS DE ENTREGA ===');
+            console.log('Empresa ID:', empresaId);
             console.log('Dados recebidos:', req.body);
             
-            if (!endereco || !cpfRepresentante || !telefoneRepresentante || !nomeRepresentante) {
-                return res.status(400).json({ sucesso: false, erro: 'Dados incompletos' });
+            // Validações
+            if (!endereco?.trim()) {
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Endereço é obrigatório' 
+                });
             }
             
+            if (!cpfRepresentante?.trim()) {
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'CPF do representante é obrigatório' 
+                });
+            }
+            
+            if (!telefoneRepresentante?.trim()) {
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Telefone do representante é obrigatório' 
+                });
+            }
+            
+            if (!nomeRepresentante?.trim()) {
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Nome do representante é obrigatório' 
+                });
+            }
+            
+            // Limpar CPF (apenas números)
             const cpfLimpo = cpfRepresentante.replace(/\D/g, '');
+            console.log('CPF limpo (11 dígitos):', cpfLimpo);
+            
             if (cpfLimpo.length !== 11) {
-                return res.status(400).json({ sucesso: false, erro: 'CPF inválido' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'CPF deve conter 11 dígitos',
+                    digitosRecebidos: cpfLimpo.length
+                });
             }
             
-            const pedidos = await FinalizacaoModel.buscarCarrinho(usuarioId);
+            // Validar CPF
+            if (!this.validarCPF(cpfLimpo)) {
+                console.warn('CPF pode ser inválido:', cpfLimpo);
+                // Não bloqueia, apenas avisa no log
+            }
+            
+            // Buscar pedido
+            const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
+            console.log('Pedidos no carrinho:', pedidos.length);
+            
             if (pedidos.length === 0) {
-                return res.status(400).json({ sucesso: false, erro: 'Carrinho vazio' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Carrinho vazio' 
+                });
             }
             
             const pedidoId = pedidos[0].id;
+            console.log('Pedido ID encontrado:', pedidoId);
             
-            // Verificar se já existe registro em dados_pedido
-            const dadosExistentes = await FinalizacaoModel.buscarDadosPedido(pedidoId);
-            
+            // Preparar dados - SALVAR CPF APENAS COM NÚMEROS (11 dígitos)
             const dadosEntrega = {
-                endereco,
-                cpf_representante: cpfLimpo,
-                telefone_representante: telefoneRepresentante,
-                nome_representante: nomeRepresentante,
-                portaria: portaria || null
+                endereco: endereco.trim(),
+                cpf_representante: cpfLimpo, // 11 dígitos SEM pontuação
+                telefone_representante: telefoneRepresentante.replace(/\D/g, '').slice(0, 11),
+                nome_representante: nomeRepresentante.trim(),
+                portaria: portaria?.trim() || null
             };
             
+            console.log('Dados para salvar:', dadosEntrega);
+            
+            // Verificar se já existem dados
+            const dadosExistentes = await FinalizacaoModel.buscarDadosPedido(pedidoId);
+            
             if (dadosExistentes.length > 0) {
-                // Atualizar registro existente
+                console.log('Atualizando registro existente...');
                 await FinalizacaoModel.atualizarDadosPedido(pedidoId, dadosEntrega);
             } else {
-                // Criar novo registro
+                console.log('Criando novo registro...');
                 await FinalizacaoModel.criarDadosPedido({
-                    pedidoId,
+                    pedidoId: pedidoId,
                     ...dadosEntrega
                 });
             }
             
+            // Atualizar status do pedido
             await FinalizacaoModel.atualizarStatusPedido(pedidoId, 'aguardando_pagamento');
             
-            return res.status(200).json({ sucesso: true, mensagem: 'Dados de entrega salvos com sucesso' });
+            console.log('✅ Dados de entrega salvos com sucesso!');
+            
+            return res.status(200).json({ 
+                sucesso: true, 
+                mensagem: 'Dados de entrega salvos com sucesso',
+                pedidoId: pedidoId
+            });
+            
         } catch (error) {
-            console.error('Erro ao salvar dados de entrega:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor', mensagem: error.message });
+            console.error('❌ ERRO ao salvar dados de entrega:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro ao salvar dados',
+                mensagem: error.message
+            });
         }
     }
     
     // POST /finalizacao/pagamento - Processar pagamento
     static async processarPagamento(req, res) {
         try {
-            const usuarioId = req.usuario.id;
+            const empresaId = req.usuario.id;
             const { metodoPagamento, numeroCartao, nomeTitular, validadeCartao, cvv, cpfTitular } = req.body;
             
+            console.log('=== PROCESSANDO PAGAMENTO ===');
+            console.log('Empresa ID:', empresaId);
+            console.log('Método de pagamento:', metodoPagamento);
+            
             if (!metodoPagamento) {
-                return res.status(400).json({ sucesso: false, erro: 'Método de pagamento obrigatório' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Método de pagamento obrigatório' 
+                });
             }
             
+            // Validações para cartão de crédito
             if (metodoPagamento === 'credito') {
+                if (!numeroCartao) {
+                    return res.status(400).json({ 
+                        sucesso: false, 
+                        erro: 'Número do cartão é obrigatório' 
+                    });
+                }
+                
                 const cartaoLimpo = numeroCartao.replace(/\D/g, '');
                 if (cartaoLimpo.length !== 16) {
-                    return res.status(400).json({ sucesso: false, erro: 'Número do cartão inválido' });
+                    return res.status(400).json({ 
+                        sucesso: false, 
+                        erro: 'Número do cartão inválido (16 dígitos)'
+                    });
                 }
+                
+                if (!cvv) {
+                    return res.status(400).json({ 
+                        sucesso: false, 
+                        erro: 'CVV é obrigatório' 
+                    });
+                }
+                
                 const cvvLimpo = cvv.replace(/\D/g, '');
                 if (cvvLimpo.length < 3 || cvvLimpo.length > 4) {
-                    return res.status(400).json({ sucesso: false, erro: 'CVV inválido' });
+                    return res.status(400).json({ 
+                        sucesso: false, 
+                        erro: 'CVV inválido (3 ou 4 dígitos)'
+                    });
                 }
             }
             
-            const pedidos = await FinalizacaoModel.buscarPedidoAguardandoPagamento(usuarioId);
+            // Buscar pedido
+            const pedidos = await FinalizacaoModel.buscarPedidoAguardandoPagamento(empresaId);
             if (pedidos.length === 0) {
-                return res.status(400).json({ sucesso: false, erro: 'Nenhum pedido aguardando pagamento' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Nenhum pedido aguardando pagamento' 
+                });
             }
             
             const pedidoId = pedidos[0].id;
+            console.log('Pedido ID para pagamento:', pedidoId);
             
-            const dadosPagamento = { metodo_pagamento: metodoPagamento };
+            // Preparar dados do pagamento
+            const dadosPagamento = { 
+                metodo_pagamento: metodoPagamento 
+            };
+            
             if (metodoPagamento === 'credito') {
-                dadosPagamento.numero_cartao = numeroCartao.slice(-4);
-                dadosPagamento.nome_titular = nomeTitular;
-                dadosPagamento.validade = validadeCartao;
-                dadosPagamento.cpf_titular = cpfTitular;
+                // Salvar apenas os últimos 4 dígitos (segurança)
+                const ultimosDigitos = numeroCartao.replace(/\D/g, '').slice(-4);
+                dadosPagamento.numero_cartao = ultimosDigitos;
+                dadosPagamento.nome_titular = nomeTitular?.trim() || '';
+                dadosPagamento.validade = validadeCartao?.trim() || '';
+                dadosPagamento.cvv = cvv.replace(/\D/g, '');
+                
+                // Se tiver CPF do titular, salvar apenas números
+                if (cpfTitular) {
+                    const cpfTitularLimpo = cpfTitular.replace(/\D/g, '');
+                    if (cpfTitularLimpo.length === 11) {
+                        dadosPagamento.cpf_titular = cpfTitularLimpo; // 11 dígitos SEM pontuação
+                    }
+                }
             }
             
+            console.log('Dados de pagamento para salvar:', dadosPagamento);
+            
+            // Atualizar dados do pedido
             await FinalizacaoModel.atualizarDadosPedido(pedidoId, dadosPagamento);
+            
+            // Atualizar status do pedido
             await FinalizacaoModel.atualizarStatusPedido(pedidoId, 'pago');
             
-            return res.status(200).json({ sucesso: true, mensagem: 'Pagamento processado com sucesso', dados: { pedidoId } });
+            console.log('✅ Pagamento processado com sucesso!');
+            
+            return res.status(200).json({ 
+                sucesso: true, 
+                mensagem: 'Pagamento processado com sucesso', 
+                dados: { pedidoId } 
+            });
+            
         } catch (error) {
-            console.error('Erro ao processar pagamento:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            console.error('❌ ERRO ao processar pagamento:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro ao processar pagamento',
+                mensagem: error.message
+            });
         }
     }
     
     // POST /finalizacao/finalizar - Finalizar pedido
     static async finalizarPedido(req, res) {
         try {
-            const usuarioId = req.usuario.id;
-            const pedidos = await FinalizacaoModel.buscarPedidoPago(usuarioId);
+            const empresaId = req.usuario.id;
+            
+            console.log('Finalizando pedido para empresa:', empresaId);
+            
+            const pedidos = await FinalizacaoModel.buscarPedidoPago(empresaId);
             if (pedidos.length === 0) {
-                return res.status(400).json({ sucesso: false, erro: 'Nenhum pedido pago encontrado' });
+                return res.status(400).json({ 
+                    sucesso: false, 
+                    erro: 'Nenhum pedido pago encontrado' 
+                });
             }
             
             const pedidoId = pedidos[0].id;
+            console.log('Finalizando pedido ID:', pedidoId);
+            
             await FinalizacaoModel.atualizarStatusPedido(pedidoId, 'enviado');
             
-            return res.status(200).json({ sucesso: true, mensagem: 'Pedido finalizado com sucesso', dados: { pedidoId } });
+            console.log('✅ Pedido finalizado com sucesso!');
+            
+            return res.status(200).json({ 
+                sucesso: true, 
+                mensagem: 'Pedido finalizado com sucesso', 
+                dados: { pedidoId } 
+            });
+            
         } catch (error) {
-            console.error('Erro ao finalizar pedido:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            console.error('❌ ERRO ao finalizar pedido:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro ao finalizar pedido',
+                mensagem: error.message
+            });
         }
     }
     
@@ -194,20 +403,24 @@ class finalizacaoController {
     static async obterResumoPedido(req, res) {
         try {
             const { id } = req.params;
-            const usuarioId = req.usuario.id;
+            const empresaId = req.usuario.id;
             
-            console.log('Buscando resumo do pedido:', id, 'para usuário:', usuarioId);
+            console.log('Buscando resumo do pedido:', id, 'para empresa:', empresaId);
             
-            const pedidos = await FinalizacaoModel.buscarPedidoPorId(id, usuarioId);
+            // Verificar se o pedido pertence à empresa
+            const pedidos = await FinalizacaoModel.buscarPedidoPorId(id, empresaId);
             if (pedidos.length === 0) {
-                return res.status(404).json({ sucesso: false, erro: 'Pedido não encontrado' });
+                return res.status(404).json({ 
+                    sucesso: false, 
+                    erro: 'Pedido não encontrado' 
+                });
             }
             
             const pedido = pedidos[0];
             const dadosPedido = await FinalizacaoModel.buscarDadosPedido(id);
             const itens = await FinalizacaoModel.buscarItensPedido(id);
             
-            console.log('Resumo encontrado:', { pedido, dadosPedido: dadosPedido[0], itens });
+            console.log('Resumo encontrado para pedido:', id);
             
             return res.status(200).json({
                 sucesso: true,
@@ -217,11 +430,91 @@ class finalizacaoController {
                     itens
                 }
             });
+            
         } catch (error) {
-            console.error('Erro ao obter resumo:', error);
-            res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor' });
+            console.error('❌ ERRO ao obter resumo:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro ao obter resumo',
+                mensagem: error.message
+            });
         }
+    }
+    
+    // GET /finalizacao/debug - Endpoint para debug
+    static async debugDados(req, res) {
+        try {
+            const empresaId = req.usuario.id;
+            
+            console.log('=== DEBUG ===');
+            console.log('Empresa ID:', empresaId);
+            
+            // Buscar empresa
+            const empresa = await FinalizacaoModel.buscarEmpresaPorId(empresaId);
+            console.log('Empresa:', empresa);
+            
+            // Buscar pedidos
+            const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
+            console.log('Pedidos no carrinho:', pedidos);
+            
+            let dadosPedido = null;
+            if (pedidos.length > 0) {
+                const pedidoId = pedidos[0].id;
+                dadosPedido = await FinalizacaoModel.buscarDadosPedido(pedidoId);
+                console.log('Dados do pedido:', dadosPedido);
+            }
+            
+            return res.status(200).json({
+                sucesso: true,
+                empresa: {
+                    id: empresa?.id,
+                    nome: empresa?.nome,
+                    email: empresa?.email,
+                    telefone: empresa?.telefone,
+                    cnpj: empresa?.cnpj
+                },
+                pedidos: pedidos,
+                dadosPedido: dadosPedido
+            });
+            
+        } catch (error) {
+            console.error('Erro no debug:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: error.message 
+            });
+        }
+    }
+    
+    // Método auxiliar para validar CPF
+    static validarCPF(cpf) {
+        cpf = cpf.replace(/\D/g, '');
+        
+        if (cpf.length !== 11) return false;
+        
+        // Verificar se todos os dígitos são iguais
+        if (/^(\d)\1{10}$/.test(cpf)) return false;
+        
+        // Validar primeiro dígito verificador
+        let soma = 0;
+        for (let i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+        let resto = 11 - (soma % 11);
+        let digito1 = resto >= 10 ? 0 : resto;
+        
+        if (digito1 !== parseInt(cpf.charAt(9))) return false;
+        
+        // Validar segundo dígito verificador
+        soma = 0;
+        for (let i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+        resto = 11 - (soma % 11);
+        let digito2 = resto >= 10 ? 0 : resto;
+        
+        return digito2 === parseInt(cpf.charAt(10));
     }
 }
 
-export default finalizacaoController;
+export default FinalizacaoController;
