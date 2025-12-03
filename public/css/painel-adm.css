@@ -827,3 +827,36 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 4px;
     border: none;
 }
+
+/* <!--------------------------------- Responsividade ----------------------------------!> */
+
+/* <!----------- Celulares --------------!> */
+@media (max-width: 700px) {
+    #adm{
+        padding: 6rem 1rem 6rem 1rem;
+    }
+
+    
+    .box-modals{
+        margin: 0;
+    }
+}
+
+/* <!----------- Tablets/Laptops pequenos --------------!> */
+@media (max-width: 1024px) and (min-width: 700px) {
+        #adm{
+        padding: 2rem;
+    }
+}
+
+@media (max-width:1300px) and (min-width: 1025px) {
+        #adm{
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 1424px) and (min-width: 1302px) {
+        #adm{
+        padding: 2rem;
+    }
+}
