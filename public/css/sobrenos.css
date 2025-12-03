@@ -160,6 +160,7 @@
     align-items: center;
     align-content: center;
     margin-right: 80vh;
+    gap: 2dvh;
 
     h1 {
         color: var(--azul-crepusculo);
@@ -185,6 +186,17 @@
         height: 6vh;
         font-size: 2.5vh;
         border-radius: 0.8rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        transform: scale(1);
     }
 }
 
@@ -215,12 +227,26 @@
         }
 
         h3 {
-            font-size: 2rem;
+            font-size: 3rem;
         }
 
         p {
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
+    }
+
+    .nossosprodutos {
+        
+
+        h1 {
+            text-align: center;
+        }
+    }
+
+    .all-beneficios {
+        flex-direction: column;
+        align-items: center;
+        gap: 5dvh;
     }
 }
 
@@ -292,6 +318,198 @@
 
         p {
             font-size: 1rem;
+        }
+    }
+
+    
+}
+
+
+/* <!--------------------------------- Responsividade ----------------------------------!> */
+
+/* <!----------- Celulares --------------!> */
+@media (max-width: 700px) {
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+}
+
+/* <!----------- Tablets/Laptops pequenos --------------!> */
+@media (max-width: 1024px) and (min-width: 700px) {
+ 
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }   
+}
+
+@media (max-width:1300px) and (min-width: 1025px) {
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 10%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    }
+}
+
+@media (max-width: 1424px) and (min-width: 1302px) {
+    /* Nossos Produtos */
+    .nossosprodutos_banner {
+        background-position: left;
+        position: absolute;
+    }
+
+    .nossosprodutos_banner {
+        overflow-x: hidden;
+        border-radius: 1.5rem;
+        width: 80%;
+        height: 45vh;
+        overflow-y: hidden;
+    }
+
+    .nossosprodutos {
+        position: relative;
+        margin-top: 23vh;
+        width: 30vh;
+        z-index: 1;
+        left: 16%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 80vh;
+
+        h1 {
+            font-size: 6vh;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin: 1rem;
         }
     }
 }
