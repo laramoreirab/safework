@@ -11,7 +11,7 @@ const _dirname = path.dirname(_filename)
 
 class ProdutoController {
 
-    // GET /produtos  para listar todos os produtos (paginação)
+    // GET /api/produtos  para listar todos os produtos (paginação)
     static async ListarProdutos(req, res) {
         try {
 
@@ -66,7 +66,7 @@ class ProdutoController {
         }
     }
 
-    // GET /produtos/:id
+    // GET /api/produtos/:id
     static async buscarPorId(req, res) {
         try {
             const { id } = req.params
@@ -103,7 +103,7 @@ class ProdutoController {
         }
     }
 
-    // GET /produtos/:categoria
+    // GET  /api/produtos/:categoria
     static async buscarPorCategoria(req, res) {
         try {
             const { categoria } = req.params
@@ -142,7 +142,7 @@ class ProdutoController {
 
             // validar estoque
 
-            if(estoque < 1 || estoque === 0) {
+            if (estoque < 1 || estoque === 0) {
                 erros.push({
                     campo: 'estoque',
                     mensagem: 'Deve ter pelo menos 1 item no estoque'
@@ -225,7 +225,7 @@ class ProdutoController {
         }
     }
 
-    // excluir produto 
+    //  DELETE /api/produtos/excluir
 
     static async excluirProduto(req, res) {
         try {
@@ -269,6 +269,105 @@ class ProdutoController {
         }
 
     }
+
+    // PUT /api/produtos/atualizar
+
+    static async atualizar(req, res) {
+        const { id , nome, tipo, ca, preco, estoque, descricao, marca, img } = req.body;
+        console.log(`esse é o req :`, req.body);
+
+        // Validações manuais - coletar todos os erros
+        const erros = [];
+
+        // apagar img antiga
+        if(img){
+            await fs.unlink(`./uploads/imagens/${img}`)
+        }
+
+
+        // validar estoque
+        if (estoque < 1 || estoque === 0) {
+            erros.push({
+                campo: 'estoque',
+                mensagem: 'Deve ter pelo menos 1 item no estoque'
+            })
+        }
+
+        // Validar nome
+        if (!nome || nome.trim() === '') {
+            erros.push({
+                campo: 'nome',
+                mensagem: 'Nome é obrigatório'
+            });
+        } else {
+            if (nome.trim().length < 3) {
+                erros.push({
+                    campo: 'nome',
+                    mensagem: 'O nome deve ter pelo menos 3 caracteres'
+                });
+            }
+
+            if (nome.trim().length > 255) {
+                erros.push({
+                    campo: 'nome',
+                    mensagem: 'O nome deve ter no máximo 255 caracteres'
+                });
+            }
+        }
+
+        // Validar preço
+        if (!preco || isNaN(preco) || preco <= 0) {
+            erros.push({
+                campo: 'preco',
+                mensagem: 'Preço deve ser um número positivo'
+            });
+        }
+
+        // Se houver erros, retornar todos de uma vez
+        if (erros.length > 0) {
+            return res.status(400).json({
+                sucesso: false,
+                erro: 'Dados inválidos',
+                detalhes: erros
+            });
+        }
+
+        // Preparar dados do produto
+        const dadosProduto = {
+            nome: nome.trim(),
+            preco: parseFloat(preco),
+            tipo: tipo,
+            ca: ca,
+            estoque: estoque,
+            descricao: descricao,
+            marca: marca
+        };
+
+
+        // Adicionar imagem se foi enviada
+        if (req.file) {
+            dadosProduto.img = req.file.filename;
+        }
+
+        const produtoId = await ProdutoModel.atualizar(id , dadosProduto);
+
+        res.status(201).json({
+            sucesso: true,
+            mensagem: 'Produto atualizado com sucesso',
+            dados: {
+                id: produtoId,
+                ...dadosProduto
+            }
+        });
+    } catch(error) {
+        console.error('Erro ao criar produto:', error);
+        res.status(500).json({
+            sucesso: false,
+            erro: 'Erro interno do servidor',
+            mensagem: 'Não foi possível criar o produto'
+        });
+    }
+
 
 }
 

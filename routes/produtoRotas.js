@@ -7,6 +7,7 @@ const router = express.Router()
 router.get('/listar', ProdutoController.ListarProdutos)
 router.get('/listar/id/:id', ProdutoController.buscarPorId)
 router.get('/listar/:categoria', ProdutoController.buscarPorCategoria)
+router.put('/atualizar',  uploadImagens.single('imagem'), handleUploadError, ProdutoController.atualizar )
 router.post('/criar', uploadImagens.single('imagem'), handleUploadError, ProdutoController.criar)
 router.delete('/excluir/:id/:img', ProdutoController.excluirProduto)
 

@@ -460,7 +460,7 @@
                             <div class="cont_total-usuarios">
                                 <h1>Usuários</h1>
                                 <i class="fi fi-tr-users"></i>
-                                <p class="qtd-users">
+                                <p class="qtd-users" id="qtd-users">
                                     <!-- Coloque aqui a quantidade total de usuários  -->
                                     2
                                 </p>
@@ -515,70 +515,10 @@
                                                             <th>ID</th>
                                                             <th>Email</th>
                                                             <th>telefone</th>
-                                                            <th>status</th>
+                                                            <th>Tipo</th>
                                                             <th class="acoes_cabecalho">ações</th>
                                                         </tr>
                                                     </thead>
-
-                                                    <tr class="eachUser">
-                                                        <td class="nome_user">
-                                                            <!-- Colocar aqui o nome do user -->
-                                                            Petrobras
-                                                        </td>
-                                                        <td class="id_user">
-                                                            <!-- Colocar aqui o nome do user -->
-                                                            130909
-                                                        </td>
-                                                        <td class="email_user">
-                                                            <!-- Colocar aqui o email do user -->
-                                                            aria@gmail.com
-                                                        </td>
-                                                        <td class="tel_user">
-                                                            <!-- Colocar aqui o telefone do user -->
-                                                            (11) 94561-1673
-                                                        </td>
-                                                        <td class="status_prod">
-                                                            <p class="status_ativo">
-                                                                ativo
-                                                            </p>
-                                                        </td>
-                                                        <td class="actions_prod">
-                                                            <div class="acoes">
-                                                                <div class="excluir-produto">
-                                                                    <!-- Botão Excluir Usuário -->
-                                                                    <button type="button" class="botao_excluirprod"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#excluirUsuario">
-                                                                        <i class="fi fi-rs-trash"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <!-- Só para demonstração -->
-                                                    <tr class="eachUser">
-                                                        <td class="nome_user">Petrobras</td>
-                                                        <td class="id_user">130909</td>
-                                                        <td class="email_user">aria@gmail.com</td>
-                                                        <td class="tel_user">(11) 94561-1673</td>
-                                                        <td class="status_prod">
-                                                            <p class="status_ativo">
-                                                                ativo
-                                                            </p>
-                                                        </td>
-                                                        <td class="actions_prod">
-                                                            <div class="acoes">
-                                                                <div class="excluir-produto">
-                                                                    <!-- Botão Excluir Usuário -->
-                                                                    <button type="button" class="botao_excluirprod"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#excluirUsuario">
-                                                                        <i class="fi fi-rs-trash"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -711,7 +651,7 @@
                 <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
                 <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
+                    <div class="modal-dialog modal-xl" id="formAtualizar">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div></div>
