@@ -1,7 +1,9 @@
-// ======================================================================= CRIAR PRODUTO
-// const salvar = document.getElementById('submit_prod-new')
-const form = document.getElementById('info_novoproduto')
 
+//  ========================================================================================================== SESSÃO DE PRODUTOS
+
+// CRIAR PRODUTO
+
+const form = document.getElementById('info_novoproduto')
 form.addEventListener('submit', async (e) => {
     e.preventDefault()  // Evita o comportamento padrão do botão de submit
 
@@ -16,12 +18,12 @@ form.addEventListener('submit', async (e) => {
     const InputImg = document.getElementById('img_prod-upload')
 
     console.log('esse é o nome do produto: ', nomeProduto)
-    if(estoqueProduto < 1){
+    if (estoqueProduto < 1) {
         e.preventDefault()
         alert('O estoque deve ter pelo menos 1 item')
         return
     }
-    if(nomeProduto.length <= 3){
+    if (nomeProduto.length <= 3) {
         alert('nome do produto deve ter pelo menos 3 caracteres')
         return
     }
@@ -58,10 +60,9 @@ form.addEventListener('submit', async (e) => {
 
 
 
-// ======================================================================= EDITAR PRODUTO
+// EDITAR PRODUTO
 
 const editar = document.getElementById('atualizar-prod') // Botão de atualizar produto
-
 editar.addEventListener('click', (e) => {
     e.preventDefault()  // Evita o comportamento padrão do botão de submit
     atualizarProduto()
@@ -105,9 +106,7 @@ async function atualizarProduto() {
 }
 
 
-
-// ======================================================================= mostrar produtos na tabela
-
+//  mostrar produtos na tabela
 function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
     fetch('/api/produtos/listar') // rota que puxa todos os produtos do banco de dados
         .then(response => response.json())
@@ -198,7 +197,7 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
             const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
             document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
         })
-    // =========================================================== BOTÃO EXCLUIR
+    // BOTÃO EXCLUIR
 
     let idDoProdExcluir = null
 
@@ -232,9 +231,8 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
 }
 
 
-// ======================================================================= filtrar produtos com estoque baixo
-
-function categoriaProduto() {
+//  filtrar produtos com estoque baixo
+function produtoEstoqueBaixo() {
     fetch('/api/produtos/listar') // rota que puxa todos os produtos do banco de dados
         .then(response => response.json())
         .then(data => {
@@ -283,13 +281,74 @@ function categoriaProduto() {
 
 
 // Chama a função para renderizar os produtos ao carregar a página
-window.onload = renderizarProdutos(), categoriaProduto();
+window.onload = renderizarProdutos(), produtoEstoqueBaixo(), listarUsuarios();
 
 
-// ========================================================================================== LISTAR USUARIOS
 
-fetch('/usuarios')
-.then(data)
 
-const qtdUsers = document.getElementById('qtd-users')
-qtdUsers.innerHTML = ''
+
+
+//  ========================================================================================================== SESSÃO DE USUÁRIOS
+
+
+
+
+
+
+// LISTAR USUÁRIOS
+
+
+async function listarUsuarios() {
+    fetch('/usuarios')
+        .then(res => res.json())
+        .then(data => {
+            const tabelaUser = document.getElementById('tabela_users')
+            const usuarios = data.dados // retorna a array com as informações dos usuários
+            const qtdUsers = document.getElementById('qtd-users') // pega o ID do numerador da quantidade de usuarios
+            qtdUsers.innerHTML = usuarios.length // adiciona a quantidade de usuarios no bloco do modal usuarios na página do administrador
+
+            usuarios.forEach(usuario => {
+                const bloco = document.createElement('tr')
+                bloco.className = 'eachUser'
+
+                bloco.innerHTML = `
+                                                        <td class="nome_user">
+                                                            <!-- Colocar aqui o nome do user -->
+                                                            ${usuario.nome}
+                                                        </td>
+                                                        <td class="id_user">
+                                                            <!-- Colocar aqui o id do user -->
+                                                            ${usuario.id}
+                                                        </td>
+                                                        <td class="email_user">
+                                                            <!-- Colocar aqui o email do user -->
+                                                            ${usuario.email}
+                                                        </td>
+                                                        <td class="tel_user">
+                                                            <!-- Colocar aqui o telefone do user -->
+                                                            ${usuario.telefone}
+                                                        </td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                                ${usuario.tipo}
+                                                            </p>
+                                                        </td>
+                                                        <td class="actions_prod">
+                                                            <div class="acoes">
+                                                                <div class="excluir-produto">
+                                                                    <!-- Botão Excluir Usuário -->
+                                                                    <button type="button" class="botao_excluirprod"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#excluirUsuario">
+                                                                        <i class="fi fi-rs-trash"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+            `
+                tabelaUser.appendChild(bloco)
+            })
+            
+        })
+
+}
