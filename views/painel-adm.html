@@ -364,37 +364,39 @@
                                     <div class="modal-body">
                                         <div class="align">
                                             <div class="tabela_vendas">
-                                                <table id="tabela_vendas">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>Empresa</th>
-                                                            <th>Data</th>
-                                                            <th>Produtos</th>
-                                                            <th class="valor_vendas">Valor Total</th>
-                                                        </tr>
-                                                    </thead>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_vendas">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>Empresa</th>
+                                                                <th>Data</th>
+                                                                <th>Produtos</th>
+                                                                <th class="valor_vendas">Valor Total</th>
+                                                            </tr>
+                                                        </thead>
 
-                                                    <tr class="eachproduto">
-                                                        <td class="nomeUser_compra">
-                                                            <!-- Colocar aqui o nome do comprador -->
-                                                            Petrobras
-                                                        </td>
-                                                        <td class="data_Compra">
-                                                            <!-- Colocar aqui a data da compra -->
-                                                            21/09/25
-                                                        </td>
-                                                        <td class="produtos_Compra">
-                                                            <p>
-                                                                <!-- Colocar aqui os produtos comprador, cada produto deve estar separados por br -->
-                                                                Capacete<br>Óculos Incolor<br>Luva
-                                                            </p>
-                                                        </td>
-                                                        <td class="valor_Compra">
-                                                            <!-- Colocar aqui o valor da compra -->
-                                                            R$ 547,80
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                        <tr class="eachproduto">
+                                                            <td class="nomeUser_compra">
+                                                                <!-- Colocar aqui o nome do comprador -->
+                                                                Petrobras
+                                                            </td>
+                                                            <td class="data_Compra">
+                                                                <!-- Colocar aqui a data da compra -->
+                                                                21/09/25
+                                                            </td>
+                                                            <td class="produtos_Compra">
+                                                                <p>
+                                                                    <!-- Colocar aqui os produtos comprador, cada produto deve estar separados por br -->
+                                                                    Capacete<br>Óculos Incolor<br>Luva
+                                                                </p>
+                                                            </td>
+                                                            <td class="valor_Compra">
+                                                                <!-- Colocar aqui o valor da compra -->
+                                                                R$ 547,80
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -437,18 +439,21 @@
                                     <div class="modal-body">
                                         <div class="align">
                                             <div class="tabela_estoquebaixo">
-                                                <table id="tabela_estoquebaixo">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>produto</th>
-                                                            <th>categoria</th>
-                                                            <th>ca</th>
-                                                            <th>estoque</th>
-                                                            <th>preço</th>
-                                                            <th>status</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_estoquebaixo">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>produto</th>
+                                                                <th>categoria</th>
+                                                                <th>ca</th>
+                                                                <th>estoque</th>
+                                                                <th>preço</th>
+                                                                <th>status</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -512,18 +517,20 @@
                                         </div>
                                         <div class="align">
                                             <div class="tabela_users">
-                                                <table id="tabela_users">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>ID</th>
-                                                            <th>Email</th>
-                                                            <th>telefone</th>
-                                                            <th>Tipo</th>
-                                                            <th class="acoes_cabecalho">ações</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_users">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>ID</th>
+                                                                <th>Email</th>
+                                                                <th>telefone</th>
+                                                                <th>Tipo</th>
+                                                                <th class="acoes_cabecalho">ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -569,6 +576,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="eachinput">
+                                                    <p>Tipo</p>
+                                                    <section>
+                                                        <select id="tipo_user-new">
+                                                            <option value="comum">Comum</option>
+                                                            <option value="admin">Administrador</option>
+                                                        </select>
+                                                    </section>
                                                 </div>
                                                 <div class="eachinput">
                                                     <p>Senha</p>
@@ -640,210 +656,212 @@
         </div>
         <!--------------------------------------- Tabela de exibição --------------------------------->
         <div class="tabela_produtos">
-            <table id="produtos-container">
-                <thead class="cabecalho_tabela">
-                    <tr>
-                        <th>produto</th>
-                        <th>categoria</th>
-                        <th>ca</th>
-                        <th>estoque</th>
-                        <th>preço</th>
-                        <th>status</th>
-                        <th class="acoes_cabecalho">ações</th>
-                    </tr>
-                </thead>
-                <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
-                <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-xl" id="formAtualizar">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <div></div>
-                                <div class="paimodal">
-                                    <div class="titulo-modal Prod">
-                                        <h1>Editar Produto</h1>
-                                        <div class="icon_titulo-modal">
-                                            <i class="fi-sr-pencil"></i>
+            <div class="table-responsive">
+                <table id="produtos-container">
+                    <thead class="cabecalho_tabela">
+                        <tr>
+                            <th>produto</th>
+                            <th>categoria</th>
+                            <th>ca</th>
+                            <th>estoque</th>
+                            <th>preço</th>
+                            <th>status</th>
+                            <th class="acoes_cabecalho">ações</th>
+                        </tr>
+                    </thead>
+                    <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
+                    <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl" id="formAtualizar">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div></div>
+                                    <div class="paimodal">
+                                        <div class="titulo-modal Prod">
+                                            <h1>Editar Produto</h1>
+                                            <div class="icon_titulo-modal">
+                                                <i class="fi-sr-pencil"></i>
+                                            </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" id="info_atualizaproduto">
-                                    <div class="align">
-                                        <div class="eachinput">
-                                            <p>Upload da Imagem</p>
-                                            <div class="upload_container">
-                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*">
-                                            </div>
-                                        </div>
-                                        <div class="eachinput">
-                                            <p>Nome do Produto</p>
-                                            <input type="text" id="atualiza-nome_prod-new">
-                                        </div>
-                                        <div class="each2inputs">
-                                            <div class="row">
-                                                <div class="col-12 col-md-6">
-                                                    <div class="eachinput">
-                                                        <p>Categoria</p>
-                                                        <section>
-                                                            <select id="atualiza-categoria_prod">
-                                                                <option value="Facial">Facial</option>
-                                                                <option value="Ocular">Ocular</option>
-                                                                <option value="Corporal">Corporal</option>
-                                                                <option value="Respiratório">Respiratório</option>
-                                                                <option value="Auditivo">Auditivo</option>
-                                                                <option value="Manual">Manual</option>
-                                                                <option value="Pés e Pernas">Pés e Pernas</option>
-                                                                <option value="Cabeça">Cabeça</option>
-                                                            </select>
-                                                        </section>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3">
-                                                    <div class="eachinput">
-                                                        <p>CA</p>
-                                                        <input type="number" id="atualiza-ca_prod">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3">
-                                                    <div class="eachinput">
-                                                        <p>Estoque</p>
-                                                        <input type="number" id="atualiza-qtd_prod">
-                                                    </div>
+                                <div class="modal-body">
+                                    <form action="" id="info_atualizaproduto">
+                                        <div class="align">
+                                            <div class="eachinput">
+                                                <p>Upload da Imagem</p>
+                                                <div class="upload_container">
+                                                    <input type="file" id="atualiza-img_prod-upload" accept="image/*">
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="each2inputs">
-                                            <div class="row">
-                                                <div class="col-12 col-md-6">
-                                                    <div class="eachinput">
-                                                        <p>Marca</p>
-                                                        <input type="text" id="atualiza-marca_prod">
+                                            <div class="eachinput">
+                                                <p>Nome do Produto</p>
+                                                <input type="text" id="atualiza-nome_prod-new">
+                                            </div>
+                                            <div class="each2inputs">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="eachinput">
+                                                            <p>Categoria</p>
+                                                            <section>
+                                                                <select id="atualiza-categoria_prod">
+                                                                    <option value="Facial">Facial</option>
+                                                                    <option value="Ocular">Ocular</option>
+                                                                    <option value="Corporal">Corporal</option>
+                                                                    <option value="Respiratório">Respiratório</option>
+                                                                    <option value="Auditivo">Auditivo</option>
+                                                                    <option value="Manual">Manual</option>
+                                                                    <option value="Pés e Pernas">Pés e Pernas</option>
+                                                                    <option value="Cabeça">Cabeça</option>
+                                                                </select>
+                                                            </section>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 col-md-6">
-                                                    <div class="eachinput">
-                                                        <p>Preço</p>
-                                                        <input type="number" id="atualiza-preco_prod">
+                                                    <div class="col-12 col-md-3">
+                                                        <div class="eachinput">
+                                                            <p>CA</p>
+                                                            <input type="number" id="atualiza-ca_prod">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3">
+                                                        <div class="eachinput">
+                                                            <p>Estoque</p>
+                                                            <input type="number" id="atualiza-qtd_prod">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <div class="each2inputs">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="eachinput">
+                                                            <p>Marca</p>
+                                                            <input type="text" id="atualiza-marca_prod">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="eachinput">
+                                                            <p>Preço</p>
+                                                            <input type="number" id="atualiza-preco_prod">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="eachinput">
+                                                <p>Data de Validade</p>
+                                                <input type="date" name="trip-start" min="2024-01-01"
+                                                    id="atualiza-datavalidade_prod">
+                                            </div>
+                                            <div class="eachinput">
+                                                <p>Descrição Do Produto</p>
+                                                <input type="text" id="atualiza-descricao_prod">
+                                            </div>
                                         </div>
-                                        <div class="eachinput">
-                                            <p>Data de Validade</p>
-                                            <input type="date" name="trip-start" min="2024-01-01"
-                                                id="atualiza-datavalidade_prod">
-                                        </div>
-                                        <div class="eachinput">
-                                            <p>Descrição Do Produto</p>
-                                            <input type="text" id="atualiza-descricao_prod">
+                                </div>
+                                <div class="align">
+                                    <div class="tam_input">
+                                        <p>Tamanhos Disponíveis</p>
+                                        <div class="size-grid">
+                                            <!-- Letras -->
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="P"><span>P</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="M"><span>M</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="G"><span>G</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="GG"><span>GG</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="G1"><span>G1</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="G2"><span>G2</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="G3"><span>G3</span>
+                                            </label>
+
+                                            <!-- Números -->
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="36"><span>36</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="37"><span>37</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="38"><span>38</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="39"><span>39</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="40"><span>40</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="41"><span>41</span>
+                                            </label>
+                                            <label class="size-item">
+                                                <input type="checkbox" name="size[]" value="42"><span>42</span>
+                                            </label>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="align">
-                                <div class="tam_input">
-                                    <p>Tamanhos Disponíveis</p>
-                                    <div class="size-grid">
-                                        <!-- Letras -->
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="P"><span>P</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="M"><span>M</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="G"><span>G</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="GG"><span>GG</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="G1"><span>G1</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="G2"><span>G2</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="G3"><span>G3</span>
-                                        </label>
+                                </div>
+                                <div class="align">
+                                    <button id="atualizar-prod" class="atualizar-prod" type="submit">Editar</button>
+                                </div>
 
-                                        <!-- Números -->
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="36"><span>36</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="37"><span>37</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="38"><span>38</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="39"><span>39</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="40"><span>40</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="41"><span>41</span>
-                                        </label>
-                                        <label class="size-item">
-                                            <input type="checkbox" name="size[]" value="42"><span>42</span>
-                                        </label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
+            <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="delete_usuario">
+                                <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
+                                    Excluir
+                                    Produto</h1>
+                                <i class="fi fi-rs-trash"></i>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="confirm_delete">
+                                <div class="align">
+                                    <div class="icon_deletar">
+                                        <i class="fi fi-rr-triangle-warning"></i>
                                     </div>
+                                    <h2>Você tem certeza que deseja excluir o produto?</h2>
+                                    <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
+                                        poderão
+                                        ser restauradas após excluí-las!</p>
                                 </div>
                             </div>
-                            <div class="align">
-                                <button id="atualizar-prod" class="atualizar-prod" type="submit">Editar</button>
-                            </div>
-
-                            </form>
                         </div>
-                    </div>
-                </div>
-        </div>
-        <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
-        <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="delete_usuario">
-                            <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
-                                Excluir
-                                Produto</h1>
-                            <i class="fi fi-rs-trash"></i>
+                        <div class="modal-footer">
+                            <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
+                                Deletar</button>
                         </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="confirm_delete">
-                            <div class="align">
-                                <div class="icon_deletar">
-                                    <i class="fi fi-rr-triangle-warning"></i>
-                                </div>
-                                <h2>Você tem certeza que deseja excluir o produto?</h2>
-                                <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
-                                    poderão
-                                    ser restauradas após excluí-las!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
-                            Deletar</button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        </table>
+            </table>
+        </div>
         </div>
     </section>
     <script src="../public/js/funcoesprincipais.js"></script>
