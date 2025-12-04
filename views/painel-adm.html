@@ -207,13 +207,13 @@
                                                         </section>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-3">
+                                                <div class="col-6 col-md-3">
                                                     <div class="eachinput">
                                                         <p>CA</p>
                                                         <input type="number" id="ca_prod-new" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-3">
+                                                <div class="col-6 col-md-3">
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
                                                         <input type="number" id="qtd_prod-new" required>
@@ -237,7 +237,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div class="eachinput">
+                                            <p>Data de Validade</p>
+                                            <input type="date" name="trip-start" min="2024-01-01"
+                                                id="datavalidade_prod-new">
                                         </div>
                                         <div class="eachinput">
                                             <p>Descrição Do Produto</p>
@@ -731,6 +735,11 @@
 
                                         </div>
                                         <div class="eachinput">
+                                            <p>Data de Validade</p>
+                                            <input type="date" name="trip-start" min="2024-01-01"
+                                                id="atualiza-datavalidade_prod">
+                                        </div>
+                                        <div class="eachinput">
                                             <p>Descrição Do Produto</p>
                                             <input type="text" id="atualiza-descricao_prod">
                                         </div>
@@ -827,7 +836,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
-                        <!-- Cá está a minha dúvida novamente! -->
                         <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
                             Deletar</button>
                     </div>

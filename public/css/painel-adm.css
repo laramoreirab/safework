@@ -145,7 +145,8 @@
     input[type="text"],
     input[type="tel"],
     input[type="number"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="date"] {
         border: 1px solid var(--preto);
         border-radius: 5px;
         padding-left: 0.5rem;
@@ -851,11 +852,23 @@ input[type="file"]::-webkit-file-upload-button {
         display: flex;
         align-items: center;
         max-width: 100%;
-        margin: 3rem;
+        margin: 4rem;
     }
 
     .box-modals {
         margin: 0;
+    }
+
+    .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 0.5rem;
+    }
+
+    input[type="file"] {
+        direction: rtl;
+        text-align: left;
+        width: 98%;
     }
 
     #produtos_adm {
@@ -867,6 +880,13 @@ input[type="file"]::-webkit-file-upload-button {
 @media (max-width: 1024px) and (min-width: 700px) {
     #adm {
         padding: 6rem 1rem 6rem 1rem;
+    }
+
+    
+    .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 0.5rem;
     }
 
     #produtos_adm {
