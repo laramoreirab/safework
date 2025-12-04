@@ -473,20 +473,19 @@ searchInputProdutos.addEventListener('input', filtroProduto)
 
 // LISTAR USUÁRIOS
 
+const qtdUsers = document.getElementById('qtd-users') // pega o ID do numerador da quantidade de usuarios
+const tabelaUser = document.getElementById('tabela_users')
 
 async function listarUsuarios() {
     fetch('/usuarios')
         .then(res => res.json())
         .then(data => {
-            const tabelaUser = document.getElementById('tabela_users')
+            tabelaUser.querySelectorAll('.eachUser').forEach(el => el.remove())
             const usuarios = data.dados // retorna a array com as informações dos usuários
-            const qtdUsers = document.getElementById('qtd-users') // pega o ID do numerador da quantidade de usuarios
             qtdUsers.innerHTML = usuarios.length // adiciona a quantidade de usuarios no bloco do modal usuarios na página do administrador
-
             usuarios.forEach(usuario => {
                 const bloco = document.createElement('tr')
                 bloco.className = 'eachUser'
-
                 bloco.innerHTML = `
                                                         <td class="nome_user">
                                                             <!-- Colocar aqui o nome do user -->
@@ -591,14 +590,52 @@ async function filtrarUsuarios() {
     fetch('/usuarios')
     .then(res => res.json())
     .then(data => {
+        tabelaUser.querySelectorAll('.eachUser').forEach(el => el.remove())
         const usuarios = data.dados
         const searchTermUser = searchInputUser.value.toLowerCase().trim()
         const usuarioFiltro =  usuarios.filter(usuario => String(usuario.id).includes(searchTermUser))   
         
         usuarioFiltro.forEach(usuario => {
-        console.log(usuario)
+            const bloco = document.createElement('tr')
+            bloco.className = 'eachUser'
+            bloco.innerHTML = `
+                                                        <td class="nome_user">
+                                                            <!-- Colocar aqui o nome do user -->
+                                                            ${usuario.nome}
+                                                        </td>
+                                                        <td class="id_user">
+                                                            <!-- Colocar aqui o id do user -->
+                                                            ${usuario.id}
+                                                        </td>
+                                                        <td class="email_user">
+                                                            <!-- Colocar aqui o email do user -->
+                                                            ${usuario.email}
+                                                        </td>
+                                                        <td class="tel_user">
+                                                            <!-- Colocar aqui o telefone do user -->
+                                                            ${usuario.telefone}
+                                                        </td>
+                                                        <td class="status_prod">
+                                                            <p class="status_ativo">
+                                                               ativo
+                                                            </p>
+                                                        </td>
+                                                        <td class="actions_prod">
+                                                            <div class="acoes">
+                                                                <div class="excluir-produto">
+                                                                    <!-- Botão Excluir Usuário -->
+                                                                    <button type="button" class="botao_excluirprod"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#excluirUsuario" data-id = ${usuario.id}>
+                                                                        <i class="fi fi-rs-trash"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+            `
+            tabelaUser.appendChild(bloco)
         })
     })
 } 
-
-searchInputUser.addEventListener('input', filtrarUsuarios())
+searchInputUser.addEventListener('input', listarUsuarios)
+searchInputUser.addEventListener('input', filtrarUsuarios)
