@@ -206,6 +206,7 @@
     }
 
     .banner-sobre {
+        height: 50dvh;
         background-position: center;
 
         h1 {
