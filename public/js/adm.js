@@ -99,23 +99,124 @@ async function atualizarProduto() {
     }
 }
 
+const searchInputProdutos = document.getElementById('searchProdutos')
+renderizarProdutos()
 
 //  mostrar produtos na tabela
 function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
     fetch('/api/produtos/listar') // rota que puxa todos os produtos do banco de dados
-        .then(response => response.json())
-        .then(data => {
-            console.log('produtos', data)
-            const produtos = data.dados; // armazena os dados recebidos da API na variável produtos
-            const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
-            const modalExcluirProd = document.getElementById("modalExcluirProd")
-            const modalEditarProd = document.getElementById('modalEditarProd')
-            produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+    .then(response => response.json())
+    .then(data => {
+        console.log('produtos', data)
+        const produtos = data.dados; // armazena os dados recebidos da API na variável produtos
+        const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
+        const modalExcluirProd = document.getElementById("modalExcluirProd")
+        const modalEditarProd = document.getElementById('modalEditarProd')
+        produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+            const bloco = document.createElement("tr"); // cria um elemento div
+            bloco.className = "eachproduto"; // nome da classe do bloco é produto
+            
+            if (produto.estoque > 19) { // se estoque for maior que 19, o design das unidades ficara verde
+                // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+                bloco.innerHTML = ` 
+                <td class="nome_prod">${produto.nome}</td>
+                <td class="cat_prod">${produto.tipo}</td>
+                <td class="ca_prod">${produto.ca}</td>
+                <td class="estoque_prod">
+                <p class="estoque-verde">${produto.estoque} un.</p> 
+                </td>
+                <td class="preco_prod">R$ ${produto.preco}</td>
+                <td>
+                10-02-2025
+                </td>
+                <td class="status_prod">
+                <p class="status_ativo">
+                ativo
+                </p>
+                </td>
+                <td class="actions_prod">
+                <div class="acoes">
+                <div class="editar-produto">
+                <!---- Editar Produto modal ----->
+                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                data-bs-target="#modalEditarProd" data-id = ${produto.id}>
+                <i class="fi-sr-pencil"></i>
+                </button>
+                </div>
+                <div class="excluir-produto">
+                <!-- Botão Excluir Produto modal -->
+                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                data-bs-target="#modalExcluirProd" data-id=${produto.id}>
+                <i class="fi fi-rs-trash"></i>
+                </button>
+                </div>
+                </div>
+                </td>
+                `;
+            }
+            
+            if (produto.estoque <= 19) { // se estoque for menor que 19, o design das unidades ficara vermelho
+                // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+                bloco.innerHTML = ` 
+                <td class="nome_prod">${produto.nome}</td>
+                <td class="cat_prod">${produto.tipo}</td>
+                <td class="ca_prod">${produto.ca}</td>
+                <td class="estoque_prod">
+                <p class="estoque-vermelho">${produto.estoque} un.</p>
+                </td>
+                <td class="preco_prod">R$ ${produto.preco}</td>
+                <td class="status_prod">
+                <p class="status_ativo">
+                ativo
+                </p>
+                </td>
+                <td class="actions_prod">
+                <div class="acoes">
+                <div class="editar-produto">
+                <!---- Editar Produto modal ----->
+                <button type="button" class="editar_prod" data-bs-toggle="modal"
+                data-bs-target="#modalEditarProd" data-id = ${produto.id}>
+                <i class="fi-sr-pencil"></i>
+                </button>
+                </div>
+                <div class="excluir-produto">
+                <!-- Botão Excluir Produto modal -->
+                <button type="button" class="botao_excluirprod" data-bs-toggle="modal"
+                data-bs-target="#modalExcluirProd" data-id = ${produto.id}>
+                <i class="fi fi-rs-trash"></i>
+                </button>
+                </div>
+                </div>
+                </td>
+                `;
+            }
+            
+            container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
+        })
+        
+        const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
+        document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
+    })
+}
+
+function filtroProduto() {
+    const searchTermProd = searchInputProdutos.value.toLowerCase().trim();
+    fetch('api/produtos/listar')
+    .then(res => res.json())
+    .then(data => {
+        const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
+            const produtos = data.dados // pega todos os produtos do banco de dados
+            const campos = ["nome", "tipo", "ca"]
+            const produtoFiltrado = produtos.filter(produto => campos.some(campo => produto[campo].toString().toLowerCase().includes(searchTermProd)))
+            container.querySelectorAll('.eachproduto').forEach(el => el.remove())
+            
+            produtoFiltrado.forEach(produto => {
                 const bloco = document.createElement("tr"); // cria um elemento div
                 bloco.className = "eachproduto"; // nome da classe do bloco é produto
 
                 if (produto.estoque > 19) { // se estoque for maior que 19, o design das unidades ficara verde
                     // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+                    
                     bloco.innerHTML = ` 
                 <td class="nome_prod">${produto.nome}</td>
                     <td class="cat_prod">${produto.tipo}</td>
@@ -124,6 +225,9 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
                         <p class="estoque-verde">${produto.estoque} un.</p> 
                     </td>
                     <td class="preco_prod">R$ ${produto.preco}</td>
+                                        <td>
+                    10-02-2025
+                    </td>
                     <td class="status_prod">
                         <p class="status_ativo">
                             ativo
@@ -188,13 +292,10 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
 
                 container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
             })
-
-            const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
-            document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
         })
-
-
 }
+
+
 
 
 let idDoProd = null
@@ -207,19 +308,19 @@ modalEditarProd.addEventListener('show.bs.modal', () => {
     const produtoId = botao.getAttribute('data-id')
     idDoProd = produtoId
     console.log('esse é o id que esta sendo enviado pelo editar: ', idDoProd)
-    
-    
+
+
     const formatualiza = document.getElementById('info_atualizaproduto')
     formatualiza.addEventListener('submit', async (e) => {
         e.preventDefault()  // Evita o comportamento padrão do botão de submit
 
 
-        
+
         await fetch(`/api/produtos/listar/id/${idDoProd}`)
-        .then(res => res.json())
-        .then(data => {
-             imgDoProd = (data.dados).img
-        })
+            .then(res => res.json())
+            .then(data => {
+                imgDoProd = (data.dados).img
+            })
 
         const nomeProduto = document.getElementById('atualiza-nome_prod-new').value
         const categoriaProduto = document.getElementById('atualiza-categoria_prod').value
@@ -229,7 +330,7 @@ modalEditarProd.addEventListener('show.bs.modal', () => {
         const descricaoProduto = document.getElementById('atualiza-descricao_prod').value
         const marcaProduto = document.getElementById('atualiza-marca_prod').value
         const InputImg = document.getElementById('atualiza-img_prod-upload')
-        
+
         console.log('esse é o nome do produto: ', nomeProduto)
         if (estoqueProduto < 1) {
             e.preventDefault()
@@ -241,8 +342,8 @@ modalEditarProd.addEventListener('show.bs.modal', () => {
             return
         }
 
-        
-        
+
+
 
 
         const formData = new FormData()
@@ -357,6 +458,8 @@ function produtoEstoqueBaixo() {
 
 // Chama a função para renderizar os produtos ao carregar a página
 window.onload = renderizarProdutos(), produtoEstoqueBaixo(), listarUsuarios();
+searchInputProdutos.addEventListener('input', renderizarProdutos)
+searchInputProdutos.addEventListener('input', filtroProduto)
 
 
 
