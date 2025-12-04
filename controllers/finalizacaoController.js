@@ -185,12 +185,6 @@ class FinalizacaoController {
                 });
             }
             
-            // Validar CPF
-            if (!this.validarCPF(cpfLimpo)) {
-                console.warn('CPF pode ser inválido:', cpfLimpo);
-                // Não bloqueia, apenas avisa no log
-            }
-            
             // Buscar pedido
             const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
             console.log('Pedidos no carrinho:', pedidos.length);
@@ -486,35 +480,40 @@ class FinalizacaoController {
         }
     }
     
-    // Método auxiliar para validar CPF
-    static validarCPF(cpf) {
-        cpf = cpf.replace(/\D/g, '');
+
+// GET /finalizacao/ultimo-pedido-pago - Buscar último pedido pago do usuário
+static async buscarUltimoPedidoPago(req, res) {
+    try {
+        const empresaId = req.usuario.id;
         
-        if (cpf.length !== 11) return false;
+        console.log('Buscando último pedido pago para empresa:', empresaId);
         
-        // Verificar se todos os dígitos são iguais
-        if (/^(\d)\1{10}$/.test(cpf)) return false;
+        const pedidos = await FinalizacaoModel.buscarPedidoPago(empresaId);
         
-        // Validar primeiro dígito verificador
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        if (pedidos.length === 0) {
+            return res.status(404).json({
+                sucesso: false,
+                erro: 'Nenhum pedido pago encontrado'
+            });
         }
-        let resto = 11 - (soma % 11);
-        let digito1 = resto >= 10 ? 0 : resto;
         
-        if (digito1 !== parseInt(cpf.charAt(9))) return false;
+        // Retornar o primeiro pedido (mais recente)
+        const pedido = pedidos[0];
         
-        // Validar segundo dígito verificador
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) * (11 - i);
-        }
-        resto = 11 - (soma % 11);
-        let digito2 = resto >= 10 ? 0 : resto;
+        return res.status(200).json({
+            sucesso: true,
+            dados: pedido
+        });
         
-        return digito2 === parseInt(cpf.charAt(10));
+    } catch (error) {
+        console.error('Erro ao buscar último pedido pago:', error);
+        res.status(500).json({
+            sucesso: false,
+            erro: 'Erro interno do servidor',
+            mensagem: error.message
+        });
     }
+}
 }
 
 export default FinalizacaoController;

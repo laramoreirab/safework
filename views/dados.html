@@ -199,7 +199,7 @@
           <h1>Dados Empresariais</h1>
         </div>
 
-        <form action="">
+        <form action="" id="form-dados">
           <div class="inteira-input">
             <label for="nome-empresa"><strong>Nome da Empresa *</strong></label>
             <input
@@ -213,11 +213,11 @@
 
           <div class="metade-input">
             <div class="one-metade">
-              <label for="CNPJ"><strong>CNPJ *</strong></label>
+              <label for="cnpj-empresa"><strong>CNPJ *</strong></label>
               <input
                 type="text"
-                name="CNPJ"
-                id="CNPJ"
+                name="cnpj-empresa"
+                id="cnpj-empresa"
                 placeholder="XX.XXX.XXX/0001-AA"
                 required
                 maxlength="18"
@@ -250,11 +250,10 @@
               placeholder="safework@gmail.com"
               required
             />
+            <button type="submit"><strong>Continuar</strong></button>
           </div>
         </form>
-        <a href="/entrega">
-          <button><strong>Continuar</strong></button>
-        </a>
+        
       </main>
     </div>
 

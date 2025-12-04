@@ -246,7 +246,7 @@ async function verificarAutenticacao() {
 // Função global para adicionar item ao carrinho
 window.adicionarAoCarrinho = async function(produtoId, quantidade = 50, tamanho = null) {
     try {
-        console.log('🛒 Adicionando ao carrinho:', { produtoId, quantidade, tamanho });
+        console.log('Adicionando ao carrinho:', { produtoId, quantidade, tamanho });
         
         // Verificar autenticação primeiro
         const estaAutenticado = await verificarAutenticacao();
@@ -275,10 +275,10 @@ window.adicionarAoCarrinho = async function(produtoId, quantidade = 50, tamanho 
             })
         });
         
-        console.log('📥 Status da resposta:', res.status);
+        console.log('Status da resposta:', res.status);
         
         const data = await res.json();
-        console.log('📥 Resposta do servidor:', data);
+        console.log('Resposta do servidor:', data);
         
         if (res.status === 401) {
             alert('Sessão expirada. Faça login novamente.');

@@ -1,5 +1,5 @@
 const inputTelefone = document.getElementById("telefone-empresa");
-const inputCNPJ = document.getElementById("CNPJ");
+const inputCNPJ = document.getElementById("cnpj-empresa");
 const inputCPF = document.getElementById("CPF");
 const inputCartao = document.getElementById("numero-cartao");
 const inputCVV = document.getElementById("CVV");
