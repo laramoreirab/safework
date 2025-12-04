@@ -57,9 +57,6 @@ form.addEventListener('submit', async (e) => {
         alert('Erro ao criar produto: ' + data.mensagem)
     }
 })
-
-
-
 // EDITAR PRODUTO
 
 async function atualizarProduto() {
@@ -105,20 +102,20 @@ renderizarProdutos()
 //  mostrar produtos na tabela
 function renderizarProdutos() { // função para puxar todos os produtos ja formatados para pagina produto
     fetch('/api/produtos/listar') // rota que puxa todos os produtos do banco de dados
-    .then(response => response.json())
-    .then(data => {
-        console.log('produtos', data)
-        const produtos = data.dados; // armazena os dados recebidos da API na variável produtos
-        const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
-        const modalExcluirProd = document.getElementById("modalExcluirProd")
-        const modalEditarProd = document.getElementById('modalEditarProd')
-        produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
-            const bloco = document.createElement("tr"); // cria um elemento div
-            bloco.className = "eachproduto"; // nome da classe do bloco é produto
-            
-            if (produto.estoque > 19) { // se estoque for maior que 19, o design das unidades ficara verde
-                // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
-                bloco.innerHTML = ` 
+        .then(response => response.json())
+        .then(data => {
+            console.log('produtos', data)
+            const produtos = data.dados; // armazena os dados recebidos da API na variável produtos
+            const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
+            const modalExcluirProd = document.getElementById("modalExcluirProd")
+            const modalEditarProd = document.getElementById('modalEditarProd')
+            produtos.forEach(produto => { // percorre todos os registros do banco de dados produtos
+                const bloco = document.createElement("tr"); // cria um elemento div
+                bloco.className = "eachproduto"; // nome da classe do bloco é produto
+
+                if (produto.estoque > 19) { // se estoque for maior que 19, o design das unidades ficara verde
+                    // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+                    bloco.innerHTML = ` 
                 <td class="nome_prod">${produto.nome}</td>
                 <td class="cat_prod">${produto.tipo}</td>
                 <td class="ca_prod">${produto.ca}</td>
@@ -153,11 +150,11 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
                 </div>
                 </td>
                 `;
-            }
-            
-            if (produto.estoque <= 19) { // se estoque for menor que 19, o design das unidades ficara vermelho
-                // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
-                bloco.innerHTML = ` 
+                }
+
+                if (produto.estoque <= 19) { // se estoque for menor que 19, o design das unidades ficara vermelho
+                    // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
+                    bloco.innerHTML = ` 
                 <td class="nome_prod">${produto.nome}</td>
                 <td class="cat_prod">${produto.tipo}</td>
                 <td class="ca_prod">${produto.ca}</td>
@@ -189,34 +186,35 @@ function renderizarProdutos() { // função para puxar todos os produtos ja form
                 </div>
                 </td>
                 `;
-            }
-            
-            container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
+                }
+
+                container.appendChild(bloco); // fala para adicionar a div estilizada dentro do container (no caso, adicionar essa div dentro da main)
+            })
+
+            const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
+            document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
         })
-        
-        const contarProdutos = produtos.length; // conta a quantidade de produtos no banco de dados
-        document.getElementById('qtd-produtos').innerText = contarProdutos; // mostra a quantidade de produtos na página de administração
-    })
 }
 
+// mostra os produtos da tabela após pesquisar algum item
 function filtroProduto() {
     const searchTermProd = searchInputProdutos.value.toLowerCase().trim();
     fetch('api/produtos/listar')
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
             const produtos = data.dados // pega todos os produtos do banco de dados
             const campos = ["nome", "tipo", "ca"]
             const produtoFiltrado = produtos.filter(produto => campos.some(campo => produto[campo].toString().toLowerCase().includes(searchTermProd)))
             container.querySelectorAll('.eachproduto').forEach(el => el.remove())
-            
+
             produtoFiltrado.forEach(produto => {
                 const bloco = document.createElement("tr"); // cria um elemento div
                 bloco.className = "eachproduto"; // nome da classe do bloco é produto
 
                 if (produto.estoque > 19) { // se estoque for maior que 19, o design das unidades ficara verde
                     // cria uma div já formatada com as informações e classes para deixar estilizada na pagina de produtos
-                    
+
                     bloco.innerHTML = ` 
                 <td class="nome_prod">${produto.nome}</td>
                     <td class="cat_prod">${produto.tipo}</td>
@@ -517,7 +515,7 @@ async function listarUsuarios() {
                                                                     <!-- Botão Excluir Usuário -->
                                                                     <button type="button" class="botao_excluirprod"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#excluirUsuario">
+                                                                        data-bs-target="#excluirUsuario" data-id = ${usuario.id}>
                                                                         <i class="fi fi-rs-trash"></i>
                                                                     </button>
                                                                 </div>
@@ -528,5 +526,79 @@ async function listarUsuarios() {
             })
 
         })
-
 }
+
+ let idDoUser = null
+
+    excluirUsuario.addEventListener('show.bs.modal', () => { // pega o id ao abrir o modal excluirUser 
+        const botao = event.relatedTarget;
+        const usuarioId = botao.getAttribute('data-id')
+        idDoUser = usuarioId
+        console.log(idDoUser)
+
+    })
+
+    const botaoExcluirUser = document.getElementById('submit-delete_usuario')  // botão de excluir user
+    botaoExcluirUser.onclick = function () { // evento ao clicar no botão de excluir user 
+        try {
+            fetch(`/usuarios/${idDoUser}`, {
+                method: 'DELETE'
+            })
+            alert('Usuário excluído com sucesso!')
+            return location.reload()
+        } catch (err) {
+            console.error('Erro excluir usuário', err)
+        }
+
+    }
+
+
+    // CRIAR USUÁRIO
+
+    const formUser = document.getElementById('criarUser')
+
+    try {
+        formUser.addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+            const nomeUser = document.getElementById('nome_user-new').value
+            const emailUser = document.getElementById('email_user-new').value
+            const telefoneUser = document.getElementById('tel_user-new').value
+            const senhaUser = document.getElementById('senha_user-new').value
+
+            fetch(`/usuarios`, {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    nome: nomeUser,
+                    email: emailUser,
+                    telefone: telefoneUser,
+                    senha: senhaUser,
+                    tipo: 'admin'
+                })
+            })
+            alert('Usuário criado com sucesso!')
+            return location.reload()
+        })
+    } catch (err) {
+        console.error("não foi possivel enviar esse usuário: ", err)
+    }
+
+//  SEARCH DOS USUÁRIOS
+const searchInputUser = document.getElementById('searchUser')
+
+async function filtrarUsuarios() {
+    fetch('/usuarios')
+    .then(res => res.json())
+    .then(data => {
+        const usuarios = data.dados
+        const searchTermUser = searchInputUser.value.toLowerCase().trim()
+        const usuarioFiltro =  usuarios.filter(usuario => String(usuario.id).includes(searchTermUser))   
+        
+        usuarioFiltro.forEach(usuario => {
+        console.log(usuario)
+        })
+    })
+} 
+
+searchInputUser.addEventListener('input', filtrarUsuarios())
