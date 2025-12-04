@@ -7,4 +7,4 @@ ends '2026-12-31 00:00:00'
 do
   select nome, validade, lote, data_compra
   from (itens_pedidos join produtos on produto_id = id)
-  where validade <= curdate();8
+  where validade <= curdate();
