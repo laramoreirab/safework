@@ -113,6 +113,8 @@
     border-radius: 0 2rem 0 2rem;
     width: 28vh;
     height: 17vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 .eachcategoriab {
@@ -125,6 +127,26 @@
     border-radius: 0 2rem 0 2rem;
     width: 27vh;
     height: 17vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.eachcategoriab:hover {
+    transform: translateY(-1dvh);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.eachcategoriab:active {
+    transform: translateY(0);
+}
+
+.eachcategorial:hover {
+    transform: translateY(-1dvh);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.eachcategorial:active {
+    transform: translateY(0);
 }
 
 .linha_categoria {
@@ -193,6 +215,7 @@
     align-items: center;
     align-content: center;
     margin-right: 80vh;
+    gap: 2dvh;
 
     h1 {
         color: var(--azul-crepusculo);
@@ -218,6 +241,17 @@
         height: 6vh;
         font-size: 2.5vh;
         border-radius: 0.8rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        transform: scale(1);
     }
 }
 
@@ -260,13 +294,13 @@
     height: 25vh;
     width: 35vh;
     border-radius: 15px;
-    box-shadow:
-        0 6px 15px rgba(0, 0, 0, 0.3),
-        /* sombra principal mais suave */
-        0 3px 10px rgba(0, 0, 0, 0.2),
-        /* camada intermediária */
-        0 1px 4px rgba(0, 0, 0, 0.1);
-    /* camada de transição delicada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.eachavaliacao:hover {
+    transform: translateY(-1dvh);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .avaliacaoprod {
@@ -366,6 +400,10 @@
     height: 40px;
 }
 
+.carousel-inner {
+    overflow: initial;
+}
+
 .carousel-control-next-icon {
     background-image: url("../img/home/next-carrosel.svg");
     /* sua imagem */
@@ -384,10 +422,21 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 
     img {
         vertical-align: middle;
     }
+}
+
+.cont_marca:hover {
+    transform: translateY(-1dvh);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.cont_marca:active {
+    transform: translateY(0);
 }
 
 

@@ -310,7 +310,7 @@ modalEditarProd.addEventListener('show.bs.modal', () => {
 
     const formatualiza = document.getElementById('info_atualizaproduto')
     formatualiza.addEventListener('submit', async (e) => {
-        e.preventDefault()  // Evita o comportamento padrão do botão de submit
+        e.preventDefault()
 
 
 
