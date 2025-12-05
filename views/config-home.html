@@ -238,11 +238,11 @@
         </div>
         <h3 id="nome-representante">Lucas Nascimento dos Santos</h3>
         <div class="pags-config">
-          <a href="config-home.html" class="one-pag">
+          <a href="/config-home" class="one-pag">
             <i class="fi fi-sr-settings"></i>
             <p>Configurações</p>
           </a>
-          <a href="config-compras.html" class="one-pag">
+          <a href="/config-compras" class="one-pag">
             <i class="fi fi-sr-shopping-bag"></i>
             <p>Minhas Compras</p>
           </a>
@@ -350,7 +350,7 @@
             <strong>R$ <span id="subtotal-carrinho">0</span></strong>
           </p>
         </div>
-        <a href="dados.html"
+        <a href="/dados"
           ><button type="submit" id="confirmar-filtrar">
             Finalizar Compra
           </button></a
@@ -395,6 +395,7 @@
       class="modal fade"
       id="modalAlterarNome"
       tabindex="-1"
+      data-field-type="nome" data-field-id="nome-representante"
       data-bs-backdrop="false"
       aria-labelledby="modalAlterarNomeLabel"
       aria-hidden="true"
@@ -455,6 +456,7 @@
       class="modal fade"
       id="modalAlterarEmail"
       tabindex="-1"
+      data-field-type="email" data-field-id="email-representante"
       data-bs-backdrop="false"
       aria-labelledby="modalAlterarNomeLabel"
       aria-hidden="true"
@@ -516,6 +518,7 @@
       id="modalAlterarNumero"
       tabindex="-1"
       data-bs-backdrop="false"
+      data-field-type="telefone" data-field-id="numero-representante"
       aria-labelledby="modalAlterarNumeroLabel"
       aria-hidden="true"
     >
@@ -576,6 +579,7 @@
       id="modalAlterarCnpj"
       tabindex="-1"
       data-bs-backdrop="false"
+      data-field-type="cnpj" data-field-id="cnpj-representante"
       aria-labelledby="modalAlterarCnpjLabel"
       aria-hidden="true"
     >
@@ -632,5 +636,7 @@
     <script src="/public/js/funcoesprincipais.js"></script>
     <script src="/public/js/config.js"></script>
     <script src="/public/js/verificar-sessao.js"></script> 
+    <script src="/public/js/config-home.js"></script>
+    <script src="/public/js/carrinho.js"></script>
   </body>
 </html>

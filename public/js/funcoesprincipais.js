@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Toggle submenu
-  const toggle = document.querySelector(".toggle-produtos");
-  const submenu = document.querySelector(".submenu");
+  const toggles = document.querySelectorAll(".toggle-produtos");
+  const submenu = document.querySelectorAll(".submenu");
+  
 
-  if (toggle && submenu) {
-    toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      submenu.classList.toggle("show");
-    });
-  }
+  toggles.forEach(t =>{
+    t.addEventListener("click", function (e) {
+    e.preventDefault();
+    submenu.forEach(s =>{
+      s.classList.toggle("show");
+    })
+    console.log("Classlist mudou");
+  });
+  })
 
   // Quantidade por tamanho
   document.querySelectorAll(".linha_informacoes").forEach((linha) => {

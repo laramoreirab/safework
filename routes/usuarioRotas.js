@@ -2,6 +2,7 @@
 import express from 'express';
 import authController from '../controllers/authController.js';
 import { authMiddleware, adminMiddleware } from '../middlewares/authMiddleware.js'
+import UserController from '../controllers/userController.js';
 
 const router = express.Router()
 
@@ -9,6 +10,24 @@ router.get('/', authController.listarUsuarios);
 router.post('/', authController.criarUsuario);
 router.put('/:id', authController.atualizarUsuario);
 router.delete('/:id', authController.excluirUsuario);
+
+// GET /usuarios/perfil - Obter dados do perfil
+router.get('/perfil', authMiddleware, UserController.obterPerfil);
+
+// PUT /usuarios/atualizar-nome - Atualizar nome
+router.put('/atualizar-nome', authMiddleware, UserController.atualizarNome);
+
+// PUT /usuarios/atualizar-email - Atualizar email
+router.put('/atualizar-email', authMiddleware, UserController.atualizarEmail);
+
+// PUT /usuarios/atualizar-telefone - Atualizar telefone
+router.put('/atualizar-telefone', authMiddleware, UserController.atualizarTelefone);
+
+// PUT /usuarios/atualizar-cnpj - Atualizar CNPJ
+router.put('/atualizar-cnpj', authMiddleware, UserController.atualizarCNPJ);
+
+// POST /usuarios/logout - Fazer logout
+router.post('/logout', authMiddleware, UserController.logout);
 
 // Rotas OPTIONS para CORS (preflight requests)
 router.options('/', (req, res) => {
