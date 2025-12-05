@@ -12,13 +12,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Carregar resumo do pedido do servidor
+// Carregar resumo do pedido do servidor
 async function carregarResumoPedido() {
     try {
-        console.log('Carregando resumo do pedido...');
-        //preciso pegar o id do cookie pois é o msm que o id do pedido para a rota
-
-
-        const res = await fetch('/finalizacao/resumo/${pedidoId}', { //arrumar aqui
+        console.log('Carregando resumo do pedido atual...');
+        
+        const res = await fetch('/finalizacao/resumo', { // Sem parâmetro na URL
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -38,6 +37,12 @@ async function carregarResumoPedido() {
         if (data.sucesso && data.dados) {
             // Atualizar valores na página
             atualizarResumoTela(data.dados);
+            
+            // Salvar o ID do pedido para uso futuro se necessário
+            if (data.dados.pedidoId) {
+                localStorage.setItem('pedidoAtualId', data.dados.pedidoId);
+                console.log('ID do pedido atual salvo:', data.dados.pedidoId);
+            }
         } else {
             console.error('Erro no resumo:', data.mensagem);
             alert('Erro ao carregar resumo: ' + (data.mensagem || 'Dados não encontrados'));
@@ -194,7 +199,7 @@ async function processarPagamento(metodo) {
             
             // Redirecionar para página de confirmação
             alert('Pagamento processado com sucesso!');
-            window.location.href = '/finalizado';
+            window.location.href = '/finalizar';
             
         } else {
             alert(data.mensagem || 'Erro ao processar pagamento');
