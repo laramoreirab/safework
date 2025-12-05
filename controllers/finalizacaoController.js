@@ -185,12 +185,6 @@ class FinalizacaoController {
                 });
             }
             
-            // Validar CPF
-            if (!this.validarCPF(cpfLimpo)) {
-                console.warn('CPF pode ser inválido:', cpfLimpo);
-                // Não bloqueia, apenas avisa no log
-            }
-            
             // Buscar pedido
             const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
             console.log('Pedidos no carrinho:', pedidos.length);
@@ -208,7 +202,7 @@ class FinalizacaoController {
             // Preparar dados - SALVAR CPF APENAS COM NÚMEROS (11 dígitos)
             const dadosEntrega = {
                 endereco: endereco.trim(),
-                cpf_representante: cpfLimpo, // 11 dígitos SEM pontuação
+                cpf_representante: cpfLimpo,
                 telefone_representante: telefoneRepresentante.replace(/\D/g, '').slice(0, 11),
                 nome_representante: nomeRepresentante.trim(),
                 portaria: portaria?.trim() || null
@@ -301,12 +295,19 @@ class FinalizacaoController {
                 }
             }
             
-            // Buscar pedido
-            const pedidos = await FinalizacaoModel.buscarPedidoAguardandoPagamento(empresaId);
+            // Buscar pedido aguardando pagamento
+            let pedidos = await FinalizacaoModel.buscarPedidoAguardandoPagamento(empresaId);
+            
+            // Se não encontrar, buscar carrinho (caso o status não tenha sido atualizado)
+            if (pedidos.length === 0) {
+                pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
+                console.log('⚠️ Nenhum pedido aguardando pagamento, buscando carrinho...');
+            }
+            
             if (pedidos.length === 0) {
                 return res.status(400).json({ 
                     sucesso: false, 
-                    erro: 'Nenhum pedido aguardando pagamento' 
+                    erro: 'Nenhum pedido aguardando pagamento ou carrinho encontrado' 
                 });
             }
             
@@ -330,7 +331,7 @@ class FinalizacaoController {
                 if (cpfTitular) {
                     const cpfTitularLimpo = cpfTitular.replace(/\D/g, '');
                     if (cpfTitularLimpo.length === 11) {
-                        dadosPagamento.cpf_titular = cpfTitularLimpo; // 11 dígitos SEM pontuação
+                        dadosPagamento.cpf_titular = cpfTitularLimpo;
                     }
                 }
             }
@@ -340,7 +341,7 @@ class FinalizacaoController {
             // Atualizar dados do pedido
             await FinalizacaoModel.atualizarDadosPedido(pedidoId, dadosPagamento);
             
-            // Atualizar status do pedido
+            // Atualizar status do pedido para "pago"
             await FinalizacaoModel.atualizarStatusPedido(pedidoId, 'pago');
             
             console.log('✅ Pagamento processado com sucesso!');
@@ -399,7 +400,74 @@ class FinalizacaoController {
         }
     }
     
-    // GET /finalizacao/resumo/:id - Obter resumo do pedido
+    // GET /finalizacao/resumo - Obter resumo do pedido ATIVO (para tela de pagamento)
+    static async obterResumoPedidoAtivo(req, res) {
+        try {
+            const empresaId = req.usuario.id;
+            
+            console.log('Buscando resumo do pedido ATIVO para empresa:', empresaId);
+            
+            // Buscar pedido ativo (aguardando pagamento ou carrinho)
+            let pedidos = await FinalizacaoModel.buscarPedidoAguardandoPagamento(empresaId);
+            
+            if (pedidos.length === 0) {
+                pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
+            }
+            
+            if (pedidos.length === 0) {
+                return res.status(404).json({ 
+                    sucesso: false, 
+                    erro: 'Nenhum pedido ativo encontrado' 
+                });
+            }
+            
+            const pedido = pedidos[0];
+            const pedidoId = pedido.id;
+            
+            console.log('✅ Pedido ATIVO encontrado:', pedidoId, 'Status:', pedido.status);
+            
+            // Buscar dados do pedido
+            const dadosPedido = await FinalizacaoModel.buscarDadosPedido(pedidoId);
+            const itens = await FinalizacaoModel.buscarItensPedido(pedidoId);
+            
+            // Calcular totais
+            let subtotal = 0;
+            if (itens && itens.length > 0) {
+                subtotal = itens.reduce((acc, item) => {
+                    return acc + (item.preco * item.quantidade);
+                }, 0);
+            }
+            
+            const taxaEntrega = 9.90;
+            const total = subtotal + taxaEntrega;
+            
+            console.log('💰 Valores calculados:', { subtotal, taxaEntrega, total });
+            
+            return res.status(200).json({
+                sucesso: true,
+                dados: {
+                    pedidoId: pedidoId,
+                    status: pedido.status,
+                    subtotal: subtotal.toFixed(2),
+                    total: total.toFixed(2),
+                    taxaEntrega: taxaEntrega.toFixed(2),
+                    itens: itens,
+                    dadosEntrega: dadosPedido[0] || null,
+                    createdAt: pedido.created_at
+                }
+            });
+            
+        } catch (error) {
+            console.error('❌ ERRO ao obter resumo ativo:', error);
+            res.status(500).json({ 
+                sucesso: false, 
+                erro: 'Erro ao obter resumo',
+                mensagem: error.message
+            });
+        }
+    }
+    
+    // GET /finalizacao/resumo/:id - Obter resumo do pedido por ID
     static async obterResumoPedido(req, res) {
         try {
             const { id } = req.params;
@@ -420,14 +488,30 @@ class FinalizacaoController {
             const dadosPedido = await FinalizacaoModel.buscarDadosPedido(id);
             const itens = await FinalizacaoModel.buscarItensPedido(id);
             
+            // Calcular totais
+            let subtotal = 0;
+            if (itens && itens.length > 0) {
+                subtotal = itens.reduce((acc, item) => {
+                    return acc + (item.preco * item.quantidade);
+                }, 0);
+            }
+            
+            const taxaEntrega = 9.90;
+            const total = subtotal + taxaEntrega;
+            
             console.log('Resumo encontrado para pedido:', id);
             
             return res.status(200).json({
                 sucesso: true,
                 dados: {
-                    pedido,
-                    dadosPedido: dadosPedido[0] || null,
-                    itens
+                    pedidoId: pedido.id,
+                    status: pedido.status,
+                    subtotal: subtotal.toFixed(2),
+                    total: total.toFixed(2),
+                    taxaEntrega: taxaEntrega.toFixed(2),
+                    itens: itens,
+                    dadosEntrega: dadosPedido[0] || null,
+                    createdAt: pedido.created_at
                 }
             });
             
@@ -441,79 +525,70 @@ class FinalizacaoController {
         }
     }
     
-    // GET /finalizacao/debug - Endpoint para debug
-    static async debugDados(req, res) {
+    // GET /finalizacao/ultimo-pedido-finalizado - Buscar último pedido finalizado
+    static async buscarUltimoPedidoFinalizado(req, res) {
         try {
             const empresaId = req.usuario.id;
             
-            console.log('=== DEBUG ===');
-            console.log('Empresa ID:', empresaId);
+            console.log('Buscando último pedido finalizado para empresa:', empresaId);
             
-            // Buscar empresa
-            const empresa = await FinalizacaoModel.buscarEmpresaPorId(empresaId);
-            console.log('Empresa:', empresa);
+            const pedidos = await FinalizacaoModel.buscarPedidoFinalizado(empresaId);
             
-            // Buscar pedidos
-            const pedidos = await FinalizacaoModel.buscarCarrinho(empresaId);
-            console.log('Pedidos no carrinho:', pedidos);
-            
-            let dadosPedido = null;
-            if (pedidos.length > 0) {
-                const pedidoId = pedidos[0].id;
-                dadosPedido = await FinalizacaoModel.buscarDadosPedido(pedidoId);
-                console.log('Dados do pedido:', dadosPedido);
+            if (pedidos.length === 0) {
+                return res.status(404).json({
+                    sucesso: false,
+                    erro: 'Nenhum pedido finalizado encontrado'
+                });
             }
+            
+            const pedido = pedidos[0];
             
             return res.status(200).json({
                 sucesso: true,
-                empresa: {
-                    id: empresa?.id,
-                    nome: empresa?.nome,
-                    email: empresa?.email,
-                    telefone: empresa?.telefone,
-                    cnpj: empresa?.cnpj
-                },
-                pedidos: pedidos,
-                dadosPedido: dadosPedido
+                dados: pedido
             });
             
         } catch (error) {
-            console.error('Erro no debug:', error);
-            res.status(500).json({ 
-                sucesso: false, 
-                erro: error.message 
+            console.error('Erro ao buscar último pedido finalizado:', error);
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: error.message
             });
         }
     }
     
-    // Método auxiliar para validar CPF
-    static validarCPF(cpf) {
-        cpf = cpf.replace(/\D/g, '');
-        
-        if (cpf.length !== 11) return false;
-        
-        // Verificar se todos os dígitos são iguais
-        if (/^(\d)\1{10}$/.test(cpf)) return false;
-        
-        // Validar primeiro dígito verificador
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
+    // GET /finalizacao/ultimo-pedido-pago - Buscar último pedido pago
+    static async buscarUltimoPedidoPago(req, res) {
+        try {
+            const empresaId = req.usuario.id;
+            
+            console.log('Buscando último pedido pago para empresa:', empresaId);
+            
+            const pedidos = await FinalizacaoModel.buscarPedidoPago(empresaId);
+            
+            if (pedidos.length === 0) {
+                return res.status(404).json({
+                    sucesso: false,
+                    erro: 'Nenhum pedido pago encontrado'
+                });
+            }
+            
+            const pedido = pedidos[0];
+            
+            return res.status(200).json({
+                sucesso: true,
+                dados: pedido
+            });
+            
+        } catch (error) {
+            console.error('Erro ao buscar último pedido pago:', error);
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: error.message
+            });
         }
-        let resto = 11 - (soma % 11);
-        let digito1 = resto >= 10 ? 0 : resto;
-        
-        if (digito1 !== parseInt(cpf.charAt(9))) return false;
-        
-        // Validar segundo dígito verificador
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) * (11 - i);
-        }
-        resto = 11 - (soma % 11);
-        let digito2 = resto >= 10 ? 0 : resto;
-        
-        return digito2 === parseInt(cpf.charAt(10));
     }
 }
 

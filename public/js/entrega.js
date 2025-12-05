@@ -1,77 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Página entrega.html carregada');
+    console.log('Página /entrega carregada');
     
-    await carregarDadosSalvos();
-    configurarMascaras();
-    configurarFormulario();
+    await configurarFormulario();
 });
-
-// Carregar dados salvos da etapa anterior
-async function carregarDadosSalvos() {
-    try {
-        const res = await fetch('/finalizacao/dados', {
-            method: 'GET',
-            credentials: 'include'
-        });
-        
-        const data = await res.json();
-        
-        if (data.sucesso) {
-            document.getElementById('nome-empresa').value = data.dados.nomeEmpresa || '';
-            document.getElementById('cnpj-empresa').value = data.dados.cnpj || '';
-            
-            console.log('Dados da empresa carregados');
-        }
-    } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-    }
-}
-
-// Configurar máscaras nos campos
-function configurarMascaras() {
-    const cepInput = document.getElementById('cep-empresa');
-    if (cepInput) {
-        cepInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 5) {
-                value = value.replace(/(\d{5})(\d)/, '$1-$2');
-            }
-            e.target.value = value;
-        });
-    }
-    
-    const telefoneInput = document.getElementById('telefone-empresa');
-    if (telefoneInput) {
-        telefoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 10) {
-                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-            } else if (value.length > 6) {
-                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-            } else if (value.length > 2) {
-                value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
-            }
-            e.target.value = value;
-        });
-    }
-    
-    const cpfInput = document.getElementById('CPF');
-    if (cpfInput) {
-        cpfInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length <= 11) {
-                if (value.length > 9) {
-                    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-                } else if (value.length > 6) {
-                    value = value.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
-                } else if (value.length > 3) {
-                    value = value.replace(/(\d{3})(\d{0,3})/, '$1.$2');
-                }
-            }
-            e.target.value = value;
-        });
-    }
-}
 
 // Configurar evento do formulário
 function configurarFormulario() {
@@ -80,56 +11,18 @@ function configurarFormulario() {
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await finalizarPedido();
+            await finalizarPedido(e);
         });
-    }
-    
-    const cepInput = document.getElementById('cep-empresa');
-    if (cepInput) {
-        cepInput.addEventListener('blur', buscarCEP);
-    }
-}
-
-// Buscar endereço via CEP
-async function buscarCEP() {
-    const cepInput = document.getElementById('cep-empresa');
-    const cep = cepInput.value.replace(/\D/g, '');
-    
-    if (cep.length !== 8) {
-        return;
-    }
-    
-    try {
-        console.log('Buscando CEP:', cep);
-        
-        const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const endereco = await res.json();
-        
-        if (!endereco.erro) {
-            document.getElementById('endereco-empresa').value = endereco.logradouro || '';
-            document.getElementById('bairro-empresa').value = endereco.bairro || '';
-            document.getElementById('cidade-empresa').value = endereco.localidade || '';
-            document.getElementById('estado-empresa').value = endereco.uf || '';
-            
-            document.getElementById('numero-empresa').focus();
-            
-            console.log('Endereço preenchido automaticamente');
-        } else {
-            alert('CEP não encontrado');
-        }
-    } catch (error) {
-        console.error('Erro ao buscar CEP:', error);
-        alert('Erro ao buscar CEP');
     }
 }
 
 // Finalizar pedido
-async function finalizarPedido() {
+async function finalizarPedido(e) {
     console.log('Finalizando pedido...');
     
     // Coletar dados do formulário
     const dadosEntrega = {
-        endereco: `${document.getElementById('endereco-empresa').value}, ${document.getElementById('numero-empresa').value}`,
+        endereco: document.getElementById('endereco').value,
         cpfRepresentante: document.getElementById('CPF').value.replace(/\D/g, ''),
         telefoneRepresentante: document.getElementById('telefone-empresa').value.replace(/\D/g, ''),
         nomeRepresentante: document.getElementById('nome-representante').value,
@@ -148,6 +41,12 @@ async function finalizarPedido() {
         btnSubmit.disabled = true;
         
         console.log('Enviando dados de entrega:', dadosEntrega);
+
+        // Desabilitar botão para evitar múltiplos cliques
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Salvando...';
         
         // Salvar dados de entrega
         const resEntrega = await fetch('/finalizacao/entrega', {
@@ -158,6 +57,7 @@ async function finalizarPedido() {
         });
         
         const dataEntrega = await resEntrega.json();
+        console.log('Resposta completa do servidor:', dataEntrega);
         
         if (!dataEntrega.sucesso) {
             throw new Error(dataEntrega.mensagem || 'Erro ao salvar dados de entrega');
@@ -167,7 +67,10 @@ async function finalizarPedido() {
         
         // Redirecionar para página de pagamento
         alert('Dados de entrega salvos! Redirecionando para pagamento...');
-        window.location.href = '/pagamento';
+        // Pequeno delay antes de redirecionar
+        setTimeout(() => {
+            window.location.href = '/pagamento';
+        }, 500);
         
     } catch (error) {
         console.error('Erro ao finalizar pedido:', error);
