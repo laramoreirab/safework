@@ -14,6 +14,7 @@ import produtoRotas from './routes/produtoRotas.js';
 import usuarioRotas from './routes/usuarioRotas.js';
 import carrinhoRotas from './routes/carrinhoRotas.js';
 import finalizacaoRotas from './routes/finalizacaoRotas.js';
+import pedidosRotas from './routes/pedidosRotas.js';
 
 // Importar middlewares
 import { logMiddleware } from './middlewares/logMiddleware.js';
@@ -125,6 +126,13 @@ app.get('/finalizar', (req,res) =>{
 app.get('/adm', authMiddleware, adminMiddleware, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'painel-adm.html'));
 });
+app.get('/config-compras', authMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'config-compras.html'));
+});
+
+app.get('/config-home', authMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'config-home.html'));
+});
 
 // Middleware de debug para cookies e headers
 app.use((req, res, next) => {
@@ -141,6 +149,7 @@ app.use('/usuarios', usuarioRotas);
 app.use('/carrinho', carrinhoRotas);
 app.use('/finalizacao', finalizacaoRotas);
 app.use('/api/produtos', produtoRotas);
+app.use('/pedidos', pedidosRotas);
 
 // Rotas de Páginas - Organizadas e sem conflitos
 const pages = {

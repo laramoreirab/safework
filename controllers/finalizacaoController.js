@@ -488,14 +488,8 @@ class FinalizacaoController {
             const dadosPedido = await FinalizacaoModel.buscarDadosPedido(id);
             const itens = await FinalizacaoModel.buscarItensPedido(id);
             
-            // Calcular totais
-            let subtotal = 0;
-            if (itens && itens.length > 0) {
-                subtotal = itens.reduce((acc, item) => {
-                    return acc + (item.preco * item.quantidade);
-                }, 0);
-            }
-            
+            // CORRIGIDO: Usar o total do pedido salvo no banco
+            const subtotal = parseFloat(pedido.total) || 0;
             const taxaEntrega = 9.90;
             const total = subtotal + taxaEntrega;
             

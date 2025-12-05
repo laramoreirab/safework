@@ -9,5 +9,6 @@ ca int not null,
 marca varchar(255) not null,
 tipo varchar(255) not null,
 descricao varchar(999) not null,
-estoque int not null
+estoque int not null,
+validade date not null
 );
