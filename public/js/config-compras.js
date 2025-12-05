@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Depois carregar histórico de pedidos
     await carregarHistoricoPedidos();
+
+     // Configurar logout
+     configurarLogout();
 });
 
 // config-compras.js - função carregarDadosPerfil
@@ -159,6 +162,63 @@ function renderizarPedidos(pedidos) {
     }).join('');
     
     console.log(`✅ ${pedidos.length} pedidos renderizados`);
+}
+// CONFIGURAR LOGOUT
+function configurarLogout() {
+    // Botão abrir modal de sair
+    const btnOpenSair = document.getElementById('openSairConta');
+    if (btnOpenSair) {
+        btnOpenSair.addEventListener('click', () => {
+            const modal = new bootstrap.Modal(document.getElementById('modalSairConta'));
+            modal.show();
+        });
+    }
+    
+    // Botão NÃO (fechar modal)
+    const btnNaoSair = document.getElementById('nao-sair');
+    if (btnNaoSair) {
+        btnNaoSair.addEventListener('click', () => {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalSairConta'));
+            if (modal) modal.hide();
+        });
+    }
+    
+    // Botão SIM (fazer logout)
+    const btnSimSair = document.getElementById('sim-sair');
+    if (btnSimSair) {
+        btnSimSair.addEventListener('click', async () => {
+            await fazerLogout();
+        });
+    }
+}
+
+async function fazerLogout() {
+    try {
+        console.log('Fazendo logout...');
+        
+        const res = await fetch('/usuarios/logout', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        const data = await res.json();
+        
+        if (data.sucesso) {
+            console.log('✅ Logout realizado com sucesso');
+            
+            // Redirecionar para login
+            window.location.href = '/login';
+        } else {
+            alert('Erro ao fazer logout');
+        }
+        
+    } catch (error) {
+        console.error('Erro ao fazer logout:', error);
+        alert('Erro ao fazer logout');
+    }
 }
 // Mostrar mensagem quando não há pedidos
 function mostrarMensagemVazia() {

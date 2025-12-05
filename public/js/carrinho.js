@@ -400,3 +400,5 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🔧 Carrinho.js inicializado');
     atualizarContadorCarrinho();
 });
+
+window.onload(verificarAutenticacao()) // testando
