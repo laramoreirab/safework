@@ -498,7 +498,7 @@
                                             <div class="searchbarUser">
                                                 <div class="searchbar2User">
                                                     <div class="searchIdUser">
-                                                        <input type="search" placeholder="Pesquise por ID...">
+                                                        <input type="search" placeholder="Pesquise por ID..." id="searchUser">
                                                         <button id="botaoBuscaUser"><i
                                                                 class="fi fi-rs-search"></i></button>
                                                     </div>
@@ -555,7 +555,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <!----------- Formulário para informações do Usuário  ---------->
-                                        <form action="" id="">
+                                        <form action="" id="criarUser">
                                             <div class="align">
                                                 <div class="eachinput">
                                                     <p>Nome da Empresa</p>
@@ -629,7 +629,7 @@
                                         <button type="button" class="cancel-btn"
                                             data-bs-dismiss="modal">Cancelar</button>
                                         <!-- nessa parte que estava com dúvida, pode alterar, mas por favor, a mantenha a classe .submit-delete_usuario -->
-                                        <button type="submit" class="submit-delete_usuario">Sim, Deletar</button>
+                                        <button type="submit" class="submit-delete_usuario" id="submit-delete_usuario">Sim, Deletar</button>
                                     </div>
                                 </div>
                             </div>
@@ -649,103 +649,103 @@
         <div class="searchbar">
             <div class="searchbar2">
                 <div class="searchId">
-                    <input type="search" placeholder="Busque por nome, categoria ou CA...">
+                    <input type="search" placeholder="Busque por nome, categoria ou CA..." id="searchProdutos">
                     <button id="botaoBuscaProd"><i class="fi fi-rs-search"></i></button>
                 </div>
             </div>
         </div>
         <!--------------------------------------- Tabela de exibição --------------------------------->
         <div class="tabela_produtos">
-            <div class="table-responsive">
-                <table id="produtos-container">
-                    <thead class="cabecalho_tabela">
-                        <tr>
-                            <th>produto</th>
-                            <th>categoria</th>
-                            <th>ca</th>
-                            <th>estoque</th>
-                            <th>preço</th>
-                            <th>status</th>
-                            <th class="acoes_cabecalho">ações</th>
-                        </tr>
-                    </thead>
-                    <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
-                    <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-xl" id="formAtualizar">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <div></div>
-                                    <div class="paimodal">
-                                        <div class="titulo-modal Prod">
-                                            <h1>Editar Produto</h1>
-                                            <div class="icon_titulo-modal">
-                                                <i class="fi-sr-pencil"></i>
-                                            </div>
+            <table id="produtos-container">
+                <thead class="cabecalho_tabela">
+                    <tr>
+                        <th>produto</th>
+                        <th>categoria</th>
+                        <th>ca</th>
+                        <th>estoque</th>
+                        <th>preço</th>
+                        <th>validade</th>
+                        <th>status</th>
+                        <th class="acoes_cabecalho">ações</th>
+                    </tr>
+                </thead>
+                <!-------------------------------------------------- Modal Editar Produto ----------------------------------------------------->
+                <div class="modal fade" id="modalEditarProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl" id="formAtualizar">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div></div>
+                                <div class="paimodal">
+                                    <div class="titulo-modal Prod">
+                                        <h1>Editar Produto</h1>
+                                        <div class="icon_titulo-modal">
+                                            <i class="fi-sr-pencil"></i>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <form action="" id="info_atualizaproduto">
-                                        <div class="align">
-                                            <div class="eachinput">
-                                                <p>Upload da Imagem</p>
-                                                <div class="upload_container">
-                                                    <input type="file" id="atualiza-img_prod-upload" accept="image/*">
-                                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" id="info_atualizaproduto">
+                                    <div class="align">
+                                        <div class="eachinput">
+                                            <p>Upload da Imagem</p>
+                                            <div class="upload_container">
+                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*" required>
                                             </div>
-                                            <div class="eachinput">
-                                                <p>Nome do Produto</p>
-                                                <input type="text" id="atualiza-nome_prod-new">
-                                            </div>
-                                            <div class="each2inputs">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="eachinput">
-                                                            <p>Categoria</p>
-                                                            <section>
-                                                                <select id="atualiza-categoria_prod">
-                                                                    <option value="Facial">Facial</option>
-                                                                    <option value="Ocular">Ocular</option>
-                                                                    <option value="Corporal">Corporal</option>
-                                                                    <option value="Respiratório">Respiratório</option>
-                                                                    <option value="Auditivo">Auditivo</option>
-                                                                    <option value="Manual">Manual</option>
-                                                                    <option value="Pés e Pernas">Pés e Pernas</option>
-                                                                    <option value="Cabeça">Cabeça</option>
-                                                                </select>
-                                                            </section>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-md-3">
-                                                        <div class="eachinput">
-                                                            <p>CA</p>
-                                                            <input type="number" id="atualiza-ca_prod">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-md-3">
-                                                        <div class="eachinput">
-                                                            <p>Estoque</p>
-                                                            <input type="number" id="atualiza-qtd_prod">
-                                                        </div>
+                                        </div>
+                                        <div class="eachinput">
+                                            <p>Nome do Produto</p>
+                                            <input type="text" id="atualiza-nome_prod-new" required>
+                                        </div>
+                                        <div class="each2inputs">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Categoria</p>
+                                                        <section>
+                                                            <select id="atualiza-categoria_prod">
+                                                                <option value="Facial">Facial</option>
+                                                                <option value="Ocular">Ocular</option>
+                                                                <option value="Corporal">Corporal</option>
+                                                                <option value="Respiratório">Respiratório</option>
+                                                                <option value="Auditivo">Auditivo</option>
+                                                                <option value="Manual">Manual</option>
+                                                                <option value="Pés e Pernas">Pés e Pernas</option>
+                                                                <option value="Cabeça">Cabeça</option>
+                                                            </select>
+                                                        </section>
                                                     </div>
                                                 </div>
+                                                <div class="col-12 col-md-3">
+                                                    <div class="eachinput">
+                                                        <p>CA</p>
+                                                        <input type="number" id="atualiza-ca_prod" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3">
+                                                    <div class="eachinput">
+                                                        <p>Estoque</p>
+                                                        <input type="number" id="atualiza-qtd_prod" required>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
 
                                             <div class="each2inputs">
                                                 <div class="row">
                                                     <div class="col-12 col-md-6">
                                                         <div class="eachinput">
                                                             <p>Marca</p>
-                                                            <input type="text" id="atualiza-marca_prod">
+                                                            <input type="text" id="atualiza-marca_prod" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <div class="eachinput">
                                                             <p>Preço</p>
-                                                            <input type="number" id="atualiza-preco_prod">
+                                                            <input type="number" id="atualiza-preco_prod" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -754,11 +754,11 @@
                                             <div class="eachinput">
                                                 <p>Data de Validade</p>
                                                 <input type="date" name="trip-start" min="2024-01-01"
-                                                    id="atualiza-datavalidade_prod">
+                                                    id="atualiza-datavalidade_prod" required>
                                             </div>
                                             <div class="eachinput">
                                                 <p>Descrição Do Produto</p>
-                                                <input type="text" id="atualiza-descricao_prod">
+                                                <input type="text" id="atualiza-descricao_prod" required>
                                             </div>
                                         </div>
                                 </div>
@@ -823,6 +823,7 @@
                         </div>
                     </div>
             </div>
+            <div id="paginacao"></div>
             <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
             <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

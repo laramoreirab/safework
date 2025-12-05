@@ -134,8 +134,7 @@ class ProdutoController {
 
     static async criar(req, res) {
         try {
-            const { nome, tipo, ca, preco, estoque, descricao, marca } = req.body;
-            console.log(`esse é o req :`, req.body);
+            const { nome, tipo, ca, preco, estoque, descricao, marca, validade} = req.body;
 
             // Validações manuais - coletar todos os erros
             const erros = [];
@@ -196,7 +195,8 @@ class ProdutoController {
                 ca: ca,
                 estoque: estoque,
                 descricao: descricao,
-                marca: marca
+                marca: marca,
+                validade: validade
             };
 
 
@@ -273,15 +273,24 @@ class ProdutoController {
     // PUT /api/produtos/atualizar
 
     static async atualizar(req, res) {
-        const { id , nome, tipo, ca, preco, estoque, descricao, marca, img } = req.body;
+        const { id , nome, tipo, ca, preco, estoque, descricao, marca, validade, img } = req.body;
         console.log(`esse é o req :`, req.body);
 
         // Validações manuais - coletar todos os erros
         const erros = [];
 
         // apagar img antiga
-        if(img){
-            await fs.unlink(`./uploads/imagens/${img}`)
+        if (img) {
+            const caminho = path.join('./uploads/imagens', img);
+            try {
+                await fs.unlink(caminho);
+            } catch (err) {
+                if (err.code === 'ENOENT') {
+                    console.warn("Imagem não encontrada, nada para apagar:", caminho);
+                } else {
+                    throw err; // outros erros devem ser tratados
+                }
+            }
         }
 
 
@@ -340,7 +349,8 @@ class ProdutoController {
             ca: ca,
             estoque: estoque,
             descricao: descricao,
-            marca: marca
+            marca: marca,
+            validade: validade
         };
 
 
