@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Carregar resumo do pedido do servidor
-// Carregar resumo do pedido do servidor
 async function carregarResumoPedido() {
     try {
         console.log('Carregando resumo do pedido atual...');
