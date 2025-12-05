@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Carregar resumo do pedido do servidor
 async function carregarResumoPedido() {
     try {
-        console.log('📦 Carregando resumo do carrinho...');
+        console.log('📦 Carregando resumo do pedido...');
         
-        // Buscar carrinho do usuário
-        const res = await fetch('/carrinho', {
+        // Buscar pedido ativo (que deve estar aguardando pagamento)
+        const res = await fetch('/finalizacao/resumo', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -25,7 +25,7 @@ async function carregarResumoPedido() {
             }
         });
         
-        console.log('Status da resposta do carrinho:', res.status);
+        console.log('Status da resposta do resumo:', res.status);
         
         if (!res.ok) {
             if (res.status === 401) {
@@ -37,12 +37,12 @@ async function carregarResumoPedido() {
         }
         
         const data = await res.json();
-        console.log('📊 Dados do carrinho recebidos:', data);
+        console.log('📊 Dados do pedido recebidos:', data);
         
         if (data.sucesso && data.dados) {
-            const subtotal = parseFloat(data.dados.total) || 0;
-            const taxaEntrega = 9.90;
-            const total = subtotal + taxaEntrega;
+            const subtotal = parseFloat(data.dados.subtotal) || 0;
+            const taxaEntrega = parseFloat(data.dados.taxaEntrega) || 9.90;
+            const total = parseFloat(data.dados.total) || 0;
             
             console.log('💰 Valores calculados:', {
                 subtotal: subtotal,
@@ -65,10 +65,10 @@ async function carregarResumoPedido() {
                 console.log('💾 Pedido ID salvo:', data.dados.pedidoId);
             }
         } else {
-            console.error('❌ Erro no carrinho:', data.mensagem);
-            alert('⚠️ Carrinho vazio ou erro ao carregar dados');
+            console.error('❌ Erro no pedido:', data.mensagem);
+            alert('⚠️ Pedido não encontrado ou erro ao carregar dados');
             
-            // Redirecionar para produtos se carrinho vazio
+            // Redirecionar para produtos se pedido não encontrado
             setTimeout(() => {
                 window.location.href = '/produtos/todos';
             }, 2000);

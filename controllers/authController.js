@@ -309,7 +309,7 @@ class authController{
                 return res.status(400).json({  
                     sucesso: false,
                     erro: 'Nome obrigatório',
-                    mensagem: 'O nome é obigatório para cadastro'
+                    mensagem: 'O nome é obrigatório para cadastro'
                 });
             }
             if (!email || email.trim() === '') {  // verifica se o campo email está vazio, ele vem sem espaços
