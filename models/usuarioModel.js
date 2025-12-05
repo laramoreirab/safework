@@ -106,5 +106,36 @@ class usuarioModel {
         }
     }
 
+    static async atualizarCampo(id, dados) {
+        try {
+            console.log('Atualizando campos do usuário:', id, dados);
+            
+            // Remover campos vazios ou undefined
+            const dadosParaAtualizar = {};
+            Object.keys(dados).forEach(key => {
+                if (dados[key] !== undefined && dados[key] !== null && dados[key] !== '') {
+                    dadosParaAtualizar[key] = dados[key];
+                }
+            });
+            
+            if (Object.keys(dadosParaAtualizar).length === 0) {
+                console.log('Nenhum dado para atualizar');
+                return false;
+            }
+            
+            console.log('Dados para atualizar:', dadosParaAtualizar);
+            
+            // Usar a função update do database.js
+            const resultado = await update('empresas', dadosParaAtualizar, `id = ${id}`);
+            
+            console.log('Resultado da atualização:', resultado);
+            return resultado;
+            
+        } catch (error) {
+            console.error('Erro ao atualizar campos do usuário:', error);
+            throw error;
+        }
+    }
+
 }
 export default usuarioModel;

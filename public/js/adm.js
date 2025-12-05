@@ -244,7 +244,7 @@ function renderizarProdutos(pagina = 1) { // função para puxar todos os produt
             const paginacaoDiv = document.getElementById("paginacao");
             paginacaoDiv.innerHTML = `
     <button id="btnAnterior" ${paginacao.pagina <= 1 ? "disabled" : ""}><i class="fi fi-rr-angle-small-left"></i></button>
-    <span>Página ${paginacao.pagina} de ${paginacao.totalPaginas}</span>
+    <span> ${paginacao.pagina} de ${paginacao.totalPaginas}</span>
     <button id="btnProxima" ${paginacao.pagina >= paginacao.totalPaginas ? "disabled" : ""}><i class="fi fi-rr-angle-small-right"></i></button>
 `;
 
@@ -270,10 +270,6 @@ function filtroProduto() {
     fetch('api/produtos/listar')
         .then(res => res.json())
         .then(data => {
-            const paginacaoDiv = document.getElementById("paginacao");
-            if (searchTermProd.length != 0) {
-                paginacaoDiv.innerHTML = ''
-            }
             const container = document.getElementById("produtos-container"); // seleciona o container onde os produtos serão exibidos
             const produtos = data.dados // pega todos os produtos do banco de dados
             const campos = ["nome", "tipo", "ca"]
@@ -383,75 +379,89 @@ modalEditarProd.addEventListener('show.bs.modal', () => {
     const produtoId = botao.getAttribute('data-id')
     idDoProd = produtoId
     console.log('esse é o id que esta sendo enviado pelo editar: ', idDoProd)
+    let dadosDoUser
+    fetch(`api/produtos/listar/id/${idDoProd}`)
+        .then(res => res.json())
+        .then(data => {
+            dadosDoUser = data.dados
+
+            document.getElementById('atualiza-nome_prod-new').value = dadosDoUser.nome
+            document.getElementById('atualiza-categoria_prod').value = dadosDoUser.tipo
+            document.getElementById('atualiza-ca_prod').value = dadosDoUser.ca
+            document.getElementById('atualiza-preco_prod').value = dadosDoUser.preco
+            document.getElementById('atualiza-qtd_prod').value = dadosDoUser.estoque
+            document.getElementById('atualiza-descricao_prod').value = dadosDoUser.descricao
+            document.getElementById('atualiza-marca_prod').value = dadosDoUser.marca
+            document.getElementById('atualiza-img_prod-upload')
 
 
-    const formatualiza = document.getElementById('info_atualizaproduto')
-    formatualiza.addEventListener('submit', async (e) => {
-        e.preventDefault()
+            const formatualiza = document.getElementById('info_atualizaproduto')
+            formatualiza.addEventListener('submit', async (e) => {
+                e.preventDefault()
+
+                const nomeProduto = document.getElementById('atualiza-nome_prod-new').value
+                const categoriaProduto = document.getElementById('atualiza-categoria_prod').value
+                const caProduto = document.getElementById('atualiza-ca_prod').value
+                const precoProduto = document.getElementById('atualiza-preco_prod').value
+                const estoqueProduto = document.getElementById('atualiza-qtd_prod').value
+                const descricaoProduto = document.getElementById('atualiza-descricao_prod').value
+                const marcaProduto = document.getElementById('atualiza-marca_prod').value
+                const dataDeValidade = document.getElementById('atualiza-datavalidade_prod').value
+                const InputImg = document.getElementById('atualiza-img_prod-upload')
+
+
+                await fetch(`/api/produtos/listar/id/${idDoProd}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        imgDoProd = (data.dados).img
+                    })
+
+                console.log('esse é o nome do produto: ', nomeProduto)
+                if (estoqueProduto < 1) {
+                    e.preventDefault()
+                    alert('O estoque deve ter pelo menos 1 item')
+                    return
+                }
+                if (nomeProduto.length <= 3) {
+                    alert('nome do produto deve ter pelo menos 3 caracteres')
+                    return
+                }
 
 
 
-        await fetch(`/api/produtos/listar/id/${idDoProd}`)
-            .then(res => res.json())
-            .then(data => {
-                imgDoProd = (data.dados).img
+
+
+                const formData = new FormData()
+                formData.append('id', idDoProd)
+                formData.append('nome', nomeProduto)
+                formData.append('tipo', categoriaProduto)
+                formData.append('ca', caProduto)
+                formData.append('preco', precoProduto)
+                formData.append('estoque', estoqueProduto)
+                formData.append('descricao', descricaoProduto)
+                formData.append('marca', marcaProduto)
+                formData.append('validade', dataDeValidade)
+                formData.append('img', imgDoProd)
+
+                if (InputImg.files.length > 0) {
+                    formData.append('imagem', InputImg.files[0])
+                }
+
+
+                const response = await fetch('/api/produtos/atualizar', {
+                    method: 'PUT',
+                    body: formData
+                })
+
+                const data = await response.json()
+                if (data.sucesso) {
+                    alert('Produto atualizado com sucesso!')
+                    window.location.reload()
+                } else {
+                    alert('Erro ao atualizar produto: ' + data.mensagem)
+                }
             })
-
-        const nomeProduto = document.getElementById('atualiza-nome_prod-new').value
-        const categoriaProduto = document.getElementById('atualiza-categoria_prod').value
-        const caProduto = document.getElementById('atualiza-ca_prod').value
-        const precoProduto = document.getElementById('atualiza-preco_prod').value
-        const estoqueProduto = document.getElementById('atualiza-qtd_prod').value
-        const descricaoProduto = document.getElementById('atualiza-descricao_prod').value
-        const marcaProduto = document.getElementById('atualiza-marca_prod').value
-        const dataDeValidade = document.getElementById('atualiza-datavalidade_prod').value
-        const InputImg = document.getElementById('atualiza-img_prod-upload')
-
-        console.log('esse é o nome do produto: ', nomeProduto)
-        if (estoqueProduto < 1) {
-            e.preventDefault()
-            alert('O estoque deve ter pelo menos 1 item')
-            return
-        }
-        if (nomeProduto.length <= 3) {
-            alert('nome do produto deve ter pelo menos 3 caracteres')
-            return
-        }
-
-
-
-
-
-        const formData = new FormData()
-        formData.append('id', idDoProd)
-        formData.append('nome', nomeProduto)
-        formData.append('tipo', categoriaProduto)
-        formData.append('ca', caProduto)
-        formData.append('preco', precoProduto)
-        formData.append('estoque', estoqueProduto)
-        formData.append('descricao', descricaoProduto)
-        formData.append('marca', marcaProduto)
-        formData.append('validade', dataDeValidade)
-        formData.append('img', imgDoProd)
-
-        if (InputImg.files.length > 0) {
-            formData.append('imagem', InputImg.files[0])
-        }
-
-
-        const response = await fetch('/api/produtos/atualizar', {
-            method: 'PUT',
-            body: formData
         })
-
-        const data = await response.json()
-        if (data.sucesso) {
-            alert('Produto atualizado com sucesso!')
-            window.location.reload()
-        } else {
-            alert('Erro ao atualizar produto: ' + data.mensagem)
-        }
-    })
 })
 
 
@@ -671,7 +681,7 @@ try {
                 alert('Usuário criado com sucesso!');
                 location.reload();
             } else {
-                alert('Erro ao criar usuário :  ' + (data.mensagem || 'Verifique os dados'));
+                alert('Erro ao criar usuário: ' + (data.mensagem || 'Verifique os dados'));
             }
         } catch (err) {
             return console.log(err)
