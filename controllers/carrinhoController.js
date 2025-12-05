@@ -7,12 +7,14 @@ class carrinhoController {
     static async obterCarrinho(req, res) {
         try {
             const usuarioId = req.usuario.id;
-            console.log(`Buscando carrinho para usuário: ${usuarioId}`);
+            console.log('=== INICIANDO BUSCA DE CARRINHO ===');
+            console.log(`👤 Usuário ID: ${usuarioId}`);
 
+            // Buscar pedido do usuário com status 'carrinho'
             const pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
             
             if (!pedido) {
-                console.log('Carrinho vazio para usuário:', usuarioId);
+                console.log('⚠️ Nenhum pedido em status "carrinho" encontrado');
                 return res.json({
                     sucesso: true,
                     dados: { 
@@ -23,19 +25,62 @@ class carrinhoController {
                 });
             }
 
-            const itens = await carrinhoModel.buscarItens(pedido.id);
-            console.log(`Carrinho encontrado com ${itens.length} itens para usuário: ${usuarioId}`);
+            console.log('📦 Pedido encontrado:', {
+                id: pedido.id,
+                usuario_id: pedido.usuario_id,
+                total: pedido.total,
+                status: pedido.status
+            });
 
-            return res.status(200).json({
+            // Buscar itens do pedido
+            const itens = await carrinhoModel.buscarItens(pedido.id);
+            console.log(`📋 Quantidade de itens retornados: ${itens ? itens.length : 0}`);
+            
+            if (!itens || itens.length === 0) {
+                console.warn('⚠️ Nenhum item encontrado no pedido', pedido.id);
+                return res.json({
+                    sucesso: true,
+                    dados: { 
+                        itens: [], 
+                        total: parseFloat(pedido.total) || 0,
+                        pedidoId: pedido.id
+                    }
+                });
+            }
+
+            // Log detalhado dos itens
+            itens.forEach((item, index) => {
+                console.log(`   Item ${index + 1}:`, {
+                    id: item.id,
+                    produto_id: item.produto_id,
+                    nome: item.nome,
+                    quantidade: item.quantidade,
+                    tamanho: item.tamanho,
+                    preco_unitario: item.preco_unitario,
+                    subtotal: item.subtotal
+                });
+            });
+
+            const totalCalculado = parseFloat(pedido.total) || 0;
+            console.log(`💰 Total do pedido: R$ ${totalCalculado.toFixed(2)}`);
+            
+            const resposta = {
                 sucesso: true,
                 dados: {
                     pedidoId: pedido.id,
                     itens: itens,
-                    total: parseFloat(pedido.total) || 0
+                    total: totalCalculado
                 }
-            });
+            };
+            
+            console.log('✅ Resposta preparada com', itens.length, 'itens');
+            console.log('=== FIM DA BUSCA DE CARRINHO ===\n');
+
+            return res.status(200).json(resposta);
+            
         } catch (error) {
-            console.error('Erro ao obter carrinho:', error);
+            console.error('❌ ERRO ao obter carrinho:', error);
+            console.error('Stack:', error.stack);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
@@ -50,7 +95,8 @@ class carrinhoController {
             const usuarioId = req.usuario.id;
             const { produtoId, quantidade, tamanho, tipoQuantidade } = req.body;
 
-            console.log('Recebendo item para carrinho:', { 
+            console.log('=== ADICIONANDO ITEM AO CARRINHO ===');
+            console.log('Dados recebidos:', { 
                 usuarioId, produtoId, quantidade, tamanho, tipoQuantidade 
             });
 
@@ -87,7 +133,7 @@ class carrinhoController {
                 });
             }
 
-            console.log('Produto encontrado:', produto.nome);
+            console.log('✅ Produto encontrado:', produto.nome);
 
             // Buscar ou criar pedido
             let pedido = await carrinhoModel.buscarCarrinhoUsuario(usuarioId);
@@ -95,17 +141,17 @@ class carrinhoController {
 
             if (!pedido) {
                 pedidoId = await carrinhoModel.criarPedido(usuarioId);
-                console.log('Novo pedido criado:', pedidoId);
+                console.log('📦 Novo pedido criado:', pedidoId);
             } else {
                 pedidoId = pedido.id;
-                console.log('Pedido existente:', pedidoId);
+                console.log('📦 Pedido existente:', pedidoId);
             }
 
             // Verificar se item já existe (mesmo produto + mesmo tamanho)
             const itemExistente = await carrinhoModel.buscarItemExistente(pedidoId, produtoId, tamanho);
             
             if (itemExistente) {
-                console.log('Item existente encontrado, atualizando quantidade...');
+                console.log('♻️ Item existente encontrado, atualizando quantidade...');
                 const novaQuantidade = itemExistente.quantidade + quantidadeFinal;
                 await carrinhoModel.atualizarQuantidadeItem(itemExistente.id, novaQuantidade);
                 await carrinhoModel.atualizarTotalPedido(pedidoId);
@@ -119,7 +165,7 @@ class carrinhoController {
                     }
                 });
             } else {
-                console.log('Adicionando novo item ao carrinho...');
+                console.log('➕ Adicionando novo item ao carrinho...');
                 const itemId = await carrinhoModel.adicionarItem(
                     pedidoId, 
                     produtoId, 
@@ -130,14 +176,17 @@ class carrinhoController {
                 
                 await carrinhoModel.atualizarTotalPedido(pedidoId);
 
+                console.log('✅ Item adicionado com sucesso! ID:', itemId);
+
                 return res.status(201).json({
                     sucesso: true,
                     mensagem: 'Item adicionado ao carrinho com sucesso!',
-                    dados: { itemId }
+                    dados: { itemId, pedidoId }
                 });
             }
         } catch (error) {
-            console.error('Erro ao adicionar item:', error);
+            console.error('❌ Erro ao adicionar item:', error);
+            console.error('Stack:', error.stack);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro interno do servidor',
