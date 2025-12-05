@@ -203,7 +203,7 @@ class FinalizacaoModel {
                     p.nome,
                     p.preco,
                     p.ca,
-                    p.imagem
+                    p.img
                 FROM itens_pedidos ip
                 JOIN produtos p ON ip.produto_id = p.id
                 WHERE ip.pedido_id = ?
