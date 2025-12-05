@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nomeEmpresaInput = document.getElementById('nome-empresa');
             const emailInput = document.getElementById('email-empresa');
             const telefoneInput = document.getElementById('telefone-empresa');
-            const cnpjInput = document.getElementById('CNPJ');
+            const cnpjInput = document.getElementById('cnpj-empresa');
             
             if (nomeEmpresaInput) {
                 nomeEmpresaInput.value = data.dados.nomeEmpresa || '';
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Coletar dados
+    // Coletar dados - INCLUINDO CNPJ
     const nomeEmpresa = document.getElementById('nome-empresa').value.trim();
-    const cnpj = document.getElementById('CNPJ').value.trim();
+    const cnpj = document.getElementById('cnpj-empresa').value.trim();
     const telefone = document.getElementById('telefone-empresa').value.trim();
     const email = document.getElementById('email-empresa').value.trim();
     
@@ -83,31 +83,10 @@ document.querySelector('form').addEventListener('submit', async (e) => {
         return;
     }
     
+    // Validar CNPJ
     const cnpjLimpo = cnpj.replace(/\D/g, '');
     if (!cnpjLimpo || cnpjLimpo.length !== 14) {
         alert('CNPJ inválido. Deve conter 14 dígitos.');
-        return;
-    }
-    
-    if (!telefone) {
-        alert('Telefone é obrigatório');
-        return;
-    }
-    
-    const telefoneLimpo = telefone.replace(/\D/g, '');
-    if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
-        alert('Telefone inválido. Deve conter 10 ou 11 dígitos.');
-        return;
-    }
-    
-    if (!email) {
-        alert('Email é obrigatório');
-        return;
-    }
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Email inválido');
         return;
     }
     
@@ -153,8 +132,8 @@ document.querySelector('form').addEventListener('submit', async (e) => {
         }
         
         if (data.sucesso) {
-            console.log('✅ Dados salvos com sucesso!');
-            alert('✅ Dados salvos com sucesso!');
+            console.log('Dados salvos com sucesso!');
+            alert('Dados salvos com sucesso!');
             
             // Pequeno delay antes de redirecionar
             setTimeout(() => {
@@ -162,13 +141,13 @@ document.querySelector('form').addEventListener('submit', async (e) => {
             }, 500);
             
         } else {
-            console.error('❌ Erro do servidor:', data.erro || data.mensagem);
-            alert('❌ Erro: ' + (data.erro || data.mensagem || 'Falha ao salvar dados'));
+            console.error('Erro do servidor:', data.erro || data.mensagem);
+            alert('Erro: ' + (data.erro || data.mensagem || 'Falha ao salvar dados'));
         }
         
     } catch (error) {
-        console.error('❌ Erro completo na requisição:', error);
-        alert('❌ Erro ao salvar dados: ' + error.message);
+        console.error('Erro completo na requisição:', error);
+        alert('Erro ao salvar dados: ' + error.message);
         
     } finally {
         // Reabilitar o botão
@@ -215,53 +194,3 @@ async function verificarCarrinho() {
 setTimeout(() => {
     verificarCarrinho();
 }, 1000);
-
-// Adicionar máscaras aos campos
-function aplicarMascaras() {
-    // Máscara para CNPJ
-    const cnpjInput = document.getElementById('CNPJ');
-    if (cnpjInput) {
-        cnpjInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            if (value.length > 14) value = value.substring(0, 14);
-            
-            if (value.length > 12) {
-                value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-            } else if (value.length > 8) {
-                value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})/, '$1.$2.$3/$4');
-            } else if (value.length > 5) {
-                value = value.replace(/^(\d{2})(\d{3})(\d{3})/, '$1.$2.$3');
-            } else if (value.length > 2) {
-                value = value.replace(/^(\d{2})(\d{3})/, '$1.$2');
-            }
-            
-            e.target.value = value;
-        });
-    }
-    
-    // Máscara para telefone
-    const telefoneInput = document.getElementById('telefone-empresa');
-    if (telefoneInput) {
-        telefoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            if (value.length > 11) value = value.substring(0, 11);
-            
-            if (value.length > 10) {
-                value = value.replace(/^(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-            } else if (value.length > 6) {
-                value = value.replace(/^(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-            } else if (value.length > 2) {
-                value = value.replace(/^(\d{2})(\d{0,4})/, '($1) $2');
-            } else if (value.length > 0) {
-                value = value.replace(/^(\d{0,2})/, '($1');
-            }
-            
-            e.target.value = value;
-        });
-    }
-}
-
-// Aplicar máscaras quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', aplicarMascaras);

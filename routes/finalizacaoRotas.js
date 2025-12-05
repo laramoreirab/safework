@@ -25,4 +25,7 @@ router.post('/finalizar', finalizacaoController.finalizarPedido);
 // GET /finalizacao/resumo/:id - Obter resumo do pedido
 router.get('/resumo/:id', finalizacaoController.obterResumoPedido);
 
+// GET /finalizacao/ultimo-pedido-pago - Buscar último pedido pago
+router.get('/ultimo-pedido-pago', finalizacaoController.buscarUltimoPedidoPago);
+
 export default router;
