@@ -4,7 +4,7 @@ form.addEventListener('submit', async(e) =>{
 
     const nome = document.getElementById('nome_cadastro').value;
     const email = document.getElementById('email_cadastro').value;
-    const telefone = document.getElementById('tel_cadastro').value;
+    const telefone = document.getElementById('telefone-empresa').value;
     const senha = document.getElementById('senha_cadastro').value;
     
 try{
