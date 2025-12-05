@@ -22,10 +22,16 @@ router.post('/pagamento', finalizacaoController.processarPagamento);
 // POST /finalizacao/finalizar - Finalizar pedido
 router.post('/finalizar', finalizacaoController.finalizarPedido);
 
-// GET /finalizacao/resumo/:id - Obter resumo do pedido
+// GET /finalizacao/resumo - Obter resumo do pedido ATIVO (para tela de pagamento)
+router.get('/resumo', finalizacaoController.obterResumoPedidoAtivo);
+
+// GET /finalizacao/resumo/:id - Obter resumo do pedido por ID
 router.get('/resumo/:id', finalizacaoController.obterResumoPedido);
 
 // GET /finalizacao/ultimo-pedido-pago - Buscar último pedido pago
 router.get('/ultimo-pedido-pago', finalizacaoController.buscarUltimoPedidoPago);
+
+// GET /finalizacao/ultimo-pedido-finalizado - Buscar último pedido finalizado
+router.get('/ultimo-pedido-finalizado', finalizacaoController.buscarUltimoPedidoFinalizado);
 
 export default router;

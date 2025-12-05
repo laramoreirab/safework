@@ -68,8 +68,7 @@ class FinalizacaoModel {
     static async buscarCarrinho(empresaId) {
         try {
             console.log('Buscando carrinho para empresa ID:', empresaId);
-            // A tabela pedidos deve ter 'usuario_id' que referencia empresas.id
-            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'carrinho'`);
+            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'carrinho' ORDER BY id DESC LIMIT 1`);
             console.log('Pedidos no carrinho:', pedidos.length);
             return pedidos || [];
         } catch(error) {
@@ -93,7 +92,7 @@ class FinalizacaoModel {
     static async buscarPedidoPorId(id, empresaId) {
         try {
             console.log('Buscando pedido ID:', id, 'para empresa:', empresaId);
-            const pedidos = await read('pedidos', `id = ${id} AND usuario_id = ${empresaId}`);
+            const pedidos = await read('pedidos', `id = ${id} AND usuario_id = ${empresaId} ORDER BY id DESC LIMIT 1`);
             console.log('Pedidos encontrados:', pedidos.length);
             return pedidos || [];
         } catch(error) {
@@ -105,7 +104,7 @@ class FinalizacaoModel {
     static async buscarPedidoAguardandoPagamento(empresaId) {
         try {
             console.log('Buscando pedidos aguardando pagamento para empresa:', empresaId);
-            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'aguardando_pagamento'`);
+            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'aguardando_pagamento' ORDER BY id DESC LIMIT 1`);
             console.log('Pedidos encontrados:', pedidos.length);
             return pedidos || [];
         } catch(error) {
@@ -117,7 +116,7 @@ class FinalizacaoModel {
     static async buscarPedidoPago(empresaId) {
         try {
             console.log('Buscando pedidos pagos para empresa:', empresaId);
-            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'pago'`);
+            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'pago' ORDER BY id DESC LIMIT 1`);
             console.log('Pedidos encontrados:', pedidos.length);
             return pedidos || [];
         } catch(error) {
@@ -126,11 +125,23 @@ class FinalizacaoModel {
         }
     }
 
+    static async buscarPedidoFinalizado(empresaId) {
+        try {
+            console.log('Buscando pedidos finalizados para empresa:', empresaId);
+            const pedidos = await read('pedidos', `usuario_id = ${empresaId} AND status = 'enviado' ORDER BY id DESC LIMIT 1`);
+            console.log('Pedidos encontrados:', pedidos.length);
+            return pedidos || [];
+        } catch(error) {
+            console.error('Erro ao buscar pedidos finalizados:', error);
+            throw error;
+        }
+    }
+
     // DADOS_PEDIDO
     static async buscarDadosPedido(pedidoId) {
         try {
             console.log('Buscando dados do pedido ID:', pedidoId);
-            const dados = await read('dados_pedido', `pedidoId = ${pedidoId}`);
+            const dados = await read('dados_pedido', `pedidoId = ${pedidoId} LIMIT 1`);
             console.log('Dados encontrados:', dados.length);
             return dados || [];
         } catch(error) {
@@ -191,10 +202,12 @@ class FinalizacaoModel {
                     ip.*,
                     p.nome,
                     p.preco,
-                    p.ca
+                    p.ca,
+                    p.imagem
                 FROM itens_pedidos ip
                 JOIN produtos p ON ip.produto_id = p.id
                 WHERE ip.pedido_id = ?
+                ORDER BY ip.id ASC
             `;
             
             const [itens] = await connection.execute(sql, [pedidoId]);

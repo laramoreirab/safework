@@ -1,8 +1,8 @@
-// pagamento.js - VERSÃO COMPLETA
+// pagamento.js - VERSÃO COMPLETA CORRIGIDA
 
 // Carregar resumo do pedido quando a página carregar
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Página de pagamento carregada');
+    console.log('🔄 Página de pagamento carregada');
     
     // Carregar resumo do pedido
     await carregarResumoPedido();
@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Carregar resumo do pedido do servidor
 async function carregarResumoPedido() {
     try {
-        console.log('Carregando resumo do pedido atual...');
+        console.log('📦 Carregando resumo do carrinho...');
         
-        const res = await fetch('/finalizacao/resumo', { // Sem parâmetro na URL
+        // Buscar carrinho do usuário
+        const res = await fetch('/carrinho', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -24,58 +25,86 @@ async function carregarResumoPedido() {
             }
         });
         
-        console.log('Status da resposta:', res.status);
+        console.log('Status da resposta do carrinho:', res.status);
         
         if (!res.ok) {
+            if (res.status === 401) {
+                alert('❌ Sessão expirada. Faça login novamente.');
+                window.location.href = '/login';
+                return;
+            }
             throw new Error(`HTTP ${res.status}`);
         }
         
         const data = await res.json();
-        console.log('Dados do resumo:', data);
+        console.log('📊 Dados do carrinho recebidos:', data);
         
         if (data.sucesso && data.dados) {
-            // Atualizar valores na página
-            atualizarResumoTela(data.dados);
+            const subtotal = parseFloat(data.dados.total) || 0;
+            const taxaEntrega = 9.90;
+            const total = subtotal + taxaEntrega;
             
-            // Salvar o ID do pedido para uso futuro se necessário
+            console.log('💰 Valores calculados:', {
+                subtotal: subtotal,
+                taxaEntrega: taxaEntrega,
+                total: total
+            });
+            
+            // Atualizar valores na tela
+            atualizarResumoTela({
+                subtotal: subtotal,
+                taxaEntrega: taxaEntrega,
+                total: total,
+                pedidoId: data.dados.pedidoId,
+                itens: data.dados.itens || []
+            });
+            
+            // Salvar o ID do pedido
             if (data.dados.pedidoId) {
                 localStorage.setItem('pedidoAtualId', data.dados.pedidoId);
-                console.log('ID do pedido atual salvo:', data.dados.pedidoId);
+                console.log('💾 Pedido ID salvo:', data.dados.pedidoId);
             }
         } else {
-            console.error('Erro no resumo:', data.mensagem);
-            alert('Erro ao carregar resumo: ' + (data.mensagem || 'Dados não encontrados'));
+            console.error('❌ Erro no carrinho:', data.mensagem);
+            alert('⚠️ Carrinho vazio ou erro ao carregar dados');
+            
+            // Redirecionar para produtos se carrinho vazio
+            setTimeout(() => {
+                window.location.href = '/produtos/todos';
+            }, 2000);
         }
         
     } catch (error) {
-        console.error('Erro ao carregar resumo:', error);
-        alert('Erro ao carregar resumo do pedido');
+        console.error('❌ Erro ao carregar resumo:', error);
+        alert('Erro ao carregar resumo do pedido: ' + error.message);
     }
 }
 
 // Atualizar valores na tela
 function atualizarResumoTela(dados) {
+    console.log('🖼️ Atualizando tela com dados:', dados);
+    
     // Subtotal
     const subtotalElement = document.getElementById('subtotal-resumo');
-    if (subtotalElement && dados.subtotal) {
+    if (subtotalElement) {
         subtotalElement.textContent = formatarMoeda(dados.subtotal);
+        console.log('✅ Subtotal atualizado:', formatarMoeda(dados.subtotal));
+    } else {
+        console.warn('⚠️ Elemento subtotal-resumo não encontrado');
     }
     
     // Total
     const totalElement = document.getElementById('total-resumo');
-    if (totalElement && dados.total) {
+    if (totalElement) {
         totalElement.textContent = formatarMoeda(dados.total);
+        console.log('✅ Total atualizado:', formatarMoeda(dados.total));
+    } else {
+        console.warn('⚠️ Elemento total-resumo não encontrado');
     }
     
-    // Taxa de entrega (se vier do servidor)
-    const taxaElement = document.querySelector('.row-resumo:nth-child(2) strong span');
-    if (taxaElement && dados.taxaEntrega) {
-        taxaElement.textContent = formatarMoeda(dados.taxaEntrega);
-    }
-    
-    // Se quiser mostrar mais detalhes
+    // Se quiser mostrar mais detalhes dos itens
     if (dados.itens && dados.itens.length > 0) {
-        console.log('Itens no pedido:', dados.itens);
+        console.log(`📦 ${dados.itens.length} itens no carrinho`);
     }
 }
 
@@ -85,7 +114,11 @@ function formatarMoeda(valor) {
         valor = parseFloat(valor.replace(',', '.'));
     }
     
-    return 'R$' + valor.toFixed(2).replace('.', ',');
+    if (isNaN(valor)) {
+        return 'R$ 0,00';
+    }
+    
+    return 'R$ ' + valor.toFixed(2).replace('.', ',');
 }
 
 // Configurar eventos da página
@@ -117,7 +150,7 @@ function configurarEventos() {
                 mostrarFormularioCartao(false);
             }
             
-            console.log('Método selecionado:', metodoPagamentoSelecionado);
+            console.log('💳 Método selecionado:', metodoPagamentoSelecionado);
         });
     });
     
@@ -135,17 +168,23 @@ function configurarEventos() {
 function mostrarFormularioCartao(mostrar) {
     const formCartao = document.getElementById('form-pagamento');
     if (formCartao) {
-        if (mostrar) {
-            formCartao.style.display = 'block';
-        } else {
-            formCartao.style.display = 'none';
-        }
+        formCartao.style.display = mostrar ? 'block' : 'none';
+        
+        // Limpar required se não for cartão
+        const inputs = formCartao.querySelectorAll('input');
+        inputs.forEach(input => {
+            if (mostrar) {
+                input.setAttribute('required', 'required');
+            } else {
+                input.removeAttribute('required');
+            }
+        });
     }
 }
 
 // Processar pagamento
 async function processarPagamento(metodo) {
-    console.log('Processando pagamento com método:', metodo);
+    console.log('💳 Processando pagamento com método:', metodo);
     
     const dadosPagamento = {
         metodoPagamento: metodo
@@ -162,9 +201,12 @@ async function processarPagamento(metodo) {
         dadosPagamento.nomeTitular = document.getElementById('nome-titular').value.trim();
         dadosPagamento.validadeCartao = document.getElementById('validade-card').value;
         dadosPagamento.cvv = document.getElementById('CVV').value;
-        dadosPagamento.cpfTitular = document.getElementById('CPF').value.replace(/\D/g, '');
+        
+        const cpfInput = document.getElementById('CPF');
+        if (cpfInput) {
+            dadosPagamento.cpfTitular = cpfInput.value.replace(/\D/g, '');
+        }
     }
-    // Se for PIX ou Boleto, não precisa de dados adicionais
     
     try {
         // Desabilitar botão para evitar múltiplos cliques
@@ -173,7 +215,7 @@ async function processarPagamento(metodo) {
         botao.textContent = 'Processando...';
         botao.disabled = true;
         
-        console.log('Enviando dados de pagamento:', dadosPagamento);
+        console.log('📤 Enviando dados de pagamento:', dadosPagamento);
         
         const res = await fetch('/finalizacao/pagamento', {
             method: 'POST',
@@ -185,30 +227,40 @@ async function processarPagamento(metodo) {
             body: JSON.stringify(dadosPagamento)
         });
         
-        console.log('Status da resposta:', res.status);
+        console.log('📥 Status da resposta:', res.status);
         
         const data = await res.json();
-        console.log('Resposta do servidor:', data);
+        console.log('📊 Resposta do servidor:', data);
         
         if (data.sucesso) {
-            // Salvar ID do pedido se necessário
-            if (data.dados && data.dados.pedidoId) {
-                localStorage.setItem('pedidoId', data.dados.pedidoId);
+            console.log('✅ Pagamento processado com sucesso!');
+            
+            // Salvar ID do pedido de várias formas
+            const pedidoId = data.dados?.pedidoId || localStorage.getItem('pedidoAtualId');
+            
+            if (pedidoId) {
+                localStorage.setItem('pedidoId', pedidoId);
+                sessionStorage.setItem('pedidoId', pedidoId);
+                console.log('💾 Pedido ID salvo:', pedidoId);
             }
             
+            // Mostrar mensagem de sucesso
+            alert('✅ Pagamento processado com sucesso! Redirecionando...');
+            
             // Redirecionar para página de confirmação
-            alert('Pagamento processado com sucesso!');
-            window.location.href = '/finalizar';
+            setTimeout(() => {
+                window.location.href = '/finalizar';
+            }, 1000);
             
         } else {
-            alert(data.mensagem || 'Erro ao processar pagamento');
+            alert('❌ ' + (data.mensagem || 'Erro ao processar pagamento'));
             botao.textContent = textoOriginal;
             botao.disabled = false;
         }
         
     } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro de conexão ao processar pagamento');
+        console.error('❌ Erro:', error);
+        alert('Erro de conexão ao processar pagamento: ' + error.message);
         
         const botao = document.querySelector('.botao-resumo');
         botao.textContent = 'Finalizar Pedido';
@@ -222,36 +274,38 @@ function validarCartao() {
     const nomeTitular = document.getElementById('nome-titular').value.trim();
     const validade = document.getElementById('validade-card').value;
     const cvv = document.getElementById('CVV').value;
-    const cpf = document.getElementById('CPF').value.replace(/\D/g, '');
+    
+    const cpfInput = document.getElementById('CPF');
+    const cpf = cpfInput ? cpfInput.value.replace(/\D/g, '') : '';
     
     // Validações básicas
     if (!numeroCartao || numeroCartao.length !== 16) {
-        alert('Número do cartão inválido. Deve ter 16 dígitos.');
+        alert('❌ Número do cartão inválido. Deve ter 16 dígitos.');
         document.getElementById('numero-cartao').focus();
         return false;
     }
     
     if (!nomeTitular || nomeTitular.length < 3) {
-        alert('Nome do titular é obrigatório.');
+        alert('❌ Nome do titular é obrigatório.');
         document.getElementById('nome-titular').focus();
         return false;
     }
     
     if (!validade || !/^\d{2}\/\d{2}$/.test(validade)) {
-        alert('Validade inválida. Use o formato MM/AA.');
+        alert('❌ Validade inválida. Use o formato MM/AA.');
         document.getElementById('validade-card').focus();
         return false;
     }
     
     if (!cvv || (cvv.length !== 3 && cvv.length !== 4)) {
-        alert('CVV inválido. Deve ter 3 ou 4 dígitos.');
+        alert('❌ CVV inválido. Deve ter 3 ou 4 dígitos.');
         document.getElementById('CVV').focus();
         return false;
     }
     
-    if (!cpf || cpf.length !== 11) {
-        alert('CPF inválido. Deve ter 11 dígitos.');
-        document.getElementById('CPF').focus();
+    if (cpfInput && (!cpf || cpf.length !== 11)) {
+        alert('❌ CPF inválido. Deve ter 11 dígitos.');
+        cpfInput.focus();
         return false;
     }
     
@@ -262,7 +316,7 @@ function validarCartao() {
     const mesAtual = agora.getMonth() + 1;
     
     if (ano < anoAtual || (ano === anoAtual && mes < mesAtual)) {
-        alert('Cartão vencido. Verifique a data de validade.');
+        alert('❌ Cartão vencido. Verifique a data de validade.');
         document.getElementById('validade-card').focus();
         return false;
     }
