@@ -367,6 +367,7 @@ main {
 }
 
 .cont-rows {
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   gap: 1.5dvh;
