@@ -886,6 +886,8 @@ input[type="file"]::-webkit-file-upload-button {
   justify-content: center;
   align-items: center;
   align-content: center;
+  margin-top:  4vh;
+  margin-bottom: 4vh;
 
   button{
     background-color: #0a1e3f;
