@@ -498,7 +498,8 @@
                                             <div class="searchbarUser">
                                                 <div class="searchbar2User">
                                                     <div class="searchIdUser">
-                                                        <input type="search" placeholder="Pesquise por ID..." id="searchUser">
+                                                        <input type="search" placeholder="Pesquise por ID..."
+                                                            id="searchUser">
                                                         <button id="botaoBuscaUser"><i
                                                                 class="fi fi-rs-search"></i></button>
                                                     </div>
@@ -629,7 +630,8 @@
                                         <button type="button" class="cancel-btn"
                                             data-bs-dismiss="modal">Cancelar</button>
                                         <!-- nessa parte que estava com dúvida, pode alterar, mas por favor, a mantenha a classe .submit-delete_usuario -->
-                                        <button type="submit" class="submit-delete_usuario" id="submit-delete_usuario">Sim, Deletar</button>
+                                        <button type="submit" class="submit-delete_usuario"
+                                            id="submit-delete_usuario">Sim, Deletar</button>
                                     </div>
                                 </div>
                             </div>
@@ -693,7 +695,8 @@
                                         <div class="eachinput">
                                             <p>Upload da Imagem</p>
                                             <div class="upload_container">
-                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*" required>
+                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="eachinput">
@@ -734,134 +737,134 @@
                                             </div>
                                         </div>
 
-                                            <div class="each2inputs">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="eachinput">
-                                                            <p>Marca</p>
-                                                            <input type="text" id="atualiza-marca_prod" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="eachinput">
-                                                            <p>Preço</p>
-                                                            <input type="number" id="atualiza-preco_prod" required>
-                                                        </div>
+                                        <div class="each2inputs">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Marca</p>
+                                                        <input type="text" id="atualiza-marca_prod" required>
                                                     </div>
                                                 </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="eachinput">
+                                                        <p>Preço</p>
+                                                        <input type="number" id="atualiza-preco_prod" required>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                            </div>
-                                            <div class="eachinput">
-                                                <p>Data de Validade</p>
-                                                <input type="date" name="trip-start" min="2024-01-01"
-                                                    id="atualiza-datavalidade_prod" required>
-                                            </div>
-                                            <div class="eachinput">
-                                                <p>Descrição Do Produto</p>
-                                                <input type="text" id="atualiza-descricao_prod" required>
-                                            </div>
                                         </div>
-                                </div>
-                                <div class="align">
-                                    <div class="tam_input">
-                                        <p>Tamanhos Disponíveis</p>
-                                        <div class="size-grid">
-                                            <!-- Letras -->
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="P"><span>P</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="M"><span>M</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="G"><span>G</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="GG"><span>GG</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="G1"><span>G1</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="G2"><span>G2</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="G3"><span>G3</span>
-                                            </label>
-
-                                            <!-- Números -->
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="36"><span>36</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="37"><span>37</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="38"><span>38</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="39"><span>39</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="40"><span>40</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="41"><span>41</span>
-                                            </label>
-                                            <label class="size-item">
-                                                <input type="checkbox" name="size[]" value="42"><span>42</span>
-                                            </label>
+                                        <div class="eachinput">
+                                            <p>Data de Validade</p>
+                                            <input type="date" name="trip-start" min="2024-01-01"
+                                                id="atualiza-datavalidade_prod" required>
+                                        </div>
+                                        <div class="eachinput">
+                                            <p>Descrição Do Produto</p>
+                                            <input type="text" id="atualiza-descricao_prod" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="align">
-                                    <button id="atualizar-prod" class="atualizar-prod" type="submit">Editar</button>
-                                </div>
-
-                                </form>
                             </div>
-                        </div>
-                    </div>
-            </div>
-            <div id="paginacao"></div>
-            <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
-            <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="delete_usuario">
-                                <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
-                                    Excluir
-                                    Produto</h1>
-                                <i class="fi fi-rs-trash"></i>
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
+                            <div class="align">
+                                <div class="tam_input">
+                                    <p>Tamanhos Disponíveis</p>
+                                    <div class="size-grid">
+                                        <!-- Letras -->
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="P"><span>P</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="M"><span>M</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="G"><span>G</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="GG"><span>GG</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="G1"><span>G1</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="G2"><span>G2</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="G3"><span>G3</span>
+                                        </label>
 
-                            <div class="confirm_delete">
-                                <div class="align">
-                                    <div class="icon_deletar">
-                                        <i class="fi fi-rr-triangle-warning"></i>
+                                        <!-- Números -->
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="36"><span>36</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="37"><span>37</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="38"><span>38</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="39"><span>39</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="40"><span>40</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="41"><span>41</span>
+                                        </label>
+                                        <label class="size-item">
+                                            <input type="checkbox" name="size[]" value="42"><span>42</span>
+                                        </label>
                                     </div>
-                                    <h2>Você tem certeza que deseja excluir o produto?</h2>
-                                    <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
-                                        poderão
-                                        ser restauradas após excluí-las!</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
-                                Deletar</button>
+                            <div class="align">
+                                <button id="atualizar-prod" class="atualizar-prod" type="submit">Editar</button>
+                            </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
+        <div id="paginacao"></div>
+        <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
+        <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="delete_usuario">
+                            <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
+                                Excluir
+                                Produto</h1>
+                            <i class="fi fi-rs-trash"></i>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-            </table>
+                        <div class="confirm_delete">
+                            <div class="align">
+                                <div class="icon_deletar">
+                                    <i class="fi fi-rr-triangle-warning"></i>
+                                </div>
+                                <h2>Você tem certeza que deseja excluir o produto?</h2>
+                                <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
+                                    poderão
+                                    ser restauradas após excluí-las!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
+                            Deletar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </table>
         </div>
         </div>
     </section>

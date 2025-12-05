@@ -243,9 +243,9 @@ function renderizarProdutos(pagina = 1) { // função para puxar todos os produt
             // renderiza botões de paginação
             const paginacaoDiv = document.getElementById("paginacao");
             paginacaoDiv.innerHTML = `
-    <button id="btnAnterior" ${paginacao.pagina <= 1 ? "disabled" : ""}>⬅️ Anterior</button>
+    <button id="btnAnterior" ${paginacao.pagina <= 1 ? "disabled" : ""}><i class="fi fi-rr-angle-small-left"></i></button>
     <span>Página ${paginacao.pagina} de ${paginacao.totalPaginas}</span>
-    <button id="btnProxima" ${paginacao.pagina >= paginacao.totalPaginas ? "disabled" : ""}>Próxima ➡️</button>
+    <button id="btnProxima" ${paginacao.pagina >= paginacao.totalPaginas ? "disabled" : ""}><i class="fi fi-rr-angle-small-right"></i></button>
 `;
 
             document.getElementById("btnAnterior")?.addEventListener("click", () => {
