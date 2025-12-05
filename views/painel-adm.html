@@ -693,12 +693,12 @@
                                         <div class="eachinput">
                                             <p>Upload da Imagem</p>
                                             <div class="upload_container">
-                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*">
+                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*" required>
                                             </div>
                                         </div>
                                         <div class="eachinput">
                                             <p>Nome do Produto</p>
-                                            <input type="text" id="atualiza-nome_prod-new">
+                                            <input type="text" id="atualiza-nome_prod-new" required>
                                         </div>
                                         <div class="each2inputs">
                                             <div class="row">
@@ -722,13 +722,13 @@
                                                 <div class="col-12 col-md-3">
                                                     <div class="eachinput">
                                                         <p>CA</p>
-                                                        <input type="number" id="atualiza-ca_prod">
+                                                        <input type="number" id="atualiza-ca_prod" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
-                                                        <input type="number" id="atualiza-qtd_prod">
+                                                        <input type="number" id="atualiza-qtd_prod" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -739,13 +739,13 @@
                                                     <div class="col-12 col-md-6">
                                                         <div class="eachinput">
                                                             <p>Marca</p>
-                                                            <input type="text" id="atualiza-marca_prod">
+                                                            <input type="text" id="atualiza-marca_prod" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <div class="eachinput">
                                                             <p>Preço</p>
-                                                            <input type="number" id="atualiza-preco_prod">
+                                                            <input type="number" id="atualiza-preco_prod" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -754,11 +754,11 @@
                                             <div class="eachinput">
                                                 <p>Data de Validade</p>
                                                 <input type="date" name="trip-start" min="2024-01-01"
-                                                    id="atualiza-datavalidade_prod">
+                                                    id="atualiza-datavalidade_prod" required>
                                             </div>
                                             <div class="eachinput">
                                                 <p>Descrição Do Produto</p>
-                                                <input type="text" id="atualiza-descricao_prod">
+                                                <input type="text" id="atualiza-descricao_prod" required>
                                             </div>
                                         </div>
                                 </div>
@@ -823,6 +823,7 @@
                         </div>
                     </div>
             </div>
+            <div id="paginacao"></div>
             <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
             <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

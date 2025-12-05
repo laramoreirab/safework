@@ -149,7 +149,7 @@
                 <!---------------------- IMAGEM DO PRODUTO  ------------------------>
                 <div class="col-12 col-md-6">
                     <div class="img_informacoes">
-                        <img src="/public/img/abafador.svg" style="width:100%;max-width:400px;display:block;">
+                        <img id="imgProd" src="/public/img/abafador.svg" style="width:100%;max-width:400px;display:block;">
                     </div>
                 </div>
                 <!---------------------- INFORMAÇÕES DO PRODUTO  ------------------------>
@@ -164,7 +164,7 @@
                                 <!-- Colocar aqui o CA do produto, nessa mesma formatação: C.A: NNNN -->
                                 <p>C.A: 0001</p>
                             </div>
-                            <div class="codprod">
+                            <div class="codprod" id="codprod">
                                 <!-- Colocar aqui o ID do produto nessa mesma formatação: Cód: NNNN -->
                                 <p>Cód: 0001</p>
                             </div>
@@ -299,7 +299,7 @@
                     <h1 class="titulo_secaoprod">Descrição</h1>
                     <hr class="linha-gradiente">
                 </div>
-                <p>
+                <p id="descricao_prod">
                     <!-- Colocar aqui a descrição do produto -->
                     O Abafador 3M Amarelo é a escolha ideal para quem busca proteção auditiva eficiente em ambientes com
                     alto nível de ruído. Fabricado com materiais resistentes e confortáveis, ele oferece excelente
@@ -395,7 +395,7 @@
                 <h1 class="titulo_interesses">Quem Comprou, Comprou Também!</h1>
                 <div class="prods_interesses">
                     <div class="container">
-                        <div class="row ">
+                        <div class="row " id="produtos_interesse">
                             <div class="col-12 col-md-3">
                                 <a href="">
                                     <div class="one-produto">
@@ -596,7 +596,7 @@
     </div>
 
     <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
-
+    <script src="/public/js/infoprodutos.js"></script>
     <script src="/public/js/funcoesprincipais.js"></script>
     <script src="../public/js/carrinho.js"></script>
 </body>
