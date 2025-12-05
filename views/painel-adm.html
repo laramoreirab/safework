@@ -207,13 +207,13 @@
                                                         </section>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-3">
+                                                <div class="col-6 col-md-3">
                                                     <div class="eachinput">
                                                         <p>CA</p>
                                                         <input type="number" id="ca_prod-new" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-3">
+                                                <div class="col-6 col-md-3">
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
                                                         <input type="number" id="qtd_prod-new" required>
@@ -237,7 +237,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div class="eachinput">
+                                            <p>Data de Validade</p>
+                                            <input type="date" name="trip-start" min="2024-01-01"
+                                                id="datavalidade_prod-new">
                                         </div>
                                         <div class="eachinput">
                                             <p>Descrição Do Produto</p>
@@ -312,7 +316,7 @@
                 <div class="row">
                     <!-------------- Total de Produtos ------------->
                     <div class="col-12 col-md-3 prod_red">
-                        <button type="button" class="total-prod">
+                        <button type="button" class="total-prod botoes-adm">
                             <a href="#produtos_adm">
                                 <div class="cont_total-prod">
                                     <h1>Produtos</h1>
@@ -328,7 +332,7 @@
                     <!--------------------------------- Modal de Total de Vendas / Exibição de Compras -------------------------------->
                     <div class="col-12 col-md-3 prod_red">
                         <!---- Trigger modal ----->
-                        <button type="button" class="total-vendas" data-bs-toggle="modal"
+                        <button type="button" class="total-vendas botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalTotalVendas">
                             <div class="cont_total-vendas">
                                 <h1>Vendas</h1>
@@ -360,37 +364,39 @@
                                     <div class="modal-body">
                                         <div class="align">
                                             <div class="tabela_vendas">
-                                                <table id="tabela_vendas">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>Empresa</th>
-                                                            <th>Data</th>
-                                                            <th>Produtos</th>
-                                                            <th class="valor_vendas">Valor Total</th>
-                                                        </tr>
-                                                    </thead>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_vendas">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>Empresa</th>
+                                                                <th>Data</th>
+                                                                <th>Produtos</th>
+                                                                <th class="valor_vendas">Valor Total</th>
+                                                            </tr>
+                                                        </thead>
 
-                                                    <tr class="eachproduto">
-                                                        <td class="nomeUser_compra">
-                                                            <!-- Colocar aqui o nome do comprador -->
-                                                            Petrobras
-                                                        </td>
-                                                        <td class="data_Compra">
-                                                            <!-- Colocar aqui a data da compra -->
-                                                            21/09/25
-                                                        </td>
-                                                        <td class="produtos_Compra">
-                                                            <p>
-                                                                <!-- Colocar aqui os produtos comprador, cada produto deve estar separados por br -->
-                                                                Capacete<br>Óculos Incolor<br>Luva
-                                                            </p>
-                                                        </td>
-                                                        <td class="valor_Compra">
-                                                            <!-- Colocar aqui o valor da compra -->
-                                                            R$ 547,80
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                        <tr class="eachproduto">
+                                                            <td class="nomeUser_compra">
+                                                                <!-- Colocar aqui o nome do comprador -->
+                                                                Petrobras
+                                                            </td>
+                                                            <td class="data_Compra">
+                                                                <!-- Colocar aqui a data da compra -->
+                                                                21/09/25
+                                                            </td>
+                                                            <td class="produtos_Compra">
+                                                                <p>
+                                                                    <!-- Colocar aqui os produtos comprador, cada produto deve estar separados por br -->
+                                                                    Capacete<br>Óculos Incolor<br>Luva
+                                                                </p>
+                                                            </td>
+                                                            <td class="valor_Compra">
+                                                                <!-- Colocar aqui o valor da compra -->
+                                                                R$ 547,80
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -401,7 +407,7 @@
                     <!-------------------------------------------- Modal de Produtos com Estoque Baixo -------------------------------------------------->
                     <div class="col-12 col-md-3 prod_red">
                         <!---- Trigger modal ----->
-                        <button type="button" class="estoque-baixo" data-bs-toggle="modal"
+                        <button type="button" class="estoque-baixo  botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalEstoqueBaixo">
                             <div class="cont_estoque-baixo">
                                 <h1>Estoque Baixo</h1>
@@ -433,18 +439,21 @@
                                     <div class="modal-body">
                                         <div class="align">
                                             <div class="tabela_estoquebaixo">
-                                                <table id="tabela_estoquebaixo">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>produto</th>
-                                                            <th>categoria</th>
-                                                            <th>ca</th>
-                                                            <th>estoque</th>
-                                                            <th>preço</th>
-                                                            <th>status</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_estoquebaixo">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>produto</th>
+                                                                <th>categoria</th>
+                                                                <th>ca</th>
+                                                                <th>estoque</th>
+                                                                <th>preço</th>
+                                                                <th>status</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -455,7 +464,7 @@
                     <!------------------------------------------------ Modal de Usuários -------------------------------------------------------->
                     <div class="col-12 col-md-3 prod_red">
                         <!---- Trigger modal ----->
-                        <button type="button" class="total-usuarios" data-bs-toggle="modal"
+                        <button type="button" class="total-usuarios botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalUsers">
                             <div class="cont_total-usuarios">
                                 <h1>Usuários</h1>
@@ -489,7 +498,8 @@
                                             <div class="searchbarUser">
                                                 <div class="searchbar2User">
                                                     <div class="searchIdUser">
-                                                        <input type="search" placeholder="Pesquise por ID...">
+                                                        <input type="search" placeholder="Pesquise por ID..."
+                                                            id="searchUser">
                                                         <button id="botaoBuscaUser"><i
                                                                 class="fi fi-rs-search"></i></button>
                                                     </div>
@@ -508,18 +518,20 @@
                                         </div>
                                         <div class="align">
                                             <div class="tabela_users">
-                                                <table id="tabela_users">
-                                                    <thead class="cabecalho_tabela">
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>ID</th>
-                                                            <th>Email</th>
-                                                            <th>telefone</th>
-                                                            <th>Tipo</th>
-                                                            <th class="acoes_cabecalho">ações</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+                                                <div class="table-responsive">
+                                                    <table id="tabela_users">
+                                                        <thead class="cabecalho_tabela">
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>ID</th>
+                                                                <th>Email</th>
+                                                                <th>telefone</th>
+                                                                <th>Tipo</th>
+                                                                <th class="acoes_cabecalho">ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -544,7 +556,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <!----------- Formulário para informações do Usuário  ---------->
-                                        <form action="" id="">
+                                        <form action="" id="criarUser">
                                             <div class="align">
                                                 <div class="eachinput">
                                                     <p>Nome da Empresa</p>
@@ -565,6 +577,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="eachinput">
+                                                    <p>Tipo</p>
+                                                    <section>
+                                                        <select id="tipo_user-new">
+                                                            <option value="comum">Comum</option>
+                                                            <option value="admin">Administrador</option>
+                                                        </select>
+                                                    </section>
                                                 </div>
                                                 <div class="eachinput">
                                                     <p>Senha</p>
@@ -609,7 +630,8 @@
                                         <button type="button" class="cancel-btn"
                                             data-bs-dismiss="modal">Cancelar</button>
                                         <!-- nessa parte que estava com dúvida, pode alterar, mas por favor, a mantenha a classe .submit-delete_usuario -->
-                                        <button type="submit" class="submit-delete_usuario">Sim, Deletar</button>
+                                        <button type="submit" class="submit-delete_usuario"
+                                            id="submit-delete_usuario">Sim, Deletar</button>
                                     </div>
                                 </div>
                             </div>
@@ -629,7 +651,7 @@
         <div class="searchbar">
             <div class="searchbar2">
                 <div class="searchId">
-                    <input type="search" placeholder="Busque por nome, categoria ou CA...">
+                    <input type="search" placeholder="Busque por nome, categoria ou CA..." id="searchProdutos">
                     <button id="botaoBuscaProd"><i class="fi fi-rs-search"></i></button>
                 </div>
             </div>
@@ -644,6 +666,7 @@
                         <th>ca</th>
                         <th>estoque</th>
                         <th>preço</th>
+                        <th>validade</th>
                         <th>status</th>
                         <th class="acoes_cabecalho">ações</th>
                     </tr>
@@ -672,12 +695,13 @@
                                         <div class="eachinput">
                                             <p>Upload da Imagem</p>
                                             <div class="upload_container">
-                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*">
+                                                <input type="file" id="atualiza-img_prod-upload" accept="image/*"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="eachinput">
                                             <p>Nome do Produto</p>
-                                            <input type="text" id="atualiza-nome_prod-new">
+                                            <input type="text" id="atualiza-nome_prod-new" required>
                                         </div>
                                         <div class="each2inputs">
                                             <div class="row">
@@ -701,13 +725,13 @@
                                                 <div class="col-12 col-md-3">
                                                     <div class="eachinput">
                                                         <p>CA</p>
-                                                        <input type="number" id="atualiza-ca_prod">
+                                                        <input type="number" id="atualiza-ca_prod" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
                                                     <div class="eachinput">
                                                         <p>Estoque</p>
-                                                        <input type="number" id="atualiza-qtd_prod">
+                                                        <input type="number" id="atualiza-qtd_prod" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -718,21 +742,26 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class="eachinput">
                                                         <p>Marca</p>
-                                                        <input type="text" id="atualiza-marca_prod">
+                                                        <input type="text" id="atualiza-marca_prod" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="eachinput">
                                                         <p>Preço</p>
-                                                        <input type="number" id="atualiza-preco_prod">
+                                                        <input type="number" id="atualiza-preco_prod" required>
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="eachinput">
+                                            <p>Data de Validade</p>
+                                            <input type="date" name="trip-start" min="2024-01-01"
+                                                id="atualiza-datavalidade_prod" required>
+                                        </div>
+                                        <div class="eachinput">
                                             <p>Descrição Do Produto</p>
-                                            <input type="text" id="atualiza-descricao_prod">
+                                            <input type="text" id="atualiza-descricao_prod" required>
                                         </div>
                                     </div>
                             </div>
@@ -797,6 +826,7 @@
                     </div>
                 </div>
         </div>
+        <div id="paginacao"></div>
         <!---------------------------------------------------- Modal Excluir Produto ------------------------------------------------>
         <div class="modal fade" id="modalExcluirProd" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -827,7 +857,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancel-btn" data-bs-dismiss="modal">Cancelar</button>
-                        <!-- Cá está a minha dúvida novamente! -->
                         <button type="submit" class="submit-delete_prod" id="submit_delete_prod">Sim,
                             Deletar</button>
                     </div>
@@ -836,6 +865,7 @@
         </div>
 
         </table>
+        </div>
         </div>
     </section>
     <script src="../public/js/funcoesprincipais.js"></script>
