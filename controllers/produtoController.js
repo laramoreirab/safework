@@ -370,11 +370,11 @@ class ProdutoController {
             }
         });
     } catch(error) {
-        console.error('Erro ao criar produto:', error);
+        console.error('Erro ao atualizar produto:', error);
         res.status(500).json({
             sucesso: false,
             erro: 'Erro interno do servidor',
-            mensagem: 'Não foi possível criar o produto'
+            mensagem: 'Não foi possível atualizar o produto'
         });
     }
 
