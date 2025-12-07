@@ -71,6 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
   background-color: var(--azure);
   border-radius: 5px;
   padding: 0 0.9rem 0 0.9rem;
@@ -1210,6 +1211,74 @@ input[type="file"]::-webkit-file-upload-button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transform: translateY(-0.5dvh);
   border: 1px solid var(--azul-crepusculo);
+}
+
+.total-mensagens{
+  background-color: #529a8d;
+}
+
+.Mensagens{
+  background-color: #529a8d;
+}
+
+.cont_total-mensagens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 20vh;
+  height: 20vh;
+  padding: 2rem;
+  margin: 1.5rem;
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  i {
+    color: #1f2224;
+    font-size: 5rem;
+    padding-top: 0.6rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
+
+
+
+.eachmensagem{
+  display: flex;
+  flex-direction: column;
+}
+.linhainicial-eachmensagem{
+  display: flex;
+  align-items: center;
+}
+
+.linha-info_mensagem{
+  display: flex;
+
+  p{
+    font-weight: 700;
+    color: #737373;
+  }
+}
+.mensagem{
+  display: flex;
+  flex-direction: column;
+}
+
+.mensagem_contato{
+  padding-left: 2rem;
+}
+
+.info2{
+  margin-left: 2rem;
 }
 
 /* <!--------------------------------- Responsividade ----------------------------------!> */

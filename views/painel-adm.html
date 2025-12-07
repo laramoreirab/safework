@@ -81,7 +81,8 @@
                             <a class="submenu_redirecionamento" href="/produtos/corporal" target="_blank">Corporal
                                 <i class="fi fi-ts-angle-small-right"></i>
                             </a>
-                            <a class="submenu_redirecionamento" href="/produtos/respiratorio" target="_blank">Respiratório
+                            <a class="submenu_redirecionamento" href="/produtos/respiratorio"
+                                target="_blank">Respiratório
                                 <i class="fi fi-ts-angle-small-right"></i>
                             </a>
                             <a class="submenu_redirecionamento" href="/produtos/auditivo" target="_blank">Auditivo
@@ -240,7 +241,7 @@
                                         </div>
                                         <div class="eachinput">
                                             <p>Data de Validade</p>
-                                            <input type="date" name="trip-start" min="2025-01-01" max="9999-12-31" 
+                                            <input type="date" name="trip-start" min="2025-01-01" max="9999-12-31"
                                                 id="datavalidade_prod-new">
                                         </div>
                                         <div class="eachinput">
@@ -636,9 +637,89 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-md-3 prod_red">
+                            <!---- Trigger modal ----->
+                            <button type="button" class="total-mensagens botoes-adm" data-bs-toggle="modal"
+                                data-bs-target="#modalMensagens">
+                                <div class="cont_total-mensagens">
+                                    <h1>Mensagens</h1>
+                                    <i class="fi fi-tr-comment-alt-dots"></i>
+                                    <p class="qtd-users" id="qtd-mensagens">
+                                        <!-- Coloque aqui a quantidade total de mensagens  -->
+                                        2
+                                    </p>
+                                </div>
+                            </button>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalMensagens" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="paimodal">
+                                                <div class="titulo-modal Mensagens">
+                                                    <h1>Mensagens</h1>
+                                                    <div class="icon_titulo-modal">
+                                                        <i class="fi fi-tr-comment-alt-dots"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="eachmensagem">
+                                                    <div class="linhainicial-eachmensagem">
+                                                        <i class="fi fi-tr-circle-user"></i>
+                                                        <h4>
+                                                            <!-- Colocar Aqui Nome da Empresa que fez contato -->
+                                                            Nome da Empresa
+                                                        </h4>
+                                                    </div>
+                                                    <div class="linha-info_mensagem">
+                                                        <div class="info1">
+                                                            <p class="tel_mensagem">
+                                                                <!-- Colocar aqui o telefone do contato -->
+                                                                <!-- Deve ficar formatado da seguinte maneira:
+                                                                    Telefone: tel.contato  -->
+                                                                Telefone: (11) 9999-9999
+                                                            </p>
+                                                        </div>
+                                                        <div class="info2">
+                                                            <p class="email_mensagem">
+                                                                <!-- Colocar aqui o email do contato -->
+                                                                <!-- Deve ficar formatado da seguinte maneira:
+                                                                    Email: email.contato  -->
+                                                                Email: talatal@gmail.com
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mensagem">
+                                                        <strong>Mensagem:</strong>
+                                                        <p class="mensagem_contato">
+                                                            <!-- Colocar aqui a mensagem do Contato -->
+                                                            Prezados(as) da Safework,
+                                                            Gostaria de parabenizar a empresa pela excelência na área de
+                                                            segurança do trabalho e pela qualidade dos Equipamentos de
+                                                            Proteção Individual oferecidos. É admirável o cuidado com as
+                                                            certificações, a variedade de produtos e o compromisso em
+                                                            proteger a saúde dos trabalhadores. A clareza das
+                                                            informações e o atendimento acessível reforçam a
+                                                            credibilidade da Safework e mostram o respeito que vocês têm
+                                                            pelos clientes.
+                                                        </p>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
     </section>
     <!------------------------------------------------------------ Tabela de Produtos --------------------------------------------------------->
     <section id="produtos_adm">
