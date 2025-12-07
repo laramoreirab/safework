@@ -1,6 +1,3 @@
-// pagamento.js - VERSÃO COMPLETA CORRIGIDA
-
-// Carregar resumo do pedido quando a página carregar
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('🔄 Página de pagamento carregada');
     
@@ -59,6 +56,9 @@ async function carregarResumoPedido() {
                 itens: data.dados.itens || []
             });
             
+            // NOVO: Renderizar itens do pedido
+            renderizarItensPedido(data.dados.itens || []);
+            
             // Salvar o ID do pedido
             if (data.dados.pedidoId) {
                 localStorage.setItem('pedidoAtualId', data.dados.pedidoId);
@@ -78,6 +78,96 @@ async function carregarResumoPedido() {
         console.error('❌ Erro ao carregar resumo:', error);
         alert('Erro ao carregar resumo do pedido: ' + error.message);
     }
+}
+
+// NOVA FUNÇÃO: Renderizar itens do pedido DENTRO do resumo
+function renderizarItensPedido(itens) {
+    console.log('🎨 Renderizando itens do pedido:', itens);
+    
+    // Procurar o container de detalhes do resumo
+    const detalhesResumo = document.querySelector('.detalhes-resumo');
+    
+    if (!detalhesResumo) {
+        console.warn('⚠️ Container .detalhes-resumo não encontrado');
+        return;
+    }
+    
+    // Procurar se já existe um container de itens
+    let containerItens = detalhesResumo.querySelector('.itens-resumo-pedido');
+    
+    // Se não existir, criar e inserir ANTES do primeiro .row-resumo (subtotal)
+    if (!containerItens) {
+        containerItens = document.createElement('div');
+        containerItens.className = 'itens-resumo-pedido';
+        
+        const primeiraRow = detalhesResumo.querySelector('.row-resumo');
+        if (primeiraRow) {
+            detalhesResumo.insertBefore(containerItens, primeiraRow);
+        } else {
+            detalhesResumo.insertBefore(containerItens, detalhesResumo.firstChild);
+        }
+    }
+    
+    // Limpar conteúdo anterior
+    containerItens.innerHTML = '';
+    
+    if (!itens || itens.length === 0) {
+        containerItens.innerHTML = '<p style="text-align: center; color: #666; padding: 1rem;">Nenhum item no carrinho</p>';
+        return;
+    }
+    
+    // Renderizar cada item
+    itens.forEach(item => {
+        const precoUnitario = parseFloat(item.preco_unitario || item.preco || 0);
+        const quantidade = parseInt(item.quantidade || 1);
+        const totalItem = precoUnitario * quantidade;
+        const quantidadeLotes = Math.ceil(quantidade / 50);
+        
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-resumo';
+        itemDiv.style.cssText = `
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            align-items: center;
+        `;
+        
+        itemDiv.innerHTML = `
+        <div style="flex-shrink: 0;">
+                <img src="/uploads/imagens/${item.img || item.imagem || '/public/img/abafador.svg'}" 
+                     alt="${item.nome || 'Produto'}"
+                     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;"
+                     onerror="this.src='/public/img/abafador.svg'">
+            </div>
+            <div style="flex-grow: 1;">
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: bold;">
+                    ${item.nome || 'Produto'}
+                </h4>
+                <p style="margin: 0; color: #666; font-size: 0.875rem;">
+                    CA: ${item.ca || 'N/A'}
+                    ${item.tamanho ? ` | Tamanho: ${item.tamanho}` : ''}
+                </p>
+                <p style="margin: 0.25rem 0 0 0; color: #666; font-size: 0.875rem;">
+                    ${quantidade} unidades (${quantidadeLotes} lote${quantidadeLotes > 1 ? 's' : ''})
+                </p>
+            </div>
+            <div style="text-align: right; flex-shrink: 0;">
+                <p style="margin: 0; font-size: 0.875rem; color: #666;">
+                    R$ ${precoUnitario.toFixed(2).replace('.', ',')} / un
+                </p>
+                <p style="margin: 0.25rem 0 0 0; font-size: 1.125rem; font-weight: bold; color: #333;">
+                    R$ ${totalItem.toFixed(2).replace('.', ',')}
+                </p>
+            </div>
+        `;
+        
+        containerItens.appendChild(itemDiv);
+    });
+    
+    console.log(`✅ ${itens.length} itens renderizados dentro do resumo`);
 }
 
 // Atualizar valores na tela

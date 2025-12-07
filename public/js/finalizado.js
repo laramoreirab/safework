@@ -1,4 +1,3 @@
-// finalizado.js - VERSÃO FINAL
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('📄 Página /finalizado carregada');
     
@@ -171,7 +170,7 @@ function renderizarResumo(dados) {
     // 4. Forma de pagamento
     renderizarFormaPagamento(dadosEntrega);
     
-    // 5. Itens do pedido
+    // 5. IMPORTANTE: Renderizar itens do pedido
     renderizarItensPedido(itens);
     
     // 6. Valores (subtotal, taxa, total)
@@ -242,53 +241,107 @@ function renderizarFormaPagamento(dadosPedido) {
     console.log('💳 Forma de pagamento:', formaPagamento);
 }
 
-// Renderizar itens do pedido
+// Renderizar itens do pedido DENTRO do resumo (SEM IMAGEM)
 function renderizarItensPedido(itens) {
-    const container = document.getElementById('itens-pedido') || 
-                     document.querySelector('.itens-pedido') ||
-                     document.querySelector('.padding-filtrar');
+    console.log('🎨 Renderizando itens do pedido:', itens);
     
-    if (!container) {
-        console.warn('⚠️ Container de itens não encontrado');
+    // Procurar a descrição do pedido (onde ficam subtotal, taxa, etc)
+    const descricaoPedido = document.querySelector('.descricao-pedido');
+    
+    if (!descricaoPedido) {
+        console.warn('⚠️ Container .descricao-pedido não encontrado');
         return;
     }
     
-    if (itens && itens.length > 0) {
-        container.innerHTML = itens.map(item => {
-            const precoUnitario = parseFloat(item.preco_unitario || item.preco || 0);
-            const quantidade = parseInt(item.quantidade || 1);
-            const totalItem = precoUnitario * quantidade;
-            const quantidadeLotes = Math.ceil(quantidade / 50);
-            
-            return `
-            <div class="one-produto-carrinho" data-item-id="${item.id || item.produto_id}">
-                <div class="space-img-carrinho">
-                    <img src="${item.imagem || '/public/img/abafador.svg'}" 
-                         alt="${item.nome || 'Produto'}" 
-                         onerror="this.src='/public/img/abafador.svg'">
-                </div>
-
-                <div class="space-meio-carrinho">
-                    <div class="names-carrinho">
-                        <p><strong>${item.nome || 'Produto'}</strong></p>
-                        <span>CA: ${item.ca || 'N/A'}</span>
-                        <small style="display: block; color: #666; margin-top: 5px;">
-                            ${quantidade} unidades (${quantidadeLotes} lote${quantidadeLotes > 1 ? 's' : ''})
-                        </small>
-                    </div>
-                </div>
-
-                <div class="space-final-carrinho">
-                    <p>R$ <span>${totalItem.toFixed(2).replace('.', ',')}</span></p>
-                </div>
-            </div>`;
-        }).join('');
+    // Procurar se já existe um container de itens
+    let containerItens = descricaoPedido.querySelector('.itens-resumo-pedido');
+    
+    // Se não existir, criar e inserir NO INÍCIO da descrição
+    if (!containerItens) {
+        containerItens = document.createElement('div');
+        containerItens.className = 'itens-resumo-pedido';
         
-        console.log(`✅ ${itens.length} itens renderizados`);
-    } else {
-        container.innerHTML = '<p style="text-align: center; padding: 2rem;">Nenhum item encontrado no pedido</p>';
-        console.warn('⚠️ Nenhum item encontrado no pedido');
+        // Inserir no início (antes de tudo)
+        descricaoPedido.insertBefore(containerItens, descricaoPedido.firstChild);
     }
+    
+    // Limpar conteúdo anterior
+    containerItens.innerHTML = '';
+    
+    if (!itens || itens.length === 0) {
+        containerItens.innerHTML = '<p style="text-align: center; color: #666; padding: 1rem;">Nenhum item no pedido</p>';
+        console.warn('⚠️ Nenhum item encontrado no pedido');
+        return;
+    }
+    
+    // Adicionar título
+    const titulo = document.createElement('h3');
+    titulo.textContent = 'Itens do Pedido';
+    titulo.style.cssText = `
+        margin: 0 0 1rem 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+    `;
+    containerItens.appendChild(titulo);
+    
+    // Renderizar cada item (SEM IMAGEM, apenas texto)
+    itens.forEach(item => {
+        const precoUnitario = parseFloat(item.preco_unitario || item.preco || 0);
+        const quantidade = parseInt(item.quantidade || 1);
+        const totalItem = precoUnitario * quantidade;
+        const quantidadeLotes = Math.ceil(quantidade / 50);
+        
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-resumo';
+        itemDiv.style.cssText = `
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            align-items: center;
+        `;
+        
+        itemDiv.innerHTML = `
+        <div style="flex-shrink: 0;">
+                <img src="/uploads/imagens/${item.img || item.imagem || '/public/img/abafador.svg'}" 
+                     alt="${item.nome || 'Produto'}"
+                     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;"
+                     onerror="this.src='/public/img/abafador.svg'">
+            </div>
+            <div style="flex-grow: 1;">
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: bold;">
+                    ${item.nome || 'Produto'}
+                </h4>
+                <p style="margin: 0; color: #666; font-size: 0.875rem;">
+                    CA: ${item.ca || 'N/A'}
+                    ${item.tamanho ? ` | Tamanho: ${item.tamanho}` : ''}
+                </p>
+                <p style="margin: 0.25rem 0 0 0; color: #666; font-size: 0.875rem;">
+                    ${quantidade} unidades (${quantidadeLotes} lote${quantidadeLotes > 1 ? 's' : ''})
+                </p>
+            </div>
+            <div style="text-align: right; flex-shrink: 0;">
+                <p style="margin: 0; font-size: 0.875rem; color: #666;">
+                    R$ ${precoUnitario.toFixed(2).replace('.', ',')} / un
+                </p>
+                <p style="margin: 0.25rem 0 0 0; font-size: 1.125rem; font-weight: bold; color: #333;">
+                    R$ ${totalItem.toFixed(2).replace('.', ',')}
+                </p>
+            </div>
+        `;
+        
+        containerItens.appendChild(itemDiv);
+    });
+    
+    // Adicionar um divisor após os itens
+    const divisor = document.createElement('hr');
+    divisor.style.cssText = 'margin: 1rem 0; border: none; border-top: 2px solid #ddd;';
+    containerItens.appendChild(divisor);
+    
+    console.log(`✅ ${itens.length} itens renderizados dentro do resumo`);
 }
 
 // Renderizar valores (subtotal, taxa, total)
@@ -296,7 +349,7 @@ function renderizarValores(dados) {
     console.log('💰 Renderizando valores:', dados);
     
     const subtotal = parseFloat(dados.subtotal) || 0;
-    const taxaEntrega = parseFloat(dados.taxaEntrega) || 0;
+    const taxaEntrega = parseFloat(dados.taxaEntrega) || 9.90;
     const total = parseFloat(dados.total) || 0;
     
     console.log('💰 Valores calculados:', { subtotal, taxaEntrega, total });
