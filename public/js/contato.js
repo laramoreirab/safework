@@ -11,7 +11,7 @@ form.addEventListener('submit', async (e) => {
 
     try {
 
-        const response = await fetch('/api/contato', { // lista todos os contatos
+        const response = await fetch('/api/contato', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -24,10 +24,10 @@ form.addEventListener('submit', async (e) => {
 
         const data = await response.json()
 
-        if(response.ok && data.sucesso){ // compara se a informação é verdadeira se sim
-            alert('Sua mensagem foi enviada com sucesso!') // envia a mensagem de bem sucedido 
-        } else { // senão
-            alert(`${data.mensagem}`) // envia um alerta com o erro
+        if(response.ok && data.sucesso){
+            alert('Sua mensagem foi enviada com sucesso!')
+        } else {
+            alert(`${data.mensagem}`)
         }
 
     } catch (err) {
