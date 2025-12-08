@@ -746,5 +746,54 @@ async function filtrarUsuarios() {
             })
         })
 }
+
+// =================================================================== MENSAGENS
+
+const mensagens = document.getElementById('qtd-mensagens') // quantidade de mensagens 
+
+fetch('/api/contato')
+.then(res => res.json())
+.then(data => {
+    const contatos = data.dados
+    mensagens.innerHTML = `${contatos.length}`
+
+    contatos.forEach(contato => {
+        const container = document.getElementById('containerMensagens')
+        const bloco = document.createElement('div')
+        bloco.className = 'eachmensagem'
+        bloco.innerHTML = `
+           <div class="linhainicial-eachmensagem">
+                                                    <i class="fi fi-tr-circle-user"></i>
+                                                    <h4>
+                                                        ${contato.nome}
+                                                    </h4>
+                                                </div>
+                                                <div class="linha-info_mensagem">
+                                                    <div class="info1">
+                                                        <p class="tel_mensagem">
+                                                            Telefone: ${contato.telefone}
+                                                        </p>
+                                                    </div>
+                                                    <div class="info2">
+                                                        <p class="email_mensagem">
+                                                            Email: ${contato.email}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="mensagem">
+                                                    <strong>Mensagem:</strong>
+                                                    <p class="mensagem_contato">
+                                                        ${contato.mensagem}
+                                                    </p>
+                                                </div>
+                                                <hr>
+                                            </div>
+        `
+
+    container.appendChild(bloco)
+    })
+})
+
+
 searchInputUser.addEventListener('input', listarUsuarios)
 searchInputUser.addEventListener('input', filtrarUsuarios)
