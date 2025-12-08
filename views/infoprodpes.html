@@ -538,7 +538,10 @@
                             <p>Cadastre-se para receber lançamentos de novos produtos e promoções!</p>
                             <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
                                 <input id="newsletter1" type="email" placeholder="Email" required>
-                                <button id="btnCadastrarLancamento" type="button">Cadastre-se</button>
+                                <button id="btnCadastrarLancamento" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#modalCadastro">
+                                    Cadastre-se
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -552,6 +555,28 @@
         </div>
     </div>
 
+
+    <!----------------------------------- Modal Cadastro ------------------------------->
+    <div class="modal fade" id="modalCadastro" tabindex="-1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="align ">
+                        <div class="info-cadastro">
+                            <div class="icon_sucesso">
+                                <i class="fi fi-rs-check-circle"></i>
+                            </div>
+                            <h2>Tudo Certo!</h2>
+                            <p>Cadastro realizado com sucesso.</p>
+                            <button type="button" class="ok-btn" data-bs-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrinho -->
     <div class="aba-carrinho" id="aba-carrinho">
         <div class="titulo-filtrar">
             <h1>Seu Carrinho</h1>
@@ -603,7 +628,7 @@
     <script src="/public/js/infoprodutos.js"></script>
     <script src="/public/js/funcoesprincipais.js"></script>
     <script src="/public/js/carrinho.js"></script>
-    <script src="/public/js/verificar-sessao.js"></script> 
+    <script src="/public/js/verificar-sessao.js"></script>
 </body>
 
 </html>

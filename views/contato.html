@@ -1,42 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SafeWork - Entre em Contato</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="../public/css/style.css" />
-    <link rel="stylesheet" href="../public/css/contato.css" />
-    <link
-      rel="shortcut icon"
-      href="../public/img/icon.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header id="header_usuario">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeWork - Entre em Contato</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/contato.css" />
+  <link rel="shortcut icon" href="../public/img/icon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src=" https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/license.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header id="header_usuario">
     <div class="menulateral_usuario">
       <button class="button_openmenu" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -154,205 +139,188 @@
     </div>
   </header>
 
-    <div class="banner-hero">
-      <h1>Entre em<br /><span>contato</span></h1>
-    </div>
+  <div class="banner-hero">
+    <h1>Entre em<br /><span>contato</span></h1>
+  </div>
 
-    <div class="padding">
-      <h1>
-        Aguardamos seu contato para atender suas necessidades<br />em soluções
-        de proteção a vida.
-      </h1>
+  <div class="padding">
+    <h1>
+      Aguardamos seu contato para atender suas necessidades<br />em soluções
+      de proteção a vida.
+    </h1>
 
-      <form class="form_info-contato">
-        <div class="row-inteira">
-          <label for="nome-empresa">Nome da Empresa</label>
-          <input
-            type="text"
-            name="nome-empresa"
-            id=""
-            placeholder="SafeWork"
-            required
-          />
+    <form class="form_info-contato" id="form-contato">
+      <div class="row-inteira">
+        <label for="nome-empresa">Nome da Empresa</label>
+        <input type="text" name="nome-empresa" id="nome-empresa" placeholder="SafeWork" required />
+      </div>
+      <div class="row-metade">
+        <div class="one-input">
+          <label for="email-empresa">E-Mail</label>
+          <input type="email" name="email-empresa" id="email-empresa" placeholder="safework@gmail.com" required />
         </div>
-        <div class="row-metade">
-          <div class="one-input">
-            <label for="email-empresa">E-Mail</label>
-            <input
-              type="email"
-              name="email-empresa"
-              id="email-empresa"
-              placeholder="safework@gmail.com"
-              required
-            />
+
+        <div class="one-input">
+          <label for="telefone-empresa">Telefone</label>
+          <input type="text" name="telefone-empresa" id="telefone-empresa" placeholder="(11) 99999-9999" required />
+        </div>
+      </div>
+      <div class="row-inteira">
+        <label for="mensagem-contato">Mensagem</label>
+        <textarea name="mensagem-contato" id="mensagem-empresa" placeholder="Digite a sua mensagem aqui..."
+          required></textarea>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <div class="footer_fundo">
+    <div class="container ffg">
+      <footer class="py-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <div class="principal_footer">
+              <img src="/public/img/logo-branca.svg" style="width: 80%" />
+            </div>
           </div>
 
-          <div class="one-input">
-            <label for="telefone-empresa">Telefone</label>
-            <input
-              type="text"
-              name="telefone-empresa"
-              id="telefone-empresa"
-              placeholder="(11) 99999-9999"
-              required
-            />
-          </div>
-        </div>
-        <div class="row-inteira">
-          <label for="mensagem-contato">Mensagem</label>
-          <textarea
-            name="mensagem-contato"
-            id=""
-            placeholder="Digite a sua mensagem aqui..."
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-
-    <div class="footer_fundo">
-      <div class="container ffg">
-        <footer class="py-5">
-          <div class="row">
-            <div class="col-6 col-md-2 mb-3">
-              <div class="principal_footer">
-                <img src="/public/img/logo-branca.svg" style="width: 80%" />
-              </div>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-              <div class="socialmedia2">
-                <ul class="nav flex-column">
-                  <div class="socialmedia">
-                    <i class="fa-solid fa-phone"></i>
-                    <li class="nav-item mb-2">
-                      <a href="#" class="nav-link p-0 footerlink"
-                        >4002 - 8922</a
-                      >
-                    </li>
-                  </div>
-                  <div class="socialmedia">
-                    <i class="fa-brands fa-instagram"></i>
-                    <li class="nav-item mb-2">
-                      <a href="#" class="nav-link p-0 footerlink">@safework</a>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-              <div class="redirecionamento_footer">
-                <ul class="nav flex-column">
+          <div class="col-6 col-md-2 mb-3">
+            <div class="socialmedia2">
+              <ul class="nav flex-column">
+                <div class="socialmedia">
+                  <i class="fa-solid fa-phone"></i>
                   <li class="nav-item mb-2">
-                    <a href="/" class="nav-link p-0 footerlink"
-                      >Home</a
-                    >
+                    <a href="#" class="nav-link p-0 footerlink">4002 - 8922</a>
                   </li>
-                  <li class="nav-item mb-2">
-                    <a href="/produtos/todos" class="nav-link p-0 footerlink"
-                      >Produtos</a
-                    >
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a
-                      href="/sobrenos"
-                      class="nav-link p-0 footerlink"
-                      >Sobre Nós</a
-                    >
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="/contato" class="nav-link p-0 footerlink"
-                      >Contato</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-              <form class="cadastro_lancamentos">
-                <p>
-                  Cadastre-se para receber lançamentos de novos produtos e
-                  promoções!
-                </p>
-                <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
-                  <input
-                    id="newsletter1"
-                    type="email"
-                    placeholder="Email"
-                    required
-                  />
-                  <button id="btnCadastrarLancamento" type="button">
-                    Cadastre-se
-                  </button>
                 </div>
-              </form>
+                <div class="socialmedia">
+                  <i class="fa-brands fa-instagram"></i>
+                  <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 footerlink">@safework</a>
+                  </li>
+                </div>
+              </ul>
             </div>
           </div>
 
-          <div
-            class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls"
-          >
-            <p>© 2025. SafeWork. Todos os direitos reservados.</p>
+          <div class="col-6 col-md-2 mb-3">
+            <div class="redirecionamento_footer">
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="/" class="nav-link p-0 footerlink">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="/produtos/todos" class="nav-link p-0 footerlink">Produtos</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="/sobrenos" class="nav-link p-0 footerlink">Sobre Nós</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="/contato" class="nav-link p-0 footerlink">Contato</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </footer>
+
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form class="cadastro_lancamentos">
+              <p>
+                Cadastre-se para receber lançamentos de novos produtos e
+                promoções!
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 tllj">
+                <input id="newsletter1" type="email" placeholder="Email" required />
+                <button id="btnCadastrarLancamento" type="button" data-bs-toggle="modal"
+                  data-bs-target="#modalCadastro">
+                  Cadastre-se
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="d-flex flex-sm-row justify-content-center py-4 my-4 border-top tlls">
+          <p>© 2025. SafeWork. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!----------------------------------- Modal Cadastro ------------------------------->
+  <div class="modal fade" id="modalCadastro" tabindex="-1">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="align ">
+            <div class="info-cadastro">
+              <div class="icon_sucesso">
+                <i class="fi fi-rs-check-circle"></i>
+              </div>
+              <h2>Tudo Certo!</h2>
+              <p>Cadastro realizado com sucesso.</p>
+              <button type="button" class="ok-btn" data-bs-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrinho -->
+  <div class="aba-carrinho" id="aba-carrinho">
+    <div class="titulo-filtrar">
+      <h1>Seu Carrinho</h1>
+      <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
+    </div>
+
+    <div class="padding-filtrar">
+      <div class="one-produto-carrinho">
+        <div class="space-img-carrinho">
+          <img src="/public/img/abafador.svg" alt="">
+        </div>
+
+        <div class="space-meio-carrinho">
+          <div class="names-carrinho">
+            <p><strong>Capacete de Proteção</strong></p>
+
+            <span>CA: 56578</span>
+          </div>
+
+          <div class="add-remove-carrinho">
+            <button class="reduzir-carrinho" id="reduzir-carrinho">
+              <p>-</p>
+            </button>
+
+            <p id="quantidade-carrinho">1</p>
+
+            <button class="add-carrinho" id="adicionar-carrinho">
+              <p>+</p>
+          </div>
+        </div>
+
+        <div class="space-final-carrinho">
+          <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
+          <p>R$ <span id="preco-item-carrinho">0</span></p>
+        </div>
       </div>
     </div>
 
-    <div class="aba-carrinho" id="aba-carrinho">
-        <div class="titulo-filtrar">
-          <h1>Seu Carrinho</h1>
-          <i class="fi fi-br-cross-small" id="btnFechar-filtrar"></i>
-        </div>
-
-        <div class="padding-filtrar">
-          <div class="one-produto-carrinho">
-            <div class="space-img-carrinho">
-                <img src="/public/img/abafador.svg" alt="">
-            </div>
-
-            <div class="space-meio-carrinho">
-                <div class="names-carrinho">
-                    <p><strong>Capacete de Proteção</strong></p>
-                    
-                    <span>CA: 56578</span>
-                </div>
-
-                <div class="add-remove-carrinho">
-                  <button class="reduzir-carrinho" id="reduzir-carrinho">
-                    <p>-</p>
-                  </button>
-    
-                  <p id="quantidade-carrinho">1</p>
-                  
-                  <button class="add-carrinho" id="adicionar-carrinho">
-                    <p>+</p>
-                </div>
-            </div>
-
-            <div class="space-final-carrinho">
-                <i class="fi fi-br-cross-small" id="btnRemoveItem"></i>
-                <p>R$ <span id="preco-item-carrinho">0</span></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="esp-button-carrinho">
-            <div class="subtotal-carrinho">
-                <p>Subtotal:</p>
-                <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
-            </div>
-            <a href="/dados"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
-        </div>
+    <div class="esp-button-carrinho">
+      <div class="subtotal-carrinho">
+        <p>Subtotal:</p>
+        <p><strong>R$ <span id="subtotal-carrinho">0</span></strong></p>
       </div>
+      <a href="/dados"><button type="submit" id="confirmar-filtrar">Finalizar Compra</button></a>
+    </div>
+  </div>
 
-      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+  <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
 
-    <script src="/public/js/finalizar.js"></script>
-    <script src="/public/js/funcoesprincipais.js"></script>
-    <script src="/public/js/carrinho.js"></script>
-    <script src="/public/js/verificar-sessao.js"></script> 
-  </body>
+  <script src="/public/js/contato.js"></script>
+  <script src="/public/js/finalizar.js"></script>
+  <script src="/public/js/funcoesprincipais.js"></script>
+  <script src="/public/js/carrinho.js"></script>
+  <script src="/public/js/verificar-sessao.js"></script>
+</body>
+
 </html>

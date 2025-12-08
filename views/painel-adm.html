@@ -81,7 +81,8 @@
                             <a class="submenu_redirecionamento" href="/produtos/corporal" target="_blank">Corporal
                                 <i class="fi fi-ts-angle-small-right"></i>
                             </a>
-                            <a class="submenu_redirecionamento" href="/produtos/respiratorio" target="_blank">Respiratório
+                            <a class="submenu_redirecionamento" href="/produtos/respiratorio"
+                                target="_blank">Respiratório
                                 <i class="fi fi-ts-angle-small-right"></i>
                             </a>
                             <a class="submenu_redirecionamento" href="/produtos/auditivo" target="_blank">Auditivo
@@ -240,7 +241,7 @@
                                         </div>
                                         <div class="eachinput">
                                             <p>Data de Validade</p>
-                                            <input type="date" name="trip-start" min="2025-01-01" max="9999-12-31" 
+                                            <input type="date" name="trip-start" min="2025-01-01" max="9999-12-31"
                                                 id="datavalidade_prod-new">
                                         </div>
                                         <div class="eachinput">
@@ -310,12 +311,11 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="box-modals">
-            <div class="container">
+        <div class="box-modals ">
+            <div class="container-fluid">
                 <div class="row">
                     <!-------------- Total de Produtos ------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <button type="button" class="total-prod botoes-adm">
                             <a href="#produtos_adm">
                                 <div class="cont_total-prod">
@@ -330,7 +330,7 @@
                         </button>
                     </div>
                     <!--------------------------------- Modal de Total de Vendas / Exibição de Compras -------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="total-vendas botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalTotalVendas">
@@ -405,7 +405,7 @@
                         </div>
                     </div>
                     <!-------------------------------------------- Modal de Produtos com Estoque Baixo -------------------------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="estoque-baixo  botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalEstoqueBaixo">
@@ -462,7 +462,7 @@
                         </div>
                     </div>
                     <!------------------------------------------------ Modal de Usuários -------------------------------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="total-usuarios botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalUsers">
@@ -636,9 +636,87 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Botão Modal de Mensagens -->
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
+                        <!---- Trigger modal ----->
+                        <button type="button" class="total-mensagens botoes-adm" data-bs-toggle="modal"
+                            data-bs-target="#modalMensagens">
+                            <div class="cont_total-mensagens">
+                                <h1>Mensagens</h1>
+                                <i class="fi fi-tr-comment-alt-dots"></i>
+                                <p class="qtd-users" id="qtd-mensagens">
+                                    <!-- Coloque aqui a quantidade total de mensagens  -->
+                                    0
+                                </p>
+                            </div>
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalMensagens" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="paimodal">
+                                            <div class="titulo-modal Mensagens">
+                                                <h1>Mensagens</h1>
+                                                <div class="icon_titulo-modal">
+                                                    <i class="fi fi-tr-comment-alt-dots"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container" id="containerMensagens">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modalExcluirMensagem" tabindex="-1"
+                            aria-labelledby="modalExcluirMensagemLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="delete_usuario">
+                                            <h1 class="modal-title_delete-usuario" id="exampleModalLabel">
+                                                Excluir
+                                                Mensagem</h1>
+                                            <i class="fi fi-rs-trash"></i>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="confirm_delete">
+                                            <div class="align">
+                                                <div class="icon_deletar">
+                                                    <i class="fi fi-rr-triangle-warning"></i>
+                                                </div>
+                                                <h2>Você tem certeza que deseja excluir a mensagem?</h2>
+                                                <p>As informações serão excluídas <b>PERMANENTEMENTE</b> e não
+                                                    poderão
+                                                    ser restauradas após excluí-las!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="cancel-btn"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="submit-delete_prod"
+                                            id="submit_delete_mensagem">Sim,
+                                            Deletar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
     </section>
     <!------------------------------------------------------------ Tabela de Produtos --------------------------------------------------------->
     <section id="produtos_adm">

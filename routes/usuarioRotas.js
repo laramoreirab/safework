@@ -6,10 +6,11 @@ import UserController from '../controllers/userController.js';
 
 const router = express.Router()
 
-router.get('/', authController.listarUsuarios);
-router.post('/', authController.criarUsuario);
-router.put('/:id', authController.atualizarUsuario);
-router.delete('/:id', authController.excluirUsuario);
+router.get('/', authMiddleware, adminMiddleware, authController.listarUsuarios);
+router.post('/', authMiddleware, adminMiddleware, authController.criarUsuario);
+router.put('/:id', authMiddleware, adminMiddleware, authController.atualizarUsuario);
+router.delete('/:id', authMiddleware, adminMiddleware, authController.excluirUsuario);
+
 
 // GET /usuarios/perfil - Obter dados do perfil
 router.get('/perfil', authMiddleware, UserController.obterPerfil);
