@@ -209,12 +209,12 @@ input[type="search"]::-webkit-search-cancel-button {
   display: flex;
 }
 
-.padding-filtrar{
-  hr{
+.padding-filtrar {
+  hr {
     margin: 0;
   }
 }
-.topico-filtrar.submenu.show{
+.topico-filtrar.submenu.show {
   margin-left: 0;
 }
 
@@ -337,7 +337,6 @@ footer.col-6.col-md-2.mb-3 {
     font-family: var(--montserrat_fonte);
     color: var(--azul-crepusculo);
     font-weight: 600;
-
   }
 }
 
@@ -594,38 +593,38 @@ footer.col-6.col-md-2.mb-3 {
 }
 
 /* <-------------------------------- Modal Cadastro  -----------------------------------> */
-.align{
+.align {
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: center;
 }
 
-.info-cadastro{
+.info-cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
-  h2{
+  h2 {
     font-weight: 700;
     margin-bottom: 1rem;
     color: 424242;
   }
 }
 
-.icon_sucesso{
-  i{
+.icon_sucesso {
+  i {
     font-size: 7rem;
     color: #a0da7e;
   }
 }
 
-#modalCadastro{
+#modalCadastro {
   transition: 0.5s all ease;
 }
 
-.ok-btn{
+.ok-btn {
   background-color: #6f68da;
   color: white;
   border: none;
@@ -635,7 +634,7 @@ footer.col-6.col-md-2.mb-3 {
   transition: all 0.3s ease;
 }
 
-.ok-btn:hover{
+.ok-btn:hover {
   transition: all 0.3s ease;
   transform: scale(1.06);
 }
@@ -644,7 +643,6 @@ footer.col-6.col-md-2.mb-3 {
 
 /* <!----------- Celulares --------------!> */
 @media (max-width: 480px) {
-
   /* Header */
   .button_openmenu {
     img {
@@ -717,7 +715,6 @@ footer.col-6.col-md-2.mb-3 {
 
 /* <!----------- Tablets/Laptops pequenos --------------!> */
 @media (max-width: 1024px) and (min-width: 481px) {
-
   /* Header */
   .button_openmenu {
     img {
@@ -742,5 +739,17 @@ footer.col-6.col-md-2.mb-3 {
 
   #info_prods {
     padding: 2rem 2rem !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1224px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1224px) and (max-width: 1424px) {
+  html {
+    font-size: 14px;
   }
 }
