@@ -1264,7 +1264,7 @@ input[type="file"]::-webkit-file-upload-button {
 
 .linha-info_mensagem {
   display: flex;
-
+    margin: 0.3rem 0 0.7rem 0;
   p {
     font-weight: 700;
     color: #737373;
@@ -1274,10 +1274,6 @@ input[type="file"]::-webkit-file-upload-button {
 .mensagem {
   display: flex;
   flex-direction: column;
-}
-
-.mensagem_contato {
-  padding-left: 2rem;
 }
 
 .info2 {
