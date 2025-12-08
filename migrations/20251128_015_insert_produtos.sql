@@ -104,7 +104,7 @@ VALUES ('Óculos de Segurança Soft Works SW035', 17.90, 'oculos-softworks-sw035
 
 -- INSERT 27
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Bota de PVC Cano Médio Volk', 58.90, 'bota-volk-pvc-medio.svg', '31876', 'Volk', 'Pés e Pernas', 'A bota de PVC Volk Cano Médio foi projetada para oferecer proteção contra umidade, produtos químicos leves e abrasões. Possui solado antiderrapante e resistência a escorregamentos, sendo ideal para frigoríficos, lavouras, limpeza industrial e setores alimentícios. Proporciona conforto e segurança durante longos períodos de uso.', 95, '2037-11-24');
+VALUES ('Bota de PVC Cano Médio Volk', 58.90, 'bota-volk-pvc-medio.svg', '31876', 'Volk', 'Pés e Pernas', 'A bota de PVC Volk Cano Médio foi projetada para oferecer proteção contra umidade, produtos químicos leves e abrasões. Possui solado antiderrapante e resistência a escorregamentos, sendo ideal para frigoríficos, lavouras, limpeza industrial e setores alimentícios. Proporciona conforto e segurança durante longos períodos de uso.', 15, '2037-11-24');
 
 -- INSERT 28
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
@@ -116,7 +116,7 @@ VALUES ('Capacete Montana com Jugular', 38.90, 'capacete-montana-jugular.svg', '
 
 -- INSERT 30
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Luva de Látex Soft Works Antiderrapante', 12.90, 'luva-softworks-latex.svg', '37324', 'Soft Works', 'Manual', 'A luva de látex Soft Works oferece excelente aderência e conforto para tarefas que exigem sensibilidade tátil e proteção básica contra agentes químicos leves. Seu revestimento antiderrapante garante segurança em ambientes úmidos, sendo amplamente utilizada na limpeza profissional, setor alimentício e serviços domésticos pesados.', 270, '2040-01-05');
+VALUES ('Luva de Látex Soft Works Antiderrapante', 12.90, 'luva-softworks-latex.svg', '37324', 'Soft Works', 'Manual', 'A luva de látex Soft Works oferece excelente aderência e conforto para tarefas que exigem sensibilidade tátil e proteção básica contra agentes químicos leves. Seu revestimento antiderrapante garante segurança em ambientes úmidos, sendo amplamente utilizada na limpeza profissional, setor alimentício e serviços domésticos pesados.', 19, '2040-01-05');
 
 -- INSERT 31
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
@@ -140,7 +140,7 @@ VALUES ('Luva Volk Extreme Grip', 24.90, 'luva-volk-extreme-grip.svg', '31149', 
 
 -- INSERT 36
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Protetor Auricular Honeywell Quiet', 4.99, 'auricular-honeywell-quiet.svg', '5674', 'Honeywell Automation', 'Auditivo', 'O Honeywell Quiet possui design anatômico que dispensa moldagem manual, garantindo higiene e praticidade. Oferece excelente redução de ruído e conforto prolongado, sendo ideal para ambientes industriais, serrarias e níveis elevados de pressão sonora.', 450, '2039-03-25');
+VALUES ('Protetor Auricular Honeywell Quiet', 4.99, 'auricular-honeywell-quiet.svg', '5674', 'Honeywell Automation', 'Auditivo', 'O Honeywell Quiet possui design anatômico que dispensa moldagem manual, garantindo higiene e praticidade. Oferece excelente redução de ruído e conforto prolongado, sendo ideal para ambientes industriais, serrarias e níveis elevados de pressão sonora.', 10, '2039-03-25');
 
 -- INSERT 37
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
@@ -160,7 +160,7 @@ VALUES ('Óculos 3M Solus 1000', 48.90, 'oculos-3m-solus-1000.svg', '37648', '3M
 
 -- INSERT 41
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Protetor Facial Honeywell PolyShield', 59.90, 'protetor-honeywell-polyshield.svg', '41173', 'Honeywell Automation', 'Facial', 'O Honeywell PolyShield oferece proteção facial completa com visor em policarbonato resistente a impactos. Seu suporte ajustável proporciona estabilidade e conforto, sendo ideal para indústrias metalúrgicas, laboratórios e manutenção mecânica.', 145, '2037-07-14');
+VALUES ('Protetor Facial Honeywell PolyShield', 59.90, 'protetor-honeywell-polyshield.svg', '41173', 'Honeywell Automation', 'Facial', 'O Honeywell PolyShield oferece proteção facial completa com visor em policarbonato resistente a impactos. Seu suporte ajustável proporciona estabilidade e conforto, sendo ideal para indústrias metalúrgicas, laboratórios e manutenção mecânica.', 15, '2037-07-14');
 
 -- INSERT 42
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
@@ -180,7 +180,7 @@ VALUES ('Protetor Auditivo Montana Plug Dobrável', 3.49, 'protetor-montana-plug
 
 -- INSERT 46
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Óculos de Segurança Volk Vicsafe', 24.90, 'oculos-volk-vicsafe.svg', '30507', 'Volk', 'Ocular', 'O Volk Vicsafe oferece proteção ocular confiável com lentes resistentes a impactos e tratamento antirrisco. Seu design leve e ergonômico garante encaixe anatômico ao rosto, proporcionando segurança e conforto prolongado. Ideal para indústrias, marcenarias e atividades com partículas volantes.', 245, '2037-08-19');
+VALUES ('Óculos de Segurança Volk Vicsafe', 24.90, 'oculos-volk-vicsafe.svg', '30507', 'Volk', 'Ocular', 'O Volk Vicsafe oferece proteção ocular confiável com lentes resistentes a impactos e tratamento antirrisco. Seu design leve e ergonômico garante encaixe anatômico ao rosto, proporcionando segurança e conforto prolongado. Ideal para indústrias, marcenarias e atividades com partículas volantes.', 6, '2037-08-19');
 
 -- INSERT 47
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
@@ -188,7 +188,7 @@ VALUES ('Respirador PFF2 ApaSeg Dobrável', 6.90, 'respirador-apasg-pff2.svg', '
 
 -- INSERT 48
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
-VALUES ('Luva de Raspa ApaSeg Soldador Premium', 28.90, 'luva-raspa-apasg.svg', '44671', 'ApaSeg', 'Manual', 'Fabricada em couro de alta espessura, a luva de raspa ApaSeg é ideal para soldagem e trabalhos pesados que envolvem calor, abrasão e impacto. Oferece excelente resistência e durabilidade, garantindo proteção superior para profissionais da indústria metalúrgica e de manutenção.', 195, '2036-04-28');
+VALUES ('Luva de Raspa ApaSeg Soldador Premium', 28.90, 'luva-raspa-apasg.svg', '44671', 'ApaSeg', 'Manual', 'Fabricada em couro de alta espessura, a luva de raspa ApaSeg é ideal para soldagem e trabalhos pesados que envolvem calor, abrasão e impacto. Oferece excelente resistência e durabilidade, garantindo proteção superior para profissionais da indústria metalúrgica e de manutenção.', 10, '2036-04-28');
 
 -- INSERT 49
 INSERT INTO produtos (nome, preco, img, ca, marca, tipo, descricao, estoque, validade)
