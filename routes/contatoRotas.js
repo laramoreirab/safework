@@ -4,10 +4,13 @@ import { authMiddleware, adminMiddleware } from '../middlewares/authMiddleware.j
 
 const router = express.Router()
 
-// GET /contato - listar Contato 
+// GET /api/contato - listar Contato 
 router.get('/',  authMiddleware, adminMiddleware, contatoController.listar) // só para admin
 
-// POST /contato - Enviar Contato
-router.post('/', contatoController.criar)
+// POST /api/contato - Enviar Contato
+router.post('/', contatoController.criar) // para todo tipo de usuario
+
+// DELETE /api/contato - Apagar mensagem
+router.delete('/:id', authMiddleware, adminMiddleware, contatoController.excluir) // só para admin
 
 export default router

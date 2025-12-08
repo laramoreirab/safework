@@ -311,12 +311,11 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="box-modals">
-            <div class="container">
+        <div class="box-modals ">
+            <div class="container-fluid">
                 <div class="row">
                     <!-------------- Total de Produtos ------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <button type="button" class="total-prod botoes-adm">
                             <a href="#produtos_adm">
                                 <div class="cont_total-prod">
@@ -331,7 +330,7 @@
                         </button>
                     </div>
                     <!--------------------------------- Modal de Total de Vendas / Exibição de Compras -------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="total-vendas botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalTotalVendas">
@@ -406,7 +405,7 @@
                         </div>
                     </div>
                     <!-------------------------------------------- Modal de Produtos com Estoque Baixo -------------------------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="estoque-baixo  botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalEstoqueBaixo">
@@ -463,7 +462,7 @@
                         </div>
                     </div>
                     <!------------------------------------------------ Modal de Usuários -------------------------------------------------------->
-                    <div class="col-12 col-md-3 prod_red">
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="total-usuarios botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalUsers">
@@ -638,7 +637,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3 prod_red">
+                    <!-- Botão Modal de Mensagens -->
+                    <div class="col-12 col-md-6 col-lg-2 prod_red">
                         <!---- Trigger modal ----->
                         <button type="button" class="total-mensagens botoes-adm" data-bs-toggle="modal"
                             data-bs-target="#modalMensagens">
@@ -647,7 +647,7 @@
                                 <i class="fi fi-tr-comment-alt-dots"></i>
                                 <p class="qtd-users" id="qtd-mensagens">
                                     <!-- Coloque aqui a quantidade total de mensagens  -->
-                                    2
+                                    0
                                 </p>
                             </div>
                         </button>
@@ -669,72 +669,13 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="container">
-                                            <div class="eachmensagem">
-                                                <div class="linhainicial-eachmensagem">
-                                                    <div class="infoprincipal">
-                                                        <i class="fi fi-tr-circle-user"></i>
-                                                        <h4>
-                                                            <!-- Colocar Aqui Nome da Empresa que fez contato -->
-                                                            Nome da Empresa
-                                                        </h4>
-                                                    </div>
-                                                    <div class="delete-mensagem">
-                                                        <div class="excluir-produto">
-                                                            <button type="button" class="modalExcluirMensagem"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modalExcluirMensagem">
-                                                                <i class="fi fi-rs-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="linha-info_mensagem">
-                                                    <div class="info1">
-                                                        <p class="tel_mensagem">
-                                                            <!-- Colocar aqui o telefone do contato -->
-                                                            <!-- Deve ficar formatado da seguinte maneira:
-                                                                    Telefone: tel.contato  -->
-                                                            Telefone: (11) 9999-9999
-                                                        </p>
-                                                    </div>
-                                                    <div class="info2">
-                                                        <p class="email_mensagem">
-                                                            <!-- Colocar aqui o email do contato -->
-                                                            <!-- Deve ficar formatado da seguinte maneira:
-                                                                    Email: email.contato  -->
-                                                            Email: talatal@gmail.com
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="mensagem">
-                                                    <strong>Mensagem:</strong>
-                                                    <p class="mensagem_contato">
-                                                        <!-- Colocar aqui a mensagem do Contato -->
-                                                        Prezados(as) da Safework,
-                                                        Gostaria de parabenizar a empresa pela excelência na área de
-                                                        segurança do trabalho e pela qualidade dos Equipamentos de
-                                                        Proteção Individual oferecidos. É admirável o cuidado com as
-                                                        certificações, a variedade de produtos e o compromisso em
-                                                        proteger a saúde dos trabalhadores. A clareza das
-                                                        informações e o atendimento acessível reforçam a
-                                                        credibilidade da Safework e mostram o respeito que vocês têm
-                                                        pelos clientes.
-                                                    </p>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                            <div class="container" id="containerMensagens">
-                                                <div class="eachmensagem">
-
-                                                </div>
-                                            </div>
+                                        <div class="container" id="containerMensagens">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="modal fade" id="modalExcluirMensagem" tabindex="-1"
                             aria-labelledby="modalExcluirMensagemLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
