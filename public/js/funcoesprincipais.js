@@ -2,16 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Toggle submenu
   const toggles = document.querySelectorAll(".toggle-produtos");
   const submenu = document.querySelectorAll(".submenu");
-  
 
-  toggles.forEach(t =>{
+
+  toggles.forEach(t => {
     t.addEventListener("click", function (e) {
-    e.preventDefault();
-    submenu.forEach(s =>{
-      s.classList.toggle("show");
-    })
-    console.log("Classlist mudou");
-  });
+      e.preventDefault();
+      submenu.forEach(s => {
+        s.classList.toggle("show");
+      })
+      console.log("Classlist mudou");
+    });
   })
 
   // Quantidade por tamanho
