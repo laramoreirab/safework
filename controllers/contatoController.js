@@ -139,6 +139,40 @@ class contatoController {
             });
         }
     }
+
+    static async excluir(req, res) {
+        try {
+            const { id } = req.params
+            console.log('esse é o req.params', req.params)
+
+            if (!id || isNaN(id)) {
+                return res.status(400).json({
+                    sucesso: false,
+                    erro: 'ID inválido',
+                    mensagem: 'o ID deve ser um número válido'
+                })
+            }
+
+
+            await contatoModel.excluir(id)
+
+            res.status(200).json({
+                sucesso: true,
+                mensagem: 'mensagem excluída com sucesso'
+            })
+            return
+
+
+        } catch (err) {
+            console.error('Erro ao excluir mensagem', err)
+            res.status(500).json({
+                sucesso: false,
+                erro: 'Erro interno do servidor',
+                mensagem: 'Não foi possível excluir a mensagem'
+            })
+        }
+
+    }
 }
 
 export default contatoController

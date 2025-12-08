@@ -762,20 +762,38 @@ fetch('/api/contato')
         const bloco = document.createElement('div')
         bloco.className = 'eachmensagem'
         bloco.innerHTML = `
-           <div class="linhainicial-eachmensagem">
-                                                    <i class="fi fi-tr-circle-user"></i>
-                                                    <h4>
-                                                        ${contato.nome}
-                                                    </h4>
+                                                <div class="linhainicial-eachmensagem">
+                                                    <div class="infoprincipal">
+                                                        <i class="fi fi-tr-circle-user"></i>
+                                                        <h4>
+                                                            <!-- Colocar Aqui Nome da Empresa que fez contato -->
+                                                            ${contato.nome}
+                                                        </h4>
+                                                    </div>
+                                                    <div class="delete-mensagem">
+                                                        <div class="excluir-produto">
+                                                            <button type="button" class="modalExcluirMensagem"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalExcluirMensagem" data-id= ${contato.id}>
+                                                                <i class="fi fi-rs-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="linha-info_mensagem">
                                                     <div class="info1">
                                                         <p class="tel_mensagem">
+                                                            <!-- Colocar aqui o telefone do contato -->
+                                                            <!-- Deve ficar formatado da seguinte maneira:
+                                                                    Telefone: tel.contato  -->
                                                             Telefone: ${contato.telefone}
                                                         </p>
                                                     </div>
                                                     <div class="info2">
                                                         <p class="email_mensagem">
+                                                            <!-- Colocar aqui o email do contato -->
+                                                            <!-- Deve ficar formatado da seguinte maneira:
+                                                                    Email: email.contato  -->
                                                             Email: ${contato.email}
                                                         </p>
                                                     </div>
@@ -783,16 +801,49 @@ fetch('/api/contato')
                                                 <div class="mensagem">
                                                     <strong>Mensagem:</strong>
                                                     <p class="mensagem_contato">
+                                                        <!-- Colocar aqui a mensagem do Contato -->
                                                         ${contato.mensagem}
                                                     </p>
                                                 </div>
                                                 <hr>
-                                            </div>
         `
 
     container.appendChild(bloco)
     })
 })
+
+
+let idDoContato = null
+
+modalExcluirMensagem.addEventListener('show.bs.modal', () => { // pega o id ao abrir o modal excluirUser 
+    const botao = event.relatedTarget;
+    const contatoId = botao.getAttribute('data-id')
+    idDoContato = contatoId
+    console.log(idDoContato)
+
+})
+
+const botaoExcluirContato = document.getElementById('submit_delete_mensagem')  // botão de excluir user
+botaoExcluirContato.onclick = async function () { // evento ao clicar no botão de excluir user 
+    try {
+        const res = await fetch(`/api/contato/${idDoContato}`, {
+            method: 'DELETE'
+        })
+
+        const data = await res.json()
+
+        if (res.ok && data.sucesso) {
+            alert('Mensagem excluída com sucesso!')
+            return location.reload()
+        } else {
+            alert('Erro ao excluir mensagem: ' + (data.mensagem || 'Verifique os dados'));
+        }
+
+    } catch (err) {
+        console.error('Erro excluir mensagem', err)
+    }
+
+}
 
 
 searchInputUser.addEventListener('input', listarUsuarios)

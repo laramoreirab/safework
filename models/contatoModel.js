@@ -42,6 +42,16 @@ class contatoModel {
             throw error;
         }
     }
+
+
+    static async excluir(id) {
+        try {
+            return deleteRecord('contatos', `id = ${id}`) // procura na tabela contatos o id enviado para ser excluido usando a função deleteRecord do database
+        } catch (err) {
+            console.error('Erro ao excluir mensagem', err) // aparece um erro caso não encontrar a mensagem para excluir
+            throw err
+        }
+    }
 }
 
 export default contatoModel
