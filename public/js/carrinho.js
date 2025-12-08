@@ -116,10 +116,11 @@ function renderizarCarrinho(dados) {
     adicionarEventListenersCarrinho();
 }
 
+
 // Configurar botão finalizar compra
 function configurarBotaoFinalizar(carrinhoVazio = false) {
     const btnFinalizar = document.querySelector('#btn-finalizar-compra') || 
-                        document.querySelector('a[href*="dados.html"]') ||
+                        document.querySelector('a[href*="/dados"]') ||
                         document.querySelector('.btn-finalizar-compra')?.closest('a');
     
     if (btnFinalizar) {
@@ -396,9 +397,17 @@ document.addEventListener('click', function(e) {
 });
 
 // Inicializar contador ao carregar a página
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     console.log('🔧 Carrinho.js inicializado');
-    atualizarContadorCarrinho();
+    
+    // Verificar autenticação primeiro
+    const autenticado = await verificarAutenticacao();
+    
+    if (autenticado) {
+        // Carregar carrinho se usuário estiver logado
+        await atualizarContadorCarrinho();
+    } else {
+        console.log('⚠️ Usuário não autenticado - carrinho vazio');
+        renderizarCarrinhoVazio();
+    }
 });
-
-window.onload(verificarAutenticacao()) // testando

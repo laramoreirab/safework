@@ -1,4 +1,4 @@
-// public/js/config-home.js - Versão Atualizada
+// public/js/config-home.js - Versão Corrigida
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('📄 Página de configurações carregada');
     
@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Configurar eventos dos modais
     configurarModais();
-
-    configurarBotoesSalvar()
     
     // Configurar logout
     configurarLogout();

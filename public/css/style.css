@@ -593,6 +593,52 @@ footer.col-6.col-md-2.mb-3 {
   display: block;
 }
 
+/* <-------------------------------- Modal Cadastro  -----------------------------------> */
+.align{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-cadastro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  h2{
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: 424242;
+  }
+}
+
+.icon_sucesso{
+  i{
+    font-size: 7rem;
+    color: #a0da7e;
+  }
+}
+
+#modalCadastro{
+  transition: 0.5s all ease;
+}
+
+.ok-btn{
+  background-color: #6f68da;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 2rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.ok-btn:hover{
+  transition: all 0.3s ease;
+  transform: scale(1.06);
+}
 
 /* <!--------------------------------- Responsividade ----------------------------------!> */
 
