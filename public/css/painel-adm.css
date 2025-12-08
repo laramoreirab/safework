@@ -1264,7 +1264,8 @@ input[type="file"]::-webkit-file-upload-button {
 
 .linha-info_mensagem {
   display: flex;
-    margin: 0.3rem 0 0.7rem 0;
+  margin: 0.3rem 0 0.7rem 0;
+
   p {
     font-weight: 700;
     color: #737373;
@@ -1300,6 +1301,12 @@ input[type="file"]::-webkit-file-upload-button {
   }
 }
 
+.prod_red {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-top: 2rem;
+}
+
 /* <!--------------------------------- Responsividade ----------------------------------!> */
 
 /* <!----------- Celulares --------------!> */
@@ -1323,7 +1330,7 @@ input[type="file"]::-webkit-file-upload-button {
     display: flex;
     align-items: center;
     max-width: 100%;
-    margin: 4rem 4rem 4rem 1rem;
+    margin: 4rem 0.5rem 4rem 8rem;
   }
 
   .box-modals {
@@ -1405,7 +1412,7 @@ input[type="file"]::-webkit-file-upload-button {
     padding: 0.1rem;
   }
 
-    .linha-info_mensagem {
+  .linha-info_mensagem {
     display: flex;
     flex-direction: column;
   }
@@ -1469,6 +1476,4 @@ input[type="file"]::-webkit-file-upload-button {
   .searchIdUser {
     padding: 0.1rem;
   }
-
-  
 }
