@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('📄 Página /finalizado carregada');
+    console.log('Página /finalizado carregada');
     
     try {
         // Buscar ID do pedido finalizado
         const pedidoId = await obterPedidoIdFinalizado();
         
         if (!pedidoId) {
-            mostrarErro('❌ Nenhum pedido finalizado encontrado');
+            mostrarErro('Nenhum pedido finalizado encontrado');
             return;
         }
         
-        console.log('✅ Pedido ID encontrado:', pedidoId);
+        console.log('Pedido ID encontrado:', pedidoId);
         
         // Buscar dados completos do pedido
         await carregarPedidoCompleto(pedidoId);
         
     } catch (error) {
-        console.error('❌ Erro no carregamento:', error);
+        console.error('Erro no carregamento:', error);
         mostrarErro('Erro ao carregar resumo do pedido');
     }
 });
@@ -26,7 +26,7 @@ async function obterPedidoIdFinalizado() {
     // 1. Tentar do localStorage (salvo após pagamento)
     let pedidoId = localStorage.getItem('pedidoId');
     if (pedidoId) {
-        console.log('📱 Pedido ID do localStorage:', pedidoId);
+        console.log('Pedido ID do localStorage:', pedidoId);
         return pedidoId;
     }
     
@@ -34,7 +34,7 @@ async function obterPedidoIdFinalizado() {
     const urlParams = new URLSearchParams(window.location.search);
     pedidoId = urlParams.get('pedidoId');
     if (pedidoId) {
-        console.log('🔗 Pedido ID da URL:', pedidoId);
+        console.log('Pedido ID da URL:', pedidoId);
         return pedidoId;
     }
     
@@ -48,18 +48,18 @@ async function obterPedidoIdFinalizado() {
             }
         });
         
-        console.log('📊 Status da resposta (finalizado):', res.status);
+        console.log('Status da resposta (finalizado):', res.status);
         
         if (res.ok) {
             const data = await res.json();
-            console.log('📊 Resposta último pedido finalizado:', data);
+            console.log('Resposta último pedido finalizado:', data);
             
             if (data.sucesso && data.dados && data.dados.id) {
                 return data.dados.id;
             }
         }
     } catch (error) {
-        console.error('❌ Erro ao buscar último pedido finalizado:', error);
+        console.error('Erro ao buscar último pedido finalizado:', error);
     }
     
     // 4. Fallback: buscar último pedido pago
@@ -72,28 +72,28 @@ async function obterPedidoIdFinalizado() {
             }
         });
         
-        console.log('📊 Status da resposta (pago):', res.status);
+        console.log('Status da resposta (pago):', res.status);
         
         if (res.ok) {
             const data = await res.json();
-            console.log('📊 Resposta último pedido pago:', data);
+            console.log('Resposta último pedido pago:', data);
             
             if (data.sucesso && data.dados && data.dados.id) {
                 return data.dados.id;
             }
         }
     } catch (error) {
-        console.error('❌ Erro ao buscar último pedido pago:', error);
+        console.error('Erro ao buscar último pedido pago:', error);
     }
     
-    console.warn('⚠️ Nenhum pedido encontrado');
+    console.warn('Nenhum pedido encontrado');
     return null;
 }
 
 // Carregar pedido completo
 async function carregarPedidoCompleto(pedidoId) {
     try {
-        console.log('📦 Carregando pedido completo:', pedidoId);
+        console.log('Carregando pedido completo:', pedidoId);
         
         // Primeiro tenta a rota com parâmetro
         let res = await fetch(`/finalizacao/resumo/${pedidoId}`, {
@@ -104,11 +104,11 @@ async function carregarPedidoCompleto(pedidoId) {
             }
         });
         
-        console.log('📊 Status da resposta (com ID):', res.status);
+        console.log('Status da resposta (com ID):', res.status);
         
         // Se não encontrar, tenta a rota ativa (que pode retornar o mesmo pedido)
         if (!res.ok && res.status === 404) {
-            console.log('⚠️ Rota com ID não encontrada, tentando rota ativa...');
+            console.log('Rota com ID não encontrada, tentando rota ativa...');
             res = await fetch('/finalizacao/resumo', {
                 method: 'GET',
                 credentials: 'include',
@@ -123,7 +123,7 @@ async function carregarPedidoCompleto(pedidoId) {
         }
         
         const data = await res.json();
-        console.log('📊 Dados do pedido recebidos:', data);
+        console.log('Dados do pedido recebidos:', data);
         
         if (data.sucesso && data.dados) {
             renderizarResumo(data.dados);
@@ -132,14 +132,14 @@ async function carregarPedidoCompleto(pedidoId) {
         }
         
     } catch (error) {
-        console.error('❌ Erro ao carregar pedido completo:', error);
+        console.error('Erro ao carregar pedido completo:', error);
         throw error;
     }
 }
 
 // Renderizar resumo do pedido
 function renderizarResumo(dados) {
-    console.log('🖼️ Renderizando resumo:', dados);
+    console.log('Renderizando resumo:', dados);
     
     const { pedidoId, status, subtotal, total, taxaEntrega, itens, dadosEntrega, createdAt } = dados;
     
@@ -153,7 +153,7 @@ function renderizarResumo(dados) {
     const numberElement = document.getElementById('number-pedido');
     if (numberElement) {
         numberElement.textContent = numeroPedido;
-        console.log('🔢 Número do pedido:', numeroPedido);
+        console.log('Número do pedido:', numeroPedido);
     }
     
     // 2. Data do pedido
@@ -161,7 +161,7 @@ function renderizarResumo(dados) {
     const dataElement = document.getElementById('data-pedido');
     if (dataElement) {
         dataElement.textContent = dataPedido;
-        console.log('📅 Data do pedido:', dataPedido);
+        console.log('Data do pedido:', dataPedido);
     }
     
     // 3. Informações de entrega
@@ -176,7 +176,7 @@ function renderizarResumo(dados) {
     // 6. Valores (subtotal, taxa, total)
     renderizarValores(dados);
     
-    console.log('✅ Resumo renderizado com sucesso!');
+    console.log('Resumo renderizado com sucesso!');
 }
 
 // Renderizar informações de entrega
@@ -184,7 +184,7 @@ function renderizarInformacoesEntrega(dadosPedido) {
     const container = document.querySelector('.descricao-info');
     
     if (!container) {
-        console.warn('⚠️ Container de informações de entrega não encontrado');
+        console.warn('Container de informações de entrega não encontrado');
         return;
     }
     
@@ -197,13 +197,13 @@ function renderizarInformacoesEntrega(dadosPedido) {
             ${dadosPedido.portaria ? `<p><strong>Portaria: </strong>${dadosPedido.portaria}</p>` : ''}
             <p><strong>Previsão de Entrega: </strong>15 a 18 de ${obterMesProximo()}</p>
         `;
-        console.log('✅ Informações de entrega renderizadas');
+        console.log('Informações de entrega renderizadas');
     } else {
         container.innerHTML = `
             <p><strong>Endereço: </strong>Não informado</p>
             <p><strong>Previsão de Entrega: </strong>15 a 18 de ${obterMesProximo()}</p>
         `;
-        console.warn('⚠️ Dados de entrega não disponíveis');
+        console.warn('Dados de entrega não disponíveis');
     }
 }
 
@@ -212,7 +212,7 @@ function renderizarFormaPagamento(dadosPedido) {
     const elementoPagamento = document.getElementById('forma-pedido');
     
     if (!elementoPagamento) {
-        console.warn('⚠️ Elemento de forma de pagamento não encontrado');
+        console.warn('Elemento de forma de pagamento não encontrado');
         return;
     }
     
@@ -238,18 +238,18 @@ function renderizarFormaPagamento(dadosPedido) {
     }
     
     elementoPagamento.textContent = formaPagamento;
-    console.log('💳 Forma de pagamento:', formaPagamento);
+    console.log('Forma de pagamento:', formaPagamento);
 }
 
 // Renderizar itens do pedido DENTRO do resumo (SEM IMAGEM)
 function renderizarItensPedido(itens) {
-    console.log('🎨 Renderizando itens do pedido:', itens);
+    console.log('Renderizando itens do pedido:', itens);
     
     // Procurar a descrição do pedido (onde ficam subtotal, taxa, etc)
     const descricaoPedido = document.querySelector('.descricao-pedido');
     
     if (!descricaoPedido) {
-        console.warn('⚠️ Container .descricao-pedido não encontrado');
+        console.warn('Container .descricao-pedido não encontrado');
         return;
     }
     
@@ -270,7 +270,7 @@ function renderizarItensPedido(itens) {
     
     if (!itens || itens.length === 0) {
         containerItens.innerHTML = '<p style="text-align: center; color: #666; padding: 1rem;">Nenhum item no pedido</p>';
-        console.warn('⚠️ Nenhum item encontrado no pedido');
+        console.warn('Nenhum item encontrado no pedido');
         return;
     }
     

@@ -1,6 +1,4 @@
-drop table endereco;
-
-  create table if not exists dados_pedido(
+create table if not exists dados_pedido(
 	id int auto_increment primary key,
     pedidoId int not null,
 	-- dados da página entrega

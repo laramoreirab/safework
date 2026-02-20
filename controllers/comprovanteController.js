@@ -1,0 +1,1 @@
+import comprovanteModel from '../models/comprovanteModel.js'
