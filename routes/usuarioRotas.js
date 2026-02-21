@@ -9,7 +9,7 @@ const router = express.Router()
 
 router.get('/', authMiddleware, adminMiddleware, authController.listarUsuarios);
 router.post('/', authMiddleware, adminMiddleware, authController.criarUsuario);
-router.put('/:id', authMiddleware, adminMiddleware, authController.atualizarUsuario);
+// router.put('/:id', authMiddleware, adminMiddleware, authController.atualizarUsuario);
 router.delete('/:id', authMiddleware, adminMiddleware, authController.excluirUsuario);
 
 // GET /usuarios/perfil - Obter dados do perfil
