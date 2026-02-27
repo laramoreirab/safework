@@ -137,11 +137,14 @@ async function carregarPedidoCompleto(pedidoId) {
     }
 }
 
+
 // Renderizar resumo do pedido
 function renderizarResumo(dados) {
     console.log('Renderizando resumo:', dados);
     
     const { pedidoId, status, subtotal, total, taxaEntrega, itens, dadosEntrega, createdAt } = dados;
+
+    let dadosPedidoAtual = dados;
     
     if (!pedidoId) {
         mostrarErro('Dados do pedido incompletos');
@@ -177,6 +180,24 @@ function renderizarResumo(dados) {
     renderizarValores(dados);
     
     console.log('Resumo renderizado com sucesso!');
+
+}
+
+async function gerarComprovante(dadosPedido){
+    const id = dadosPedido.pedidoId
+    try{
+        const res = await fetch(`/comprovante/${id}`, {
+            method: 'GET',
+            credentials: 'include',
+    })
+    console.log('Status da resposta GET:', res.status);
+        const blob = await res.blob()
+        const url = URL.createObjectURL(blob)
+        window.open(url, '_blank')
+    }catch(error){
+        console.error(' Erro ao criar comprovante:', error);
+            throw error;
+    }
 }
 
 // Renderizar informações de entrega
@@ -341,18 +362,18 @@ function renderizarItensPedido(itens) {
     divisor.style.cssText = 'margin: 1rem 0; border: none; border-top: 2px solid #ddd;';
     containerItens.appendChild(divisor);
     
-    console.log(`✅ ${itens.length} itens renderizados dentro do resumo`);
+    console.log(`${itens.length} itens renderizados dentro do resumo`);
 }
 
 // Renderizar valores (subtotal, taxa, total)
 function renderizarValores(dados) {
-    console.log('💰 Renderizando valores:', dados);
+    console.log('Renderizando valores:', dados);
     
     const subtotal = parseFloat(dados.subtotal) || 0;
     const taxaEntrega = parseFloat(dados.taxaEntrega) || 9.90;
     const total = parseFloat(dados.total) || 0;
     
-    console.log('💰 Valores calculados:', { subtotal, taxaEntrega, total });
+    console.log('Valores calculados:', { subtotal, taxaEntrega, total });
     
     // Atualizar elementos na tela
     const subtotalElements = document.querySelectorAll('#subtotal-pedido, [id*="subtotal"]');
@@ -370,7 +391,7 @@ function renderizarValores(dados) {
         el.textContent = total.toFixed(2).replace('.', ',');
     });
     
-    console.log('✅ Valores renderizados');
+    console.log('Valores renderizados');
 }
 
 // Funções auxiliares de formatação
@@ -405,7 +426,7 @@ function obterMesProximo() {
 
 // Mostrar erro
 function mostrarErro(mensagem) {
-    console.error('❌ Erro:', mensagem);
+    console.error('Erro:', mensagem);
     
     // Exibir mensagem amigável
     const errorContainer = document.createElement('div');

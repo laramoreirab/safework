@@ -16,6 +16,7 @@ import carrinhoRotas from './routes/carrinhoRotas.js';
 import finalizacaoRotas from './routes/finalizacaoRotas.js';
 import pedidosRotas from './routes/pedidosRotas.js';
 import contatoRotas from './routes/contatoRotas.js'
+import comprovanteRotas from './routes/comprovanteRotas.js'
 
 // Importar middlewares
 import { logMiddleware } from './middlewares/logMiddleware.js';
@@ -152,6 +153,7 @@ app.use('/finalizacao', finalizacaoRotas);
 app.use('/api/produtos', produtoRotas);
 app.use('/pedidos', pedidosRotas);
 app.use('/api/contato', contatoRotas)
+app.use('./comprovante',comprovanteRotas )
 
 // Rotas de Páginas - Organizadas e sem conflitos
 const pages = {

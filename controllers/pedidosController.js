@@ -13,7 +13,6 @@ class PedidosController {
             // Buscar todos os pedidos finalizados (status 'enviado' ou 'pago')
             const connection = await getConnection();
             
-            // PedidosController.js - VERSÃO CORRIGIDA
 const sql = `
     SELECT 
         p.id,
@@ -60,7 +59,7 @@ const sql = `
 const [pedidos] = await connection.execute(sql, [empresaId]);
             connection.release();
             
-            console.log(`✅ ${pedidos.length} pedidos encontrados`);
+            console.log(`${pedidos.length} pedidos encontrados`);
             
             return res.status(200).json({
                 sucesso: true,
@@ -68,7 +67,7 @@ const [pedidos] = await connection.execute(sql, [empresaId]);
             });
             
         } catch (error) {
-            console.error('❌ Erro ao buscar histórico:', error);
+            console.error(' Erro ao buscar histórico:', error);
             res.status(500).json({
                 sucesso: false,
                 erro: 'Erro ao buscar histórico',
@@ -135,7 +134,7 @@ static async obterDadosPerfil(req, res) {
         });
         
     } catch (error) {
-        console.error('❌ Erro ao buscar dados do perfil:', error);
+        console.error('Erro ao buscar dados do perfil:', error);
         res.status(500).json({
             sucesso: false,
             erro: 'Erro ao buscar dados do perfil',
