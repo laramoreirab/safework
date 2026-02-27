@@ -165,7 +165,7 @@ function configurarBotoesSalvar() {
     console.log('Configurando botões de salvar...');
     
     // Salvar Nome
-    const btnSalvarNome = document.querySelector('#modalAlterarNome .btn-primary');
+    const btnSalvarNome = document.querySelector('#modalAlterarNome .salvar-alterar');
     if (btnSalvarNome) {
         btnSalvarNome.addEventListener('click', async () => {
             const input = document.querySelector('#modalAlterarNome input[name="nome-representante"]');
@@ -181,7 +181,7 @@ function configurarBotoesSalvar() {
     }
     
     // Salvar Email
-    const btnSalvarEmail = document.querySelector('#modalAlterarEmail .btn-primary');
+    const btnSalvarEmail = document.querySelector('#modalAlterarEmail .salvar-alterar');
     if (btnSalvarEmail) {
         btnSalvarEmail.addEventListener('click', async () => {
             const input = document.querySelector('#modalAlterarEmail input[name="email-representante"]');
@@ -204,7 +204,7 @@ function configurarBotoesSalvar() {
     }
     
     // Salvar Telefone
-    const btnSalvarTelefone = document.querySelector('#modalAlterarNumero .btn-primary');
+    const btnSalvarTelefone = document.querySelector('#modalAlterarNumero .salvar-alterar');
     if (btnSalvarTelefone) {
         btnSalvarTelefone.addEventListener('click', async () => {
             const input = document.querySelector('#modalAlterarNumero input[name="numero-representante"]');
@@ -228,7 +228,7 @@ function configurarBotoesSalvar() {
     }
     
     // Salvar CNPJ
-    const btnSalvarCnpj = document.querySelector('#modalAlterarCnpj .btn-primary');
+    const btnSalvarCnpj = document.querySelector('#modalAlterarCnpj .salvar-alterar');
     if (btnSalvarCnpj) {
         btnSalvarCnpj.addEventListener('click', async () => {
             const input = document.querySelector('#modalAlterarCnpj input[name="cnpj-representante"]');
@@ -255,7 +255,7 @@ function configurarBotoesSalvar() {
 // FUNÇÃO GENÉRICA PARA ATUALIZAR CAMPOS
 async function atualizarCampo(campo, valor, mensagemSucesso, idModal) {
     try {
-        const endpoint = `/usuarios/atualizar-${campo}`;
+        const endpoint = `/auth/atualizar-${campo}`;
         console.log(`Atualizando ${campo}:`, valor);
         
         const res = await fetch(endpoint, {
