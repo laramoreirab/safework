@@ -44,6 +44,7 @@ const ordenarSidebar = document.getElementById("aba-ordenar");
 const overlay = document.getElementById("escurecer-filtrar");
 const btnFechar = document.querySelector("#aba-filtrar .titulo-filtrar i");
 const limparFiltros = document.getElementById("limpar-filtro");
+const btnConfirmarFiltro = document.getElementById("filtrar");
 const btnFecharOrdenar = document.querySelector(
   "#aba-ordenar .titulo-filtrar i"
 );
@@ -118,7 +119,7 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
   .then(res => res.json()) // transforma o valor que está vindo em um array.json
   .then(data => {
 
-    const btnConfirmarFiltro = document.getElementById("filtrar");
+    
 
     limparFiltros.addEventListener("click", function () {
 
@@ -148,14 +149,14 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
       // Tipo
       const tiposSelecionados = [];
 
-      if (document.getElementById("checkbox-cabeca").checked) tiposSelecionados.push("Facial"); /* adiciona a Array dos selecionados */
+      if (document.getElementById("checkbox-facial").checked) tiposSelecionados.push("Facial"); /* adiciona a Array dos selecionados */
       if (document.getElementById("checkbox-olhos").checked) tiposSelecionados.push("Ocular");
-      if (document.getElementById("checkbox-auditiva").checked) tiposSelecionados.push("Corporal");
+      if (document.getElementById("checkbox-corpo").checked) tiposSelecionados.push("Corporal");
       if (document.getElementById("checkbox-respiratoria").checked) tiposSelecionados.push("Respiratório");
-      if (document.getElementById("checkbox-maos").checked) tiposSelecionados.push("Auditivo");
-      if (document.getElementById("checkbox-pes").checked) tiposSelecionados.push("Manual");
-      if (document.getElementById("checkbox-corpo").checked) tiposSelecionados.push("Pés e Pernas");
-      if (document.getElementById("checkbox-quedas").checked) tiposSelecionados.push("Cabeça");
+      if (document.getElementById("checkbox-auditiva").checked) tiposSelecionados.push("Auditivo");
+      if (document.getElementById("checkbox-maos").checked) tiposSelecionados.push("Manual");
+      if (document.getElementById("checkbox-pes").checked) tiposSelecionados.push("Pés e Pernas");
+      if (document.getElementById("checkbox-cabeca").checked) tiposSelecionados.push("Cabeça");
 
       if (tiposSelecionados.length > 0) {
         produtosFiltrados = produtosFiltrados.filter(prod =>
@@ -178,7 +179,7 @@ fetch(url) // usa a rota da api produtos para puxar a array com informação dos
         );
       }
 
-      // ================= PREÇO =================
+      // Preço
       if (document.getElementById("checkbox-preco-200-249").checked) {
         produtosFiltrados = produtosFiltrados.filter(prod => prod.preco >= 200 && prod.preco <= 249.99);
       }
