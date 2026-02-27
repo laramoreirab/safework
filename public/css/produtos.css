@@ -316,6 +316,15 @@ main {
   flex: 1;
 }
 
+.itens-carrinho {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 5%;
+  gap: 3dvh;
+  flex: 1;
+}
+
 .esp-button {
   position: sticky;
   left: 0;
