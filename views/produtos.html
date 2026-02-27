@@ -193,11 +193,11 @@
           <div class="submenu">
             <div class="cont-rows">
               <div class="row-filtrar">
-                <input type="checkbox" name="checkbox-filtrar" id="checkbox-cabeca" />
+                <input type="checkbox" name="checkbox-filtrar" id="checkbox-cabeca" value="facial" />
                 <label for="checkbox-cabeca">Facial</label>
               </div>
               <div class="row-filtrar">
-                <input type="checkbox" name="checkbox-filtrar" id="checkbox-olhos" />
+                <input type="checkbox" name="checkbox-filtrar" id="checkbox-olhos" value="ocular" />
                 <label for="checkbox-olhos">Ocular</label>
               </div>
               <div class="row-filtrar">
@@ -303,8 +303,14 @@
       </div>
 
       <div class="esp-button">
-        <button type="submit" id="confirmar-filtrar">Filtrar</button>
+        <button type="submit" id="filtrar">Filtrar</button>
       </div>
+      <div class="limpar-filtros">
+        <a type="button" id="limpar-filtro" class="filtro">Limpar filtros</a>
+      </div>
+
+
+
     </div>
 
     <div class="aba-ordenar" id="aba-ordenar">
@@ -338,7 +344,7 @@
       </div>
 
       <div class="esp-button">
-        <button type="submit" id="confirmar-filtrar">Ordenar</button>
+        <button type="submit" id="confirmar-ordenar">Ordenar</button>
       </div>
     </div>
     <!------------------- Carrinho ------------------->
@@ -487,4 +493,5 @@
   <script src="/public/js/funcoesprincipais.js"></script>
   <script src="/public/js/verificar-sessao.js"></script>
 </body>
+
 </html>

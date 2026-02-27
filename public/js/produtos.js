@@ -43,6 +43,7 @@ const sidebar = document.getElementById("aba-filtrar");
 const ordenarSidebar = document.getElementById("aba-ordenar");
 const overlay = document.getElementById("escurecer-filtrar");
 const btnFechar = document.querySelector("#aba-filtrar .titulo-filtrar i");
+const limparFiltros = document.getElementById("limpar-filtro");
 const btnFecharOrdenar = document.querySelector(
   "#aba-ordenar .titulo-filtrar i"
 );
@@ -116,6 +117,117 @@ if (categoria === 'pesepernas') {
 fetch(url) // usa a rota da api produtos para puxar a array com informação dos produtos (nome, descricao, valorUni)
   .then(res => res.json()) // transforma o valor que está vindo em um array.json
   .then(data => {
+
+    const btnConfirmarFiltro = document.getElementById("filtrar");
+
+    limparFiltros.addEventListener("click", function () {
+
+      // Desmarcar os filtros
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+
+      tiposSelecionados = [];
+
+      // Restaurar produtos
+      produtosFiltrados = produtos;
+
+      renderizarProdutos(produtosFiltrados);
+
+    });
+
+    btnConfirmarFiltro.addEventListener("click", () => {
+      aplicarFiltros();
+      closeAllSidebars();
+    });
+
+    function aplicarFiltros() {
+
+      let produtosFiltrados = [...produtos];
+
+      // Tipo
+      const tiposSelecionados = [];
+
+      if (document.getElementById("checkbox-cabeca").checked) tiposSelecionados.push("Facial"); /* adiciona a Array dos selecionados */
+      if (document.getElementById("checkbox-olhos").checked) tiposSelecionados.push("Ocular");
+      if (document.getElementById("checkbox-auditiva").checked) tiposSelecionados.push("Corporal");
+      if (document.getElementById("checkbox-respiratoria").checked) tiposSelecionados.push("Respiratório");
+      if (document.getElementById("checkbox-maos").checked) tiposSelecionados.push("Auditivo");
+      if (document.getElementById("checkbox-pes").checked) tiposSelecionados.push("Manual");
+      if (document.getElementById("checkbox-corpo").checked) tiposSelecionados.push("Pés e Pernas");
+      if (document.getElementById("checkbox-quedas").checked) tiposSelecionados.push("Cabeça");
+
+      if (tiposSelecionados.length > 0) {
+        produtosFiltrados = produtosFiltrados.filter(prod =>
+          tiposSelecionados.includes(prod.tipo)
+        );
+      }
+
+      // Marca
+      const marcasSelecionadas = [];
+
+      if (document.getElementById("checkbox-3m").checked) marcasSelecionadas.push("3M");
+      if (document.getElementById("checkbox-montana").checked) marcasSelecionadas.push("Montana");
+      if (document.getElementById("checkbox-softworks").checked) marcasSelecionadas.push("Soft Works");
+      if (document.getElementById("checkbox-volk").checked) marcasSelecionadas.push("Volk");
+      if (document.getElementById("checkbox-apaseg").checked) marcasSelecionadas.push("APASEG");
+
+      if (marcasSelecionadas.length > 0) {
+        produtosFiltrados = produtosFiltrados.filter(prod =>
+          marcasSelecionadas.includes(prod.marca)
+        );
+      }
+
+      // ================= PREÇO =================
+      if (document.getElementById("checkbox-preco-200-249").checked) {
+        produtosFiltrados = produtosFiltrados.filter(prod => prod.preco >= 200 && prod.preco <= 249.99);
+      }
+
+      if (document.getElementById("checkbox-preco-250-299").checked) {
+        produtosFiltrados = produtosFiltrados.filter(prod => prod.preco >= 250 && prod.preco <= 299.99);
+      }
+
+      if (document.getElementById("checkbox-preco-300-349").checked) {
+        produtosFiltrados = produtosFiltrados.filter(prod => prod.preco >= 300 && prod.preco <= 349.99);
+      }
+
+      if (document.getElementById("checkbox-preco-350-400").checked) {
+        produtosFiltrados = produtosFiltrados.filter(prod => prod.preco >= 350 && prod.preco <= 400);
+      }
+
+      renderizarListaFiltrada(produtosFiltrados);
+
+    }
+
+    function renderizarListaFiltrada(lista) {
+      container.querySelectorAll('.produto').forEach(el => el.remove());
+
+      lista.forEach(produto => {
+        const bloco = document.createElement("div");
+        bloco.className = "produto";
+
+        bloco.innerHTML = `
+        <a href='/produtos/${produto.tipo}/${produto.id}'>
+          <div class="one-produto">
+            <img src="/uploads/imagens/${produto.img}" alt="" />
+            <h5>${produto.nome}</h5>
+            <p>
+              CA: ${produto.ca} | 
+              <span>${produto.marca}</span> |
+              <span>${produto.tipo}</span>
+            </p>
+            <h4>R$${produto.preco}</h4>
+          </div>
+        </a>
+    `;
+
+        container.appendChild(bloco);
+        setTimeout(() => bloco.classList.add("show"), 10);
+      });
+
+      document.getElementById("quantidade-produtos").innerText = lista.length;
+    }
+
     const produtos = data.dados // cria uma variavel chamada produtos pegando os dados da array data
     const searchInput = document.getElementById("search-bar");
     renderizarProdutos() // função para puxar todos os produtos ja formatados para pagina produto

@@ -323,6 +323,7 @@ main {
   right: 0;
   width: 100%;
   padding: 5%;
+  padding-bottom: 2%;
   background: linear-gradient(to top, #f9f9f9, rgba(249, 249, 249, 0.95));
   display: flex;
   justify-content: center;
@@ -504,4 +505,21 @@ main {
     grid-template-columns: 1fr;
     gap: 3dvh;
   }
+}
+
+.limpar-filtros{
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.filtro{
+  color: var(--azul-escuro);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
 }
