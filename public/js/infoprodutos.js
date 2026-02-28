@@ -23,7 +23,9 @@ try {
         .then(produto => {
             // Armazenar produto globalmente
             produtoAtual = produto;
-        
+            precoinicial = produto.preco
+            console.log(precoinicial)
+
             let codigoProd
 
             if (contaCaracID == 1) {
@@ -68,7 +70,7 @@ try {
                         bloco.innerHTML = `
                         <a href="/produtos/${tipoProd}/${produto.id}">
                             <div class="one-produto">
-                                <img src="/uploads/imagens/${produto.img}" alt="" />
+                                <img src="/uploads/imagens/${produto.img}" alt=""
                                 <h5>${produto.nome}</h5>
                                 <p>
                                     CA: ${produto.ca} | <span id="marca-produtos">${produto.marca}</span>
@@ -122,10 +124,10 @@ function configurarBotoesQuantidade() {
         const input = linha.querySelector('.quantidade-input');
 
         // adicionar eventos nos botões + e -
-            document.querySelectorAll('.aumentar-btn, .diminuir-btn, .quantidade-input').forEach(el => {
-                el.addEventListener('click', atualizarPrecoTotal);
-                el.addEventListener('input', atualizarPrecoTotal);
-            });
+        document.querySelectorAll('.aumentar-btn, .diminuir-btn, .quantidade-input').forEach(el => {
+            el.addEventListener('click', atualizarPrecoTotal);
+            el.addEventListener('input', atualizarPrecoTotal);
+        });
 
         // Input manual
         input.addEventListener('input', () => {
@@ -151,8 +153,10 @@ function atualizarPrecoTotal() {
             const quantidadeUnidades = quantidadeLotes * 50;
             total += quantidadeUnidades * produtoAtual.preco;
         }
-    });
-
+        if(total === 0){
+            total = parseFloat(precoinicial);
+        }
+    })
     const precoProdElement = document.querySelector('.preco_produto');
     if (precoProdElement) {
         precoProdElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
@@ -162,7 +166,7 @@ function atualizarPrecoTotal() {
 // Função para configurar o botão de comprar
 function configurarBotaoComprar() {
     const btnComprar = document.querySelector('.addcarrinho_informacoes');
-    
+
     if (btnComprar) {
         btnComprar.addEventListener('click', () => {
             if (!produtoAtual) {
@@ -180,7 +184,7 @@ function configurarBotaoComprar() {
                 if (quantidadeLotes > 0) {
                     // Converter lotes em unidades (1 lote = 50 unidades)
                     const quantidadeUnidades = quantidadeLotes * 50;
-                    
+
                     // Verificar se a função global existe
                     if (typeof window.adicionarAoCarrinho === 'function') {
                         window.adicionarAoCarrinho(produtoAtual.id, quantidadeUnidades, tamanho);
