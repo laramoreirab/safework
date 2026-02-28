@@ -153,7 +153,7 @@ app.use('/finalizacao', finalizacaoRotas);
 app.use('/api/produtos', produtoRotas);
 app.use('/pedidos', pedidosRotas);
 app.use('/api/contato', contatoRotas)
-app.use('./comprovante',comprovanteRotas )
+app.use('/comprovante',comprovanteRotas )
 
 // Rotas de Páginas - Organizadas e sem conflitos
 const pages = {
