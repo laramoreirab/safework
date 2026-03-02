@@ -17,6 +17,8 @@ import finalizacaoRotas from './routes/finalizacaoRotas.js';
 import pedidosRotas from './routes/pedidosRotas.js';
 import contatoRotas from './routes/contatoRotas.js'
 
+import avaliacaoRotas from './routes/avaliacaoRotas.js';
+
 // Importar middlewares
 import { logMiddleware } from './middlewares/logMiddleware.js';
 
@@ -134,6 +136,8 @@ app.get('/config-compras', authMiddleware, (req, res) => {
 app.get('/config-home', authMiddleware, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'config-home.html'));
 });
+
+app.use('/avaliacoes', avaliacaoRotas);
 
 // Middleware de debug para cookies e headers
 app.use((req, res, next) => {
