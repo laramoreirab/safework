@@ -202,3 +202,92 @@ function configurarBotaoComprar() {
         });
     }
 }
+
+// Pega o ID do produto (ajuste conforme seu projeto)
+const produtoId = /* ex: */ window.location.pathname.split('/').pop();
+
+// ---- ESTRELAS INTERATIVAS ----
+const estrelasInput = document.querySelectorAll('#estrelas-input span');
+const notaSelecionada = document.getElementById('nota-selecionada');
+
+estrelasInput.forEach(estrela => {
+    estrela.addEventListener('mouseover', () => {
+        const val = estrela.dataset.valor;
+        estrelasInput.forEach(e => e.classList.toggle('ativa', e.dataset.valor <= val));
+    });
+    estrela.addEventListener('click', () => {
+        notaSelecionada.value = estrela.dataset.valor;
+    });
+});
+
+document.getElementById('estrelas-input').addEventListener('mouseleave', () => {
+    const nota = notaSelecionada.value;
+    estrelasInput.forEach(e => e.classList.toggle('ativa', nota && e.dataset.valor <= nota));
+});
+
+// ---- CARREGAR AVALIAÇÕES ----
+async function carregarAvaliacoes() {
+    const res = await fetch(`/avaliacoes/${produtoId}`);
+    const json = await res.json();
+
+    // Média
+    const media = json.media;
+    const total = json.total;
+    document.getElementById('estrelas-media').innerHTML = media
+        ? '★'.repeat(Math.round(media)) + '☆'.repeat(5 - Math.round(media))
+        : '';
+    document.getElementById('texto-media').textContent = media
+        ? `${media} de 5 (${total} avaliação${total !== 1 ? 'ões' : ''})`
+        : 'Nenhuma avaliação ainda.';
+
+    // Lista
+    const lista = document.getElementById('lista-avaliacoes');
+    lista.innerHTML = '';
+
+    json.dados.forEach(av => {
+        const data = new Date(av.data_criacao).toLocaleDateString('pt-BR');
+        const estrelas = '★'.repeat(av.nota) + '☆'.repeat(5 - av.nota);
+        lista.insertAdjacentHTML('beforeend', `
+            <div class="card-avaliacao">
+                <div class="avaliador">${av.nome_avaliador}</div>
+                <div class="estrela-exibicao">${estrelas}</div>
+                ${av.comentario ? `<p>${av.comentario}</p>` : ''}
+                <div class="data">${data}</div>
+            </div>
+        `);
+    });
+}
+
+// ---- ENVIAR AVALIAÇÃO ----
+document.getElementById('btn-enviar-avaliacao').addEventListener('click', async () => {
+    const nota = notaSelecionada.value;
+    const comentario = document.getElementById('comentario-avaliacao').value;
+    const msg = document.getElementById('msg-avaliacao');
+
+    if (!nota) {
+        msg.textContent = 'Selecione uma nota antes de enviar.';
+        msg.style.color = 'red';
+        return;
+    }
+
+    const res = await fetch(`/avaliacoes/${produtoId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ nota: Number(nota), comentario })
+    });
+
+    const json = await res.json();
+    msg.textContent = json.mensagem;
+    msg.style.color = json.sucesso ? 'green' : 'red';
+
+    if (json.sucesso) {
+        document.getElementById('comentario-avaliacao').value = '';
+        notaSelecionada.value = '';
+        estrelasInput.forEach(e => e.classList.remove('ativa'));
+        carregarAvaliacoes(); // atualiza a lista
+    }
+});
+
+// Carrega ao abrir a página
+carregarAvaliacoes();

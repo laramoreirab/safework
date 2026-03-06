@@ -167,13 +167,6 @@
                                 <!-- Colocar aqui o ID do produto nessa mesma formatação: Cód: NNNN -->
                                 <p>Cód: 0001</p>
                             </div>
-                            <div class="avaliacaoprod">
-                                <i class="fi fi-ss-star"></i>
-                                <i class="fi fi-ss-star"></i>
-                                <i class="fi fi-ss-star"></i>
-                                <i class="fi fi-ss-star"></i>
-                                <i class="fi fi-ts-star-sharp-half-stroke"></i>
-                            </div>
                         </div>
                         <!---------------------- TAMANHOS DO PRODUTO  ------------------------>
                         <div class="escolherquant">
@@ -320,7 +313,7 @@
             </div>
             <!-- Avaliações do Produto -->
             <div id="avaliacao_prod">
-                <div class="titulo-linha">
+                <!-- <div class="titulo-linha">
                     <h1 class="titulo_secaoprod">Avaliações</h1>
                     <hr class="linha-gradiente">
                 </div>
@@ -386,7 +379,42 @@
 
                         </div>
                     </div>
+                </div> -->
+
+                <!-- SEÇÃO DE AVALIAÇÕES -->
+                <section id="secao-avaliacoes">
+                    <div class="descricao_prod">
+                <div class="titulo-linha">
+                    <h1 class="titulo_secaoprod">Avaliações</h1>
+                    <hr class="linha-gradiente">
                 </div>
+
+                    <!-- Média geral -->
+                    <div id="media-avaliacoes">
+                        <span id="estrelas-media"></span>
+                        <span id="texto-media">Carregando...</span>
+                    </div>
+
+                    <!-- Formulário para avaliar -->
+                    <div id="form-avaliacao">
+                        <h3>Deixe sua avaliação</h3>
+                        <div class="estrelas-input" id="estrelas-input">
+                            <span data-valor="1">★</span>
+                            <span data-valor="2">★</span>
+                            <span data-valor="3">★</span>
+                            <span data-valor="4">★</span>
+                            <span data-valor="5">★</span>
+                        </div>
+                        <input type="hidden" id="nota-selecionada" value="">
+                        <textarea id="comentario-avaliacao" placeholder="Escreva seu comentário (opcional)..."
+                            rows="3"></textarea>
+                        <button id="btn-enviar-avaliacao">Enviar Avaliação</button>
+                        <p id="msg-avaliacao"></p>
+                    </div>
+
+                    <!-- Lista de avaliações -->
+                    <div id="lista-avaliacoes"></div>
+                </section>
             </div>
 
             <!---------------------- INTERESSES ------------------------>
@@ -572,7 +600,7 @@
             </div>
         </div>
     </div>
-    
+
     <!------------------- Carrinho ------------------->
     <div class="aba-carrinho" id="aba-carrinho">
         <div class="titulo-filtrar">
@@ -622,10 +650,11 @@
         </div>
     </div>
 
-      <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
+    <div class="escurecer-filtrar" id="escurecer-filtrar"></div>
     <script src="/public/js/verificar-sessao.js"></script>
 </body>
-    <script src="/public/js/funcoesprincipais.js"></script>
-    <script src="/public/js/carrinho.js"></script>
-    <script src="/public/js/infoprodutos.js"></script>
+<script src="/public/js/funcoesprincipais.js"></script>
+<script src="/public/js/carrinho.js"></script>
+<script src="/public/js/infoprodutos.js"></script>
+
 </html>

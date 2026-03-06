@@ -845,6 +845,62 @@ botaoExcluirContato.onclick = async function () { // evento ao clicar no botão 
 
 }
 
+function formatarData(dataISO) {
+    if (!dataISO) return '—';
+    const d = new Date(dataISO);
+    return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getFullYear()).slice(-2)}`;
+}
+
+function formatarValor(valor) {
+    return Number(valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+async function carregarVendas() {
+    try {
+        const res = await fetch('/pedidos/admin/todas', {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
+        const json = await res.json();
+        const pedidos = json.dados || [];
+
+        // Atualiza o contador no card
+        document.querySelector('.qtd-vendas').textContent = pedidos.length;
+
+        // Limpa a tabela e coloca pedidos
+        const tabela = document.getElementById('tabela_vendas');
+        tabela.querySelectorAll('tr.eachproduto').forEach(l => l.remove());
+
+        if (pedidos.length === 0) {
+            tabela.insertAdjacentHTML('beforeend',
+                `<tr><td colspan="4" style="text-align:center;padding:20px;color:#888">Nenhuma venda encontrada.</td></tr>`
+            );
+            return;
+        }
+
+        pedidos.forEach(pedido => {
+            let prods = pedido.primeiro_item_nome || '—';
+            if (pedido.total_itens > 1) prods += `<br><span style="color:#888;font-size:.85em">+${pedido.total_itens - 1} item(s)</span>`;
+
+            tabela.insertAdjacentHTML('beforeend', `
+                <tr class="eachproduto">
+                    <td class="nomeUser_compra">${pedido.nome_empresa || '—'}</td>
+                    <td class="data_Compra">${formatarData(pedido.created_at)}</td>
+                    <td class="produtos_Compra"><p>${prods}</p></td>
+                    <td class="valor_Compra">${formatarValor(pedido.total)}</td>
+                </tr>
+            `);
+        });
+
+    } catch (err) {
+        console.error('Erro ao carregar vendas:', err);
+    }
+}
+
+// Carrega ao abrir o modal (lazy load)
+document.getElementById('modalTotalVendas')
+    .addEventListener('show.bs.modal', carregarVendas);
+
 
 searchInputUser.addEventListener('input', listarUsuarios)
 searchInputUser.addEventListener('input', filtrarUsuarios)
+

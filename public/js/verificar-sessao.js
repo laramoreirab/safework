@@ -6,10 +6,12 @@ async function verificarUsuarioLogado() {
         });
         
         if (res.ok) {
-            // Usuário logado - mudar href do ícone
+            const dados = await res.json();
             const userIcon = document.getElementById('user-icon');
+
             if (userIcon) {
-                userIcon.href = '/config-compras';
+                // Admin vai para /adm, usuário comum vai para /config-compras
+                userIcon.href = dados.dados.tipo === 'admin' ? '/adm' : '/config-compras';
             }
         }
     } catch (error) {

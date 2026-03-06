@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import { JWT_CONFIG } from '../config/jwt.js'
 
-const authMiddleware = (req, res, next) =>{
+const authMiddleware = (req, res, next) => {
     try {
         // pega o token do cookie
         const token = req.cookies.token;
 
-        if(!token){ // caso falhe a operação de pegar o token do cookie
-            if(req.path.includes('/adm')){
+        if (!token) { // caso falhe a operação de pegar o token do cookie
+            if (req.path.includes('/adm')) {
                 return res.redirect('/login');
             }
             return res.status(401).json({
@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next) =>{
                 mensagem: 'Você precisa estar logado'
             });
         }
-        
+
         //verificar e decodificar o token
         const decoded = jwt.verify(token, JWT_CONFIG.secret);
 
@@ -28,9 +28,9 @@ const authMiddleware = (req, res, next) =>{
         };
 
         next();
-    } catch (error){
-        if (error.name === 'TokenExpiredError'){ // Exibe o erro do token expirado
-            if(req.path.includes('/adm')){
+    } catch (error) {
+        if (error.name === 'TokenExpiredError') { // Exibe o erro do token expirado
+            if (req.path.includes('/adm')) {
                 return res.redirect('/login');
             }
             return res.status(401).json({
@@ -39,17 +39,17 @@ const authMiddleware = (req, res, next) =>{
             });
         }
         if (error.name === 'JsonWebTokenError') { // Exibe o erro do token inválido
-             if(req.path.includes('/adm')){
+            if (req.path.includes('/adm')) {
                 return res.redirect('/login');
             }
-            return res.status(401).json({ 
+            return res.status(401).json({
                 erro: 'Token inválido',
                 mensagem: 'Token de autenticação inválido'
             });
         }
         // Se não for nenhum desses
         console.error('Erro no middleware de autenticação:', error); // erro no middleware
-        return res.status(500).json({ 
+        return res.status(500).json({
             erro: 'Erro interno do servidor',
             mensagem: 'Erro ao processar autenticação'
         });
@@ -59,7 +59,7 @@ const authMiddleware = (req, res, next) =>{
 //Middleware para verificar se o usuário é administrador 
 const adminMiddleware = (req, res, next) => {
     if (req.usuario.tipo !== 'admin') {
-         if(req.path.includes('/adm')){
+        if (req.path.includes('/adm')) {
             return res.redirect('/');
         }
         return res.status(403).json({
@@ -67,7 +67,7 @@ const adminMiddleware = (req, res, next) => {
             mensagem: 'Apenas administradores podem acessar esse recurso!'
         })
     };
-        next();
+    next();
 };
 
 export { authMiddleware, adminMiddleware } //exportando as autenticações de Token e de Administrador
