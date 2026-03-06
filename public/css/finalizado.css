@@ -364,10 +364,11 @@
   text-align: center;
   gap: 3dvh;
 
-  h2 {
+  .comprovante_link{
     color: var(--azul-crepusculo);
     font-weight: 700;
     font-size: 2.5rem;
+    text-decoration: underline;
   }
 
   p {

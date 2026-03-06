@@ -44,7 +44,7 @@ async function carregarCarrinho() {
 }
 
 function renderizarCarrinhoVazio() {
-    const container = document.querySelector('.padding-filtrar');
+    const container = document.getElementById('itens-carrinho');
     const subtotalElement = document.getElementById('subtotal-carrinho');
     
     container.innerHTML = '<p style="text-align: center; padding: 2rem;">Seu carrinho está vazio</p>';
@@ -56,7 +56,7 @@ function renderizarCarrinhoVazio() {
 
 // Renderizar itens do carrinho
 function renderizarCarrinho(dados) {
-    const container = document.querySelector('.padding-filtrar');
+    const container = document.getElementById('itens-carrinho');
     const subtotalElement = document.getElementById('subtotal-carrinho');
     
     if (!dados.itens || dados.itens.length === 0) {
@@ -120,8 +120,9 @@ function renderizarCarrinho(dados) {
 // Configurar botão finalizar compra
 function configurarBotaoFinalizar(carrinhoVazio = false) {
     const btnFinalizar = document.querySelector('#btn-finalizar-compra') || 
-                        document.querySelector('a[href*="/dados"]') ||
-                        document.querySelector('.btn-finalizar-compra')?.closest('a');
+                         document.querySelector('#confirmar-filtrar') ||
+                         document.querySelector('a[href*="/dados"]') ||
+                         document.querySelector('.btn-finalizar-compra')?.closest('a');
     
     if (btnFinalizar) {
         if (carrinhoVazio) {
@@ -172,14 +173,14 @@ function obterCaminhoDados() {
 
 // Adicionar event listeners aos botões do carrinho
 function adicionarEventListenersCarrinho() {
-    const container = document.querySelector('.padding-filtrar');
+    const container = document.getElementById('itens-carrinho');
     
     // Remove event listeners antigos para evitar duplicação
     const newContainer = container.cloneNode(true);
     container.parentNode.replaceChild(newContainer, container);
     
     // Novo event listener com delegation
-    document.querySelector('.padding-filtrar').addEventListener('click', function(e) {
+    document.getElementById('itens-carrinho').addEventListener('click', function(e) {
         const target = e.target;
         
         // Encontrar o elemento clicado (botão ou ícone)
